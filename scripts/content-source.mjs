@@ -38,6 +38,8 @@ export function loadStrong(path = STRONG_PATH) {
     const w = body.match(/<w pos="([^"]*)"[^>]*>([^<]*)<\/w>/) ?? body.match(/<w [^>]*>([^<]*)<\/w>/);
     entries.set(id, {
       id,
+      usage: text(body.match(/<usage>([\s\S]*?)<\/usage>/)?.[1]),
+      pron: body.match(/<w [^>]*pron="([^"]*)"/)?.[1],
       pos: w?.length === 3 ? w[1] : null,
       headword: w?.length === 3 ? w[2] : w?.[1],
       source: text(body.match(/<source>([\s\S]*?)<\/source>/)?.[1]),

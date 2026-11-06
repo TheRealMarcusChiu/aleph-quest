@@ -1,0 +1,49 @@
+{"id":"H0595","strong":"I","forms":[],"gloss":"I, the longer pronoun; separate Strong entry from H589."}
+{"id":"H0859","strong":"thou","forms":[],"gloss":"you, masculine singular, per OSHB Pp2ms. Strong's older English thou is rendered you."}
+{"id":"H1931","strong":"he","forms":["HPp3fs"],"gloss":"he matches; that is in Strong's range. OSHB keeps the feminine under one lemma, so an inflection."}
+{"id":"H1992","strong":"they","forms":["HPp3mp"],"gloss":"they matches; those is Strong's demonstrative use. Longer spelling shares lemma 1992."}
+{"id":"H2088","strong":"this","forms":["HPdxfs"],"gloss":"this, masculine, per OSHB Pdxms. Feminine has its own Strong entry, so separate-lexeme."}
+{"id":"H2063","strong":"this","forms":["HPdxms"],"gloss":"this, feminine, per OSHB Pdxfs. Masculine is a separate Strong entry."}
+{"id":"H0428","strong":"these","forms":["HPdxms"],"gloss":"these, per OSHB Pdxcp. זֶה is a separate Strong entry."}
+{"id":"H0853","strong":"self","forms":["HTo/Sp3ms"],"gloss":"Object marker follows OSHB To. Strong's own note gives entity, and says it is used to point out the object; no English word is taught."}
+{"id":"H3588","strong":"that","forms":[],"gloss":"that, because, when are in Strong's range. Conjunction per OSHB HC."}
+{"id":"H6440","strong":"the face","forms":["HNcbpc/Sp3ms"],"gloss":"face, surface, presence are Strong's range. Plural in form per OSHB Ncbp."}
+{"id":"H8034","strong":"name","forms":["HNcmsc/Sp3ms"],"gloss":"name matches; reputation is in Strong's definition."}
+{"id":"H1285","strong":"compact","forms":["HNcfsc/Sp1cs"],"gloss":"covenant is in Strong's usage; binding agreement renders compact."}
+{"id":"H0854","strong":"near","forms":["HR"],"gloss":"with and beside render Strong's nearness sense. Homograph of H853, recorded on both cards."}
+{"id":"H5973","strong":"with","forms":["HR/Sp3fs"],"gloss":"with and together with match. Doubled mem before the suffix is the form in Gen.3.6."}
+{"id":"H3426","strong":"there","forms":[],"gloss":"there is and there are render the particle; OSHB tags Tm."}
+{"id":"H0369","strong":"a nonentity","forms":["HTn"],"gloss":"there is not and nothing fit the negative entity sense. Shorter form shares lemma 369."}
+{"id":"H0834","strong":"who, which, what, that","forms":[],"gloss":"who, which, that are Strong's defs. Relative per OSHB Tr."}
+{"id":"H4672","strong":"find","forms":["HVqp1cs"],"gloss":"find and obtain are Strong's senses."}
+{"id":"H7121","strong":"call","forms":["HC/Vqw3ms"],"gloss":"call, name and read are Strong's range."}
+{"id":"H1254","strong":"create","forms":["HVqp3ms/Sp3mp"],"gloss":"create matches. OSHB lemma 1254 a."}
+{"id":"H0269","strong":"sister","forms":["HNcfsc/Sp1cs"],"gloss":"sister matches."}
+{"id":"H0113","strong":"lord","forms":["HNcmpc/Sp1cs"],"gloss":"lord and master are Strong's range. Gen.18.3 is plural in form per OSHB, addressed to a person as sir."}
+{"id":"H5315","strong":"a breathing creature","forms":["HNcbsc/Sp1cs"],"gloss":"living being renders the breathing creature; life and self are Strong's extensions. The card flags soul as a poor default."}
+{"id":"H6310","strong":"the mouth","forms":["HR/Ncmsc/Sp3fs"],"gloss":"mouth and opening are in Strong's range; a dove's beak in Gen.8.11 is contextual."}
+{"id":"H1571","strong":"also","forms":[],"gloss":"also and even match. OSHB Ta."}
+{"id":"H2009","strong":"lo","forms":["HTm/Sp1cs"],"gloss":"look renders lo; here I am is the suffixed form in context."}
+{"id":"H5750","strong":"again","forms":[],"gloss":"again, still and more are in Strong's range."}
+{"id":"H3651","strong":"so","forms":[],"gloss":"so and thus match. OSHB lemma 3651 c."}
+{"id":"H8104","strong":"i.e. guard","forms":["HC/Vqq3cp"],"gloss":"keep, guard and watch over are Strong's range. OSHB q is a sequential perfect, which the card's and they will keep reflects."}
+{"id":"H1961","strong":"to exist","forms":["HVqj3ms"],"gloss":"be, become and happen are Strong's range. The card warns that the jussive isn't a past.","stressNote":"Strong's pron haw-yaw carries no stress mark, so there is nothing to compare. Final stress follows the verb's accented 3ms perfects such as הָיָ֣ה and the card's Qal perfect pattern."}
+{"id":"H3201","strong":"to be able","forms":["HVqi1cs"],"gloss":"be able and can match. Strong's headword spells it with holam."}
+{"id":"H7291","strong":"pursue","forms":["HC/Vqw3ms/Sp3mp"],"gloss":"pursue and chase match."}
+{"id":"H1431","strong":"grow(up)","forms":["HVqp3fs"],"gloss":"grow up and become great follow Strong's twisting-to-large sense."}
+{"id":"H4390","strong":"to fill","forms":["HC/Vpw3fs"],"gloss":"be full, and fill in the Piel, are Strong's range. OSHB tags Gen.21.19 as Piel."}
+{"id":"H3372","strong":"to fear","forms":["HVqp3fs"],"gloss":"fear and revere are Strong's range."}
+{"id":"H0518","strong":"if","forms":[],"gloss":"if and whether match. OSHB lemma 518 a."}
+{"id":"H4100","strong":"what","forms":[],"gloss":"what, how and why are Strong's range."}
+{"id":"H4310","strong":"who","forms":[],"gloss":"who matches."}
+{"id":"H0408","strong":"not","forms":[],"gloss":"do not and let not render the negative of a wish, as Strong's subjective negative. OSHB Tn."}
+{"id":"H4994","strong":"now","forms":[],"gloss":"please and now render the entreaty particle."}
+{"id":"H8033","strong":"there","forms":[],"gloss":"there matches."}
+{"id":"H3966","strong":"vehemence","forms":[],"gloss":"very and greatly render Strong's vehemence sense. OSHB D."}
+{"id":"H0259","strong":"one","forms":["HAcfsa"],"gloss":"one matches; a certain is Strong's indefinite use."}
+{"id":"H8147","strong":"two","forms":["HAcfda"],"gloss":"two matches. OSHB tags dual."}
+{"id":"H7969","strong":"three","forms":["HC/Acfsa"],"gloss":"three matches. OSHB's gender tag is the form's gender, which the card states as used with feminine nouns."}
+{"id":"H2568","strong":"five","forms":["HAcfsa"],"gloss":"five matches; same tagging note as three."}
+{"id":"H7651","strong":"seven","forms":["HC/Acmsa"],"gloss":"seven matches; the -ah form is tagged masculine, as the card states."}
+{"id":"H6235","strong":"ten","forms":["HAcfsa"],"gloss":"ten matches. The -teen word is H6240, so separate-lexeme."}
+{"id":"H3967","strong":"a hundred","forms":["HC/Acbsc"],"gloss":"hundred matches; construct per OSHB."}
