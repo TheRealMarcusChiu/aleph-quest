@@ -175,7 +175,7 @@ export function createUI(ctx) {
       const options = shuffled(state, question.choices ?? question.recognitionChoices);
       area.push(el('div', { class: 'choices', role: 'group', 'aria-label': 'Answer choices' }, ...options.map(option => {
         const node = el('button', { type: 'button', class: option.lang === 'he' ? 'choice choice-he' : 'choice', 'data-choice': option.id, onclick: () => onSubmit(option.id) });
-        node.append(option.lang === 'he' ? he(option.text) : option.text);
+        node.append(option.lang === 'he' ? he(option.text) : mixed(option.text, 'span'));
         return node;
       })));
     } else if (question.format === 'tokens') {
@@ -219,7 +219,7 @@ export function createUI(ctx) {
   function pairPicker(state, question, onSubmit, onRecognition) {
     const chosen = question.pairs.map(() => null);
     const rights = shuffled(state, [...new Set(question.pairs.map(pair => pair.right))]);
-    const label = text => (HAS_HEBREW.test(text) ? he(text, 'he he-inline') : text);
+    const label = text => mixed(text, 'span');
     const note = el('p', { id: 'pair-note', class: 'hint', role: 'status', hidden: true });
     const rows = question.pairs.map((pair, row) => {
       const buttons = rights.map(right => {

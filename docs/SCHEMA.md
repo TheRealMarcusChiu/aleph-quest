@@ -27,6 +27,8 @@ The first entry in `regionIds` must be the first region whose `wordIds` lists th
 
 **question**: `id`, `wordId|null`, `regionId`, `command` (read, understand, analyze, build, inscribe), `taskFamily`, `semanticStemId` (globally unique), `templateId`, `contextId`, `requires[]`, `sourceIds[]`, `tokenId?`, `format` (choice, door, type, tokens, match), `prompt`, `displayHebrew?`, `choices[{id,text,lang?}]`, `acceptedAnswers[]`, `compare?`, `recognitionChoices[]` and `recognitionAccepted[]` (required for `type`, optional for `match`), `tokenOptions[]`, `acceptedSequences[[id]]` (logical reading order), `pairs[{left,right}]`, `key?`, `explanation`, `hint`.
 
+A choice with `lang: "he"` is entirely Hebrew and shows large. Any other choice or match label can mix English and Hebrew, and each Hebrew run in it gets its own right-to-left isolate at reading size.
+
 `acceptedAnswers` holds choice ids for choice and door, and strings for `type`. For `match` it is optional and holds extra curated assignments, see below.
 
 `requires` must be taught by the end of the question's own `regionId`, counting lessons in region order. "Some lesson somewhere teaches it" is not enough.

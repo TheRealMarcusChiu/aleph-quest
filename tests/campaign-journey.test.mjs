@@ -903,6 +903,129 @@ test('the seal\'s word list names words in Hebrew only, so choosing one can\'t s
   assert.equal(g.state().words[id].lookedUpAt, undefined);
 });
 
+// LABELED FIXTURE: the first rival question reauthored with mixed English and Hebrew labels. These are
+// supported-shape UI inputs written for this test, not corpus records or campaign proof.
+const MIXED_LABELS = ['אֱלֹהִים, after the verb', 'בָּרָא, the verb itself', 'יָלַד, Hiphil: and he fathered'];
+function atMixedQuestion(shape, { sacredName = 'written' } = {}) {
+  const data = campaignFixture();
+  const question = data.questionById.get(data.regionById.get('r2').puzzleQuestionIds.neri[0]);
+  delete question.choices;
+  delete question.acceptedAnswers;
+  Object.assign(question, shape);
+  const source = structuredClone(question);
+  const s = r2State();
+  s.settings.sacredName = sacredName;
+  const g = bootWith(s, data, { t: T0 });
+  approach(g, 'r2-rival');
+  g.click('#btn-continue');
+  assert.equal(g.state().attempt.questionId, question.id);
+  return { g, question, source };
+}
+const asChoices = labels => labels.map((text, i) => ({ id: `c${i}`, text }));
+const bdis = node => [...node.querySelectorAll('bdi')];
+// Each Hebrew run is its own isolate, and everything else stays outside it, in logical order.
+function assertMixed(node, label, runs) {
+  assert.equal(node.textContent, label, 'the whole label, in logical order, with marks unchanged');
+  const isolates = bdis(node);
+  assert.deepEqual(isolates.map(b => b.textContent), runs);
+  for (const b of isolates) {
+    assert.equal(b.getAttribute('lang'), 'he');
+    assert.equal(b.getAttribute('dir'), 'rtl');
+    assert.equal(b.className, 'he he-inline', 'local Hebrew font at reading size');
+  }
+  assert.equal(node.closest('[dir]')?.closest('#modal') ?? null, null, 'no blanket RTL over the English');
+}
+
+test('mixed choice labels isolate each Hebrew run and leave English, numerals and punctuation outside', () => {
+  const labels = [...MIXED_LABELS, '2 words: בְּרֵאשִׁית בָּרָא (Gen. 1:1)!', 'אֱלֹהִים then בָּרָא, 3 words'];
+  const { g, question, source } = atMixedQuestion({ format: 'choice', choices: asChoices(labels), acceptedAnswers: ['c0'] });
+  const button = id => g.$(`[data-choice="${id}"]`);
+  assertMixed(button('c0'), labels[0], ['אֱלֹהִים']);
+  assertMixed(button('c1'), labels[1], ['בָּרָא']);
+  assertMixed(button('c2'), labels[2], ['יָלַד']);
+  assertMixed(button('c3'), labels[3], ['בְּרֵאשִׁית בָּרָא']);
+  assertMixed(button('c4'), labels[4], ['אֱלֹהִים', 'בָּרָא']);
+  assert.equal(button('c0').className, 'choice', 'a mixed label is not a large Hebrew choice');
+  assert.deepEqual(question, source, 'source data unchanged');
+
+  // The same id still reaches the same callback, and a wrong one is still wrong.
+  button('c1').click();
+  assert.match(g.$('#feedback-verdict').textContent, /Not this time/);
+});
+
+test('a mixed choice submits its id: the right answer is credited', () => {
+  const { g, question } = atMixedQuestion({ format: 'choice', choices: asChoices(MIXED_LABELS), acceptedAnswers: ['c2'] });
+  g.click('[data-choice="c2"]');
+  assert.match(g.$('#feedback-verdict').textContent, /Correct/);
+  assert.deepEqual(g.state().gateCredit['r2:rival'], [question.id]);
+});
+
+test('a type question\'s recognition fallback renders mixed labels the same way, and answers through its own key', () => {
+  const { g, question, source } = atMixedQuestion({
+    format: 'type', compare: 'gloss', acceptedAnswers: ['after the verb'],
+    recognitionChoices: asChoices(MIXED_LABELS), recognitionAccepted: ['c0'],
+  });
+  assert.ok(g.$('#answer-input'), 'it opens for typing');
+  g.click('#btn-use-choices');
+  assert.equal(g.state().attempt.responseMode, 'recognition');
+  assertMixed(g.$('[data-choice="c0"]'), MIXED_LABELS[0], ['אֱלֹהִים']);
+  assertMixed(g.$('[data-choice="c2"]'), MIXED_LABELS[2], ['יָלַד']);
+  assert.deepEqual(question, source);
+  g.click('[data-choice="c0"]');
+  assert.match(g.$('#feedback-verdict').textContent, /Correct/);
+});
+
+test('the name preference reaches mixed labels and is disclosed, with source data unchanged; written shows the source', () => {
+  const name = 'יְהוָה';
+  const label = `${name}, the name (v. 3): 4 letters!`;
+  const shape = { format: 'choice', choices: asChoices([label, MIXED_LABELS[1]]), acceptedAnswers: ['c0'] };
+
+  const { g, question, source } = atMixedQuestion(shape, { sacredName: 'substitute' });
+  assertMixed(g.$('[data-choice="c0"]'), 'ה׳, the name (v. 3): 4 letters!', ['ה׳']);
+  assert.ok(!g.$('#modal').textContent.includes(name));
+  assert.match(g.$('#sacred-note').textContent, /altered only on your screen/);
+  assert.deepEqual(question, source, 'the record keeps the name');
+  g.click('[data-choice="c0"]');
+  assert.match(g.$('#feedback-verdict').textContent, /Correct/, 'the answer is unaffected');
+
+  const written = atMixedQuestion(shape);
+  assertMixed(written.g.$('[data-choice="c0"]'), label, [name]);
+  assert.equal(written.g.$('#sacred-note'), null, 'nothing altered, nothing to disclose');
+});
+
+test('pure Hebrew and plain Latin choices keep their existing look', () => {
+  const { g } = atMixedQuestion({
+    format: 'choice', acceptedAnswers: ['c0'],
+    choices: [{ id: 'c0', text: 'אֱלֹהִים', lang: 'he' }, { id: 'c1', text: 'plain English, 2 words.' }],
+  });
+  const hebrew = g.$('[data-choice="c0"]');
+  assert.equal(hebrew.className, 'choice choice-he');
+  assert.equal(hebrew.firstElementChild.tagName, 'BDI', 'the isolate sits directly in the button');
+  assert.equal(hebrew.firstElementChild.className, 'he', 'full reading size, not inline');
+  assert.equal(hebrew.textContent, 'אֱלֹהִים');
+  const latin = g.$('[data-choice="c1"]');
+  assert.equal(latin.className, 'choice');
+  assert.equal(latin.textContent, 'plain English, 2 words.');
+  assert.deepEqual(bdis(latin), []);
+  assert.equal(latin.querySelector('[dir]'), null);
+});
+
+test('a match board isolates Hebrew in its labels too, and still pairs by the authored text', () => {
+  const pairs = [{ left: 'אֱלֹהִים', right: MIXED_LABELS[0] }, { left: 'בָּרָא, the verb', right: 'plain group' }];
+  const { g } = atMixedQuestion({ format: 'match', pairs });
+  const rows = [...g.window.document.querySelectorAll('[data-pair]')];
+  assertMixed(rows[0].querySelector('.pair-left'), 'אֱלֹהִים', ['אֱלֹהִים']);
+  assertMixed(rows[1].querySelector('.pair-left'), 'בָּרָא, the verb', ['בָּרָא']);
+  const options = row => [...row.querySelectorAll('[data-right]')];
+  const option = (row, right) => options(row).find(node => node.dataset.right === right);
+  assertMixed(option(rows[0], MIXED_LABELS[0]), MIXED_LABELS[0], ['אֱלֹהִים']);
+  assert.deepEqual(bdis(option(rows[0], 'plain group')), []);
+  option(rows[0], MIXED_LABELS[0]).click();
+  option(rows[1], 'plain group').click();
+  g.click('#btn-check');
+  assert.match(g.$('#feedback-verdict').textContent, /Correct/);
+});
+
 test('a pending encounter can\'t be asked about from the Worddex either, if it is ever reached there', () => {
   const s = r2State({ captures: 0 });
   const id = content.regionById.get('r2').wordIds[0];
