@@ -2,16 +2,15 @@
 // These prove code paths for data of the contract's shape, not the real campaign's content.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { campaignFixture } from './fixtures/campaign-fixture.mjs';
-import { content as realContent } from '../src/content.js';
+import { campaignFixture, openingOnly } from './fixtures/campaign-fixture.mjs';
 import { MAPS, REGION_MAPS, OBJECTS } from '../src/world.js';
 import {
   newGame, markLessonDone, chooseEncounter, tryMove, interact, objective, currentStage, missingForBadge, isDone,
-  regionUnlocked, capturedIn, activeRegion, nextLesson, promptFor,
+  regionUnlocked, capturedIn, activeRegion, nextLesson, promptFor, destination,
 } from '../src/engine.js';
 import {
   startEncounter, completeStudy, openQuestion, submit, commandStates, CAPTURE_FAMILIES, DAY, startReview, knowledgeRank, abilityOf,
-  addToParty, removeFromParty, answerRelatedForm, nextRelatedForm, unlockedExamples, statusOf, retreat,
+  addToParty, removeFromParty, answerRelatedForm, nextRelatedForm, unlockedExamples, statusOf, retreat, noteLookup, helpFromLookup,
 } from '../src/learning.js';
 import { parseImport, exportText } from '../src/storage.js';
 import {
@@ -20,6 +19,7 @@ import {
 } from '../src/checkpoints.js';
 
 const content = campaignFixture();
+const realContent = openingOnly();
 const T0 = Date.UTC(2027, 0, 4, 12);
 const right = q => {
   if (q.format === 'tokens') return q.acceptedSequences[0];
@@ -78,8 +78,73 @@ function r2Ready() {
   return s;
 }
 
-test('regions unlock only through their badge prerequisites, with real r1 as the only region in shipped data', () => {
-  assert.equal(realContent.regions.length, 1, 'the source lane ships r1 data only');
+// Everything the quest asks before the keeper, done through production calls.
+function r2AtBadge() {
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  clearGate(s, 'read:pfx-r2');
+  return s;
+}
+
+const earnBadge = (s, regionId) => {
+  assert.equal(startBadgeRun(s, content, regionId, T0).ok, true);
+  for (let q; (q = openBadgeQuestion(s, content, T0));) if (submitBadgeAnswer(s, content, right(q), T0).awarded) break;
+  assert.ok(s.badges[content.regionById.get(regionId).badge.id]);
+};
+
+test('walking to the keeper before the required reading is refused, and reading it opens the way to the ending', () => {
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  assert.ok(destination(s, MAPS.springs.warps[Object.keys(MAPS.springs.warps).find(k => MAPS.springs.warps[k].map === REGION_MAPS.r2.hall)].map, 5, 3), 'the hall is physically open');
+  Object.assign(s, { map: REGION_MAPS.r2.hall, x: 5, y: 3, dir: 'up' });
+
+  const offer = interact(s, content, T0);
+  assert.equal(offer.then, undefined, 'the keeper does not offer the trial');
+  assert.match(offer.lines.join(' '), /Fixture: read the lectern in r2/);
+  assert.equal(startBadgeRun(s, content, 'r2', T0).ok, false);
+  assert.equal(s.badgeRun, null);
+
+  clearGate(s, 'read:pfx-r2');
+  assert.deepEqual(interact(s, content, T0).then, { type: 'badge', regionId: 'r2' });
+  earnBadge(s, 'r2');
+  Object.assign(s, { map: 'springs', ...MAPS.springs.exitFront, dir: 'up' });
+  assert.equal(tryMove(s, 'up', content, T0).event.type, 'exit-open');
+  assert.equal(parseImport(exportText(s, T0), content).ok, true);
+});
+
+test('a pending trial stops at the door if its quest stages are not done, on the open path as well as the start', () => {
+  const s = r2Ready();
+  s.badgeRun = { id: 1, regionId: 'r2', correct: [], current: null };
+  assert.equal(openBadgeQuestion(s, content, T0), null);
+  s.badgeRun.current = { questionId: 'bfx-r2-0', hintsUsed: 0, startedAt: T0, responseMode: 'recognition' };
+  assert.equal(openBadgeQuestion(s, content, T0), null, 'a pending question does not resume either');
+});
+
+test('an exit refuses while an earlier quest stage is unfinished, even when a quest puts reading after its badge', () => {
+  const late = { ...content, questById: new Map(content.questById) };
+  const quest = structuredClone(content.questById.get(r2.questId));
+  const reading = quest.stages.splice(quest.stages.findIndex(stage => stage.kind === 'reading'), 1)[0];
+  quest.stages.splice(quest.stages.findIndex(stage => stage.kind === 'exit'), 0, reading);
+  late.questById.set(r2.questId, quest);
+
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  assert.equal(startBadgeRun(s, late, 'r2', T0).ok, true, 'this quest lets the badge come first');
+  for (let q; (q = openBadgeQuestion(s, late, T0));) if (submitBadgeAnswer(s, late, right(q), T0).awarded) break;
+  Object.assign(s, { map: 'springs', ...MAPS.springs.exitFront, dir: 'up' });
+  const held = tryMove(s, 'up', late, T0);
+  assert.equal(held.event.type, 'exit-unfinished');
+  assert.match(held.event.text, /read the lectern/);
+  assert.equal(s.gates['r2:exit'], undefined);
+  assert.equal(s.map, 'springs');
+  for (let guard = 0; guard < 8 && !isDone(s, 'read:pfx-r2'); guard++) submitGate(s, late, right(openGate(s, late, 'read:pfx-r2', T0)), T0);
+  assert.equal(tryMove(s, 'up', late, T0).event.type, 'exit-open');
+});
+
+test('regions unlock only through their badge prerequisites', () => {
   const s = newGame(T0, 1);
   assert.equal(regionUnlocked(s, content, 'r1'), true);
   assert.equal(regionUnlocked(s, content, 'r2'), false);
@@ -110,11 +175,11 @@ test('a region exit refuses without its badge, opens with it, then walks to the 
 });
 
 test('a later region has its own sealed exit, and it records rN:exit rather than a raw flag', () => {
-  const s = r2Ready();
+  const s = r2AtBadge();
   const exitAt = MAPS.springs.exitFront;
   Object.assign(s, { map: 'springs', ...exitAt, dir: 'up' });
   assert.equal(tryMove(s, 'up', content, T0).event.type, 'exit-sealed');
-  s.badges['bfx-r2'] = { at: T0, questionIds: [] };
+  earnBadge(s, 'r2');
   assert.equal(tryMove(s, 'up', content, T0).event.type, 'exit-open');
   assert.deepEqual(s.gates['r2:exit'], { at: T0, questionIds: [] });
   assert.equal(s.flags['r2:exit'], undefined);
@@ -349,7 +414,7 @@ test('r1 puzzles skip questions whose skills are not taught, and a fully gated p
 });
 
 test('a badge trial is scoped to its region: other-region runs never carry over', () => {
-  const s = r2Ready();
+  const s = r2AtBadge();
   s.badgeRun = { id: 1, regionId: 'r1', correct: ['b-final-1'], current: { questionId: 'b-spell-1', hintsUsed: 1, startedAt: T0, responseMode: 'recognition' } };
   assert.equal(startBadgeRun(s, content, 'r2', T0).ok, true);
   assert.equal(s.badgeRun.regionId, 'r2');
@@ -358,7 +423,7 @@ test('a badge trial is scoped to its region: other-region runs never carry over'
 });
 
 test('a badge is refused for a locked region even with everything else in place, and never reopens once earned', () => {
-  const s = r2Ready();
+  const s = r2AtBadge();
   assert.equal(startBadgeRun(s, content, 'r3', T0).ok, false);
   startBadgeRun(s, content, 'r2', T0);
   for (let q; (q = openBadgeQuestion(s, content, T0));) if (submitBadgeAnswer(s, content, right(q), T0).awarded) break;
@@ -368,7 +433,7 @@ test('a badge is refused for a locked region even with everything else in place,
 });
 
 test('badge questions filter by skill too, and a hinted badge answer earns nothing across formats', () => {
-  const s = r2Ready();
+  const s = r2AtBadge();
   startBadgeRun(s, content, 'r2', T0);
   const seen = new Set();
   for (let guard = 0; guard < 20 && !s.badges['bfx-r2']; guard++) {
@@ -517,6 +582,75 @@ test('a later-region word can reach Mastered through varied reviews on separate 
   assert.ok(families.has('fx-analyze') || families.has('fx-build'), 'later task types join the rotation');
 });
 
+test('a Worddex lookup counts as help on the next answer about that word, however the answer is reached', () => {
+  const s = afterR1();
+  markLessonDone(s, content, r2.lessonIds[0], T0);
+  const id = r2.wordIds[0];
+  startEncounter(s, content, id, 'capture', T0);
+  completeStudy(s, id, T0);
+  retreat(s, content, T0);
+  noteLookup(s.words[id], T0);
+  startEncounter(s, content, id, 'capture', T0);
+  retreat(s, content, T0);
+  startEncounter(s, content, id, 'capture', T0);
+  const first = openQuestion(s, content, 'read-letter', T0);
+  assert.equal(s.encounter.current.assisted, true, 'retreating before the question does not wash it out');
+  assert.equal(submit(s, content, right(first), T0).independent, false);
+  assert.deepEqual(s.words[id].captureSteps, []);
+  assert.equal(submit(s, content, right(openQuestion(s, content, 'read-letter', T0)), T0).independent, true, 'a fresh question counts');
+
+  const later = r2.wordIds[1];
+  startEncounter(s, content, later, 'capture', T0);
+  completeStudy(s, later, T0);
+  retreat(s, content, T0);
+  noteLookup(s.words[later], T0);
+  const dayLater = T0 + DAY;
+  startEncounter(s, content, later, 'capture', dayLater);
+  openQuestion(s, content, 'read-letter', dayLater);
+  assert.equal(s.encounter.current.assisted, false, 'a lookup from long ago is memory, not exposure');
+  assert.equal(s.words[later].lookedUpAt, undefined);
+});
+
+test('a lookup before opening a seal question costs that question too', () => {
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  const id = r2.wordIds[0];
+  addToParty(s, id);
+  for (const family of ['fx-analyze', 'fx-build']) {
+    startEncounter(s, content, id, 'practice', T0);
+    submit(s, content, right(openQuestion(s, content, family, T0)), T0);
+    retreat(s, content, T0);
+  }
+  noteLookup(s.words[id], T0);
+  openGate(s, content, 'r2:ward', T0, { wordId: id });
+  assert.equal(s.attempt.hintsUsed, 1);
+  assert.equal(s.words[id].lookedUpAt, undefined);
+});
+
+test('opening the Worddex over any pending question marks it as helped, once, and says so', () => {
+  const s = r2Ready();
+  assert.equal(helpFromLookup(s), false, 'nothing pending, nothing to mark');
+  openGate(s, content, 'r2:rival', T0);
+  assert.equal(helpFromLookup(s), true);
+  assert.equal(s.attempt.hintsUsed, 1);
+  helpFromLookup(s);
+  assert.equal(s.attempt.hintsUsed, 1);
+  const t = r2AtBadge();
+  startBadgeRun(t, content, 'r2', T0);
+  openBadgeQuestion(t, content, T0);
+  assert.equal(helpFromLookup(t), true);
+  assert.equal(t.badgeRun.current.hintsUsed, 1);
+  const q = content.questionById.get(t.badgeRun.current.questionId);
+  assert.equal(submitBadgeAnswer(t, content, right(q), T0).independent, false);
+  const e = r2Ready();
+  startEncounter(e, content, r2.wordIds[3], 'capture', T0);
+  completeStudy(e, r2.wordIds[3], T0);
+  openQuestion(e, content, 'read-letter', T0);
+  assert.equal(helpFromLookup(e), true);
+  assert.equal(e.encounter.current.assisted, true);
+});
+
 test('the hidden cache needs the ward, and optional groups use the shrine without blocking anything', () => {
   const s = r2Ready();
   assert.equal(claimSecret(s, content, 'r2:secret', T0).ok, false);
@@ -563,15 +697,30 @@ test('reading stands need taught skills and real answers, and a passage with no 
   assert.equal(completeReadingWithoutQuestions(s, content, 'pfx-r2', T0).ok, false, 'questions must be answered when they exist');
 });
 
-test('the archive restores only when every region is really finished, and the garden opens after', () => {
-  const s = r2Ready();
-  const refused = restoreArchive(s, content, T0);
-  assert.equal(refused.ok, false);
+test('the archive restores only when every quest is really finished, and the garden opens after', () => {
+  const s = afterR1();
+  assert.equal(restoreArchive(s, content, T0).ok, false);
   assert.equal(s.endingAt, null);
   assert.equal(restoreArchive(s, realContent, T0).ok, false, 'the opening-only build has no ending');
-  for (const r of content.regions) s.badges[r.badge.id] = { at: T0, questionIds: [] };
-  assert.equal(restoreArchive(s, content, T0).ok, false, 'badges alone are not the last road');
-  s.gates['r8:exit'] = { at: T0, questionIds: [] };
+  // Every region played through production calls, except that r5's reading stays on the desk to the last.
+  for (const r of content.regions.slice(1)) {
+    for (const id of r.lessonIds) markLessonDone(s, content, id, T0);
+    for (const w of r.wordIds.slice(0, 3)) capture(s, w);
+    clearGate(s, `${r.id}:rival`);
+    clearGate(s, `${r.id}:gate`);
+    clearGate(s, `read:pfx-${r.id}`);
+    earnBadge(s, r.id);
+    assert.equal(s.gates[`${r.id}:exit`], undefined);
+    s.gates[`${r.id}:exit`] = { at: T0, questionIds: [] };
+    if (r.id === 'r5') delete s.gates['read:pfx-r5'];
+  }
+  assert.equal(restoreArchive(s, content, T0).ok, false, 'a skipped reading anywhere holds the ending');
+  Object.assign(s, { map: OBJECTS.find(o => o.id === 'restoration').map, x: 8, y: 4, dir: 'up' });
+  const desk = interact(s, content, T0);
+  assert.equal(desk.then, undefined);
+  assert.match(desk.lines.join(' '), /Fixture: read the lectern in r5/);
+  clearGate(s, 'read:pfx-r5');
+  assert.deepEqual(interact(s, content, T0).then, { type: 'ending' });
   assert.equal(restoreArchive(s, content, T0).ok, true);
   assert.equal(s.endingAt, T0);
   assert.equal(isDone(s, 'ending'), true);

@@ -1,8 +1,8 @@
 // Language gates in the world: r1's bridge and doors, every region's duels, locks and readings, and the badge trials.
 // These answers unlock the world. They never count as capture or review evidence for a word.
 import { checkAnswer, initialResponseMode } from './answers.js';
-import { missingForBadge, setFlag, isDone, regionUnlocked, gatePool, gateReady, gateRequired } from './engine.js';
-import { wardCandidates, wardQuestion, retireStem } from './learning.js';
+import { missingForBadge, setFlag, isDone, regionUnlocked, gatePool, gateReady, gateRequired, archiveReady } from './engine.js';
+import { wardCandidates, wardQuestion, retireStem, consumeLookup } from './learning.js';
 
 export { gatePool, gateRequired, gateReady, wardCandidates };
 
@@ -57,8 +57,10 @@ export function openGate(state, content, key, now, { wordId } = {}) {
     : gatePool(content, key).map(id => content.questionById.get(id)).find(q => hasSkills(state, q) && !credited.includes(q.id) && !retiredNow(state, q));
   if (!question) return null;
   if (pending) abandon(state, pending);
+  // A seal asks about one word, so having just read that word's entry already gave the answer away.
+  const lookedUp = wordId !== undefined && consumeLookup(state.words[wordId], now);
   state.attempt = {
-    key, questionId: question.id, hintsUsed: 0, startedAt: now, responseMode: initialResponseMode(question, state.settings.responseMode),
+    key, questionId: question.id, hintsUsed: lookedUp ? 1 : 0, startedAt: now, responseMode: initialResponseMode(question, state.settings.responseMode),
     ...(wordId !== undefined ? { wordId, stemId: question.semanticStemId } : {}),
   };
   state.updatedAt = now;
@@ -126,8 +128,7 @@ export function claimSecret(state, content, key, now) {
 
 export function restoreArchive(state, content, now) {
   if (state.endingAt != null) return { ok: true };
-  const last = content.regions.at(-1);
-  if (content.regions.length < 8 || !content.regions.every(region => state.badges[region.badge.id]) || !isDone(state, `${last.id}:exit`)) return { ok: false };
+  if (!archiveReady(state, content)) return { ok: false };
   state.endingAt = now;
   state.updatedAt = now;
   return { ok: true };
@@ -158,6 +159,7 @@ export function trialComplete(badge, questionIds, content) {
 
 export function openBadgeQuestion(state, content, now) {
   const run = state.badgeRun;
+  if (missingForBadge(state, content, run.regionId).length) return null;
   if (run.current) return content.questionById.get(run.current.questionId);
   const badge = badgeOf(state, content);
   const covered = new Set(run.correct.map(id => content.questionById.get(id).taskFamily));

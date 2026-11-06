@@ -41,7 +41,7 @@ Six words travel in your party. New kinds of task with a party word earn it XP, 
 
 Each region's rival and language lock block the way until you answer fresh questions without hints. A miss explains itself and moves on, and hints stay with the question through leaving, reloading and switching modes, so they can't be washed out.
 
-The Worddex keeps every word you've met with its status, forms, sources, regions, history and next review. It has search, favorites, sorting, and filters for region, part of speech, root and status. A word you haven't studied keeps its meaning hidden there too.
+The Worddex keeps every word you've met with its status, forms, sources, regions, history and next review. It has search, favorites, sorting, and filters for region, part of speech, root and status. A word you haven't studied keeps its meaning hidden there too. Reading an entry is real study, and it counts as help on your next answer about that word, so a lookup can't pass as recall.
 
 Saves are automatic, with three slots, and export and import as JSON. Saves from the opening build load through a tested migration. If a browser blocks storage, the game warns you and keeps playing in memory, so you can still export. Unreadable slot data is never overwritten without confirmation. The game also refuses to write a save it couldn't read back, and says so.
 
@@ -64,4 +64,4 @@ Lesson order follows the table of contents of Allen P. Ross, *Introducing Biblic
 - Real language content covers Letter Grove only until later regions are integrated. The eight-region journey has only been run on a labeled synthetic fixture, under jsdom.
 - Hebrew content is source-checked by the validator, but no qualified Biblical Hebrew reviewer has approved it.
 - Automated tests run under jsdom with a stubbed canvas. Font rendering, focus visuals and touch need checking in a real browser.
-- A Worddex entry can be read before a review or capture answer. Only reading one over a seal's pending question about that word counts as help.
+- Worddex lookups count as help on the next answer about that word for 20 hours, and opening the Worddex over a pending question marks that question as helped. Something written on paper or read elsewhere can't be detected.

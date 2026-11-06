@@ -7,7 +7,7 @@ import { campaignFixture } from './fixtures/campaign-fixture.mjs';
 import { content as realContent } from '../src/content.js';
 import { MAPS, REGION_MAPS } from '../src/world.js';
 import { newGame, markLessonDone, isDone } from '../src/engine.js';
-import { startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES, addToParty, retreat, answerRelatedForm, nextRelatedForm } from '../src/learning.js';
+import { startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES, addToParty, retreat, answerRelatedForm, nextRelatedForm, noteLookup } from '../src/learning.js';
 import { openGate, useGateHint, submitGate, startBadgeRun, openBadgeQuestion, submitBadgeAnswer, claimSecret, restoreArchive } from '../src/checkpoints.js';
 import { parseImport, exportText, saveSlot, loadSlot, slotKey, validateState, MAX_SAVE_BYTES } from '../src/storage.js';
 
@@ -218,6 +218,138 @@ test('gate records need the real prerequisites and real answers from the right p
   const proto = exportText(base(), T0).replace('"gates":{}', '"gates":{"__proto__":{"at":1,"questionIds":[]}}');
   assert.equal(parseImport(proto, content).ok, false);
   assert.equal({}.at, undefined);
+});
+
+const r2AtBadge = () => {
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  clearGate(s, 'read:pfx-r2');
+  return s;
+};
+const earn = s => {
+  startBadgeRun(s, content, 'r2', T0);
+  for (let q; (q = openBadgeQuestion(s, content, T0));) if (submitBadgeAnswer(s, content, right(q), T0).awarded) break;
+  assert.ok(s.badges['bfx-r2']);
+};
+
+test('a badge, pending trial, exit or ending that skipped a required quest stage is refused', () => {
+  const earned = r2AtBadge();
+  earn(earned);
+  roundTrip(earned, content, 'control: reading done, badge earned');
+  const skipped = structuredClone(earned);
+  delete skipped.gates['read:pfx-r2'];
+  refuses(skipped, /badges\.bfx-r2.*quest/);
+
+  const pending = r2AtBadge();
+  startBadgeRun(pending, content, 'r2', T0);
+  openBadgeQuestion(pending, content, T0);
+  roundTrip(pending, content, 'control: pending trial');
+  const earlyTrial = structuredClone(pending);
+  delete earlyTrial.gates['read:pfx-r2'];
+  refuses(earlyTrial, /badgeRun/);
+
+  const left = structuredClone(earned);
+  left.gates['r2:exit'] = { at: T0, questionIds: [] };
+  roundTrip(left, content, 'control: exit after the whole quest');
+  const lateQuest = { ...content, questById: new Map(content.questById) };
+  const quest = structuredClone(content.questById.get('qfx-r2'));
+  const reading = quest.stages.splice(quest.stages.findIndex(stage => stage.kind === 'reading'), 1)[0];
+  quest.stages.splice(quest.stages.findIndex(stage => stage.kind === 'exit'), 0, reading);
+  lateQuest.questById.set('qfx-r2', quest);
+  const leftEarly = structuredClone(left);
+  delete leftEarly.gates['read:pfx-r2'];
+  const out = validateState(JSON.parse(JSON.stringify(leftEarly)), lateQuest);
+  assert.equal(out.ok, false);
+  assert.match(out.errors.join(' | '), /gates\.r2:exit.*quest/);
+});
+
+test('an r1 exit or badge can\'t skip Neri and the Field Gate', () => {
+  const s = afterR1();
+  roundTrip(s, content, 'control');
+  const noNeri = structuredClone(s);
+  for (const flag of ['neriCleared', 'gateOpen', 'doorOpen']) delete noNeri.flags[flag];
+  refuses(noNeri, /badges\.b-reed-seal.*quest/);
+  refuses(noNeri, /flags\.exitOpened.*quest/);
+});
+
+test('an ending needs every quest finished, not just badges and the last exit', () => {
+  const s = afterR1();
+  for (const r of content.regions.slice(1)) {
+    for (const id of r.lessonIds) markLessonDone(s, content, id, T0);
+    for (const w of r.wordIds.slice(0, 3)) capture(s, w);
+    clearGate(s, `${r.id}:rival`);
+    clearGate(s, `${r.id}:gate`);
+    clearGate(s, `read:pfx-${r.id}`);
+    startBadgeRun(s, content, r.id, T0);
+    for (let q; (q = openBadgeQuestion(s, content, T0));) if (submitBadgeAnswer(s, content, right(q), T0).awarded) break;
+    s.gates[`${r.id}:exit`] = { at: T0, questionIds: [] };
+  }
+  assert.equal(restoreArchive(s, content, T0).ok, true);
+  roundTrip(s, content, 'control: a finished campaign');
+  const skipped = structuredClone(s);
+  delete skipped.gates['read:pfx-r8'];
+  refuses(skipped, /endingAt/);
+});
+
+test('an unfinished reading before the badge stays a legitimate save, hinted or not', () => {
+  const s = r2Ready();
+  clearGate(s, 'r2:rival');
+  clearGate(s, 'r2:gate');
+  roundTrip(s, content, 'reading not started');
+  submitGate(s, content, right(openGate(s, content, 'read:pfx-r2', T0)), T0);
+  assert.equal(s.gateCredit['read:pfx-r2'].length, 1);
+  roundTrip(s, content, 'one reading answer credited');
+  openGate(s, content, 'read:pfx-r2', T0);
+  useGateHint(s, content);
+  const back = roundTrip(s, content, 'hinted reading pending');
+  assert.equal(back.attempt.hintsUsed, 1);
+});
+
+test('partial gate credit needs an open region, a reached stage and taught questions', () => {
+  const neri = r2.puzzleQuestionIds.neri;
+  // Locked region, with nothing else wrong about the list.
+  const locked = newGame(T0, 1);
+  locked.gateCredit['r8:rival'] = [content.regionById.get('r8').puzzleQuestionIds.neri[0]];
+  refuses(locked, /gateCredit\.r8:rival.*sealed/);
+
+  // Region open, stage not reached.
+  const early = afterR1();
+  Object.assign(early, { map: 'springs', ...MAPS.springs.arrive });
+  for (const id of r2.lessonIds) markLessonDone(early, content, id, T0);
+  capture(early, r2.wordIds[0]);
+  early.gateCredit['r2:rival'] = [neri[0]];
+  refuses(early, /gateCredit\.r2:rival/);
+
+  // Stage reached, question's skill not taught.
+  const strict = { ...content, questionById: new Map(content.questionById) };
+  strict.questionById.set(neri[0], { ...content.questionById.get(neri[0]), requires: ['fx-r3-a'] });
+  const untaught = r2Ready();
+  untaught.gateCredit['r2:rival'] = [neri[0]];
+  const out = validateState(JSON.parse(JSON.stringify(untaught)), strict);
+  assert.equal(out.ok, false);
+  assert.match(out.errors.join(' | '), /gateCredit\.r2:rival.*untaught/);
+
+  // A qualified partial duel, then with a hinted pending question, round-trips.
+  const good = r2Ready();
+  submitGate(good, content, right(openGate(good, content, 'r2:rival', T0)), T0);
+  assert.equal(good.gateCredit['r2:rival'].length, 1);
+  roundTrip(good, content, 'qualified partial duel');
+  openGate(good, content, 'r2:rival', T0);
+  useGateHint(good, content);
+  assert.equal(roundTrip(good, content, 'hinted pending duel').attempt.hintsUsed, 1);
+});
+
+test('lookup records round-trip, have bounds, and can\'t be smuggled into a version 1 file', () => {
+  const s = r2Ready();
+  noteLookup(s.words[r2.wordIds[0]], T0);
+  assert.equal(roundTrip(s, content, 'lookup pending').words[r2.wordIds[0]].lookedUpAt, T0);
+  const bad = structuredClone(s);
+  bad.words[r2.wordIds[0]].lookedUpAt = 'soon';
+  refuses(bad, /lookedUpAt/);
+  const doc = JSON.parse(opening('opening-v1-first-capture.json'));
+  doc.state.words.H0001.lookedUpAt = T0;
+  assert.equal(parseImport(JSON.stringify(doc), realContent).ok, false);
 });
 
 test('ward, secret and reading records are tied to who could really have done them', () => {

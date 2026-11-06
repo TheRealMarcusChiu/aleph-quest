@@ -33,19 +33,39 @@ The first entry in `regionIds` must be the first region whose `wordIds` lists th
 
 ### Answer keys for word questions
 
-These templates have a built-in rule against the word: `tpl-first-letter`, `tpl-last-letter`, `tpl-final-partner`, `tpl-gloss-choice`, `tpl-context-choice`, `tpl-gloss-type`, `tpl-inscribe-type`, `tpl-inscribe-mirror`. For `tpl-context-choice`, the answer must be the gloss or a listed sense, or "one or the other" of those. It can't merely contain one as a substring.
+These templates have a built-in rule against the word: `tpl-first-letter`, `tpl-last-letter`, `tpl-final-partner`, `tpl-gloss-choice`, `tpl-context-choice`, `tpl-gloss-type`, `tpl-inscribe-type`, `tpl-inscribe-mirror`, `tpl-read-sound`, `tpl-read-pointed`.
+
+- `tpl-read-sound` is a `choice` showing the word's own pointed form in `displayHebrew`, and its answer is exactly `word.transliteration`.
+- `tpl-read-pointed` is a `choice` whose answer is the word's pointed form. Every option has the word's letters, and no two options have the same pointing once compared as keys, so only the pointing can tell them apart.
+- `tpl-context-choice` answers must be a listed sense or "one or the other" of those, or carry contextual evidence (below). Listed senses are the gloss, each meaning, the head of a qualified meaning ("wife, in some contexts" gives "wife"), and each item of a list of single words ("who, which, that"). Containing a sense as a substring isn't enough.
 
 **(campaign)** Any other template on a word question needs `key`, or the validator fails with `no answer-key rule`. `key` is checked as follows, and an undocumented field is an error so nothing goes unchecked silently:
 
 | Field | Required | Must match |
 |---|---|---|
-| `answer` | yes | The text the question accepts: the accepted choice's text, an accepted typed answer, or an accepted token sequence joined in reading order. NFC. |
+| `answer` | on word questions, and on word-free ones without `tokenId` and `morph` | The text the question accepts: the accepted choice's text, an accepted typed answer, or an accepted token sequence joined in reading order. NFC. |
+| `tokenId` | no | A real attestation. If the question names its own `tokenId` or `tokenIds`, it must be one of them. On a word question its lemma must be that word's Strong number. |
+| `morph` | no, and needs `tokenId` | The start of a morphology segment in that token, without the leading `H`: `Td/Nc` fits `HTd/Ncmpa`, and `cmpa` doesn't. |
+| `sense` | no, word questions only | A listed sense of the word. |
 | `form` | no | The word's citation form or one of its `relatedForms`, compared pointed. |
 | `features` | no | Each entry matches `word.features` or the named form's `features`. |
 | `relationship` | no | A known relationship, and the named form's own if `form` is given. |
-| `tokenId` | no | A real attestation. |
+
+So a word-free task may carry `key{tokenId, morph}` as source proof alone. That shows what the cited token is. It doesn't show the task's answer is right.
+
+**Contextual evidence.** A `tpl-context-choice` answer that isn't a listed sense, such as "with you" or "my sister", must carry `key{answer, sense, tokenId, morph}`. Each part has to hold:
+
+- `answer` is the accepted choice's text.
+- `sense` is a listed sense, and it appears in the answer as whole words.
+- `tokenId` is a real token of this word, and its surface appears in the prompt.
+- `morph` fits that token.
+- If the token has a pronominal suffix (`/Sp…`), the answer uses an English pronoun for that person and number: 1s my, me, mine, I; 1p our, us, we; 2 you, your; 3ms his, him, he, it, its; 3fs her, hers, she, it, its; 3p their, them, they.
+
+For example, for Strong 854 in Genesis 6:18 the key is `{"answer":"with you","sense":"with","tokenId":"…","morph":"R/Sp2…"}`.
 
 A key is checked for consistency with the record. It does not prove the linguistics, and the independent content audit still has to do that.
+
+**`question.tokenIds`** names a phrase's tokens, instead of `tokenId`. They must be real, from one verse, and spell `displayHebrew` when it is present, ignoring spaces and maqqef. Other optional fields such as `span`, `homographOf`, `citationNote`, `indeclinable` and `noOtherForm` aren't read by the game or this validator.
 
 ### Formats
 
@@ -57,7 +77,7 @@ Pointed `type` answers must hold Hebrew with its points. Consonant answers must 
 
 Capture families are `read-letter`, `understand-meaning` and `inscribe-spelling`. Each word needs at least two stems per family, both answerable on the skills its home region teaches, so a miss always has a fresh retry, and at least six questions. `analyze` and `build` questions appear in encounters, reviews, puzzles and badges, and never fill a capture step. Commands `analyze` and `build` only appear on the menu once a question of that command is answerable.
 
-**lesson**: `id`, `regionId`, `title`, `mentor`, `requires[]`, `teaches[]`, `chart`, `explanation`, `workedExamples[{hebrew,translation,tokenId,reference,note}]`, `guidedQuestionIds[]`. Lessons are listed in teaching order. Guided answers are never scored. Guided questions can only need skills taught before this lesson ends its practice.
+**lesson**: `id`, `regionId`, `title`, `mentor`, `requires[]`, `teaches[]`, `chart`, `explanation`, `workedExamples[{hebrew,translation,tokenId,reference,note}]`, `guidedQuestionIds[]`. Lessons are listed in teaching order. Guided answers are never scored. A guided question can need this lesson's own skills, since it follows the explanation and worked examples, but no later lesson's. Independent questions only count a skill once its lesson has finished.
 
 **region**: `id`, `order`, `title`, `theme`, `rossChapters[]`, `alignment`, `requiresBadges[]`, `lessonIds[]`, `wordIds[]`, `seedWordId`, `questId`, `badge{id,title,questionIds[],requiredCorrect,requiredTaskFamilies[],requiresSkills[],requiresCaptures}`, `puzzleQuestionIds{group:[id]}`. Badge items must have `wordId: null` and must not reuse a lesson or vocabulary token. `region.title` names the place on screen. `requiresCaptures` counts only words in this region's `wordIds`.
 
@@ -73,7 +93,7 @@ Capture families are `read-letter`, `understand-meaning` and `inscribe-spelling`
 | `reading` | passage ids | each read and answered |
 | `exit` | r1: `exitOpened`. Later: `rN:exit` | the player has opened the way out with the badge |
 
-Stage order is enforced: a mentor won't teach a staged lesson, and a rival, lock or reading stand won't open, until every earlier stage is done.
+Stage order is enforced everywhere, including at import. A mentor won't teach a staged lesson, and a rival, lock, reading stand, badge keeper or region exit won't open, until every earlier stage is done. The ending needs every quest finished. One lesson stage can hold several lessons that build on each other, in any listed order, as the mentor offers whichever is ready. A loop among them, or a skill only a later stage teaches, is a validator error.
 
 **passage**: `id`, `reference`, `sourceId`, `sourceText` (immutable, with accents and segmentation), `display`, `translation`, `tokens[{id,hebrew,lemma,morph,gloss}]`, `notes`, `questionIds[]`, `requires[]`. A passage named by a `reading` stage plays at the region's reading stand. The translation stays hidden until its questions are answered. It needs correct answers to `min(2, questionIds.length)` questions, and at least one spare, unless `questionIds` is empty.
 
@@ -89,7 +109,7 @@ Seals are optional. Each asks for a party word with knowledge rank 2 or higher o
 
 ## Validator phases
 
-`--opening` applies every structural rule plus the 8 to 10 word floor. With no flag it also applies the campaign floor: at least 150 words, at least 600 questions, exactly `r1`..`r8` in order. Lexemes must be distinct by `strongId` and `consonants`. Reachability rules apply in both phases. The full phase is expected to fail until real content lands.
+`--opening` applies every structural rule plus an 8 to 10 word floor on the first region. With no flag it also applies the campaign floor: at least 150 words, at least 600 questions, exactly `r1`..`r8` in order. Lexemes must be distinct by `strongId` and `consonants`. Reachability rules apply in both phases. The full phase is expected to fail until real content lands.
 
 ## Skills in use
 
@@ -113,6 +133,16 @@ The envelope `version` and `state.version` must agree. A version 1 file is the a
 | `endingAt` | `null` or time | The archive has been restored. |
 | `words[id].xpStems` | stem ids | Stems that have earned party XP. Each pays once, so XP comes from varied use. |
 | `words[id].formsKnown`, `formRetired` | token ids, `{tokenId: interactions}` | Related forms traced correctly, and missed ones waiting to return. |
+| `words[id].lookedUpAt` | optional time | When this word's Worddex entry was last read. See below. |
+
+### Worddex lookups and assistance
+
+The Worddex can give an answer away, so a lookup is treated as help, the same as a hint or reopening a word card:
+
+- Reading a studied word's entry sets `lookedUpAt`. The next question about that word, in a capture, review, practice or seal, starts assisted and clears it. The field is on the record, so retreat, reload and mode switches don't remove it. After 20 hours (`MIN_REVIEW_GAP`) it counts as memory and is dropped unused.
+- Opening the Worddex with a question pending in a duel, lock, reading, seal, trial or encounter marks that question as helped, and the screen says so. The player can leave and resume it, and the answer earns nothing.
+- The list and its search give a meaning only for a word that is captured and not due, so neither can answer a capture or review. The entry itself is still available as real study.
+- Helped answers earn no capture step, review evidence, XP, gate credit or badge credit. The stem retires and a fresh question follows.
 
 Keys are `rN:rival`, `rN:gate`, `rN:exit`, `rN:ward`, `rN:secret`, `rN:<optional group>` and `read:<passageId>`. Raw flags for these are not accepted, and only verified records count.
 
@@ -120,13 +150,15 @@ Keys are `rN:rival`, `rN:gate`, `rN:exit`, `rN:ward`, `rN:secret`, `rN:<optional
 
 ### Consistency
 
-The party is unique, at most 6, and captured. Captured words have a `dueAt`, a study record and their required skills. `captureSteps` hold unique families, templates and stems that match real questions of that word, and they cover all three capture families exactly when the word is captured. Review evidence and `xpStems` match real questions of their word. Skills trace to a finished lesson. Badges need their skills, captures from their own region, earlier badges, at least `requiredCorrect` distinct questions of their own, no repeats, and every `requiredTaskFamilies` entry. Flags agree with each other. The player stands on a walkable tile, in a region whose badges are earned and past the open exit of the region before it. The garden needs the ending, and the archive needs the last exit.
+The party is unique, at most 6, and captured. Captured words have a `dueAt`, a study record and their required skills. `captureSteps` hold unique families, templates and stems that match real questions of that word, and they cover all three capture families exactly when the word is captured. Review evidence and `xpStems` match real questions of their word. Skills trace to a finished lesson. Badges need their skills, captures from their own region, earlier badges, every quest stage before them, at least `requiredCorrect` distinct questions of their own, no repeats, and every `requiredTaskFamilies` entry. Flags agree with each other, and r1's `exitOpened` needs the stages before it. The player stands on a walkable tile, in a region whose badges are earned and past the open exit of the region before it. The garden needs the ending, and the archive needs the last exit.
 
 An encounter's kind fits its word's capture status, and a capture encounter's word must be offerable. A pending question matches its word, stem, family and taught skills. `typing` is only for `type` and `match`.
 
-An open badge run must be qualified. Its region is unlocked, its badge is unearned, its prerequisites are met, its questions are taught, each question is credited once, its pending question isn't credited, and its credited answers can't already meet both `requiredCorrect` and every `requiredTaskFamilies` entry. Every real save satisfies these, since a run can only open once they hold and they stay true.
+An open badge run must be qualified. Its region is unlocked, its badge is unearned, its prerequisites and earlier quest stages are met, its questions are taught, each question is credited once, its pending question isn't credited, and its credited answers can't already meet both `requiredCorrect` and every `requiredTaskFamilies` entry. Every real save satisfies these, since a run can only open once they hold and they stay true.
 
-A `gates` record must have been possible: its region is open, every earlier quest stage is done, it holds enough distinct answers from the right pool with taught skills, a gate comes after its rival, an exit has its badge, and a secret has its ward. A ward record names a captured word of the seal's class and one real question about that word. `gateCredit` must fall short of finishing. A pending `attempt` must pass the same readiness check that opens one. `endingAt` needs all eight badges and the last exit.
+A `gates` record must have been possible: its region is open, every earlier quest stage is done, it holds enough distinct answers from the right pool with taught skills, a gate comes after its rival, an exit has its badge and every earlier stage, and a secret has its ward. A ward record names a captured word of the seal's class and one real question about that word. `gateCredit` must fall short of finishing, pass the same readiness check that opens the action, and credit only distinct taught questions from its pool. A pending `attempt` must pass that readiness check too. `endingAt` needs all eight badges, the last exit and every quest finished.
+
+These rules hold for all real saves, since each action could only happen once they were true and they stay true. An unfinished reading before a badge is a normal save, with or without partial credit or a hinted question pending.
 
 ### Writing
 

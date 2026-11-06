@@ -170,6 +170,8 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
       ui.dialogue(r1 ? 'The north arch' : 'The way out', [r1
         ? 'A seal of reeds and wax holds the arch shut. It will only open for someone carrying the Reed Seal.'
         : `A seal holds this way shut. It will only open for someone carrying the ${region.badge.title}.`]);
+    } else if (event.type === 'exit-unfinished') {
+      ui.dialogue(r1 ? 'The north arch' : 'The way out', [`The seal is ready, but this region isn't finished with you. First: ${event.text}`]);
     } else if (event.type === 'exit-open') {
       const ahead = MAPS[state.map].exitTo && content.regionById.get(MAPS[MAPS[state.map].exitTo.map].regionId);
       if (r1) {

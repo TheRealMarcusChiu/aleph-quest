@@ -103,6 +103,10 @@ export function activeRegion(state, content) {
 
 const campaignComplete = content => content.regions.length >= CAMPAIGN_REGIONS;
 
+// The ending needs every quest finished, so a required stage can't be walked around anywhere in the campaign.
+export const archiveReady = (state, content) => campaignComplete(content) && !activeRegion(state, content)
+  && content.regions.every(region => state.badges[region.badge.id]) && isDone(state, `${content.regions.at(-1).id}:exit`);
+
 export function objective(state, content) {
   if (state.endingAt != null) return 'The archive stands restored. Walk the Review Garden to keep your words alive.';
   const region = activeRegion(state, content);
@@ -144,6 +148,8 @@ function exitStep(state, content, now) {
   if (!state.badges[region?.badge.id]) return { moved: false, event: { type: 'exit-sealed', regionId: map.regionId } };
   const key = region.id === 'r1' ? 'exitOpened' : `${region.id}:exit`;
   if (!isDone(state, key)) {
+    const held = stageBlocking(state, content, region.id, key);
+    if (held) return { moved: false, event: { type: 'exit-unfinished', regionId: region.id, text: held.text } };
     if (region.id === 'r1') setFlag(state, key);
     else state.gates[key] = { at: now, questionIds: [] };
     state.updatedAt = now;
@@ -201,7 +207,8 @@ export function missingForBadge(state, content, regionId = 'r1') {
   const { badge } = content.regionById.get(regionId);
   const missing = badge.requiresSkills.filter(skill => !state.skills[skill]);
   const words = badge.requiresCaptures - capturedIn(state, content, regionId);
-  return [...missing, ...(words > 0 ? [`${words} more captured ${words === 1 ? 'word' : 'words'}`] : [])];
+  const stage = stageBlocking(state, content, regionId, badge.id);
+  return [...missing, ...(words > 0 ? [`${words} more captured ${words === 1 ? 'word' : 'words'}`] : []), ...(stage ? [stage.text] : [])];
 }
 
 // The next lesson a region's mentor can teach: prerequisites met, and the quest has reached it.
@@ -390,6 +397,8 @@ function restoreScript(state, content) {
   if (state.endingAt != null) return { lines: ['The desk is quiet now. Every scroll is home.'] };
   const missing = content.regions.filter(region => !state.badges[region.badge.id]).map(region => region.badge.title);
   if (!campaignComplete(content) || missing.length) return { lines: [`The desk waits for every seal. Still missing: ${missing.join(', ') || 'regions not yet restored'}.`] };
+  const open = activeRegion(state, content);
+  if (open) return { lines: [`The desk isn't ready. There is still this to do: ${currentStage(state, content, open.questId).text}`] };
   return { lines: ['You lay the last scroll on the desk. Around you the shelves are full for the first time since the storm.'], then: { type: 'ending' } };
 }
 

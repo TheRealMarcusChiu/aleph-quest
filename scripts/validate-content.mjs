@@ -12,7 +12,9 @@ const FINAL_TO_REGULAR = { ך: 'כ', ם: 'מ', ן: 'נ', ף: 'פ', ץ: 'צ' };
 const RELATIONSHIPS = new Set(['inflection', 'derivation', 'separate-lexeme']);
 const FORMATS = new Set(['choice', 'door', 'type', 'tokens', 'match']);
 const STAGE_KINDS = new Set(['lesson', 'capture', 'puzzle', 'duel', 'reading', 'exit']);
-const KEY_FIELDS = new Set(['answer', 'form', 'features', 'relationship', 'tokenId']);
+const KEY_FIELDS = new Set(['answer', 'form', 'features', 'relationship', 'tokenId', 'morph', 'sense']);
+// OSHB pronominal suffix, person and number, to the English a contextual rendering has to use for it.
+const SUFFIX_ENGLISH = { '1s': ['my', 'me', 'mine', 'i'], '1p': ['our', 'us', 'we'], '2s': ['you', 'your'], '2p': ['you', 'your'], '3ms': ['his', 'him', 'he', 'it', 'its'], '3fs': ['her', 'hers', 'she', 'it', 'its'], '3p': ['their', 'them', 'they'] };
 const RESERVED_GROUPS = new Set(['rival', 'exit', 'ward', 'secret']);
 const R1_FLAGS = new Set(['neriCleared', 'gateOpen', 'exitOpened']);
 const CAMPAIGN_REGIONS = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8'];
@@ -39,14 +41,63 @@ function campaignSkills(data) {
   return { beforeRegion, afterRegion, firstLesson, lessons };
 }
 
+// A word's senses: its gloss, each meaning, the head of a qualified meaning ("wife, in some contexts"),
+// and each item of a plain list ("who, which, that").
+function listedSenses(word) {
+  const senses = new Set([word.gloss, ...word.meanings]);
+  for (const meaning of word.meanings) {
+    const parts = meaning.split(',').map(part => part.trim());
+    senses.add(parts[0]);
+    if (parts.every(part => !part.includes(' '))) for (const part of parts) senses.add(part);
+  }
+  return senses;
+}
+
+const hasWords = (text, phrase) => new RegExp(`(^|[^\\p{L}])${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[^\\p{L}])`, 'iu').test(text);
+
+// An answer that isn't a listed sense needs proof that it is that sense in this exact place: the same word's
+// source token, shown in the prompt, with any pronoun in the source matching the pronoun in the English.
+function checkContextEvidence(q, word, text, tokens, err) {
+  const wrong = why => err(`${q.id}: answer is not the word's meaning (${why})`);
+  const { key } = q;
+  if (!key?.sense) return wrong('no key.sense');
+  if (!hasWords(text, key.sense)) return err(`${q.id}: answer "${text}" does not use key sense "${key.sense}"`);
+  const token = tokens.get(key.tokenId);
+  if (!token) return wrong('no source token in key');
+  if (key.morph === undefined) return wrong('no key morph');
+  if (!pointed(q.prompt).includes(pointed(token.surface))) err(`${q.id}: the prompt does not show key token ${key.tokenId}`);
+  const suffix = token.morph.match(/\/Sp([123])([mfcb]?)([sp])/);
+  if (suffix) {
+    const [, person, gender, number] = suffix;
+    const fits = SUFFIX_ENGLISH[`${person}${person === '3' && number === 's' ? gender : ''}${number}`] ?? [];
+    if (!fits.some(pronoun => hasWords(text, pronoun))) err(`${q.id}: answer "${text}" does not render the token's suffix ${suffix[0].slice(1)}`);
+  }
+  return undefined;
+}
+
 // New word-level templates prove their key with this metadata. Each field is checked against the word's
 // own record, so an authored key is compared with the source record instead of being taken on trust.
 function checkKey(q, word, tokens, err, answers) {
   const { key } = q;
   for (const field of Object.keys(key)) if (!KEY_FIELDS.has(field)) err(`${q.id}: key field ${field} is not documented`);
-  if (typeof key.answer !== 'string' || !key.answer) err(`${q.id}: key needs an answer`);
+  // A word-free task can carry source proof alone. It shows what the token is, and never that the task's answer is right.
+  const sourceProofOnly = !word && key.tokenId !== undefined && key.morph !== undefined;
+  if (key.answer === undefined && sourceProofOnly) { /* nothing to compare */ }
+  else if (typeof key.answer !== 'string' || !key.answer) err(`${q.id}: key needs an answer, or for a word-free task both tokenId and morph`);
   else if (!answers().includes(key.answer.normalize('NFC'))) err(`${q.id}: key answer "${key.answer}" is not what the question accepts`);
-  if (key.tokenId !== undefined && !tokens.has(key.tokenId)) err(`${q.id}: key cites unknown token ${key.tokenId}`);
+  const token = tokens.get(key.tokenId);
+  if (key.tokenId !== undefined && !token) err(`${q.id}: key cites unknown token ${key.tokenId}`);
+  if (token) {
+    const own = q.tokenIds ?? (q.tokenId ? [q.tokenId] : []);
+    if (own.length && !own.includes(key.tokenId)) err(`${q.id}: key token ${key.tokenId} is not the question's own token`);
+    if (word && !lemmaNumbers(token.lemma).includes(strongNumber(word.strongId))) err(`${q.id}: key token ${key.tokenId} has lemma ${token.lemma}, not ${word.id}`);
+  }
+  if (key.morph !== undefined) {
+    if (!token) err(`${q.id}: key morph needs a real tokenId`);
+    // Whole morphology segments only, so "Nc" is a claim about a noun and "cmpa" is no claim at all.
+    else if (typeof key.morph !== 'string' || !key.morph || !`/${token.morph.replace(/^H/, '')}`.includes(`/${key.morph}`)) err(`${q.id}: key morph ${key.morph} is not token ${key.tokenId}'s morphology ${token.morph}`);
+  }
+  if (key.sense !== undefined && (!word || !listedSenses(word).has(key.sense))) err(`${q.id}: key sense "${key.sense}" is not a listed sense of this word`);
   if (!word) return;
   const form = key.form === undefined ? null : word.relatedForms.find(item => pointed(item.hebrew) === pointed(key.form));
   if (key.form !== undefined && !form && pointed(word.hebrew) !== pointed(key.form)) err(`${q.id}: key form ${key.form} is not attested for ${word.id}`);
@@ -160,6 +211,16 @@ export function validateContent(data, phase) {
       if (!token) err(`${q.id}: unknown token ${q.tokenId}`);
       else if (q.displayHebrew && !pointed(token.surface).includes(pointed(q.displayHebrew))) err(`${q.id}: shows Hebrew that is not in its token`);
     }
+    if (q.tokenIds) {
+      if (q.tokenId) err(`${q.id}: use tokenId or tokenIds, not both`);
+      const found = q.tokenIds.map(id => tokens.get(id));
+      q.tokenIds.forEach((id, i) => { if (!found[i]) err(`${q.id}: unknown token ${id}`); });
+      if (found.every(Boolean)) {
+        if (new Set(found.map(t => t.reference)).size !== 1) err(`${q.id}: tokenIds must come from one verse`);
+        const joined = text => pointed(text).replace(/[\s־׀׃]/g, '');
+        if (q.displayHebrew && joined(found.map(t => t.surface).join('')) !== joined(q.displayHebrew)) err(`${q.id}: shows "${q.displayHebrew}", tokens read "${found.map(t => t.surface).join(' ')}"`);
+      }
+    }
 
     const choiceSet = (choices, accepted, label) => {
       const ids = new Set(choices.map(c => c.id));
@@ -210,9 +271,23 @@ export function validateContent(data, phase) {
       'tpl-gloss-choice': () => answerText() === word.gloss || err(`${q.id}: answer is not the word's meaning`),
       // In context a word can take any of its listed senses, alone or as "one or the other". It can't just contain a gloss as a substring.
       'tpl-context-choice': () => {
-        const senses = new Set([word.gloss, ...word.meanings, ...word.meanings.map(m => m.split(',')[0].trim())]);
-        const parts = (answerText() ?? '').split(/\s+or\s+/);
-        if (!senses.has(answerText()) && !parts.every(part => senses.has(part))) err(`${q.id}: answer is not the word's meaning`);
+        const text = answerText() ?? '';
+        const senses = listedSenses(word);
+        if (!text.split(/\s+or\s+/).every(part => senses.has(part)) && !senses.has(text)) checkContextEvidence(q, word, text, tokens, err);
+      },
+      // The sound guide on the word's own card, read from the word's own pointing.
+      'tpl-read-sound': () => {
+        if (q.format !== 'choice') err(`${q.id}: a sound question must be a choice`);
+        if (answerText() !== word.transliteration) err(`${q.id}: answer is not the word's sound guide`);
+        if (!q.displayHebrew || pointed(q.displayHebrew) !== pointed(word.hebrew)) err(`${q.id}: must show the word's own pointed form`);
+      },
+      // Every option has the word's letters, so only the pointing can tell them apart.
+      'tpl-read-pointed': () => {
+        if (q.format !== 'choice') { err(`${q.id}: a pointing question must be a choice`); return; }
+        if (pointed(answerText() ?? '') !== pointed(word.hebrew)) err(`${q.id}: answer is not the word's pointed form`);
+        const keys = q.choices.map(c => pointed(c.text));
+        if (new Set(keys).size !== keys.length) err(`${q.id}: two options have identical pointing`);
+        if (q.choices.some(c => comparisonKey(c.text, 'consonants') !== word.consonants)) err(`${q.id}: an option changes the letters, not the pointing`);
       },
       'tpl-gloss-type': () => q.acceptedAnswers.includes(word.gloss) || err(`${q.id}: word's meaning is not accepted`),
     }[q.templateId];
@@ -263,9 +338,8 @@ export function validateContent(data, phase) {
     for (const skill of l.teaches) earlier.add(skill);
     for (const id of l.guidedQuestionIds) {
       if (!questions.has(id)) { err(`${l.id}: unknown guided question ${id}`); continue; }
-      // Guided practice comes before the lesson ends, so this lesson's own skills are only there if already taught.
-      const usable = new Set([...earlier].filter(skill => !l.teaches.includes(skill) || l.requires.includes(skill)));
-      for (const skill of questions.get(id).requires) if (!usable.has(skill)) err(`${l.id}: guided question ${id} requires ${skill}, which hasn't been taught yet`);
+      // Guided work is assisted and follows this lesson's explanation and worked examples, so its own skills count. Later ones don't.
+      for (const skill of questions.get(id).requires) if (!earlier.has(skill)) err(`${l.id}: guided question ${id} requires ${skill}, which hasn't been taught yet`);
     }
     if (!l.workedExamples.length) err(`${l.id}: needs a worked example`);
     for (const ex of l.workedExamples) {
@@ -340,10 +414,17 @@ export function validateContent(data, phase) {
       const have = skillsAt(at);
       const answerable = q => q?.requires.every(skill => have.has(skill) || skill === 'word-meaning');
       if (stage.kind === 'lesson') {
-        for (const id of stage.targetIds) {
-          if (lessons.has(id) && !r.lessonIds.includes(id)) err(`${quest.id}: lesson ${id} is not in ${r.id}`);
-          for (const skill of lessons.get(id)?.requires ?? []) if (!have.has(skill)) err(`${quest.id}: stage ${stage.id} teaches ${id}, which needs ${skill} from a later stage`);
+        for (const id of stage.targetIds) if (lessons.has(id) && !r.lessonIds.includes(id)) err(`${quest.id}: lesson ${id} is not in ${r.id}`);
+        // The mentor offers whichever lesson is ready, so a stage's lessons can build on each other in any listed order.
+        const known = new Set(have);
+        let waiting = stage.targetIds.filter(id => lessons.has(id));
+        for (let moved = true; moved;) {
+          const ready = waiting.filter(id => lessons.get(id).requires.every(skill => known.has(skill)));
+          for (const id of ready) for (const skill of lessons.get(id).teaches) known.add(skill);
+          waiting = waiting.filter(id => !ready.includes(id));
+          moved = ready.length > 0;
         }
+        for (const id of waiting) for (const skill of lessons.get(id).requires) if (!known.has(skill)) err(`${quest.id}: stage ${stage.id} teaches ${id}, which needs ${skill} from a later stage or itself`);
       }
       if (stage.kind === 'capture') {
         for (const id of stage.targetIds) if (!r.wordIds.includes(id)) err(`${quest.id}: capture target ${id} is not in ${r.id}`);
@@ -407,7 +488,8 @@ export function validateContent(data, phase) {
 
   // Phase floors.
   if (phase === 'opening') {
-    if (data.words.length < 8 || data.words.length > 10) err(`opening needs 8 to 10 words, has ${data.words.length}`);
+    const opening = data.regions[0]?.wordIds.length ?? 0;
+    if (opening < 8 || opening > 10) err(`opening needs 8 to 10 words in its first region, has ${opening}`);
   } else {
     if (data.words.length < 150) err(`campaign needs at least 150 words, has ${data.words.length}`);
     if (data.questions.length < 600) err(`campaign needs at least 600 questions, has ${data.questions.length}`);

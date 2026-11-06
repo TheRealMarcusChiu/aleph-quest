@@ -1,7 +1,7 @@
 // Save slots and import/export. All incoming data is rebuilt from a strict schema, so an
 // accepted state holds only known fields and ids. A failed parse never touches the live game.
 import { MAPS, DOORS, OBJECTS } from './world.js';
-import { destination, capturedIn, isDone, regionUnlocked, stageBlocking, gatePool, gateRequired, gateReady, missingForBadge } from './engine.js';
+import { destination, capturedIn, isDone, regionUnlocked, stageBlocking, gatePool, gateRequired, gateReady, missingForBadge, archiveReady } from './engine.js';
 import { CAPTURE_FAMILIES, wordCapturable, abilityOf } from './learning.js';
 import { trialComplete } from './checkpoints.js';
 
@@ -122,6 +122,7 @@ function stateSchema(content) {
     }), HISTORY_LIMIT),
     xp: count, favorite: bool,
     xpStems: list(stem, 2000), formsKnown: list(known(isForm), 200), formRetired: mapOf(isForm, count, 200),
+    lookedUpAt: optional(time),
   });
   const current = shape({ questionId: known(isQuestion), stemId: stem, family, startedAt: time, hintsUsed: count, assisted: bool, responseMode });
   const flags = (v, path, errors) => {
@@ -238,6 +239,7 @@ function checkGateRecord(state, content, key, record, errors) {
   if (group === 'exit' || group === 'secret') {
     if (record.questionIds.length) errors.push(`${path}: takes no answers`);
     if (group === 'exit' && !state.badges[region.badge.id]) errors.push(`${path}: needs the region badge`);
+    if (group === 'exit' && stageBlocking(state, content, regionId, key)) errors.push(`${path}: reached before its quest allows`);
     if (group === 'secret' && !isDone(state, `${regionId}:ward`)) errors.push(`${path}: needs the ward`);
     return undefined;
   }
@@ -258,8 +260,11 @@ function checkAttempt(state, content, errors) {
   const { attempt } = state;
   for (const [key, credit] of Object.entries(state.gateCredit)) {
     const pool = gatePool(content, key);
-    if (isDone(state, key)) errors.push(`gateCredit.${key}: already finished`);
+    // Credit could only have been earned on an action that was open, so the same check that opens one applies.
+    const ready = gateReady(state, content, key);
+    if (!ready.ok) errors.push(`gateCredit.${key}: ${ready.reason}`);
     if (new Set(credit).size !== credit.length || !credit.every(id => pool.includes(id))) errors.push(`gateCredit.${key}: lists a bad question`);
+    if (!credit.every(id => content.questionById.get(id).requires.every(skill => state.skills[skill]))) errors.push(`gateCredit.${key}: credits a question with an untaught skill`);
     if (credit.length >= gateRequired(content, key)) errors.push(`gateCredit.${key}: these answers would already have finished it`);
   }
   if (!attempt) return;
@@ -321,19 +326,18 @@ function checkConsistency(state, content, errors) {
     if (!badge.requiresSkills.every(skill => state.skills[skill])) errors.push(`badges.${badge.id}: skills are missing`);
     if (capturedIn(state, content, region.id) < badge.requiresCaptures) errors.push(`badges.${badge.id}: too few captures`);
     if (!region.requiresBadges.every(id => state.badges[id])) errors.push(`badges.${badge.id}: earlier badge missing`);
+    if (stageBlocking(state, content, region.id, badge.id)) errors.push(`badges.${badge.id}: earned before its quest allows`);
   }
 
   const { flags } = state;
   if (flags.exitOpened && !state.badges['b-reed-seal']) errors.push('flags.exitOpened: needs the Reed Seal');
+  if (flags.exitOpened && stageBlocking(state, content, 'r1', 'exitOpened')) errors.push('flags.exitOpened: reached before its quest allows');
   if (!!flags.gateOpen !== !!flags.doorOpen) errors.push('flags: gateOpen and doorOpen must agree');
   if (flags.gateOpen && !flags.neriCleared) errors.push('flags.gateOpen: needs neriCleared');
 
   for (const [key, record] of Object.entries(state.gates)) checkGateRecord(state, content, key, record, errors);
   checkAttempt(state, content, errors);
-  if (state.endingAt != null) {
-    const last = content.regions.at(-1);
-    if (content.regions.length < 8 || !content.regions.every(region => state.badges[region.badge.id]) || !isDone(state, `${last.id}:exit`)) errors.push('endingAt: the archive isn\'t ready to be restored');
-  }
+  if (state.endingAt != null && !archiveReady(state, content)) errors.push('endingAt: the archive isn\'t ready to be restored');
 
   checkPosition(state, content, errors);
 
@@ -365,7 +369,7 @@ export function validateState(raw, content) {
 }
 
 const V2_STATE_FIELDS = ['gates', 'gateCredit', 'attempt', 'endingAt'];
-const V2_RECORD_FIELDS = ['xpStems', 'formsKnown', 'formRetired'];
+const V2_RECORD_FIELDS = ['xpStems', 'formsKnown', 'formRetired', 'lookedUpAt'];
 
 // Version 1 is the accepted opening's format. It has no later regions, so the new fields start empty and
 // everything it did hold passes the same validation. A v1 document holding v2 fields is not one we wrote.

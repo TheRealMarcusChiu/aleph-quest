@@ -6,7 +6,7 @@ import { markLessonDone, setFlag, nextRandom, capturedCount, regionUnlocked, cur
 import {
   startEncounter, commandStates, completeStudy, openQuestion, startReview, useHint, setCurrentResponseMode,
   submit, retreat, statusOf, addToParty, removeFromParty, PARTY_LIMIT, reviewEligible, knowledgeRank, abilityOf, unlockedExamples,
-  nextRelatedForm, answerRelatedForm, wardCandidates,
+  nextRelatedForm, answerRelatedForm, wardCandidates, noteLookup, helpFromLookup,
 } from './learning.js';
 import {
   currentPuzzle, answerPuzzle, startBadgeRun, openBadgeQuestion, submitBadgeAnswer, useBadgeHint, setBadgeResponseMode, badgeProgress,
@@ -783,13 +783,15 @@ export function createUI(ctx) {
     return content.words.filter(word => state.words[word.id]);
   };
 
-  // Search only looks at what the player has been shown, so it can't reveal a meaning early.
+  // The list and search only give a meaning once it can't be an answer still owed: captured, and not due.
+  const meaningOpen = record => record.capturedAt != null && !reviewEligible(record, ctx.now());
+
   function matchesQuery(word, record, query) {
     if (!query) return true;
     const asLetters = comparisonKey(query, 'consonants');
     if (HAS_HEBREW.test(query)) return word.consonants.includes(asLetters) || (record.studiedAt != null && !!word.root?.includes(asLetters));
     if (word.id.toLowerCase().includes(query)) return true;
-    if (record.studiedAt == null) return false;
+    if (!meaningOpen(record)) return false;
     return [word.gloss, word.transliteration, ...word.meanings, word.pos].some(text => text.toLowerCase().includes(query));
   }
 
@@ -827,13 +829,14 @@ export function createUI(ctx) {
       const record = state.words[word.id];
       const status = statusOf(record);
       const row = el('button', { type: 'button', class: 'dex-row', 'data-word': word.id, onclick: () => worddexEntry(word.id, onBack) });
-      row.append(he(word.hebrew), el('span', { class: 'dex-gloss', text: `${record.favorite ? '★ ' : ''}${record.studiedAt != null ? word.gloss : ''}` }), el('span', { class: 'dex-status', 'data-status': status, text: status }));
+      row.append(he(word.hebrew), el('span', { class: 'dex-gloss', text: `${record.favorite ? '★ ' : ''}${meaningOpen(record) ? word.gloss : ''}` }), el('span', { class: 'dex-status', 'data-status': status, text: status }));
       return el('li', {}, row);
     }));
   }
 
   function worddex(onBack = close) {
     const state = ctx.getState();
+    const helped = helpFromLookup(state);
     const partySlots = Array.from({ length: PARTY_LIMIT }, (_, i) => {
       const id = state.party[i];
       if (!id) return el('li', { class: 'party-slot empty', text: 'empty' });
@@ -867,6 +870,7 @@ export function createUI(ctx) {
     refreshList();
     show([
       heading('Worddex'),
+      helped && el('p', { id: 'dex-peek', class: 'hint', text: 'A question is still waiting for your answer. Since you opened the Worddex, that answer won\'t count. A fresh question follows it.' }),
       count,
       el('h3', { text: `Party (${state.party.length} of ${PARTY_LIMIT})` }),
       el('ol', { id: 'party-list', class: 'party' }, ...partySlots),
@@ -937,12 +941,9 @@ export function createUI(ctx) {
     const lines = unlockedExamples(state, content, wordId);
     const relatedWords = word.root && studied ? knownWords().filter(other => other.id !== wordId && other.root === word.root && state.words[other.id].studiedAt != null) : [];
     const featureText = Object.entries(word.features).map(([name, value]) => `${name}: ${value}`).join(', ');
-    // Opening this entry over a seal's pending question about the same word shows the answer, so it counts as a hint.
-    const peeked = state.attempt?.wordId === wordId;
-    if (peeked && !state.attempt.hintsUsed) state.attempt.hintsUsed = 1;
+    if (studied) noteLookup(record, ctx.now());
     show([
       heading(studied ? `Worddex: ${word.gloss}` : 'Worddex: a word not yet studied', 'entry-title'),
-      peeked && el('p', { id: 'entry-peek', class: 'hint', text: 'A seal is waiting on this word. You looked it up, so that answer won\'t count. It will ask something fresh after.' }),
       el('div', { class: 'encounter-head' }, wordSprite(wordId), el('div', { class: 'word-plate plain' }, he(word.hebrew, 'he he-large'))),
       el('p', { id: 'entry-status', 'data-status': status, class: 'status-line', text: status }),
       el('p', { class: 'small', text: STATUS_HELP[status] }),
@@ -962,6 +963,7 @@ export function createUI(ctx) {
       relatedWords.length > 0 && el('h3', { text: 'Same root' }),
       relatedWords.length > 0 && el('ul', { id: 'entry-family', class: 'token-list' }, ...relatedWords.map(other => el('li', {}, he(other.hebrew, 'he he-inline'), el('span', { text: ` ${other.gloss}` })))),
       studied && word.notes && mixed(word.notes, 'p', { class: 'small' }),
+      studied && el('p', { id: 'entry-lookup', class: 'small', text: 'Reading this entry helps you, so your next answer about this word won\'t count as recalled alone. Tomorrow it will.' }),
       el('h3', { text: 'Your record' }),
       owned && el('p', { id: 'entry-rank', class: 'small', text: `Knowledge: ${RANK_NAMES[rank]}. It grows when you use this word in new kinds of task and trace its forms. Knowing it better doesn't change the word itself.${rank >= 2 ? ` ${ABILITY_NAMES[abilityOf(word)]}.` : ''}` }),
       lines.length > 0 && el('h3', { text: 'More places it appears' }),
@@ -974,7 +976,6 @@ export function createUI(ctx) {
       partyMessage,
       el('div', { class: 'tools' }, partyControl,
         button(record.favorite ? 'Remove favorite' : 'Add favorite', () => { record.favorite = !record.favorite; again(); }, { id: 'btn-favorite', class: 'quiet', 'aria-pressed': String(record.favorite) }),
-        owned && reviewEligible(record, ctx.now()) && button('Review now', () => beginEncounter({ wordId, kind: 'review' }), { id: 'btn-review-now' }),
         owned && button('Practice', () => beginEncounter({ wordId, kind: 'practice' }), { id: 'btn-practice', class: 'quiet' }),
         owned && nextRelatedForm(state, content, wordId) && button('Trace a related form', () => traceForm(wordId, again), { id: 'btn-trace-form', class: 'quiet' }),
         button('Back to Worddex', back, { id: 'btn-back', class: 'quiet' })),

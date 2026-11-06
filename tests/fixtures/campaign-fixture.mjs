@@ -118,11 +118,17 @@ function region(regionId, order, previousBadge) {
   };
 }
 
+// The real first region alone, whatever else data/ holds, so these tests stay true after content lands.
+const r1Data = () => ({
+  words: raw('words').filter(w => w.regionIds[0] === 'r1'), questions: raw('questions').filter(q => q.regionId === 'r1'),
+  lessons: raw('lessons').filter(l => l.regionId === 'r1'), regions: raw('regions').filter(r => r.id === 'r1'),
+  quests: raw('quests').filter(q => q.regionId === 'r1'), passages: raw('passages').filter(p => p.id === 'p-gen-44-19'),
+  sources: raw('sources'), attestations: raw('attestations'),
+});
+export const openingOnly = () => buildContent(r1Data());
+
 export function campaignFixture() {
-  const data = {
-    words: raw('words'), questions: raw('questions'), lessons: raw('lessons'), regions: raw('regions'),
-    quests: raw('quests'), passages: raw('passages'), sources: raw('sources'), attestations: raw('attestations'),
-  };
+  const data = r1Data();
   data.attestations.push({ tokenId: 'fxlesson', reference: 'Fix.1.1', surface: point('אבג'), lemma: '1', morph: 'fx' });
   let badge = data.regions[0].badge.id;
   FIXTURE_REGIONS.forEach((id, i) => {

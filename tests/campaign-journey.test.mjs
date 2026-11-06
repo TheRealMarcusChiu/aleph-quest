@@ -6,8 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
-import { campaignFixture } from './fixtures/campaign-fixture.mjs';
-import { content as realContent } from '../src/content.js';
+import { campaignFixture, openingOnly } from './fixtures/campaign-fixture.mjs';
 import { MAPS, OBJECTS, REGION_MAPS, ENCOUNTER_TILES } from '../src/world.js';
 import { currentStage, destination, tileAt, isDone, newGame, markLessonDone } from '../src/engine.js';
 import { DAY, startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES, statusOf, addToParty } from '../src/learning.js';
@@ -16,6 +15,7 @@ import { parseImport, slotKey, saveSlot } from '../src/storage.js';
 import { startApp } from '../src/app.js';
 
 const content = campaignFixture();
+const realContent = openingOnly();
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8').replace(/<script[^>]*><\/script>|<link[^>]*>/g, '');
 const fakeContext = new Proxy({}, { get: () => () => {}, set: () => true });
 const T0 = Date.UTC(2027, 0, 4, 12);
@@ -473,6 +473,7 @@ test('match questions play on real controls, by keyboard or touch, with a wrong 
   const s = r2State();
   s.gates['r2:rival'] = { at: T0, questionIds: content.regionById.get('r2').puzzleQuestionIds.neri.slice(0, 2) };
   s.gates['r2:gate'] = { at: T0, questionIds: [content.regionById.get('r2').puzzleQuestionIds.gate[0]] };
+  s.gates['read:pfx-r2'] = { at: T0, questionIds: content.passageById.get('pfx-r2').questionIds.slice(0, 2) };
   Object.assign(s, { map: REGION_MAPS.r2.hall, x: 5, y: 3, dir: 'up' });
   // A saved trial paused on the match item. The importer has to accept it for this to boot.
   startBadgeRun(s, content, 'r2', T0);
@@ -562,31 +563,40 @@ test('abilities: the seal needs a grown party word and a real answer, and it ope
   assert.match(g.$('#ward-empty').textContent, /grow/i, 'it says what to do when no word qualifies');
   g.click('#btn-back');
 
-  // Practice from the Worddex: two different tasks grow the word.
+  // Practice from the Worddex: the entry just shown costs the first answer, then two different tasks grow the word.
   addToParty(g.state(), id);
   g.click('#btn-worddex');
   g.click(`[data-word="${id}"]`);
   assert.match(g.$('#entry-rank').textContent, /Known/);
-  for (const command of ['analyze', 'build']) {
-    g.click('#btn-practice');
+  g.click('#btn-practice');
+  for (const [command, helped] of [['read', true], ['analyze', false], ['build', false]]) {
     g.click(`#cmd-${command}`);
     answer(g, content.questionById.get(g.state().encounter.current.questionId));
+    assert.match(g.$('#feedback-verdict').textContent, helped ? /with help/ : /Correct\./);
     g.click('#btn-continue');
-    g.click('#cmd-retreat');
-    g.click('#btn-worddex');
-    g.click(`[data-word="${id}"]`);
   }
+  assert.equal(g.state().words[id].xp, 2, 'the helped answer earned no XP');
+  g.click('#cmd-retreat');
+  g.click('#btn-worddex');
+  g.click(`[data-word="${id}"]`);
   assert.match(g.$('#entry-rank').textContent, /Familiar/);
   assert.match(g.$('#entry-rank').textContent, /doesn't change the word|the word itself/i);
   assert.ok(g.$('#entry-unlocked li'), 'the grown word opens more attested lines');
   g.click('#btn-back');
   g.click('#btn-back');
 
+  // That entry was just read, so the seal's first question can't count. A fresh one can.
   g.press('Enter');
   g.click('#btn-continue');
   g.click(`[data-ward-word="${id}"]`);
+  assert.equal(g.state().attempt.hintsUsed, 1);
   answer(g, content.questionById.get(g.state().attempt.questionId));
-  assert.match(g.$('#feedback-verdict').textContent, /Correct/);
+  assert.match(g.$('#feedback-verdict').textContent, /with help/);
+  assert.equal(isDone(g.state(), 'r2:ward'), false);
+  g.click('#btn-continue');
+  g.click(`[data-ward-word="${id}"]`);
+  answer(g, content.questionById.get(g.state().attempt.questionId));
+  assert.match(g.$('#feedback-verdict').textContent, /Correct\./);
   solveScreens(g);
   assert.deepEqual(Object.keys(g.state().gates).includes('r2:ward'), true);
   assert.ok(route(g.state(), { map: REGION_MAPS.r2.cave, ...MAPS[REGION_MAPS.r2.cave].shortcutFront }), 'the shortcut is open');
@@ -597,7 +607,7 @@ test('abilities: the seal needs a grown party word and a real answer, and it ope
   assert.ok(isDone(g.state(), 'r2:secret'));
 });
 
-test('looking a word up while a seal is asking about it counts as help: the answer opens nothing', () => {
+test('opening the Worddex over a pending seal question: help sticks through reload and mode, and opens nothing', () => {
   const s = r2State();
   s.gates['r2:rival'] = { at: T0, questionIds: content.regionById.get('r2').puzzleQuestionIds.neri.slice(0, 2) };
   s.gates['r2:gate'] = { at: T0, questionIds: [content.regionById.get('r2').puzzleQuestionIds.gate[0]] };
@@ -613,22 +623,153 @@ test('looking a word up while a seal is asking about it counts as help: the answ
   g.click('#btn-continue');
   g.click(`[data-ward-word="${id}"]`);
   assert.equal(g.state().attempt.hintsUsed, 0);
+  const asked = g.state().attempt.questionId;
   g.click('#btn-back');
   g.click('#btn-worddex');
-  g.click('[data-word="FX201"]');
-  assert.equal(g.state().attempt.hintsUsed, 0, 'another word is fine');
-  g.click('#btn-back');
-  g.click(`[data-word="${id}"]`);
   assert.equal(g.state().attempt.hintsUsed, 1);
-  assert.match(g.$('#entry-peek').textContent, /won't count/);
+  assert.match(g.$('#dex-peek').textContent, /won't count/);
   g.click('#btn-back');
+  const again = boot({ storage: g.storage, clock: g.clock });
+  again.click('#slot-1');
+  assert.equal(again.state().attempt.hintsUsed, 1, 'a reload does not forgive it');
+  again.press('Enter');
+  again.click('#btn-continue');
+  again.click(`[data-ward-word="${id}"]`);
+  assert.equal(again.state().attempt.questionId, asked, 'the same question resumes');
+  answer(again, content.questionById.get(asked));
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  assert.equal(isDone(again.state(), 'r2:ward'), false);
+});
+
+test('opening the Worddex over a pending duel or trial: help sticks, no credit, and a fresh question can still clear it', () => {
+  const s = r2State();
+  const g = bootAt(s);
+  approach(g, 'r2-rival');
+  g.click('#btn-continue');
+  const asked = g.state().attempt.questionId;
+  g.click('#btn-back');
+  g.click('#btn-worddex');
   g.click('#btn-back');
   g.press('Enter');
   g.click('#btn-continue');
-  g.click(`[data-ward-word="${id}"]`);
-  answer(g, content.questionById.get(g.state().attempt.questionId));
+  assert.equal(g.state().attempt.questionId, asked);
+  assert.ok(g.$('#hint-text'), 'it is shown as the help it now is');
+  answer(g, content.questionById.get(asked));
   assert.match(g.$('#feedback-verdict').textContent, /with help/);
-  assert.equal(isDone(g.state(), 'r2:ward'), false);
+  assert.deepEqual(g.state().gateCredit, {});
+  g.click('#btn-continue');
+  assert.notEqual(g.state().attempt.questionId, asked);
+  solveGate(g, 'r2:rival');
+
+  const trial = r2State();
+  trial.gates['r2:rival'] = { at: T0, questionIds: content.regionById.get('r2').puzzleQuestionIds.neri.slice(0, 2) };
+  trial.gates['r2:gate'] = { at: T0, questionIds: [content.regionById.get('r2').puzzleQuestionIds.gate[0]] };
+  trial.gates['read:pfx-r2'] = { at: T0, questionIds: content.passageById.get('pfx-r2').questionIds.slice(0, 2) };
+  Object.assign(trial, { map: REGION_MAPS.r2.hall, x: 5, y: 3, dir: 'up' });
+  const t = bootAt(trial);
+  t.press('Enter');
+  t.click('#btn-continue');
+  const pending = t.state().badgeRun.current.questionId;
+  t.click('#btn-back');
+  t.click('#btn-worddex');
+  assert.ok(t.$('#dex-peek'));
+  t.click('#btn-back');
+  const reload = boot({ storage: t.storage, clock: t.clock });
+  reload.click('#slot-1');
+  assert.equal(reload.state().badgeRun.current.hintsUsed, 1);
+  reload.press('Enter');
+  reload.click('#btn-continue');
+  assert.equal(reload.state().badgeRun.current.questionId, pending);
+  answer(reload, content.questionById.get(pending));
+  assert.match(reload.$('#feedback-verdict').textContent, /with help/);
+  assert.deepEqual(reload.state().badgeRun.correct, []);
+});
+
+test('reading an entry between encounters: the next capture answer earns nothing, through retreat, reload and mode change', () => {
+  const r2 = content.regionById.get('r2');
+  const s = r2State({ captures: 0 });
+  const id = r2.wordIds[0];
+  startEncounter(s, content, id, 'capture', T0);
+  completeStudy(s, id, T0);
+  s.encounter = null;
+  const g = bootAt(s);
+  g.click('#btn-worddex');
+  assert.equal(g.$(`[data-word="${id}"] .dex-gloss`).textContent, '', 'the list keeps an uncaptured word\'s meaning back');
+  g.click(`[data-word="${id}"]`);
+  assert.match(g.$('#entry-gloss').textContent, /fxgloss/, 'the entry is real study');
+  assert.match(g.$('#entry-lookup').textContent, /won't count/);
+  g.click('#btn-back');
+  g.click('#btn-back');
+
+  g.app.ui.beginEncounter({ wordId: id, kind: 'capture' });
+  g.click('#cmd-retreat');
+  const again = boot({ storage: g.storage, clock: g.clock });
+  again.click('#slot-1');
+  assert.equal(again.state().words[id].lookedUpAt, T0, 'retreat and reload keep what is owed');
+  again.app.ui.beginEncounter({ wordId: id, kind: 'capture' });
+  again.click('#cmd-inscribe');
+  assert.equal(again.state().encounter.current.assisted, true);
+  const typed = content.questionById.get(again.state().encounter.current.questionId);
+  if (again.$('#btn-use-choices')) {
+    again.click('#btn-use-choices');
+    assert.equal(again.state().encounter.current.assisted, true, 'changing mode keeps the help');
+  }
+  again.click(`[data-choice="${(typed.recognitionAccepted ?? typed.acceptedAnswers)[0]}"]`);
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  assert.deepEqual(again.state().words[id].captureSteps, []);
+  again.click('#btn-continue');
+  again.click('#cmd-read');
+  assert.equal(again.state().encounter.current.assisted, false, 'a fresh question counts again');
+  answer(again, content.questionById.get(again.state().encounter.current.questionId));
+  assert.equal(again.state().words[id].captureSteps.length, 1);
+});
+
+test('reading an entry just before a due review makes it an assisted review, with no evidence; a day later it is fair', () => {
+  const clock = { t: T0 + DAY + 1 };
+  const g = bootAt(r2State(), clock);
+  const id = r2Word(0);
+  g.click('#btn-worddex');
+  assert.equal(g.$(`[data-word="${id}"] .dex-gloss`).textContent, '', 'a due word keeps its meaning back in the list');
+  const search = g.$('#dex-search');
+  search.value = content.wordById.get(id).gloss;
+  search.dispatchEvent(new g.window.Event('input', { bubbles: true }));
+  assert.equal(g.$(`[data-word="${id}"]`), null, 'and search does not map the meaning back to it');
+  search.value = '';
+  search.dispatchEvent(new g.window.Event('input', { bubbles: true }));
+  g.click(`[data-word="${id}"]`);
+  assert.equal(g.$('#btn-review-now'), null, 'no review straight from the page that shows the answer');
+  g.click('#btn-back');
+  g.click('#btn-back');
+  g.app.ui.beginEncounter({ wordId: id, kind: 'review' });
+  assert.equal(g.state().encounter.current.assisted, true);
+  answer(g, content.questionById.get(g.state().encounter.current.questionId));
+  assert.match(g.$('#feedback-verdict').textContent, /with help/);
+  const record = g.state().words[id];
+  assert.deepEqual([record.evidence.length, record.reviewOutcomes.at(-1)], [0, 0]);
+  g.click('#btn-continue');
+
+  const other = r2Word(1);
+  g.click('#btn-worddex');
+  g.click(`[data-word="${other}"]`);
+  g.click('#btn-back');
+  g.click('#btn-back');
+  clock.t += DAY;
+  g.app.ui.beginEncounter({ wordId: other, kind: 'review' });
+  assert.equal(g.state().encounter.current.assisted, false, 'yesterday\'s reading is memory by now');
+  answer(g, content.questionById.get(g.state().encounter.current.questionId));
+  assert.equal(g.state().words[other].evidence.length, 1);
+});
+
+test('a pending encounter can\'t be asked about from the Worddex either, if it is ever reached there', () => {
+  const s = r2State({ captures: 0 });
+  const id = content.regionById.get('r2').wordIds[0];
+  startEncounter(s, content, id, 'capture', T0);
+  completeStudy(s, id, T0);
+  openQuestion(s, content, 'read-letter', T0);
+  const g = bootAt(s);
+  g.app.ui.worddex();
+  assert.equal(g.state().encounter.current.assisted, true);
+  assert.ok(g.$('#dex-peek'));
 });
 
 test('review feedback offers a fresh attempt as remediation, or leaving, and keeps the schedule honest', () => {
@@ -636,9 +777,7 @@ test('review feedback offers a fresh attempt as remediation, or leaving, and kee
   const clock = { t: T0 + DAY + 1 };
   const g = bootAt(s, clock);
   const id = r2Word(0);
-  g.click('#btn-worddex');
-  g.click(`[data-word="${id}"]`);
-  g.click('#btn-review-now');
+  g.app.ui.beginEncounter({ wordId: id, kind: 'review' });
   const asked = g.state().encounter.current.questionId;
   const q = content.questionById.get(asked);
   assert.match(g.$('#modal').textContent, /First answer counts/);
@@ -866,7 +1005,11 @@ test('an exit with no region data beyond it says so, instead of promising a road
   const data = campaignFixture();
   const partial = { ...data, regions: data.regions.slice(0, 2), regionById: new Map(data.regions.slice(0, 2).map(r => [r.id, r])) };
   const s = r2State();
-  s.badges['bfx-r2'] = { at: T0, questionIds: data.regionById.get('r2').badge.questionIds.slice(0, 4) };
+  const r2 = data.regionById.get('r2');
+  s.gates['r2:rival'] = { at: T0, questionIds: r2.puzzleQuestionIds.neri.slice(0, 2) };
+  s.gates['r2:gate'] = { at: T0, questionIds: [r2.puzzleQuestionIds.gate[0]] };
+  s.gates['read:pfx-r2'] = { at: T0, questionIds: data.passageById.get('pfx-r2').questionIds.slice(0, 2) };
+  s.badges['bfx-r2'] = { at: T0, questionIds: r2.badge.questionIds.slice(0, 4) };
   Object.assign(s, { map: 'springs', ...MAPS.springs.exitFront, dir: 'up' });
   const storage = checkedStorage(partial);
   saveSlot(storage, 1, s, partial);

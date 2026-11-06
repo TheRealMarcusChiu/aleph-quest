@@ -101,6 +101,24 @@ export function wardQuestion(state, content, wordId) {
 
 export const retireStem = (state, record, stemId) => { record.retired[stemId] = { at: state.interactions, encounter: 0 }; };
 
+// Reading a Worddex entry shows the answers. The next answer about that word pays for it, unless enough
+// time has passed for it to be memory. It waits on the record so leaving or reloading can't wash it out.
+export const noteLookup = (record, now) => { record.lookedUpAt = now; };
+
+export function consumeLookup(record, now) {
+  const fresh = record.lookedUpAt !== undefined && now - record.lookedUpAt < MIN_REVIEW_GAP;
+  delete record.lookedUpAt;
+  return fresh;
+}
+
+// Opening the Worddex lists glosses, so any question left pending can no longer count as independent.
+export function helpFromLookup(state) {
+  const pending = [state.attempt, state.badgeRun?.current].filter(Boolean);
+  for (const item of pending) item.hintsUsed ||= 1;
+  if (state.encounter?.current) state.encounter.current.assisted = true;
+  return pending.length > 0 || !!state.encounter?.current;
+}
+
 const recordFor = (state, wordId) => (state.words[wordId] ??= newRecord());
 const log = (record, entry) => {
   record.history.push(entry);
@@ -282,7 +300,7 @@ function present(state, record, question, now) {
   const encounter = state.encounter;
   encounter.current = {
     questionId: question.id, stemId: question.semanticStemId, family: question.taskFamily, startedAt: now,
-    hintsUsed: 0, assisted: encounter.assistedNext,
+    hintsUsed: 0, assisted: consumeLookup(record, now) || encounter.assistedNext,
     responseMode: initialResponseMode(question, state.settings.responseMode),
   };
   encounter.assistedNext = false;
