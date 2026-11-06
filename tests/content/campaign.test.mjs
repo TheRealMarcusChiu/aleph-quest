@@ -293,9 +293,8 @@ test('the final region reads licensed Genesis 1:1-5 with original readings', () 
   for (const p of passages) for (const s of p.requires) assert.ok(skillsThrough.get('r8').has(s), `${p.id} requires ${s}`);
 });
 
-test('the shared validator finds nothing but the two documented new templates', () => {
-  const documented = /no answer-key rule for template tpl-read-(sound|pointed)$/;
-  assert.deepEqual(validateContent(content, 'full').filter(e => !documented.test(e)), []);
+test('the shared validator finds nothing at all in the shipped campaign', () => {
+  assert.deepEqual(validateContent(content, 'full'), []);
 });
 
 test('the review ledger covers every word and matches the data', () => {

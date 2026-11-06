@@ -1,7 +1,7 @@
 // Drives the real UI code under jsdom, with key presses and clicks only and no state edits.
-// LIMITS: r2..r8 here are the labeled synthetic fixture, so this proves the game code carries
-// data of the shared-contract shape from start to finish. It is NOT proof of the real campaign,
-// which stays blocked on content integration. Pixels, fonts and real touch still need a browser.
+// LIMITS: the FIXTURE journey's r2..r8 are synthetic, and prove only that the game code carries data of
+// the shared-contract shape. The REAL corpus journey plays the shipped data, but it is still jsdom:
+// pixels, fonts and real touch need a browser.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -13,6 +13,7 @@ import { DAY, startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMIL
 import { startBadgeRun, openBadgeQuestion, submitBadgeAnswer } from '../src/checkpoints.js';
 import { parseImport, slotKey, saveSlot, exportText } from '../src/storage.js';
 import { startApp } from '../src/app.js';
+import { content as shippedContent } from '../src/content.js';
 
 const content = campaignFixture();
 const realContent = openingOnly();
@@ -220,13 +221,13 @@ function playStage(g, region, stage) {
   const id = region.id;
   if (stage.kind === 'lesson') {
     approach(g, `${id}-mentor`);
-    assert.match(g.$('.speaker').textContent, new RegExp(`Mentor ${id}`));
+    assert.ok(g.data.lessons.some(l => l.mentor === g.$('.speaker').textContent && stage.targetIds.includes(l.id)), `the lesson's mentor speaks, not ${g.$('.speaker').textContent}`);
     g.click('#btn-continue');
     finishLesson(g);
     solveScreens(g);
   } else if (stage.kind === 'capture') {
     walkTo(g, { map: REGION_MAPS[id].outdoor, x: MAPS[REGION_MAPS[id].outdoor].arrive.x, y: MAPS[REGION_MAPS[id].outdoor].arrive.y });
-    walkReedsUntil(g, () => currentStage(g.state(), content, region.questId) !== stage);
+    walkReedsUntil(g, () => currentStage(g.state(), g.data, region.questId) !== stage);
   } else if (stage.targetIds[0] === `${id}:rival`) {
     approach(g, `${id}-rival`);
     g.click('#btn-continue');
@@ -241,7 +242,7 @@ function playStage(g, region, stage) {
     assert.ok(g.$('#reading-text bdi[lang="he"]'), 'the text is shown first');
     assert.equal(g.$('#passage-translation'), null, 'no translation before the reading questions');
     g.click('#btn-next');
-    solveGate(g, `read:${stage.targetIds[0]}`);
+    solveGate(g, `read:${stage.targetIds.find(target => !isDone(g.state(), `read:${target}`))}`);
   } else if (stage.kind === 'duel') {
     approach(g, `${id}-keeper`);
     g.click('#btn-continue');
@@ -250,7 +251,7 @@ function playStage(g, region, stage) {
       g.click('#btn-continue');
     }
     assert.ok(g.$('#badge-title'));
-    assert.match(g.$('#badge-title').textContent, /Fixture Seal/);
+    assert.ok(g.$('#badge-title').textContent.includes(region.badge.title));
     solveScreens(g);
   } else if (stage.kind === 'exit') {
     exitRegion(g, id);
@@ -263,7 +264,7 @@ function playR1(g) {
   // The real, accepted first region, through the same generic harness.
   const quest = 'q-grove';
   for (let guard = 0; guard < 20; guard++) {
-    const stage = currentStage(g.state(), content, quest);
+    const stage = currentStage(g.state(), g.data, quest);
     if (!stage) return;
     const s = g.state();
     if (stage.id === 'find-tamar' || stage.id === 'finals') {
@@ -276,7 +277,7 @@ function playR1(g) {
       walkTo(g, { map: 'grove', x: 28, y: 20 });
       g.press('ArrowRight');
       if (g.$('#modal').open) solveScreens(g);
-      walkReedsUntil(g, () => currentStage(g.state(), content, quest) !== stage);
+      walkReedsUntil(g, () => currentStage(g.state(), g.data, quest) !== stage);
     } else if (stage.id === 'neri') {
       approach(g, 'neri');
       g.click('#btn-continue');
@@ -304,37 +305,38 @@ function playR1(g) {
   }
 }
 
-test('FIXTURE campaign: real r1 and synthetic r2..r8 play through to the ending and the garden, by input alone', { timeout: 300000 }, () => {
-  let g = boot();
+// The same journey for either data set: fixture r2..r8, or the real reviewed corpus.
+function playWholeCampaign(data, seed) {
+  let g = boot({ storage: checkedStorage(data), data, seed });
   startNew(g);
   playR1(g);
   assert.ok(g.state().badges['b-reed-seal']);
   assert.equal(g.state().flags.exitOpened, true);
 
-  for (const region of content.regions.slice(1)) {
+  for (const region of data.regions.slice(1)) {
     // Each region is reached on foot by walking through the previous one's exit.
-    const previous = content.regions[content.regions.indexOf(region) - 1].id;
+    const previous = data.regions[data.regions.indexOf(region) - 1].id;
     const set = REGION_MAPS[previous];
     const spot = MAPS[set.outdoor].exitFront;
     walkTo(g, { map: set.outdoor, ...spot });
     const [dir] = VECTORS.find(([, dx, dy]) => tileAt(set.outdoor, spot.x + dx, spot.y + dy) === 'X');
     g.press(KEYS[dir]);
     assert.equal(g.state().map, REGION_MAPS[region.id].outdoor, `walked into ${region.id}`);
-    assert.match(g.$('#dialogue-text').textContent, new RegExp(region.theme));
+    assert.ok(g.$('#dialogue-text').textContent.includes(region.theme), `${region.id}: the region introduces itself`);
     solveScreens(g);
     assert.equal(g.$('#place').textContent, region.title);
 
-    for (let guard = 0; guard < 15; guard++) {
-      const stage = currentStage(g.state(), content, region.questId);
+    for (let guard = 0; guard < 40; guard++) {
+      const stage = currentStage(g.state(), data, region.questId);
       if (!stage) break;
       assert.equal(g.$('#objective').textContent, stage.text);
       playStage(g, region, stage);
     }
-    assert.equal(currentStage(g.state(), content, region.questId), null, `${region.id} quest finishes`);
+    assert.equal(currentStage(g.state(), data, region.questId), null, `${region.id} quest finishes`);
 
     // A full reload at each region boundary restores exactly the same game.
     const saved = structuredClone(g.state());
-    const reloaded = boot({ storage: g.storage, clock: g.clock });
+    const reloaded = boot({ storage: g.storage, clock: g.clock, data });
     reloaded.click('#slot-1');
     assert.deepEqual(reloaded.state(), saved, `${region.id} reload`);
     g = reloaded;
@@ -377,11 +379,23 @@ test('FIXTURE campaign: real r1 and synthetic r2..r8 play through to the ending 
 
   // The finished game saves and reloads exactly, and no word was ever granted.
   const saved = structuredClone(g.state());
-  const again = boot({ storage: g.storage, clock: g.clock });
+  const again = boot({ storage: g.storage, clock: g.clock, data });
   assert.match(again.$('#slots').textContent, /8 seals earned/);
   again.click('#slot-1');
   assert.deepEqual(again.state(), saved);
   assert.ok(g.storage.writes > 200, `${g.storage.writes} autosaves were each proven readable`);
+  return g;
+}
+
+test('FIXTURE campaign: real r1 and synthetic r2..r8 play through to the ending and the garden, by input alone', { timeout: 300000 }, () => {
+  playWholeCampaign(content, 11);
+});
+
+// Key presses and clicks only, with a fixed seed, consulting authored answer keys to choose legitimate answers.
+// Still jsdom with a stubbed canvas: this shows the real data and game code fit, and is not browser proof.
+test('REAL corpus: all eight regions play through to the ending and the garden, by input alone', { timeout: 590000 }, () => {
+  const g = playWholeCampaign(shippedContent, 23);
+  for (const region of shippedContent.regions) assert.ok(g.state().badges[region.badge.id], `${region.badge.title} earned`);
 });
 
 test('a real opening save from the accepted build continues in the new UI, finishes the trial and autosaves as v2', () => {

@@ -79,7 +79,7 @@ Nothing below is implemented in this branch. These are the data's semantics, for
 
 - **`tpl-read-sound` and `tpl-read-pointed`:** `keyRules` in `scripts/content-rules.mjs` states both rules. The sound rule compares with the card's transliteration; `soundPattern` in `scripts/content-sound.mjs` is the independent check. Mutation cases are in `tests/content/ledger.test.mjs`.
 - **`question.key{tokenId,morph}`:** kept as is. `morph` is a substring of that token's OSHB code. It proves the parse behind the item, not the answer text. The current gameplay validator reports `key.morph` as undocumented and wants `key.answer`; the data doesn't carry `key.answer`, because the answer is already `acceptedAnswers`.
-- **`question.contextKey{tokenId,form,morph,answer,basis}`:** nine context questions have an accepted answer that is inflected or contextual, such as "with you" or "my sister". `answer` must equal the accepted option, `form` must be that token and appear in the prompt, and the token's lemma must be the word's. The rule for this is in `tests/content/repair.test.mjs`. It replaces substring matching instead of restoring it.
+- **`question.contextKey{tokenId,form,morph,answer,basis}`:** nine context questions have an accepted answer that is inflected or contextual, such as "with you" or "my sister". `answer` must equal the accepted option, `form` must be that token and appear in the prompt, and the token's lemma must be the word's. The rule for this is in `tests/content/repair.test.mjs` and in the shared validator (see `docs/SCHEMA.md`). It replaces substring matching instead of restoring it.
 - **Reading prerequisites:** `readingDemands` in `scripts/content-rules.mjs` names the rules a pointed form needs. `-sound` and `-pointed` questions now require them, so a word with a shewa or dagesh isn't capturable after the first vowel lesson. Seed words stay capturable. `wordCapturable` already handles this, since it checks each family's `requires`.
 - **Guided practice:** these items need their own lesson's skill, on purpose. The worked example comes first, so the validator should allow it for that lesson only.
 - **Reading headroom:** each Genesis passage has four questions against a `gateRequired` of two.
@@ -88,17 +88,17 @@ Nothing below is implemented in this branch. These are the data's semantics, for
 
 Every row was read against `Bereshit.xml` and `HebrewStrong.xml`. For the example token: reference, lemma attribute and morphology match upstream byte for byte (`tests/content/source.test.mjs`). The headword matches Strong by comparison key, unless the row's Note says otherwise. Every row has six capture questions: two read, two understand and two inscribe. Root status is `listed` (Strong calls it a primitive root or names a verb, and `rootNote` says so) or `null`.
 
-## Integration dependencies on the gameplay lane
+## Integration with the game code
 
-Nothing below is implemented in this branch, and this lane doesn't own that code.
+The reviewed data merged unchanged, and these were settled on the consumer side:
 
-| Needed | Where | Why it blocks |
-|---|---|---|
-| Key rules for `tpl-read-sound` and `tpl-read-pointed` | `scripts/validate-content.mjs` | 288 `no answer-key rule` errors, the only full-validator errors. `scripts/content-rules.mjs` exports `keyRules` to import. |
-| Drop the opening word cap | `scripts/validate-content.mjs` and `tests/validator.test.mjs` | `validate:opening` fails on 154 words, by design of the old phase. |
-| Accept three r1 text changes | main's opening baseline | `b-order-1`'s prompt and the `rootNote` of H4428 and H5612 now differ from `52502ce`. `tests/content/source.test.mjs` names these fields, so nothing else in r1 can move. Scores, ids and answers don't change. |
-| A paradigm relationship value, if wanted | shared schema, validator and UI label | The enum has only inflection, derivation and separate-lexeme, and `inflection` requires the same Strong number. Demonstrative and -teen links use `derivation` with `features.paradigm` or `features.form`, so the UI says "Related by derivation". Consumers ignore `features.paradigm`. |
-| Update tests that pin opening counts | existing tests, see the commit report | They assume r1-only data. |
+| Item | Where it stands |
+|---|---|
+| Key rules for `tpl-read-sound` and `tpl-read-pointed` | In `scripts/validate-content.mjs`, with mutation tests on fixture and real records. |
+| Opening word cap | `validate:opening` now counts region one, so it still applies with 154 cards. |
+| Three r1 text changes | `b-order-1`'s prompt and the `rootNote` of H4428 and H5612 differ from `52502ce`. `tests/content/source.test.mjs` names these fields, so nothing else in r1 can move. Scores, ids and answers don't change. |
+| Paradigm links | The enum stays inflection, derivation and separate-lexeme. Demonstrative links keep `derivation` with `features.paradigm`, and the game now shows and tests them as one paradigm. `-teen` links keep `derivation` with `features.form` and are labeled as derivation. |
+| `contextKey` | Enforced by the shared validator, as `docs/SCHEMA.md` describes. |
 | `reading` quest stage kind | `src/engine.js` `stageDone` | It returns false for unknown kinds, so `r8-reading` would never complete. The plan lists this kind. Target ids are passage ids. |
 | `rN:rival`, `rN:gate`, `rN:exit` flags, plus puzzle pools `practice` and `reading` | gameplay | The pools hold real questions, but nothing presents them yet. |
 | Capture stages scoped to `targetIds`; `requiresCaptures` scoped to the region | `src/engine.js` | `capturedCount` is global, so later stages would pass too early. |

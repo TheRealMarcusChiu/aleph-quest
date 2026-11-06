@@ -36,7 +36,7 @@ const STATUS_HELP = {
 const STATUS_ORDER = ['Seen', 'Studied', 'Captured', 'Practiced', 'Mastered'];
 const RANK_NAMES = { 0: 'Not captured', 1: 'Known', 2: 'Familiar', 3: 'Deep' };
 const ABILITY_NAMES = { name: 'Naming: this word can answer seals that want a name', deed: 'Deed: this word can answer seals that want an action', link: 'Linking: this word can answer seals that want a joining word' };
-const RELATIONSHIPS = [['inflection', 'The same word, inflected'], ['derivation', 'A related word, derived'], ['separate-lexeme', 'A separate dictionary word']];
+const RELATIONSHIPS = [['inflection', 'The same word, inflected'], ['derivation', 'A related word, derived'], ['paradigm', 'A partner in the same paradigm'], ['separate-lexeme', 'A separate dictionary word']];
 const HEBREW_RUN = /[֐-׿]+(?:[ ־][֐-׿]+)*/g;
 const HAS_HEBREW = /[֐-׿]/;
 const SACRED_NOTE = 'Display preference: the divine name is shown here as ה׳. The source text is unchanged, and this quotation is altered only on your screen. Change this in the Menu.';
@@ -960,7 +960,7 @@ export function createUI(ctx) {
       studied && el('div', { class: 'example' }, he(word.example.hebrew, 'he he-medium'), el('p', { text: `${word.example.translation} (${prettyRef(word.example.reference)})` })),
       studied && el('h3', { text: 'Other forms in the source' }),
       studied && el('ul', { id: 'entry-forms', class: 'token-list' }, ...word.relatedForms.map(form => el('li', {},
-        he(form.hebrew, 'he he-inline'), el('span', { text: ` ${form.gloss}. ${relationshipLabel(form.relationship)} (${prettyRef(form.reference)})${record.formsKnown.includes(form.tokenId) ? '. Traced' : ''}` })))),
+        he(form.hebrew, 'he he-inline'), el('span', { text: ` ${form.gloss}. ${relationshipLabel(form)} (${prettyRef(form.reference)})${record.formsKnown.includes(form.tokenId) ? '. Traced' : ''}` })))),
       relatedWords.length > 0 && el('h3', { text: 'Same root' }),
       relatedWords.length > 0 && el('ul', { id: 'entry-family', class: 'token-list' }, ...relatedWords.map(other => el('li', {}, he(other.hebrew, 'he he-inline'), el('span', { text: ` ${other.gloss}` })))),
       studied && word.notes && mixed(word.notes, 'p', { class: 'small' }),
@@ -983,7 +983,7 @@ export function createUI(ctx) {
     ], { onEscape: back });
   }
 
-  const relationshipLabel = r => ({ inflection: 'Same word, inflected', derivation: 'Related by derivation', 'separate-lexeme': 'A separate dictionary word' }[r]);
+  const relationshipLabel = form => (form.features?.paradigm ? `Same ${form.features.paradigm} paradigm` : { inflection: 'Same word, inflected', derivation: 'Related by derivation', 'separate-lexeme': 'A separate dictionary word' }[form.relationship]);
 
   function historyLine(entry) {
     const when = formatDate(entry.at);

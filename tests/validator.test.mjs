@@ -59,7 +59,9 @@ test('capture needs three distinct families, and enough fresh stems to retry', (
 test('references must resolve', () => {
   failsWith(d => { q(d, 'H0001-gloss').wordId = 'H9999'; }, /H9999/);
   failsWith(d => { q(d, 'H0001-gloss').sourceIds = ['nope']; }, /nope/);
-  failsWith(d => { q(d, 'H0001-gloss').requires = ['vowels']; }, /vowels/);
+  failsWith(d => { q(d, 'H0001-gloss').requires = ['no-such-skill']; }, /H0001-gloss.*untaught skill no-such-skill/);
+  // A real skill from a later region is a different failure: it exists, and r1 can't reach it.
+  failsWith(d => { q(d, 'H0001-gloss').requires = ['vowels']; }, /H0001-gloss.*requires vowels, not taught by the end of r1/);
   failsWith(d => { d.regions[0].badge.questionIds.push('b-missing'); }, /b-missing/);
   failsWith(d => { d.regions[0].requiresBadges = ['b-unknown']; }, /b-unknown/);
   failsWith(d => { d.lessons[0].guidedQuestionIds = ['g-missing']; }, /g-missing/);

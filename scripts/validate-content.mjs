@@ -1,5 +1,5 @@
-// Content validator. `--opening` holds the first region to real rules. With no flag it also
-// enforces the full campaign floor, and it fails until that content actually exists.
+// Content validator. `--opening` applies every structural rule and floors the first region at 8 to 10 words.
+// With no flag it also enforces the full campaign floor: 150 words, 600 questions, regions r1 to r8.
 import { fileURLToPath } from 'node:url';
 import { comparisonKey } from '../src/answers.js';
 import { content, buildContent } from '../src/content.js';
@@ -12,7 +12,8 @@ const FINAL_TO_REGULAR = { ך: 'כ', ם: 'מ', ן: 'נ', ף: 'פ', ץ: 'צ' };
 const RELATIONSHIPS = new Set(['inflection', 'derivation', 'separate-lexeme']);
 const FORMATS = new Set(['choice', 'door', 'type', 'tokens', 'match']);
 const STAGE_KINDS = new Set(['lesson', 'capture', 'puzzle', 'duel', 'reading', 'exit']);
-const KEY_FIELDS = new Set(['answer', 'form', 'features', 'relationship', 'tokenId', 'morph', 'sense']);
+const KEY_FIELDS = new Set(['answer', 'form', 'features', 'relationship', 'tokenId', 'morph']);
+const CONTEXT_KEY_FIELDS = ['tokenId', 'form', 'morph', 'answer', 'basis'];
 // OSHB pronominal suffix, person and number, to the English a contextual rendering has to use for it.
 const SUFFIX_ENGLISH = { '1s': ['my', 'me', 'mine', 'i'], '1p': ['our', 'us', 'we'], '2s': ['you', 'your'], '2p': ['you', 'your'], '3ms': ['his', 'him', 'he', 'it', 'its'], '3fs': ['her', 'hers', 'she', 'it', 'its'], '3p': ['their', 'them', 'they'] };
 const RESERVED_GROUPS = new Set(['rival', 'exit', 'ward', 'secret']);
@@ -55,24 +56,29 @@ function listedSenses(word) {
 
 const hasWords = (text, phrase) => new RegExp(`(^|[^\\p{L}])${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[^\\p{L}])`, 'iu').test(text);
 
-// An answer that isn't a listed sense needs proof that it is that sense in this exact place: the same word's
-// source token, shown in the prompt, with any pronoun in the source matching the pronoun in the English.
-function checkContextEvidence(q, word, text, tokens, err) {
-  const wrong = why => err(`${q.id}: answer is not the word's meaning (${why})`);
-  const { key } = q;
-  if (!key?.sense) return wrong('no key.sense');
-  if (!hasWords(text, key.sense)) return err(`${q.id}: answer "${text}" does not use key sense "${key.sense}"`);
+// Proof that a contextual answer is this word in this exact place: its whole source token and morphology,
+// shown in the prompt, using a listed sense, with any pronoun in the source matching the pronoun in the English.
+function checkContextKey(q, word, text, tokens, err) {
+  const key = q.contextKey;
+  for (const field of Object.keys(key)) if (!CONTEXT_KEY_FIELDS.includes(field)) err(`${q.id}: contextKey field ${field} is not documented`);
+  const missing = CONTEXT_KEY_FIELDS.filter(field => typeof key[field] !== 'string' || !key[field]);
+  for (const field of missing) err(`${q.id}: contextKey needs ${field}`);
+  if (missing.length) return;
+  if (key.answer !== text) err(`${q.id}: contextKey answer "${key.answer}" is not the accepted option "${text}"`);
+  if (![...listedSenses(word)].some(sense => hasWords(text, sense))) err(`${q.id}: answer "${text}" uses no listed sense of this word`);
   const token = tokens.get(key.tokenId);
-  if (!token) return wrong('no source token in key');
-  if (key.morph === undefined) return wrong('no key morph');
-  if (!pointed(q.prompt).includes(pointed(token.surface))) err(`${q.id}: the prompt does not show key token ${key.tokenId}`);
+  if (!token) { err(`${q.id}: contextKey cites unknown token ${key.tokenId}`); return; }
+  if (!lemmaNumbers(token.lemma).includes(strongNumber(word.strongId))) err(`${q.id}: contextKey token ${key.tokenId} has lemma ${token.lemma}, not ${word.id}`);
+  // Whole trailing segments of the token's analysis. A prefix such as the conjunction may stay out of the claim.
+  if (!`/${token.morph.replace(/^H/, '')}`.endsWith(`/${key.morph}`)) err(`${q.id}: contextKey morph ${key.morph} is not token ${key.tokenId}'s morphology ${token.morph}`);
+  if (pointed(key.form) !== pointed(token.surface)) err(`${q.id}: contextKey form ${key.form} is not token ${key.tokenId}, which reads ${token.surface}`);
+  if (!pointed(q.prompt).includes(pointed(token.surface))) err(`${q.id}: the prompt does not show contextKey token ${key.tokenId}`);
   const suffix = token.morph.match(/\/Sp([123])([mfcb]?)([sp])/);
   if (suffix) {
     const [, person, gender, number] = suffix;
     const fits = SUFFIX_ENGLISH[`${person}${person === '3' && number === 's' ? gender : ''}${number}`] ?? [];
     if (!fits.some(pronoun => hasWords(text, pronoun))) err(`${q.id}: answer "${text}" does not render the token's suffix ${suffix[0].slice(1)}`);
   }
-  return undefined;
 }
 
 // New word-level templates prove their key with this metadata. Each field is checked against the word's
@@ -97,7 +103,6 @@ function checkKey(q, word, tokens, err, answers) {
     // Whole morphology segments only, so "Nc" is a claim about a noun and "cmpa" is no claim at all.
     else if (typeof key.morph !== 'string' || !key.morph || !`/${token.morph.replace(/^H/, '')}`.includes(`/${key.morph}`)) err(`${q.id}: key morph ${key.morph} is not token ${key.tokenId}'s morphology ${token.morph}`);
   }
-  if (key.sense !== undefined && (!word || !listedSenses(word).has(key.sense))) err(`${q.id}: key sense "${key.sense}" is not a listed sense of this word`);
   if (!word) return;
   const form = key.form === undefined ? null : word.relatedForms.find(item => pointed(item.hebrew) === pointed(key.form));
   if (key.form !== undefined && !form && pointed(word.hebrew) !== pointed(key.form)) err(`${q.id}: key form ${key.form} is not attested for ${word.id}`);
@@ -254,6 +259,7 @@ export function validateContent(data, phase) {
 
     const word = words.get(q.wordId);
     if (q.key) checkKey(q, word, tokens, err, () => acceptedTexts(q));
+    if (q.contextKey && q.templateId !== 'tpl-context-choice') err(`${q.id}: contextKey belongs only on tpl-context-choice`);
     if (!word) continue;
     for (const skill of word.requires) if (!q.requires.includes(skill)) err(`${q.id}: missing the word's requirement ${skill}`);
     const answerText = () => (q.choices ?? q.recognitionChoices).find(c => (q.acceptedAnswers ?? q.recognitionAccepted).includes(c.id))?.text;
@@ -269,11 +275,13 @@ export function validateContent(data, phase) {
         if (recognized !== word.hebrew) err(`${q.id}: recognition answer is not the word's spelling`);
       },
       'tpl-gloss-choice': () => answerText() === word.gloss || err(`${q.id}: answer is not the word's meaning`),
-      // In context a word can take any of its listed senses, alone or as "one or the other". It can't just contain a gloss as a substring.
+      // In context a word can take any of its listed senses, alone or as "one or the other". Anything else, such as
+      // "with you", needs a contextKey. An answer can't pass by merely containing a gloss as a substring.
       'tpl-context-choice': () => {
         const text = answerText() ?? '';
         const senses = listedSenses(word);
-        if (!text.split(/\s+or\s+/).every(part => senses.has(part)) && !senses.has(text)) checkContextEvidence(q, word, text, tokens, err);
+        if (q.contextKey) checkContextKey(q, word, text, tokens, err);
+        else if (!text.split(/\s+or\s+/).every(part => senses.has(part)) && !senses.has(text)) err(`${q.id}: answer is not the word's meaning, and it has no contextKey`);
       },
       // The sound guide on the word's own card, read from the word's own pointing.
       'tpl-read-sound': () => {
@@ -333,11 +341,18 @@ export function validateContent(data, phase) {
 
   // Lessons: teach in order, with examples taken from the source.
   const earlier = new Set();
+  // Guided answers are assisted, so nothing that counts as independent evidence may ask the same question.
+  const independentPools = new Set([
+    ...data.regions.flatMap(r => [...Object.values(r.puzzleQuestionIds).flat(), ...r.badge.questionIds]),
+    ...data.passages.flatMap(p => p.questionIds),
+  ]);
   for (const l of data.lessons) {
     for (const skill of l.requires) if (!earlier.has(skill)) err(`${l.id}: requires ${skill} before any lesson teaches it`);
     for (const skill of l.teaches) earlier.add(skill);
     for (const id of l.guidedQuestionIds) {
       if (!questions.has(id)) { err(`${l.id}: unknown guided question ${id}`); continue; }
+      if (questions.get(id).wordId !== null) err(`${l.id}: guided question ${id} can't carry a word, since it never earns word credit`);
+      if (independentPools.has(id)) err(`${id}: is guided in ${l.id}, so no independent pool can ask it`);
       // Guided work is assisted and follows this lesson's explanation and worked examples, so its own skills count. Later ones don't.
       for (const skill of questions.get(id).requires) if (!earlier.has(skill)) err(`${l.id}: guided question ${id} requires ${skill}, which hasn't been taught yet`);
     }

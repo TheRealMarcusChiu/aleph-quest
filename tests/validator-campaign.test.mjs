@@ -167,6 +167,13 @@ test('stage order can\'t ask for what only a later stage teaches, which would be
   fails(d => { d.lessons.find(l => l.id === 'lfx-r2-a').requires = ['fx-r2-b']; }, /lfx-r2-a.*fx-r2-b/);
 });
 
+test('a guided question stays guided: no word credit, and no independent pool can ask it', () => {
+  fails(d => { q(d, 'gfx-r2').wordId = 'FX200'; }, /lfx-r2-a.*gfx-r2.*word/);
+  fails(d => { region(d, 'r2').puzzleQuestionIds.gate.push('gfx-r2'); }, /gfx-r2.*guided.*pool/);
+  fails(d => { region(d, 'r2').badge.questionIds.push('gfx-r2'); }, /gfx-r2.*guided.*pool/);
+  fails(d => { d.passages.find(p => p.id === 'pfx-r2').questionIds.push('gfx-r2'); }, /gfx-r2.*guided.*pool/);
+});
+
 test('guided practice can use the lesson it follows, and nothing later', () => {
   fails(d => { d.lessons.find(l => l.id === 'lfx-r2-b').guidedQuestionIds = ['pfx-gate-r3-0']; }, /lfx-r2-b.*guided.*fx-r3/);
   fails(d => { q(d, 'gfx-r2').requires = ['fx-r2-b']; }, /lfx-r2-a.*guided.*fx-r2-b/);
@@ -290,7 +297,7 @@ test('question.tokenIds must be real tokens of one verse that spell what the que
 });
 
 // One real pattern from the corpus: a preposition with a suffix, where "with you" is correct and isn't the gloss.
-function contextEvidence(d, { answer = 'with you', sense = 'with', morph = 'HR/Sp2ms', surface = 'אִתְּךָ', prompt = `God speaks ${surface} here. Which meaning fits?` } = {}) {
+function contextEvidence(d, { answer = 'with you', morph = 'HR/Sp2ms', surface = 'אִתְּךָ', prompt = `God speaks ${surface} here. Which meaning fits?` } = {}) {
   const word = d.words.find(w => w.id === 'FX200');
   word.gloss = 'with';
   word.meanings = ['with', 'beside'];
@@ -302,7 +309,7 @@ function contextEvidence(d, { answer = 'with you', sense = 'with', morph = 'HR/S
   return Object.assign(q(d, 'FX200-gloss'), {
     templateId: 'tpl-context-choice', prompt, displayHebrew: undefined,
     choices: [{ id: 'c0', text: answer }, { id: 'c1', text: 'over you' }, { id: 'c2', text: 'fxother' }],
-    key: { answer, sense, tokenId: 'fxctx', morph: morph.replace(/^H/, '') },
+    contextKey: { tokenId: 'fxctx', form: surface, morph: morph.replace(/^H/, ''), answer, basis: 'Fixture basis.' },
   });
 }
 
@@ -315,23 +322,29 @@ test('contextual answers: "with you" passes on checked evidence, and each part o
   assert.deepEqual(validateContent(sister, 'full'), [], 'a first-person suffix fits my');
 
   // No key at all: a phrase containing the gloss is still not a listed sense.
-  fails(d => { delete contextEvidence(d).key; }, /FX200-gloss.*meaning/);
-  fails(d => { contextEvidence(d).key.answer = 'over you'; }, /FX200-gloss.*key answer/);
-  fails(d => { delete contextEvidence(d).key.sense; }, /FX200-gloss.*meaning/);
-  fails(d => { contextEvidence(d).key.sense = 'against'; }, /FX200-gloss.*sense/);
+  fails(d => { delete contextEvidence(d).contextKey; }, /FX200-gloss.*meaning/);
+  fails(d => { contextEvidence(d).contextKey.answer = 'over you'; }, /FX200-gloss.*contextKey answer/);
+  fails(d => { delete contextEvidence(d).contextKey.basis; }, /FX200-gloss.*contextKey needs basis/);
+  fails(d => { contextEvidence(d).contextKey.extra = 1; }, /FX200-gloss.*contextKey field extra/);
   fails(d => { contextEvidence(d, { answer: 'against you' }); }, /FX200-gloss.*sense/);
-  fails(d => { delete contextEvidence(d).key.tokenId; }, /FX200-gloss.*token/);
-  fails(d => { delete contextEvidence(d).key.morph; }, /FX200-gloss.*morph/);
-  fails(d => { contextEvidence(d).key.morph = 'Vqp3ms'; }, /FX200-gloss.*key.*Vqp3ms/);
+  fails(d => { delete contextEvidence(d).contextKey.tokenId; }, /FX200-gloss.*token/);
+  fails(d => { delete contextEvidence(d).contextKey.morph; }, /FX200-gloss.*morph/);
+  fails(d => { contextEvidence(d).contextKey.morph = 'Vqp3ms'; }, /FX200-gloss.*contextKey.*Vqp3ms/);
+  // A morph claim is the token's whole tail, so a loose piece of it proves nothing.
+  fails(d => { contextEvidence(d).contextKey.morph = 'Sp2'; }, /FX200-gloss.*contextKey.*Sp2/);
+  fails(d => { contextEvidence(d).contextKey.morph = 'R'; }, /FX200-gloss.*contextKey.*morph/);
   // The token must be this word, shown in this prompt, and its suffix must agree with the English.
-  fails(d => { contextEvidence(d); d.attestations.at(-1).lemma = '999'; }, /FX200-gloss.*key.*fxctx.*FX200/);
+  fails(d => { contextEvidence(d); d.attestations.at(-1).lemma = '999'; }, /FX200-gloss.*contextKey.*fxctx.*FX200/);
+  fails(d => { contextEvidence(d).contextKey.form = 'אָב'; }, /FX200-gloss.*contextKey form/);
   fails(d => { contextEvidence(d).prompt = 'No Hebrew here. Which meaning fits?'; }, /FX200-gloss.*prompt/);
+  // Evidence only belongs on a contextual question.
+  fails(d => { const item = contextEvidence(d); item.templateId = 'tpl-gloss-choice'; }, /FX200-gloss.*contextKey/);
   fails(d => { contextEvidence(d, { answer: 'with him' }); }, /FX200-gloss.*suffix/);
   fails(d => { contextEvidence(d, { answer: 'with', morph: 'HNcfsc/Sp1cs' }); d.words.find(w => w.id === 'FX200').meanings = ['beside']; d.words.find(w => w.id === 'FX200').gloss = 'beside'; }, /FX200-gloss/);
   fails(d => { contextEvidence(d, { answer: 'with her', morph: 'HR/Sp2ms' }); }, /FX200-gloss.*suffix/);
   // A phrase with no pronoun in the source can't pick one up by authoring.
   const plain = fixture();
-  contextEvidence(plain, { answer: 'be, here "was"', sense: 'with', morph: 'HVqp3fs', surface: 'הָיְתָה' });
+  contextEvidence(plain, { answer: 'be, here "was"', morph: 'HVqp3fs', surface: 'הָיְתָה' });
   const errors = validateContent(plain, 'full');
   assert.ok(errors.some(e => /FX200-gloss.*sense/.test(e)), errors.join());
 });

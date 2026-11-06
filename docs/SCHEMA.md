@@ -48,24 +48,26 @@ These templates have a built-in rule against the word: `tpl-first-letter`, `tpl-
 | `answer` | on word questions, and on word-free ones without `tokenId` and `morph` | The text the question accepts: the accepted choice's text, an accepted typed answer, or an accepted token sequence joined in reading order. NFC. |
 | `tokenId` | no | A real attestation. If the question names its own `tokenId` or `tokenIds`, it must be one of them. On a word question its lemma must be that word's Strong number. |
 | `morph` | no, and needs `tokenId` | The start of a morphology segment in that token, without the leading `H`: `Td/Nc` fits `HTd/Ncmpa`, and `cmpa` doesn't. |
-| `sense` | no, word questions only | A listed sense of the word. |
 | `form` | no | The word's citation form or one of its `relatedForms`, compared pointed. |
 | `features` | no | Each entry matches `word.features` or the named form's `features`. |
 | `relationship` | no | A known relationship, and the named form's own if `form` is given. |
 
 So a word-free task may carry `key{tokenId, morph}` as source proof alone. That shows what the cited token is. It doesn't show the task's answer is right.
 
-**Contextual evidence.** A `tpl-context-choice` answer that isn't a listed sense, such as "with you" or "my sister", must carry `key{answer, sense, tokenId, morph}`. Each part has to hold:
+**Contextual evidence.** A `tpl-context-choice` answer that isn't a listed sense, such as "with you" or "my sister", must carry top-level `contextKey{tokenId, form, morph, answer, basis}`. A `contextKey` may also appear on a listed-sense answer, and it's checked the same way. It belongs on no other template. All five fields are required, any other field is an error, and each has to hold:
 
-- `answer` is the accepted choice's text.
-- `sense` is a listed sense, and it appears in the answer as whole words.
-- `tokenId` is a real token of this word, and its surface appears in the prompt.
-- `morph` fits that token.
+- `answer` is the accepted choice's full text, kept whole, and it uses a listed sense as whole words.
+- `tokenId` is a real token whose lemma is this word's Strong number.
+- `form` is that token's surface, compared pointed, and the prompt shows it.
+- `morph` is the token's morphology or its whole trailing segments, without the leading `H`: `Vqw3ms` fits `HC/Vqw3ms`, and a piece such as `Sp1` or `R` of `HR/Sp2fs` doesn't.
+- `basis` states why the answer fits this place.
 - If the token has a pronominal suffix (`/Sp…`), the answer uses an English pronoun for that person and number: 1s my, me, mine, I; 1p our, us, we; 2 you, your; 3ms his, him, he, it, its; 3fs her, hers, she, it, its; 3p their, them, they.
 
-For example, for Strong 854 in Genesis 6:18 the key is `{"answer":"with you","sense":"with","tokenId":"…","morph":"R/Sp2…"}`.
+For example, Strong 854 in Genesis 6:18 has `{"tokenId":"014Zw","form":"אִתָּךְ","morph":"R/Sp2fs","answer":"with you","basis":"…"}`.
 
-A key is checked for consistency with the record. It does not prove the linguistics, and the independent content audit still has to do that.
+`contextKey` and `key` are separate records. `contextKey` proves a contextual meaning. `key` proves any other template's answer against the word.
+
+Both are checked for consistency with the record. They don't prove the linguistics. That's the content review's job.
 
 **`question.tokenIds`** names a phrase's tokens, instead of `tokenId`. They must be real, from one verse, and spell `displayHebrew` when it is present, ignoring spaces and maqqef. Other optional fields such as `span`, `homographOf`, `citationNote`, `indeclinable` and `noOtherForm` aren't read by the game or this validator.
 
@@ -79,7 +81,7 @@ Pointed `type` answers must hold Hebrew with its points. Consonant answers must 
 
 Capture families are `read-letter`, `understand-meaning` and `inscribe-spelling`. Each word needs at least two stems per family, both answerable on the skills its home region teaches, so a miss always has a fresh retry, and at least six questions. `analyze` and `build` questions appear in encounters, reviews, puzzles and badges, and never fill a capture step. Commands `analyze` and `build` only appear on the menu once a question of that command is answerable.
 
-**lesson**: `id`, `regionId`, `title`, `mentor`, `requires[]`, `teaches[]`, `chart`, `explanation`, `workedExamples[{hebrew,translation,tokenId,reference,note}]`, `guidedQuestionIds[]`. Lessons are listed in teaching order. Guided answers are never scored. A guided question can need this lesson's own skills, since it follows the explanation and worked examples, but no later lesson's. Independent questions only count a skill once its lesson has finished.
+**lesson**: `id`, `regionId`, `title`, `mentor`, `requires[]`, `teaches[]`, `chart`, `explanation`, `workedExamples[{hebrew,translation,tokenId,reference,note}]`, `guidedQuestionIds[]`. Lessons are listed in teaching order. Guided answers are never scored. A guided question can need this lesson's own skills, since it follows the explanation and worked examples, but no later lesson's. Independent questions only count a skill once its lesson has finished. A guided question has `wordId: null`, and no puzzle pool, badge or passage may ask it.
 
 **region**: `id`, `order`, `title`, `theme`, `rossChapters[]`, `alignment`, `requiresBadges[]`, `lessonIds[]`, `wordIds[]`, `seedWordId`, `questId`, `badge{id,title,questionIds[],requiredCorrect,requiredTaskFamilies[],requiresSkills[],requiresCaptures}`, `puzzleQuestionIds{group:[id]}`. Badge items must have `wordId: null` and must not reuse a lesson or vocabulary token. `region.title` names the place on screen. `requiresCaptures` counts only words in this region's `wordIds`.
 
@@ -99,6 +101,8 @@ Stage order is enforced everywhere, including at import. A mentor won't teach a 
 
 **passage**: `id`, `reference`, `sourceId`, `sourceText` (immutable, with accents and segmentation), `display`, `translation`, `tokens[{id,hebrew,lemma,morph,gloss}]`, `notes`, `questionIds[]`, `requires[]`. A passage named by a `reading` stage plays at the region's reading stand. The translation stays hidden until its questions are answered. It needs correct answers to `min(2, questionIds.length)` questions, and at least one spare, unless `questionIds` is empty.
 
+**relatedForm paradigm**: `features.paradigm` names forms in one paradigm that have separate dictionary numbers, such as the proximal demonstratives. The record keeps `relationship: derivation`, because the enum has no paradigm value. The game shows the paradigm instead, and in the trace task "a partner in the same paradigm" is the right answer. No lexeme count changes.
+
 **attestation**: `tokenId`, `reference`, `surface` (OSHB string, unchanged), `lemma`, `morph`.
 
 **source**: `id`, `title`, `url`, `license`, `scope`, `revision?`, `changes?`, `accessLimitations?`.
@@ -111,7 +115,7 @@ Seals are optional. Each asks for a party word with knowledge rank 2 or higher o
 
 ## Validator phases
 
-`--opening` applies every structural rule plus an 8 to 10 word floor on the first region. With no flag it also applies the campaign floor: at least 150 words, at least 600 questions, exactly `r1`..`r8` in order. Lexemes must be distinct by `strongId` and `consonants`. Reachability rules apply in both phases. The full phase is expected to fail until real content lands.
+`--opening` applies every structural rule plus an 8 to 10 word floor on the first region. With no flag it also applies the campaign floor: at least 150 words, at least 600 questions, exactly `r1`..`r8` in order. Lexemes must be distinct by `strongId` and `consonants`. Reachability rules apply in both phases. Both phases pass on the shipped data, and tests break real records to show the floors still reject.
 
 ## Skills in use
 

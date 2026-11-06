@@ -12,7 +12,7 @@ Chapters 1 to 6 are signs and sounds: alphabet; vowels and syllables; shewa and 
 
 ## Region mapping
 
-The grouping, names, objectives and badges are **original game design**, not Ross's units. Content is authored for all eight regions. Whether they can be played depends on the gameplay lane.
+The grouping, names, objectives and badges are **original game design**, not Ross's units. All eight regions have reviewed content and can be played in order.
 
 | Region | Ross chapters | Lessons (skills, in order) | Words | Badge |
 |---|---|---|---|---|

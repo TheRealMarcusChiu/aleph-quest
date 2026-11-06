@@ -82,13 +82,16 @@ const RELATION_TEXT = {
 export function answerRelatedForm(state, content, wordId, tokenId, response, now) {
   const record = state.words[wordId];
   const form = content.wordById.get(wordId).relatedForms.find(item => item.tokenId === tokenId);
-  const correct = response === form.relationship;
+  // A paradigm partner keeps its reviewed relationship in the data, but calling it "built from" would teach something false.
+  const paradigm = form.features?.paradigm;
+  const correct = response === (paradigm ? 'paradigm' : form.relationship);
   state.interactions += 1;
   state.updatedAt = now;
   if (correct) record.formsKnown.push(tokenId);
   else record.formRetired[tokenId] = state.interactions;
   log(record, { at: now, type: 'form', correct });
-  return { correct, explanation: `${form.hebrew} is ${RELATION_TEXT[form.relationship]}. Here it means "${form.gloss}".` };
+  const relation = paradigm ? `part of the same ${paradigm} paradigm, with its own dictionary number` : RELATION_TEXT[form.relationship];
+  return { correct, explanation: `${form.hebrew} is ${relation}. Here it means "${form.gloss}".` };
 }
 
 // Used by abilities in the world. It takes a fresh eligible question of this word and is not review evidence.
