@@ -9,7 +9,7 @@
 {"id":"b-r4-pgn-3","prov":"span","tests":["perfect"],"ans":"OSHB Vqp1cs","rej":{"c1":"you ends in -ta","c2":"he has no ending"}}
 {"id":"b-r4-construct-1","prov":"span","tests":["construct"],"ans":"OSHB Ncmpc","rej":{"c1":"singular is יוֹם","c2":"absolute is יָמִים"}}
 {"id":"b-r4-construct-2","prov":"span","tests":["construct"],"ans":"OSHB Ncmpc; of the mountains","rej":{"c1":"OSHB tags no suffix","c2":"no article, and it is plural"}}
-{"id":"b-r4-construct-3","prov":"span","tests":["construct"],"ans":"OSHB Ncmsc","rej":{"c1":"no article","c2":"singular"}}
+{"id":"b-r4-construct-3","prov":"span","tests":["construct"],"ans":"OSHB Ncmsc; first vowel reduces to shewa, and the ending segol changes to tsere","rej":{"c1":"no article","c2":"singular"}}
 {"id":"b-r4-object-1","prov":"span","tests":["verbal-clauses"],"ans":"verb first, then the subject","rej":{"c1":"the speaker quotes God","c2":"the subject follows"}}
 {"id":"b-r4-object-2","prov":"span","tests":["perfect"],"ans":"OSHB Vqp3ms","rej":{"c1":"OSHB tags a verb","c2":"you ends in -ta"}}
 {"id":"b-r4-object-3","prov":"span","tests":["perfect"],"ans":"a verb of knowing, spoken now","rej":{"c1":"Abram is speaking of what he knows now"}}
