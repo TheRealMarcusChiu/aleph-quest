@@ -1,0 +1,102 @@
+{"id":"H0216-sound","prov":"citation","tests":["vowels"],"ans":"holam-vav, dot on top, reads o: or","rej":{"c1":"u would need a dot in the vav's belly","c2":"a would need patah or qamats"}}
+{"id":"H0216-pointed","prov":"citation","tests":["vowels"],"ans":"dot on top of vav is holam-vav","rej":{"c1":"shureq reads u","c2":"segol under alef with a bare vav reads neither o nor this word"}}
+{"id":"H0216-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.3-4 set against darkness: light","rej":{"c1":"fire is אֵשׁ, not this word","c2":"morning is בֹּקֶר","c3":"sky is שָׁמַיִם"}}
+{"id":"H0216-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"light; daylight accepted from Strong's usage day","rej":{"c1":"evening is עֶרֶב","c2":"water is מַיִם","c3":"voice is קוֹל"}}
+{"id":"H0216-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters alef, vav, resh","rej":{"c1":"city starts with ayin","c2":"father has two letters"}}
+{"id":"H0216-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, vav, resh","rej":{"c1":"letters reversed","c2":"ayin instead of alef","c3":"dalet instead of resh"}}
+{"id":"H3117-sound","prov":"citation","tests":["vowels"],"ans":"holam-vav gives yom","rej":{"c1":"yam is יָם, with qamats and no vav","c2":"yum would need shureq"}}
+{"id":"H3117-pointed","prov":"citation","tests":["vowels"],"ans":"holam-vav","rej":{"c1":"shureq reads u","c2":"pointing vav as a consonant makes three syllables, not this word"}}
+{"id":"H3117-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.5 evening and morning make one day","rej":{"c1":"night is לַיְלָה and is named separately","c2":"year is שָׁנָה","c3":"week isn't this word"}}
+{"id":"H3117-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"day; daytime accepted","rej":{"c1":"morning is בֹּקֶר","c2":"sea is יָם","c3":"hand is יָד"}}
+{"id":"H3117-write","prov":"citation","tests":["final-forms"],"ans":"yod, vav, final mem","rej":{"c1":"hand ends in dalet","c2":"light starts with alef"}}
+{"id":"H3117-mirror","prov":"citation","tests":["final-forms"],"ans":"yod, vav, final mem","rej":{"c1":"regular mem at the end","c2":"no vav: sea","c3":"letters scrambled, samekh instead of final mem"}}
+{"id":"H3915-sound","prov":"citation","tests":["shewa","dagesh"],"ans":"patah plus silent-shewa yod gives lay; final he is silent","rej":{"c1":"le ignores patah and the yod","c2":"treats the silent shewa as a full syllable"}}
+{"id":"H3915-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"patah, shewa under yod, qamats","rej":{"c1":"hireq reads li, not lay","c2":"tsere reads le, not lay"}}
+{"id":"H3915-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.5 names the darkness","rej":{"c1":"morning is בֹּקֶר","c2":"evening is עֶרֶב"}}
+{"id":"H3915-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"night; nighttime accepted","rej":{"c1":"day is יוֹם","c2":"road is דֶּרֶךְ","c3":"eye is עַיִן"}}
+{"id":"H3915-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, yod, lamed, he","rej":{"c1":"morning starts with bet","c2":"voice has three letters and a vav"}}
+{"id":"H3915-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, yod, lamed, he","rej":{"c1":"he moved to the front","c2":"het instead of he"}}
+{"id":"H1242-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh gives b; holam and segol: BO-qer","rej":{"c1":"BA-qar reads קָר with qamats, the cattle word","c2":"v would need no dagesh, and e would not be holam"}}
+{"id":"H1242-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"holam then segol, with dagesh in bet","rej":{"c1":"בָּקָר is cattle, a different word","c2":"hireq and tsere with a doubled qof is a verb shape, not morning"}}
+{"id":"H1242-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.5 follows evening","rej":{"c1":"midday isn't what follows evening here","c2":"cattle is pointed differently"}}
+{"id":"H1242-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"morning; dawn accepted, Strong's proper sense","rej":{"c1":"house is בַּיִת","c2":"field is שָׂדֶה","c3":"evening is עֶרֶב"}}
+{"id":"H1242-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, qof, resh","rej":{"c1":"word has dalet first","c2":"house ends in tav"}}
+{"id":"H1242-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, qof, resh","rej":{"c1":"letters reversed","c2":"dalet instead of resh","c3":"kaf instead of bet"}}
+{"id":"H4325-sound","prov":"citation","tests":["vowels","syllables"],"ans":"patah then hireq, first-syllable stress: MA-yim","rej":{"c1":"swaps the two vowels","c2":"holam isn't in the word, and the stress is misplaced"}}
+{"id":"H4325-pointed","prov":"citation","tests":["vowels"],"ans":"patah, then hireq under yod","rej":{"c1":"swaps hireq and a qamats onto the wrong letters","c2":"segol reads e, not a"}}
+{"id":"H4325-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.2 the surface of the waters","rej":{"c1":"dry land appears only in verse 9","c2":"sky is שָׁמַיִם","c3":"dust is עָפָר, not this word"}}
+{"id":"H4325-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"water; waters accepted","rej":{"c1":"mountain is הַר","c2":"seed is זֶרַע","c3":"night is לַיְלָה"}}
+{"id":"H4325-write","prov":"citation","tests":["final-forms"],"ans":"mem, yod, final mem","rej":{"c1":"heavens adds shin","c2":"day starts with yod"}}
+{"id":"H4325-mirror","prov":"citation","tests":["final-forms"],"ans":"regular mem first, final mem last","rej":{"c1":"final mem can't start a word","c2":"regular mem can't end a word"}}
+{"id":"H8064-sound","prov":"citation","tests":["vowels"],"ans":"shin dot on the right: sha-MA-yim","rej":{"c1":"s needs the dot on the left arm","c2":"shewa and swapped vowels aren't this pointing"}}
+{"id":"H8064-pointed","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah, hireq","rej":{"c1":"shewa and swapped vowels","c2":"dot on the left arm makes sin"}}
+{"id":"H8064-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.8 the expanse above the waters","rej":{"c1":"seas are named in verse 10","c2":"mountains are הָרִים"}}
+{"id":"H8064-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"heavens; heaven and sky accepted","rej":{"c1":"water is מַיִם","c2":"city is עִיר","c3":"field is שָׂדֶה"}}
+{"id":"H8064-write","prov":"citation","tests":["final-forms"],"ans":"shin, mem, yod, final mem","rej":{"c1":"water has no shin","c2":"field ends in he"}}
+{"id":"H8064-mirror","prov":"citation","tests":["final-forms"],"ans":"shin, mem, yod, final mem","rej":{"c1":"yod and mem swapped","c2":"samekh instead of shin","c3":"shin moved to the end"}}
+{"id":"H2022-sound","prov":"citation","tests":["vowels"],"ans":"he, patah, resh: har","rej":{"c1":"o would need holam","c2":"kh would be het, a closed letter"}}
+{"id":"H2022-pointed","prov":"citation","tests":["vowels"],"ans":"patah under he","rej":{"c1":"holam reads o","c2":"hireq reads i"}}
+{"id":"H2022-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.7.19-20 the flood covers the highest land","rej":{"c1":"tree is עֵץ","c2":"city is עִיר"}}
+{"id":"H2022-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"mountain; mount and hill accepted","rej":{"c1":"voice is קוֹל","c2":"hand is יָד"}}
+{"id":"H2022-write","prov":"citation","tests":["alphabet","rtl"],"ans":"he, resh","rej":{"c1":"city has three letters","c2":"hand starts with yod"}}
+{"id":"H2022-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"he, resh","rej":{"c1":"letters reversed","c2":"het instead of he"}}
+{"id":"H5892-sound","prov":"citation","tests":["vowels"],"ans":"silent ayin, hireq-yod: ir","rej":{"c1":"a needs patah or qamats","c2":"o needs holam"}}
+{"id":"H5892-pointed","prov":"citation","tests":["vowels"],"ans":"hireq before yod","rej":{"c1":"tsere reads e","c2":"patah and a consonantal yod make the pattern of eye, not city"}}
+{"id":"H5892-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.4.17 built and named: city","rej":{"c1":"a road isn't built and named by Cain","c2":"a mountain isn't built","c3":"a field isn't built"}}
+{"id":"H5892-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"city; town accepted","rej":{"c1":"light is אוֹר","c2":"morning is בֹּקֶר"}}
+{"id":"H5892-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, yod, resh","rej":{"c1":"light starts with alef","c2":"tree ends in final tsade"}}
+{"id":"H5892-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, yod, resh","rej":{"c1":"letters reversed","c2":"alef instead of ayin","c3":"dalet instead of resh"}}
+{"id":"H1004-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh gives b; patah, hireq: BA-yit","rej":{"c1":"v would need no dagesh","c2":"that is בֵּית, house of, one syllable"}}
+{"id":"H1004-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"patah then hireq","rej":{"c1":"hireq alone before yod reads bit, one syllable","c2":"tsere reads be"}}
+{"id":"H1004-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.12.15 Pharaoh's house","rej":{"c1":"tent is אֹהֶל, and it isn't the word in the verse","c2":"road is דֶּרֶךְ"}}
+{"id":"H1004-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"house; household and home accepted, Strong's def and usage","rej":{"c1":"seed is זֶרַע","c2":"day is יוֹם"}}
+{"id":"H1004-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, yod, tav","rej":{"c1":"daughter has no yod","c2":"morning ends in resh"}}
+{"id":"H1004-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, yod, tav","rej":{"c1":"letters reversed","c2":"no yod: daughter","c3":"kaf instead of bet"}}
+{"id":"H6086-sound","prov":"citation","tests":["vowels"],"ans":"tsere, final tsade: ets","rej":{"c1":"a needs patah or qamats","c2":"i needs hireq"}}
+{"id":"H6086-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under ayin","rej":{"c1":"patah reads a","c2":"holam reads o"}}
+{"id":"H6086-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.12 bears fruit with seed in it","rej":{"c1":"seed is what is inside the fruit","c2":"field is שָׂדֶה","c3":"bird is עוֹף"}}
+{"id":"H6086-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"tree; wood accepted, in Strong's def","rej":{"c1":"eye is עַיִן","c2":"house is בַּיִת"}}
+{"id":"H6086-write","prov":"citation","tests":["final-forms"],"ans":"ayin, final tsade","rej":{"c1":"city has a yod and resh","c2":"land starts with alef"}}
+{"id":"H6086-mirror","prov":"citation","tests":["final-forms"],"ans":"ayin, final tsade","rej":{"c1":"regular tsade at the end","c2":"alef instead of ayin"}}
+{"id":"H7218-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, silent alef, shin: rosh","rej":{"c1":"a needs patah or qamats","c2":"s would need the dot on the left arm"}}
+{"id":"H7218-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"holam over resh and a right-arm dot","rej":{"c1":"left dot makes sin","c2":"hireq reads i"}}
+{"id":"H7218-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.3.15 head set against heel","rej":{"c1":"hand is יָד","c2":"foot is the other end, near the heel"}}
+{"id":"H7218-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"head; top and chief accepted, Strong's range","rej":{"c1":"voice is קוֹל","c2":"road is דֶּרֶךְ"}}
+{"id":"H7218-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, silent alef, shin","rej":{"c1":"man starts with alef","c2":"mountain has he and resh"}}
+{"id":"H7218-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, alef, shin","rej":{"c1":"drops the silent alef","c2":"letters reversed","c3":"dalet instead of resh"}}
+{"id":"H3027-sound","prov":"citation","tests":["vowels"],"ans":"qamats reads a: yad","rej":{"c1":"yod is the letter's name, not the word","c2":"i needs hireq"}}
+{"id":"H3027-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under yod","rej":{"c1":"hireq reads i","c2":"tsere reads e"}}
+{"id":"H3027-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.9.2 given into your hand","rej":{"c1":"house is בַּיִת","c2":"head is רֹאשׁ"}}
+{"id":"H3027-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"hand","rej":{"c1":"eye is עַיִן","c2":"water is מַיִם"}}
+{"id":"H3027-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet","rej":{"c1":"day has three letters","c2":"mountain starts with he"}}
+{"id":"H3027-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet","rej":{"c1":"letters reversed","c2":"resh instead of dalet"}}
+{"id":"H5869-sound","prov":"citation","tests":["vowels","syllables"],"ans":"patah, then hireq: A-yin","rej":{"c1":"swaps the vowels","c2":"e needs segol or tsere"}}
+{"id":"H5869-pointed","prov":"citation","tests":["vowels"],"ans":"patah then hireq","rej":{"c1":"hireq then qamats reverses them","c2":"tsere reads e"}}
+{"id":"H5869-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.3.7 what opens so they see","rej":{"c1":"mouth is פֶּה","c2":"hand is יָד","c3":"an ear doesn't see"}}
+{"id":"H5869-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"eye; spring and fountain accepted, Strong's analogy","rej":{"c1":"tree is עֵץ","c2":"mountain is הַר"}}
+{"id":"H5869-write","prov":"citation","tests":["final-forms"],"ans":"ayin, yod, final nun","rej":{"c1":"city ends in resh","c2":"son starts with bet"}}
+{"id":"H5869-mirror","prov":"citation","tests":["final-forms"],"ans":"ayin, yod, final nun","rej":{"c1":"regular nun at the end","c2":"alef: the word for there is not"}}
+{"id":"H1870-sound","prov":"citation","tests":["dagesh","shewa","vowels"],"ans":"dagesh dalet, two segols, final kaf, first-syllable stress","rej":{"c1":"a needs qamats or patah","c2":"same sounds, but the stress is wrong: this shape stresses the first syllable"}}
+{"id":"H1870-pointed","prov":"citation","tests":["dagesh","shewa","vowels"],"ans":"two segols","rej":{"c1":"qamats and patah give a verb's shape","c2":"hireq reads i"}}
+{"id":"H1870-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.3.24 the way to the tree of life","rej":{"c1":"gate isn't this word; the word leads somewhere","c2":"garden is the place, גַּן"}}
+{"id":"H1870-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"road; way, path and journey accepted, in Strong's def and usage","rej":{"c1":"word is דָּבָר","c2":"seed is זֶרַע"}}
+{"id":"H1870-write","prov":"citation","tests":["final-forms"],"ans":"dalet, resh, final kaf","rej":{"c1":"word has bet in the middle","c2":"king starts with mem"}}
+{"id":"H1870-mirror","prov":"citation","tests":["final-forms"],"ans":"dalet, resh, final kaf","rej":{"c1":"regular kaf at the end","c2":"first two letters swapped"}}
+{"id":"H7704-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"sin, qamats, dalet, segol, silent he","rej":{"c1":"sh needs the dot on the right arm","c2":"stress and second vowel are both wrong: segol is e"}}
+{"id":"H7704-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"left-arm dot and segol","rej":{"c1":"right dot makes shin","c2":"qamats where segol belongs"}}
+{"id":"H7704-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.4.8 out in open country","rej":{"c1":"no city is built until later in the chapter","c2":"they are away from houses"}}
+{"id":"H7704-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"field; open country and countryside accepted","rej":{"c1":"heavens is שָׁמַיִם","c2":"night is לַיְלָה"}}
+{"id":"H7704-write","prov":"citation","tests":["alphabet","rtl"],"ans":"sin, dalet, he; written ש","rej":{"c1":"heavens ends in final mem","c2":"word ends in resh"}}
+{"id":"H7704-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ש, dalet, he","rej":{"c1":"samekh is another letter, though it sounds alike","c2":"het instead of he"}}
+{"id":"H1697-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh dalet, soft bet: da-VAR","rej":{"c1":"b would need a dagesh in bet, and there is none","c2":"o and e aren't the qamats signs here"}}
+{"id":"H1697-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"two qamats signs","rej":{"c1":"Piel verb דִּבֶּר, he spoke","c2":"דֶּבֶר, plague, is a separate lexeme"}}
+{"id":"H1697-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.11.1 beside language: words","rej":{"c1":"road is דֶּרֶךְ","c2":"city is עִיר"}}
+{"id":"H1697-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"word; thing, matter and speech accepted, Strong's defs and usage","rej":{"c1":"voice is קוֹל","c2":"morning is בֹּקֶר"}}
+{"id":"H1697-write","prov":"citation","tests":["alphabet","rtl"],"ans":"dalet, bet, resh","rej":{"c1":"morning starts with bet","c2":"road ends in final kaf"}}
+{"id":"H1697-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"dalet, bet, resh","rej":{"c1":"letters reversed","c2":"kaf instead of bet"}}
+{"id":"H3605-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh gives k; holam: kol","rej":{"c1":"a needs patah or qamats; the holam here reads o","c2":"kh would need no dagesh"}}
+{"id":"H3605-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"holam is the citation pointing","rej":{"c1":"hireq reads i","c2":"tsere reads e"}}
+{"id":"H3605-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.21 the whole group: every creature, every bird","rej":{"c1":"one is אֶחָד","c2":"none is the opposite of what the line says"}}
+{"id":"H3605-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"all; every, whole and everything accepted, Strong's defs","rej":{"c1":"not is לֹא","c2":"voice is קוֹל"}}
+{"id":"H3605-write","prov":"citation","tests":["alphabet","rtl"],"ans":"kaf, lamed","rej":{"c1":"not starts with lamed","c2":"voice starts with qof"}}
+{"id":"H3605-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"kaf, lamed","rej":{"c1":"letters reversed","c2":"bet instead of kaf"}}

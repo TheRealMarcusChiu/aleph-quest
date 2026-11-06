@@ -1,0 +1,60 @@
+{"id":"H1419-sound","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav, final stress: ga-DOL","rej":{"c1":"shewa and shureq aren't this pointing","c2":"patah and first-syllable stress are the verb's shape"}}
+{"id":"H1419-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, then holam-vav","rej":{"c1":"shewa and shureq","c2":"hireq and a doubled dalet"}}
+{"id":"H1419-in-context","prov":"attested","tests":["adjectives","word-meaning"],"ans":"Gen.1.16 set against the small light","rej":{"c1":"good is טוֹב","c2":"living is חַי"}}
+{"id":"H1419-type-gloss","prov":"citation","tests":["adjectives","word-meaning"],"ans":"great; big, large and older accepted, Strong's def","rej":{"c1":"small is the opposite","c2":"bad is רַע"}}
+{"id":"H1419-write","prov":"citation","tests":["alphabet","rtl"],"ans":"gimel, dalet, vav, lamed, the full spelling","rej":{"c1":"small starts with qof","c2":"voice starts with qof"}}
+{"id":"H1419-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"gimel, dalet, vav, lamed","rej":{"c1":"resh instead of dalet","c2":"letters reversed"}}
+{"id":"H6996-sound","prov":"citation","tests":["vowels"],"ans":"two qamats signs, final stress: qa-TAN","rej":{"c1":"segol second and stress first aren't this pointing","c2":"o and u aren't the signs here"}}
+{"id":"H6996-pointed","prov":"citation","tests":["vowels"],"ans":"two qamats signs, Strong's headword","rej":{"c1":"hireq, tsere and a doubled letter: a Piel shape","c2":"shewa and tsere: a construct-like shape"}}
+{"id":"H6996-in-context","prov":"attested","tests":["adjectives","word-meaning"],"ans":"Gen.1.16 the lesser light","rej":{"c1":"great is the other light","c2":"bad is רַע"}}
+{"id":"H6996-type-gloss","prov":"citation","tests":["adjectives","word-meaning"],"ans":"small; little, younger, lesser accepted","rej":{"c1":"living is חַי","c2":"good is טוֹב"}}
+{"id":"H6996-write","prov":"citation","tests":["final-forms"],"ans":"qof, tet, final nun","rej":{"c1":"great starts with gimel","c2":"between starts with bet"}}
+{"id":"H6996-mirror","prov":"citation","tests":["final-forms"],"ans":"qof, tet, final nun","rej":{"c1":"tav instead of tet","c2":"regular nun at the end"}}
+{"id":"H2416-sound","prov":"citation","tests":["vowels"],"ans":"het is kh; patah with final yod: khay","rej":{"c1":"h is he, which has a gap","c2":"i needs hireq"}}
+{"id":"H2416-pointed","prov":"citation","tests":["vowels"],"ans":"patah under het","rej":{"c1":"hireq reads i","c2":"tsere reads e"}}
+{"id":"H2416-in-context","prov":"attested","tests":["adjectives","word-meaning"],"ans":"Gen.1.20 living creatures","rej":{"c1":"small is קָטָן","c2":"great is גָּדוֹל"}}
+{"id":"H2416-type-gloss","prov":"citation","tests":["adjectives","word-meaning"],"ans":"living; alive accepted, Strong's def","rej":{"c1":"good is טוֹב","c2":"bird is עוֹף"}}
+{"id":"H2416-write","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod","rej":{"c1":"mountain starts with he","c2":"brother starts with alef"}}
+{"id":"H2416-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod","rej":{"c1":"he instead of het","c2":"letters reversed"}}
+{"id":"H5775-sound","prov":"citation","tests":["vowels","final-forms"],"ans":"holam-vav, final pe is f: of","rej":{"c1":"u needs shureq","c2":"hard p needs a dagesh, and a final pe here has none"}}
+{"id":"H5775-pointed","prov":"citation","tests":["vowels"],"ans":"dot on top of vav","rej":{"c1":"dot in the belly reads u","c2":"qamats on ayin with a bare vav isn't this word"}}
+{"id":"H5775-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.21 winged creature","rej":{"c1":"fish aren't called winged","c2":"flock is צֹאן"}}
+{"id":"H5775-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"bird; birds, fowl, flying creatures accepted, Strong's def and usage","rej":{"c1":"livestock is בְּהֵמָה","c2":"bread is לֶחֶם"}}
+{"id":"H5775-write","prov":"citation","tests":["final-forms"],"ans":"ayin, vav, final pe","rej":{"c1":"tree has no vav","c2":"light starts with alef"}}
+{"id":"H5775-mirror","prov":"citation","tests":["final-forms"],"ans":"ayin, vav, final pe","rej":{"c1":"regular pe at the end","c2":"alef instead of ayin"}}
+{"id":"H0929-sound","prov":"citation","tests":["shewa","vowels"],"ans":"vocal shewa, tsere, qamats: be-he-MAH","rej":{"c1":"a-vowels ignore the shewa and tsere","c2":"drops a syllable and misplaces the stress"}}
+{"id":"H0929-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"shewa, tsere, qamats","rej":{"c1":"qamats and patah in place of shewa and tsere","c2":"segol at the end where qamats belongs"}}
+{"id":"H0929-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.24 land animals, domestic ones","rej":{"c1":"birds were made earlier, in verse 20","c2":"plants were made in verse 11"}}
+{"id":"H0929-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"livestock; animal, beast, cattle, large animal accepted, Strong's def and usage","rej":{"c1":"silver is כֶּסֶף","c2":"ground is אֲדָמָה"}}
+{"id":"H0929-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, mem, he","rej":{"c1":"ground starts with alef","c2":"flesh ends in resh"}}
+{"id":"H0929-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, mem, he","rej":{"c1":"het instead of he","c2":"bet moved to the end"}}
+{"id":"H1320-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"dagesh b, sin s: ba-SAR","rej":{"c1":"sh needs the right-arm dot","c2":"v needs no dagesh"}}
+{"id":"H1320-pointed","prov":"citation","tests":["vowels"],"ans":"left-arm dot, two qamats signs","rej":{"c1":"right dot makes shin","c2":"two segols aren't this pointing"}}
+{"id":"H1320-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.2.21 closes over the rib's place","rej":{"c1":"bread is לֶחֶם","c2":"silver is כֶּסֶף"}}
+{"id":"H1320-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"flesh; meat and body accepted, Strong's def and usage","rej":{"c1":"flock is צֹאן","c2":"ground is אֲדָמָה"}}
+{"id":"H1320-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, ש, resh","rej":{"c1":"word has dalet first","c2":"morning has qof in the middle"}}
+{"id":"H1320-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, ש, resh","rej":{"c1":"samekh instead of ש","c2":"letters reversed"}}
+{"id":"H3899-sound","prov":"citation","tests":["vowels"],"ans":"two segols, het kh, first-syllable stress","rej":{"c1":"a needs qamats or patah","c2":"h is he, and the stress is wrong"}}
+{"id":"H3899-pointed","prov":"citation","tests":["vowels"],"ans":"two segols","rej":{"c1":"qamats and patah: the verb he fought","c2":"shewa and hireq aren't this pointing"}}
+{"id":"H3899-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.3.19 what is eaten after toil","rej":{"c1":"flesh isn't the toil's reward here","c2":"seed is זֶרַע"}}
+{"id":"H3899-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"bread; food accepted, Strong's def","rej":{"c1":"tree is עֵץ","c2":"people is עַם"}}
+{"id":"H3899-write","prov":"citation","tests":["final-forms"],"ans":"lamed, het, final mem","rej":{"c1":"night ends in he","c2":"flesh starts with bet"}}
+{"id":"H3899-mirror","prov":"citation","tests":["final-forms"],"ans":"lamed, het, final mem","rej":{"c1":"he instead of het","c2":"regular mem at the end"}}
+{"id":"H3701-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh k, two segols, soft final pe: KE-sef","rej":{"c1":"kh needs no dagesh","c2":"a needs qamats or patah"}}
+{"id":"H3701-pointed","prov":"citation","tests":["vowels"],"ans":"two segols","rej":{"c1":"qamats and patah: a verb shape","c2":"two tseres aren't this pointing"}}
+{"id":"H3701-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.17.12 bought with it","rej":{"c1":"bread isn't paid with here","c2":"a word doesn't buy"}}
+{"id":"H3701-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"silver; money accepted, Strong's def","rej":{"c1":"flesh is בָּשָׂר","c2":"place is מָקוֹם"}}
+{"id":"H3701-write","prov":"citation","tests":["final-forms"],"ans":"kaf, samekh, final pe","rej":{"c1":"all has two letters","c2":"bird starts with ayin"}}
+{"id":"H3701-mirror","prov":"citation","tests":["final-forms"],"ans":"kaf, samekh, final pe","rej":{"c1":"bet instead of kaf","c2":"ש instead of samekh"}}
+{"id":"H6629-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"tsade, holam, silent alef: tson","rej":{"c1":"a needs patah or qamats","c2":"z is zayin"}}
+{"id":"H6629-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, alef with no vowel","rej":{"c1":"qamats reads a","c2":"shewa and qamats on alef give another shape"}}
+{"id":"H6629-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.4.2 kept by Abel against Cain's ground","rej":{"c1":"fields are Cain's side of the contrast","c2":"servants are עֲבָדִים"}}
+{"id":"H6629-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"flock; sheep and sheep and goats accepted","rej":{"c1":"tent is אֹהֶל","c2":"silver is כֶּסֶף"}}
+{"id":"H6629-write","prov":"citation","tests":["final-forms"],"ans":"tsade, alef, final nun","rej":{"c1":"tree starts with ayin","c2":"head starts with resh"}}
+{"id":"H6629-mirror","prov":"citation","tests":["final-forms"],"ans":"tsade, alef, final nun","rej":{"c1":"drops the silent alef","c2":"ayin instead of tsade"}}
+{"id":"H5288-sound","prov":"citation","tests":["vowels"],"ans":"two patahs, first-syllable stress: NA-ar","rej":{"c1":"same sounds, wrong stress: this shape stresses the first syllable","c2":"e needs segol or tsere"}}
+{"id":"H5288-pointed","prov":"citation","tests":["vowels"],"ans":"two patahs","rej":{"c1":"two segols ignore the ayin's preference","c2":"holam isn't in this word"}}
+{"id":"H5288-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.18.7 a young household helper","rej":{"c1":"a king doesn't run errands here","c2":"Abraham is the father figure and hands it over"}}
+{"id":"H5288-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"young man; boy, lad, youth, servant accepted, Strong's def and usage","rej":{"c1":"human being is אָדָם","c2":"people is עַם"}}
+{"id":"H5288-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ayin, resh","rej":{"c1":"city starts with ayin","c2":"son starts with bet"}}
+{"id":"H5288-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ayin, resh","rej":{"c1":"alef instead of ayin","c2":"letters reversed, with a final nun"}}

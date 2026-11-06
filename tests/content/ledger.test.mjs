@@ -57,6 +57,8 @@ test('tested skills are ones the question requires, or come with them', () => {
     const r = by.get(q.id);
     if (!r?.tests) continue;
     const have = readingClosure(q.requires, content.lessons);
+    // Guided practice follows its own lesson's worked example, so that lesson's skills count there.
+    for (const l of content.lessons.filter(item => item.guidedQuestionIds.includes(q.id))) for (const s of l.teaches) have.add(s);
     for (const s of r.tests) if (!have.has(s)) wrong.push(`${q.id}: tests ${s}, which its requires ${q.requires} don't reach`);
   }
   assert.deepEqual(wrong, []);
@@ -117,7 +119,7 @@ test('sound distractors really differ: another reading, or a stress the row name
     for (const c of q.choices) {
       const accepted = q.acceptedAnswers.includes(c.id);
       if (accepted && c.text !== word.transliteration) wrong.push(`${q.id}: accepted ${c.text}, card says ${word.transliteration}`);
-      if (!accepted && pattern.test(plainGuide(c.text)) && !/stress/i.test(by.get(q.id)?.rej?.[c.id] ?? '')) wrong.push(`${q.id}: distractor ${c.text} also fits the pointing, and its row doesn't call it a stress error`);
+      if (!accepted && pattern.test(plainGuide(c.text)) && !/stress|qamats/i.test(by.get(q.id)?.rej?.[c.id] ?? '')) wrong.push(`${q.id}: distractor ${c.text} also fits the letters, and its row doesn't name the stress or qamats error`);
     }
   }
   assert.deepEqual(wrong, []);
