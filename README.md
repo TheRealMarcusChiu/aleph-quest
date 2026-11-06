@@ -4,13 +4,19 @@ An original tile-world adventure for learning Biblical Hebrew from zero. You are
 
 Walk the map, learn from your mentor, capture real Hebrew words by showing them three different ways, duel your rival Neri, answer the language locks, and earn a seal in each region. Bring all eight home, restore the archive, then keep your words alive in the Review Garden.
 
-**Status: the full game is built and has been played through in real browsers by automation. It has no public deployment yet.** All eight regions are walkable with their towns, caves, secrets, quests, duels, badges, ending and postgame, and all carry reviewed language content: 154 word cards (150 lexemes by a conservative count), 1,201 questions, 43 lessons and Genesis 1:1-5. See [What has been verified](#what-has-been-verified) for what those runs do and don't show. They show that the game works. They don't show that it teaches Hebrew well.
+**The full game is built and has been played through in real browsers by automation.** All eight regions are walkable with their towns, caves, secrets, quests, duels, badges, ending and postgame, and all carry reviewed language content: 154 word cards (150 lexemes by a conservative count), 1,201 questions, 43 lessons and Genesis 1:1-5. See [What has been verified](#what-has-been-verified) for what those runs do and don't show. They show that the game works. They don't show that it teaches Hebrew well.
+
+- Source: <https://github.com/TheRealMarcusChiu/aleph-quest>
+- Builds and deployments: [Actions workflow](https://github.com/TheRealMarcusChiu/aleph-quest/actions/workflows/pages.yml). The latest run shows the current deployment state.
+- Configured Pages URL: <https://git.marcuschiu.com/aleph-quest/>
 
 ## Run it
 
 Needs Node 22 or newer.
 
 ```sh
+git clone https://github.com/TheRealMarcusChiu/aleph-quest.git
+cd aleph-quest
 npm ci                   # install the locked dependencies
 npm run dev              # local dev server
 npm test                 # logic, content, packaging and jsdom journey tests
@@ -18,6 +24,8 @@ npm run validate:opening # checks every content rule, and the first region's 8 t
 npm run validate         # checks every content rule, and the full campaign floor
 npm run build            # static site in dist/, relative paths
 ```
+
+Use a Git clone to run the tests, because one test reads the opening baseline from an earlier commit, which a source archive doesn't include. Building the game works from an archive too, and needs no research corpus. Tests that check against the source XML skip when that local corpus is absent, as they do on GitHub Actions.
 
 ### Serve the build locally
 
@@ -32,7 +40,7 @@ npx vite preview         # or: python3 -m http.server 8080 --directory dist
 
 `dist/` runs from any static host, at the root or on a subpath, with no server code. It also carries the MIT notice at `LICENSE` and the third-party notices in `notices/`.
 
-For GitHub Pages, push this repository to GitHub and set **Settings > Pages > Source** to **GitHub Actions**. `.github/workflows/pages.yml` then runs on every push to `main`, or by hand from the Actions tab. It runs the tests, both validators and the build, and it deploys `dist/` only if they all pass. The deployment job reports the site's URL. No public URL exists yet, and this workflow hasn't been run on GitHub.
+For GitHub Pages, set **Settings > Pages > Source** to **GitHub Actions**. `.github/workflows/pages.yml` then runs on every push to `main`, or by hand from the Actions tab. It runs the tests, both validators and the build, and it deploys `dist/` only if they all pass. The deployment job reports the site's URL.
 
 ### Offline
 
@@ -75,7 +83,7 @@ Saves are automatic, with three slots, and export and import as JSON. Saves from
 
 ## Sources and licenses
 
-Source code and original teaching text: MIT. Biblical text: Westminster Leningrad Codex (public domain), through the Open Scriptures Hebrew Bible. OSHB lemma and morphology annotations and the digital Strong's dictionary: CC BY 4.0. Font: Noto Serif Hebrew, SIL OFL 1.1. Every build includes the MIT notice as `LICENSE` and the third-party notices in `notices/`, and they also appear on the in-game Credits screen. Details: `docs/LICENSES.md`.
+Source code and original teaching text: MIT. Biblical text: Westminster Leningrad Codex (public domain), through the Open Scriptures Hebrew Bible. OSHB lemma and morphology annotations and the digital Strong's dictionary: CC BY 4.0. Font: Noto Serif Hebrew, SIL OFL 1.1. Every build includes the MIT notice as `LICENSE` and the third-party notices in `notices/`. The in-game Credits screen shows the attributions, links to the third-party notices and names the code's MIT license. Details: `docs/LICENSES.md`.
 
 Lesson order follows the table of contents of Allen P. Ross, *Introducing Biblical Hebrew*, with no lesson text or exercises copied. Neither the author nor the publisher endorses this project.
 

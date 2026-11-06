@@ -35,6 +35,12 @@ test('the Pages workflow runs every check before deploying, with pinned actions 
   }
 });
 
+test('the workflow checks out full history, since tests/content/source.test.mjs reads the opening baseline from an ancestor commit', () => {
+  const workflow = readFileSync(file('.github/workflows/pages.yml'), 'utf8');
+  assert.match(workflow, /uses: actions\/checkout@v7\.0\.1\n\s+with:\n\s+fetch-depth: 0\n/);
+  assert.match(readFileSync(file('tests/content/source.test.mjs'), 'utf8'), /git.*show|52502ced/, 'the reason for this still exists');
+});
+
 test('private operations files stay out of the repository', () => {
   assert.ok(readFileSync(file('.gitignore'), 'utf8').split('\n').includes('ops/'));
 });
