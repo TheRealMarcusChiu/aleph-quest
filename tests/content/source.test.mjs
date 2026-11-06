@@ -67,10 +67,16 @@ test('every passage has immutable source text and exact tokens', { skip }, () =>
   assert.deepEqual(wrong, []);
 });
 
+// Independent findings against 9adbfcc changed these fields only. Nothing else in r1 may move.
+const baselineChanges = { questions: { 'b-order-1': 'prompt' }, words: { H4428: 'rootNote', H5612: 'rootNote' } };
+
 test('accepted r1 records are unchanged from the opening baseline', () => {
   for (const file of ['words', 'questions', 'lessons']) {
     const current = new Map(content[file].map(r => [r.id, r]));
-    for (const record of baseline(file)) assert.deepEqual(current.get(record.id), record, `${file} ${record.id} changed`);
+    for (const record of baseline(file)) {
+      const field = baselineChanges[file]?.[record.id];
+      assert.deepEqual(field ? { ...current.get(record.id), [field]: record[field] } : current.get(record.id), record, `${file} ${record.id} changed`);
+    }
   }
   assert.deepEqual(content.regions[0], baseline('regions')[0]);
   assert.deepEqual(content.quests[0], baseline('quests')[0]);

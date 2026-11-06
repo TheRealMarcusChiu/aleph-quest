@@ -17,12 +17,12 @@
 {"id":"gen-1-4-b","prov":"span","tests":["genesis-reading"],"ans":"Strong: repeated before each noun","rej":{"c1":"Strong records this as the normal pattern","c2":"it marks two sides, not repetition of the act"}}
 {"id":"gen-1-4-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB C/Vhw3ms","rej":{"c1":"OSHB tags a Hiphil narrative","c2":"the prefix yod and the waw mark a narrative, not a command"}}
 {"id":"gen-1-4-d","prov":"span","tests":["genesis-reading"],"ans":"after seeing, כִּי opens what was seen","rej":{"c1":"if would be אִם","c2":"no negative word is present"}}
-{"id":"gen-1-5-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqp3ms; the noun is fronted","rej":{"c1":"OSHB tags a perfect","c2":"OSHB tags singular"}}
+{"id":"gen-1-5-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqp3ms; this clause fronts darkness in contrast with light. It describes the verse and claims no necessity","rej":{"c1":"OSHB tags a perfect","c2":"OSHB tags singular"}}
 {"id":"gen-1-5-b","prov":"span","tests":["genesis-reading"],"ans":"OSHB Acmsa; one, a cardinal","rej":{"c1":"יוֹם is day, not night","c2":"no adjective good here"}}
 {"id":"gen-1-5-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqw3ms with the noun evening","rej":{"c1":"the wish has no waw","c2":"the noun is evening, and the form is past"}}
 {"id":"gen-1-5-d","prov":"span","tests":["genesis-reading","waw-disjunctive"],"ans":"pause lengthens; taught in l-disjunctive","rej":{"c1":"no he or preposition for an article","c2":"OSHB tags Ncmsa, singular"}}
 {"id":"p-r8-neri-1","prov":"span","tests":["context-reading"],"ans":"OSHB Ncmpa, singular verbs in Gen.1","rej":{"c1":"its verbs are singular in this chapter","c2":"OSHB tags plural"}}
-{"id":"p-r8-neri-2","prov":"attested","tests":["clause-chains"],"ans":"fronted noun means no narrative form; tokens 01nAB and 01LeN","rej":{"c1":"word order explains it, not a change of mind","c2":"OSHB tags a verb"}}
+{"id":"p-r8-neri-2","prov":"attested","tests":["clause-chains"],"ans":"darkness is fronted in contrast with light, with a perfect, in this verse; tokens 01nAB and 01LeN","rej":{"c1":"the contrast explains it, not a change of mind","c2":"OSHB tags a verb"}}
 {"id":"p-r8-neri-3","prov":"span","tests":["context-reading","object-marker"],"ans":"OSHB To","rej":{"c1":"lemma 853, not 854; God sees the light"}}
 {"id":"p-r8-gate-1","prov":"original","tests":["context-reading"],"ans":"Gen.1.1 token 01xeN's form","rej":{"door-m":"covenant","door-e":"head"}}
 {"id":"p-r8-gate-2","prov":"original","tests":["context-reading"],"ans":"Gen.1.2 darkness; token 01C5U's noun","rej":{"door-w":"light, its opposite","door-e":"morning"}}

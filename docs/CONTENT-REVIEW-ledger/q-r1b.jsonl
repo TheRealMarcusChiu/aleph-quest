@@ -47,5 +47,5 @@
 {"id":"b-spell-1","prov":"span","tests":["final-forms"],"ans":"shin, resh, final tsade","rej":{"c1":"regular tsade at the end","c2":"letters reversed","c3":"samekh instead of shin"}}
 {"id":"b-spell-2","prov":"span","tests":["final-forms"],"ans":"kaf, samekh, final pe","rej":{"c1":"regular pe at the end","c2":"letters reversed","c3":"bet instead of pe"}}
 {"id":"b-spell-3","prov":"span","tests":["final-forms"],"ans":"lamed, het, final mem","rej":{"c1":"regular mem at the end","c2":"letters reversed","c3":"samekh instead of final mem"}}
-{"id":"b-order-1","prov":"span","tests":["final-forms","rtl"],"ans":"alef, dalet, final mem","rej":{"t3":"regular mem can't finish a word; a spare tile"}}
+{"id":"b-order-1","prov":"span","tests":["final-forms","rtl"],"ans":"alef, dalet, final mem. 01WVH is d/120 HTd/Ncmsa, the common noun with its article, shown without it, not the name H121","rej":{"t3":"regular mem can't finish a word; a spare tile"}}
 {"id":"b-order-2","prov":"span","tests":["final-forms","rtl"],"ans":"shin, final mem","rej":{"t2":"regular mem can't finish a word; a spare tile","t3":"samekh isn't in the word; a spare tile"}}

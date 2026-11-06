@@ -1,7 +1,7 @@
 {"id":"H0595","strong":"I","forms":[],"gloss":"I, the longer pronoun. Strong gives H589 as its contraction, so the inventory counts both as one lexeme."}
 {"id":"H0859","strong":"thou","forms":[],"gloss":"you, masculine singular, per OSHB Pp2ms. Strong's older English thou is rendered you."}
-{"id":"H1931","strong":"he","forms":["HPp3fs"],"gloss":"he matches; that is in Strong's range. OSHB keeps the feminine under one lemma, so an inflection."}
-{"id":"H1992","strong":"they","forms":["HPp3mp"],"gloss":"they matches; those is Strong's demonstrative use. Longer spelling shares lemma 1992."}
+{"id":"H1931","strong":"he","forms":["HPp3fs"],"gloss":"he matches; that is in Strong's range. OSHB keeps the feminine under one lemma, so an inflection. Counted with H1992 as one third-person unit."}
+{"id":"H1992","strong":"they","forms":["HPp3mp"],"gloss":"they matches; those is Strong's demonstrative use. Longer spelling shares lemma 1992. Strong: masculine plural from 1931, so one third-person unit with H1931."}
 {"id":"H2088","strong":"this","forms":["HPdxfs"],"gloss":"this, masculine, per OSHB Pdxms. Strong's own number for the feminine isn't lexeme proof: one suppletive paradigm, linked by derivation because the enum has no paradigm value."}
 {"id":"H2063","strong":"this","forms":["HPdxms"],"gloss":"this, feminine, per OSHB Pdxfs. Strong calls it the irregular feminine of H2088: one paradigm, linked by derivation because the enum has no paradigm value."}
 {"id":"H0428","strong":"these","forms":["HPdxms"],"gloss":"these, per OSHB Pdxcp. Suppletive plural of the same paradigm as זֶה, despite its own Strong number."}
