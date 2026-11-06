@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { content } from '../src/content.js';
 import { validateContent } from '../scripts/validate-content.mjs';
+import { openingOnly } from './fixtures/campaign-fixture.mjs';
 
 // Copies the real data, breaks one thing, and rebuilds the indexes.
 function broken(mutate) {
@@ -24,7 +25,8 @@ test('the shipped opening content passes every opening rule', () => {
 });
 
 test('the full phase reports the campaign floor it has not reached', () => {
-  const errors = validateContent(content, 'full');
+  const r1 = openingOnly();
+  const errors = validateContent(r1, 'full');
   assert.ok(errors.some(e => /150/.test(e)));
   assert.ok(errors.some(e => /600/.test(e)));
   assert.ok(errors.some(e => /8 regions/.test(e)));

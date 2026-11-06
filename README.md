@@ -2,9 +2,9 @@
 
 An original tile-world adventure for learning Biblical Hebrew from zero. You are an apprentice scribe. A storm scattered your archive across the country, and words hide in the reeds until someone can read them.
 
-Walk the map, learn from your mentor Tamar, capture real Hebrew words by showing them three different ways, get past your rival Neri, solve the Field Gate, and earn the Reed Seal.
+Walk the map, learn from your mentor, capture real Hebrew words by showing them three different ways, duel your rival Neri, answer the language locks, and earn a seal in each region. Bring all eight home, restore the archive, then keep your words alive in the Review Garden.
 
-**Status: opening region only.** Letter Grove is complete and playable. The full game is planned as eight regions, 150 words and 600 questions, and those aren't built. `npm run validate` fails on purpose until they are.
+**Status: the game is built, and the language content isn't all in yet.** All eight regions exist as walkable maps with their towns, caves, secrets, quests, duels, badges, ending and postgame, and the rules for all of them are tested. Only Letter Grove has real language content in this branch. Later regions open as their reviewed content is integrated, so today the first arch still ends the journey. The full journey has not been played with real content. `npm run validate` fails on purpose until 150 words and 600 questions exist.
 
 ## Run it
 
@@ -29,20 +29,28 @@ npm run build            # static site in dist/, relative paths, deployable to a
 | Back, retreat, close | Esc | Back or Retreat buttons |
 | Menu | M, or the Menu button | Menu button |
 
-Your objective is always shown under the map. Sound is off by default and is procedural sound effects only. No Hebrew pronunciation audio is supplied. Timers don't exist. The Menu has Calm reading, sound, and a choice of typed or multiple-choice written answers.
+Your objective is always shown under the map. Sound is off by default and is procedural sound effects only. No Hebrew pronunciation audio is supplied. Timers don't exist. The Menu has a Journal, Calm reading, sound, a choice of typed or multiple-choice written answers, and a display preference for the divine name. That preference changes what is drawn, never an answer key, and every altered screen says so.
 
 ## How it plays
 
-Find Tamar for a worked example and guided practice. A word then surfaces in the reeds. Study its card, then Read a letter, Understand its meaning, and Inscribe its spelling. Three different successes capture it, and mistakes explain themselves and lead to a fresh question. Captures are permanent. Words come back for review on later days. Six words travel in your party, and the Worddex keeps every word's status, forms, sources and history.
+Find the region's mentor for a worked example and guided practice. A word then surfaces in the reeds. Study its card, then Read, Understand and Inscribe it. Three different successes capture it, and mistakes explain themselves and lead to a fresh question. Captures are permanent. Later lessons add Analyze and Build, which grow what you know without being needed for capture.
 
-Saves are automatic, with three slots, and export and import as JSON. If a browser blocks storage, the game warns you and keeps playing in memory, so you can still export. Unreadable slot data is never overwritten without confirmation.
+Words come back for review on later days, and reviews mix in from every region you've been through. Reaching Mastered takes independent answers on four separate days, and nothing in the adventure waits on that. A missed review offers a fresh practice question right away.
+
+Six words travel in your party. New kinds of task with a party word earn it XP, and repeating one earns nothing. Word knowledge grows from Known to Familiar to Deep through varied use and tracing related forms. Growth opens more attested lines in the Worddex and lets the word answer a cave seal, which opens a shortcut and a hidden cache. The word itself never changes.
+
+Each region's rival and language lock block the way until you answer fresh questions without hints. A miss explains itself and moves on, and hints stay with the question through leaving, reloading and switching modes, so they can't be washed out.
+
+The Worddex keeps every word you've met with its status, forms, sources, regions, history and next review. It has search, favorites, sorting, and filters for region, part of speech, root and status. A word you haven't studied keeps its meaning hidden there too. Reading an entry is real study, and it counts as help on your next answer about that word, so a lookup can't pass as recall.
+
+Saves are automatic, with three slots, and export and import as JSON. Saves from the opening build load through a tested migration. If a browser blocks storage, the game warns you and keeps playing in memory, so you can still export. Unreadable slot data is never overwritten without confirmation. The game also refuses to write a save it couldn't read back, and says so.
 
 ## What's in the repo
 
 - `src/`: vanilla ES modules. `engine`, `learning`, `checkpoints`, `answers` and `storage` are pure logic. `world` holds maps, `render` draws the canvas, `ui` and `app` are the DOM.
 - `data/`: all language content, separate from code. See `docs/SCHEMA.md`.
 - `scripts/validate-content.mjs`: checks references, answer keys against the word itself, source tokens, capture readiness, and prerequisites.
-- `tests/`: Node native tests, including a jsdom run through the real UI code. `test-output/` receives rasterized map PNGs.
+- `tests/`: Node native tests, including jsdom runs through the real UI code. `tests/fixtures/campaign-fixture.mjs` is synthetic r2 to r8 data for testing the game code, and nothing in `src/` imports it. `test-output/` receives rasterized map PNGs.
 - `docs/`: `SCHEMA.md`, `LEARNING.md`, `CURRICULUM.md`, `LICENSES.md`, and the delivery contract and plan.
 
 ## Sources and licenses
@@ -53,7 +61,7 @@ Lesson order follows the table of contents of Allen P. Ross, *Introducing Biblic
 
 ## Known limits
 
-- One region. No vowels, grammar, Build or Analyze commands, later badges, ending or postgame yet.
-- Worddex has no search, sort, filter or favorites yet. The opening's 10 words don't need them, but the full game will.
+- Real language content covers Letter Grove only until later regions are integrated. The eight-region journey has only been run on a labeled synthetic fixture, under jsdom.
 - Hebrew content is source-checked by the validator, but no qualified Biblical Hebrew reviewer has approved it.
 - Automated tests run under jsdom with a stubbed canvas. Font rendering, focus visuals and touch need checking in a real browser.
+- Worddex lookups count as help on the next answer about that word for 20 hours, and opening the Worddex over a pending question marks that question as helped. Something written on paper or read elsewhere can't be detected.

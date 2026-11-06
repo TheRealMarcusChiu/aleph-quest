@@ -404,7 +404,8 @@ test('complete first region: lessons, captures, Neri, the Field Gate, a badge an
   g.click('#btn-continue');
   g.click('#btn-continue');
   assert.equal(g.state().flags.exitOpened, true);
-  assert.match(g.$('#objective').textContent, /build ends here/);
+  if (content.regions.length === 1) assert.match(g.$('#objective').textContent, /build ends here/);
+  else assert.equal(g.$('#objective').textContent, content.questById.get(content.regionById.get('r2').questId).stages[0].text, 'with later regions present, the next quest takes over');
 
   // Saved and reloadable at the very end.
   const again = boot({ storage: g.storage });
@@ -480,6 +481,7 @@ function atIlana() {
     for (const family of CAPTURE_FAMILIES) submit(s, content, openQuestion(s, content, family, s.createdAt).acceptedAnswers[0], s.createdAt);
   }
   Object.assign(s, { map: 'hall', x: 5, y: 3, dir: 'up' });
+  Object.assign(s.flags, { neriCleared: true, gateOpen: true, doorOpen: 'door-m' });
   const storage = memory();
   saveSlot(storage, 1, s, content);
   return storage;

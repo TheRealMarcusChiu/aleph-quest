@@ -25,6 +25,13 @@ function played() {
   return s;
 }
 
+// Past Neri and the Field Gate, which the quest asks for before the trial.
+function atTrial() {
+  const s = played();
+  Object.assign(s.flags, { neriCleared: true, gateOpen: true, doorOpen: 'door-m' });
+  return s;
+}
+
 const envelope = mutate => {
   const doc = JSON.parse(exportText(played(), NOW));
   mutate(doc.state, doc);
@@ -105,15 +112,15 @@ test('malformed files are rejected with a reason', () => {
 });
 
 test('other save versions are refused', () => {
-  rejects(envelope((state, doc) => { doc.version = 2; }), /version/i);
-  rejects(envelope(state => { state.version = 2; }), /version/i);
+  rejects(envelope((state, doc) => { doc.version = 99; }), /version/i);
+  rejects(envelope(state => { state.version = 99; }), /version/i);
 });
 
 test('unknown fields are refused at any depth, including prototype keys', () => {
   rejects(envelope(state => { state.hacked = true; }), /hacked/);
   rejects(envelope(state => { state.words.H0001.evil = 1; }), /evil/);
   rejects(envelope(state => { state.settings.extra = 1; }), /extra/);
-  const proto = exportText(played(), NOW).replace('"version":1,"createdAt"', '"__proto__":{"polluted":true},"version":1,"createdAt"');
+  const proto = exportText(played(), NOW).replace('"version":2,"createdAt"', '"__proto__":{"polluted":true},"version":2,"createdAt"');
   rejects(proto, /__proto__/);
   assert.equal({}.polluted, undefined);
 });
@@ -144,7 +151,10 @@ test('the party is bounded, unique and captured', () => {
 
 test('badges must agree with the learner\'s record', () => {
   const earned = ['b-final-1', 'b-final-2', 'b-spell-1', 'b-order-1'];
-  const badge = (over = {}) => state => { state.badges[BADGE_ID] = { at: NOW, questionIds: earned, ...over }; };
+  const badge = (over = {}) => state => {
+    Object.assign(state.flags, { neriCleared: true, gateOpen: true, doorOpen: 'door-m' });
+    state.badges[BADGE_ID] = { at: NOW, questionIds: earned, ...over };
+  };
   rejects(envelope(badge({ questionIds: ['b-final-1'] })), /badge/i);
   rejects(envelope(state => { badge()(state); state.words = {}; state.party = []; }), /badge/i);
   rejects(envelope(state => { badge()(state); delete state.skills['final-forms']; delete state.lessons['l-finals']; state.words = {}; state.party = []; }), /badge/i);
@@ -232,7 +242,7 @@ test('a pending question must match its real stem, family and format, and fit th
 });
 
 test('a pending badge question must keep its format rule, and legitimate pending saves still load', () => {
-  const s = played();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   openBadgeQuestion(s, content, NOW);
   useBadgeHint(s, content);
@@ -249,7 +259,7 @@ const trialAnswer = q => (q.format === 'tokens' ? q.acceptedSequences[0] : q.acc
 
 // Three answers legally earned through production question selection, none pending.
 function partialTrial() {
-  const s = played();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   for (let i = 0; i < 3; i++) submitBadgeAnswer(s, content, trialAnswer(openBadgeQuestion(s, content, NOW)), NOW);
   assert.equal(s.badgeRun.correct.length, 3);
@@ -289,7 +299,7 @@ test('a legitimate partial trial with earlier credit and a hinted pending questi
 
 test('every transition of a whole trial saves and reloads, through a miss, a hint and the award', () => {
   const store = memory();
-  const s = played();
+  const s = atTrial();
   const roundTrip = label => {
     assert.equal(saveSlot(store, 1, s, content).ok, true, `${label}: saved`);
     const back = loadSlot(store, 1, content);
@@ -336,7 +346,7 @@ test('the award counts distinct answers, as a guard behind the import check', ()
 
 // A legal open trial with only its credited answers swapped, to isolate the rule under test.
 function trialCrediting(correct, current = null) {
-  const s = played();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   s.badgeRun.correct = correct;
   s.badgeRun.current = current;

@@ -1,7 +1,7 @@
 // Connects input, the game loop, saving and the screens. Pure rules live in engine/learning/storage.
-import { content } from './content.js';
+import { content as gameContent } from './content.js';
 import { newGame, tryMove, interact, objective, promptFor } from './engine.js';
-import { MAPS } from './world.js';
+import { MAPS, OBJECTS } from './world.js';
 import { drawWorld } from './render.js';
 import { createUI, el } from './ui.js';
 import { play } from './audio.js';
@@ -20,7 +20,7 @@ const ATTRIBUTION = [
   'Noto Serif Hebrew, copyright 2022 The Noto Project Authors, SIL Open Font License 1.1.',
 ];
 
-export function startApp({ now = () => Date.now(), storage = browserStorage(), seed, reducedMotion } = {}) {
+export function startApp({ now = () => Date.now(), storage = browserStorage(), seed, reducedMotion, content = gameContent } = {}) {
   const canvas = document.getElementById('game-canvas');
   const modal = document.getElementById('modal');
   const objectiveLine = document.getElementById('objective');
@@ -45,6 +45,12 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
 
   const sound = name => play(name, state?.settings.sound);
 
+  // Outdoors takes the region's title from data. Buildings and caves keep their own names.
+  const placeName = saved => {
+    const place = MAPS[saved.map];
+    return (place.outdoor && content.regionById.get(place.regionId)?.title) || place.title;
+  };
+
   function setWarning(text) {
     warning.hidden = !text;
     warning.textContent = text ?? '';
@@ -58,6 +64,8 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
       try { storage.setItem(lastSlotKey, String(slot)); } catch { /* the save itself succeeded */ }
     } else if (result.reason === 'unreadable') {
       setWarning(`Slot ${slot} holds data this game can't read, so autosave left it alone. Open Menu to export your progress.`);
+    } else if (result.reason === 'invalid' || result.reason === 'too-large') {
+      setWarning(`This progress could not be saved safely, so slot ${slot} still holds your last good save. Open Menu and choose Export to keep what you have now.`);
     } else {
       setWarning('Progress is not being saved: this browser blocked storage. It stays in memory until you close the page. Open Menu and choose Export to keep it.');
     }
@@ -65,7 +73,7 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
 
   function refreshHud() {
     if (!state) return;
-    placeLine.textContent = MAPS[state.map].title;
+    placeLine.textContent = placeName(state);
     objectiveLine.textContent = objective(state, content);
     promptLine.textContent = message || promptFor(state);
   }
@@ -76,7 +84,7 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
   }
 
   const ui = createUI({
-    modal, now, persist, sound, refreshHud,
+    modal, content, now, persist, sound, refreshHud,
     getState: () => state,
     onClosed: () => { canvas.focus(); draw(); },
   });
@@ -117,39 +125,69 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
     } else if (result.kind === 'riddle') {
       ui.riddle();
     } else if (result.kind === 'exit') {
-      handleEvent(tryMove(state, 'up', content, now()).event);
+      handleEvent(tryMove(state, state.dir, content, now()).event);
+      persist();
+      refreshHud();
     } else {
       refreshHud();
     }
   }
 
+  const LESSON_FOLLOW_UP = {
+    'l-letters': 'Good. Now go east along the path, into the tall reeds. A word will surface. Read its card, then show me you can recognize it and write it.',
+    'l-finals': 'Those five shapes will turn up everywhere. Back to the reeds. New words can reach you now.',
+  };
+
   function follow(then) {
     if (then.type === 'lesson') {
-      const id = then.id;
+      const { id } = then;
+      const { mentor } = content.lessonById.get(id);
       ui.lesson(id, finished => {
         if (finished === false) { ui.close(); return; }
-        ui.dialogue('Tamar', [id === 'l-letters'
-          ? 'Good. Now go east along the path, into the tall reeds. A word will surface. Read its card, then show me you can recognize it and write it.'
-          : 'Those five shapes will turn up everywhere. Back to the reeds. New words can reach you now.']);
+        ui.dialogue(mentor, [LESSON_FOLLOW_UP[id] ?? 'That\'s yours now. Try it out on the words around here, and come back when you have done what you set out to do.']);
       });
     } else if (then.type === 'puzzle') ui.puzzle(then.group);
-    else if (then.type === 'badge') ui.badge();
+    else if (then.type === 'badge') ui.badge(then.regionId, keeperName(then.regionId));
     else if (then.type === 'passage') ui.passage(then.id);
+    else if (then.type === 'gate') ui.gate(then.key);
+    else if (then.type === 'reading') ui.reading(then.passageId);
+    else if (then.type === 'ward') ui.ward(then.key, then.ability);
+    else if (then.type === 'secret') ui.secret(then.key);
+    else if (then.type === 'ending') ui.ending();
   }
+
+  const keeperName = regionId => (regionId === 'r1' ? 'Ilana' : OBJECTS.find(o => o.role === 'keeper' && o.regionId === regionId).name);
 
   function handleEvent(event) {
     if (!event) return;
+    const region = content.regionById.get(event.regionId);
+    const r1 = event.regionId === 'r1';
     if (event.type === 'encounter') {
       ui.beginEncounter(event);
     } else if (event.type === 'reeds-silent') {
-      setMessage('The reeds rustle, but you can\'t read them yet. Find Tamar first.');
+      setMessage(`The reeds rustle, but you can't read them yet. Find ${r1 ? 'Tamar' : 'this region\'s mentor'} first.`);
     } else if (event.type === 'exit-sealed') {
-      ui.dialogue('The north arch', ['A seal of reeds and wax holds the arch shut. It will only open for someone carrying the Reed Seal.']);
+      ui.dialogue(r1 ? 'The north arch' : 'The way out', [r1
+        ? 'A seal of reeds and wax holds the arch shut. It will only open for someone carrying the Reed Seal.'
+        : `A seal holds this way shut. It will only open for someone carrying the ${region.badge.title}.`]);
+    } else if (event.type === 'exit-unfinished') {
+      ui.dialogue(r1 ? 'The north arch' : 'The way out', [`The seal is ready, but this region isn't finished with you. First: ${event.text}`]);
     } else if (event.type === 'exit-open') {
-      ui.dialogue('The north arch', [
-        'The seal crumbles as you lift the Reed Seal. Beyond the arch the road runs down toward the Vowel Springs.',
-        'This is as far as the archive has been restored. Letter Grove is finished, so your words, your Worddex and your seal are saved here.',
-      ]);
+      const ahead = MAPS[state.map].exitTo && content.regionById.get(MAPS[MAPS[state.map].exitTo.map].regionId);
+      if (r1) {
+        ui.dialogue('The north arch', [
+          'The seal crumbles as you lift the Reed Seal. Beyond the arch the road runs down toward the Vowel Springs.',
+          ahead ? 'The road is open. Walk through the arch when you are ready. You can always come back this way.' : 'This is as far as the archive has been restored. Letter Grove is finished, so your words, your Worddex and your seal are saved here.',
+        ]);
+      } else if (ahead) {
+        ui.dialogue('The way out', [`The seal falls away as you lift the ${region.badge.title}. Walk on when you are ready. You can always come back this way.`]);
+      } else {
+        ui.dialogue('The way out', [`The seal falls away as you lift the ${region.badge.title}, but the road beyond has not been restored yet. Your words and seals are saved here.`]);
+      }
+    } else if (event.type === 'region-enter') {
+      ui.dialogue(region.title, [`${region.theme} Find whoever teaches here, and watch for words in the reeds.`]);
+    } else if (event.type === 'archive-enter') {
+      ui.dialogue('The Restored Archive', ['The doors stand open at last. Shelves run into the dark, and the great reading desk is waiting for the last scroll.']);
     }
   }
 
@@ -325,8 +363,9 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
 
   function slotSummary(saved) {
     const captured = Object.values(saved.words).filter(r => r.capturedAt != null).length;
-    const seal = Object.keys(saved.badges).length ? ', Reed Seal earned' : '';
-    return `${MAPS[saved.map].title}, ${captured} ${captured === 1 ? 'word' : 'words'} captured${seal}.`;
+    const earned = content.regions.filter(region => saved.badges[region.badge.id]);
+    const seal = earned.length > 1 ? `, ${earned.length} seals earned` : earned.length ? `, ${earned[0].badge.title} earned` : '';
+    return `${placeName(saved)}, ${captured} ${captured === 1 ? 'word' : 'words'} captured${seal}.`;
   }
 
   function confirmErase(target, back) {
@@ -353,8 +392,10 @@ export function startApp({ now = () => Date.now(), storage = browserStorage(), s
       el('p', { id: 'menu-slot', class: 'small', text: `Playing slot ${slot}. Progress saves automatically.` }),
       el('div', { class: 'tools stack' },
         el('button', { type: 'button', id: 'menu-worddex', text: 'Worddex', onclick: () => ui.worddex(menu) }),
+        el('button', { type: 'button', id: 'menu-journal', text: 'Journal', onclick: () => ui.journal(menu) }),
         toggle('toggle-sound', 'Sound effects', settings.sound, () => { settings.sound = !settings.sound; }),
         toggle('toggle-calm', 'Calm reading', settings.calm, () => { settings.calm = !settings.calm; document.body.classList.toggle('calm', settings.calm); }),
+        toggle('toggle-sacred', 'Show the divine name by substitute', settings.sacredName === 'substitute', () => { settings.sacredName = settings.sacredName === 'substitute' ? 'written' : 'substitute'; }),
         el('button', { type: 'button', id: 'toggle-mode', class: 'quiet', text: `Written answers: ${settings.responseMode === 'typing' ? 'type them' : 'choose from options'}`, onclick: () => {
           settings.responseMode = settings.responseMode === 'typing' ? 'recognition' : 'typing';
           persist();

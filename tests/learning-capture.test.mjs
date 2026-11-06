@@ -243,7 +243,7 @@ test('closing a question without answering keeps the hint record and costs nothi
 
 test('the party holds six words, captured ones only, and collection is separate from it', () => {
   const s = ready();
-  const ids = content.words.map(w => w.id);
+  const ids = content.regionById.get('r1').wordIds;
   for (const id of ids) {
     startEncounter(s, content, id, 'capture', NOW);
     completeStudy(s, id, NOW);

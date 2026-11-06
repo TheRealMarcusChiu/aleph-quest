@@ -143,6 +143,11 @@ test('the north arch refuses without the seal and opens with it', () => {
   assert.equal(refused.moved, false);
   assert.equal(refused.event?.type, 'exit-sealed');
   s.badges['b-reed-seal'] = { at: NOW, questionIds: [] };
+  // The whole quest before the arch, so only the seal is being tested here.
+  assert.equal(tryMove(s, 'up', content, NOW).event?.type, 'exit-unfinished');
+  for (const id of ['l-letters', 'l-meaning', 'l-finals']) markLessonDone(s, content, id, NOW);
+  for (const id of content.regionById.get('r1').wordIds.slice(0, 3)) s.words[id] = { capturedAt: NOW };
+  Object.assign(s.flags, { neriCleared: true, gateOpen: true, doorOpen: 'door-m' });
   const opened = tryMove(s, 'up', content, NOW);
   assert.equal(opened.event?.type, 'exit-open');
   assert.equal(s.flags.exitOpened, true);

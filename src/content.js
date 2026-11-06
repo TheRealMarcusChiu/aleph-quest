@@ -10,12 +10,17 @@ import attestations from '../data/attestations.json' with { type: 'json' };
 
 const byId = list => new Map(list.map(item => [item.id, item]));
 
-export const content = {
-  words, questions, lessons, regions, quests, passages, sources, attestations,
-  wordById: byId(words),
-  questionById: byId(questions),
-  lessonById: byId(lessons),
-  regionById: byId(regions),
-  questById: byId(quests),
-  passageById: byId(passages),
-};
+// Indexes one set of records. The game always plays the real set below; tests may index labeled fixtures.
+export const buildContent = data => ({
+  ...data,
+  wordById: byId(data.words),
+  questionById: byId(data.questions),
+  lessonById: byId(data.lessons),
+  regionById: byId(data.regions),
+  questById: byId(data.quests),
+  passageById: byId(data.passages),
+  sourceById: byId(data.sources),
+  questionByStem: new Map(data.questions.map(q => [q.semanticStemId, q])),
+});
+
+export const content = buildContent({ words, questions, lessons, regions, quests, passages, sources, attestations });

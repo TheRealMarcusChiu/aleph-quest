@@ -20,6 +20,13 @@ function prepared(captures = 3) {
   return s;
 }
 
+// Past Neri and the Field Gate, which the quest asks for before the trial.
+function atTrial() {
+  const s = prepared();
+  Object.assign(s.flags, { neriCleared: true, gateOpen: true, doorOpen: 'door-m' });
+  return s;
+}
+
 test('Neri offers the challenge only when the lesson and captures are in place', () => {
   const s = newGame(NOW, 5);
   Object.assign(s, { map: 'grove', x: 17, y: 15, dir: 'up' });
@@ -72,7 +79,7 @@ test('the badge is refused until its skills and captures are met', () => {
 });
 
 test('the badge needs four correct answers across all three task families, on words outside the vocabulary', () => {
-  const s = prepared();
+  const s = atTrial();
   assert.equal(startBadgeRun(s, content, 'r1', NOW).ok, true);
   const seen = [];
   let out;
@@ -92,7 +99,7 @@ test('the badge needs four correct answers across all three task families, on wo
 });
 
 test('a wrong trial answer explains and retires the stem; a hinted one earns nothing', () => {
-  const s = prepared();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   const q = openBadgeQuestion(s, content, NOW);
   const out = submitBadgeAnswer(s, content, wrongAnswer(q), NOW);
@@ -107,7 +114,7 @@ test('a wrong trial answer explains and retires the stem; a hinted one earns not
 });
 
 test('leaving and re-entering the trial resumes the hinted question, so a hint cannot be laundered', () => {
-  const s = prepared();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   const first = openBadgeQuestion(s, content, NOW);
   submitBadgeAnswer(s, content, rightAnswer(first), NOW);
@@ -127,7 +134,7 @@ test('leaving and re-entering the trial resumes the hinted question, so a hint c
 });
 
 test('running out of trial questions is not a dead end: leave, explore and try again', () => {
-  const s = prepared();
+  const s = atTrial();
   startBadgeRun(s, content, 'r1', NOW);
   for (let q; (q = openBadgeQuestion(s, content, NOW));) submitBadgeAnswer(s, content, wrongAnswer(q), NOW);
   assert.equal(openBadgeQuestion(s, content, NOW), null);
