@@ -106,6 +106,26 @@ test('a wrong trial answer explains and retires the stem; a hinted one earns not
   assert.equal(badgeProgress(s, content).correct, 0);
 });
 
+test('leaving and re-entering the trial resumes the hinted question, so a hint cannot be laundered', () => {
+  const s = prepared();
+  startBadgeRun(s, content, 'r1', NOW);
+  const first = openBadgeQuestion(s, content, NOW);
+  submitBadgeAnswer(s, content, rightAnswer(first), NOW);
+  const hinted = openBadgeQuestion(s, content, NOW);
+  useBadgeHint(s, content);
+
+  assert.equal(startBadgeRun(s, content, 'r1', NOW).ok, true);
+  assert.equal(openBadgeQuestion(s, content, NOW).id, hinted.id);
+  assert.equal(s.badgeRun.current.hintsUsed, 1);
+  assert.deepEqual(s.badgeRun.correct, [first.id], 'earned answers are kept');
+
+  const out = submitBadgeAnswer(s, content, rightAnswer(hinted), NOW);
+  assert.equal(out.correct, true);
+  assert.equal(out.independent, false);
+  assert.deepEqual(s.badgeRun.correct, [first.id]);
+  assert.notEqual(openBadgeQuestion(s, content, NOW).id, hinted.id, 'a fresh question follows');
+});
+
 test('running out of trial questions is not a dead end: leave, explore and try again', () => {
   const s = prepared();
   startBadgeRun(s, content, 'r1', NOW);

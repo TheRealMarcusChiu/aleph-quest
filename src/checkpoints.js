@@ -25,13 +25,13 @@ export function answerPuzzle(state, content, group, response, now) {
   return { correct, explanation: question.explanation, question };
 }
 
-// A run stays open across visits, so progress survives leaving the Hall. Each visit gets a new
-// id, which lets answers exposed on an earlier visit return after two other actions.
+// A run stays open across visits, so progress and the pending attempt with its hints survive leaving
+// the Hall. Each visit gets a new id, which lets answers exposed earlier return after two other actions.
 export function startBadgeRun(state, content, regionId, now) {
   const gaps = missingForBadge(state, content);
   if (gaps.length) return { ok: false, reason: `Still needed: ${gaps.join(', ')}.` };
   state.encounterCounter += 1;
-  state.badgeRun = { id: state.encounterCounter, regionId, correct: state.badgeRun?.correct ?? [], current: null };
+  state.badgeRun = { id: state.encounterCounter, regionId, correct: state.badgeRun?.correct ?? [], current: state.badgeRun?.current ?? null };
   state.updatedAt = now;
   return { ok: true };
 }

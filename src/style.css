@@ -115,6 +115,7 @@ button.danger { background: #7a2b22; }
   border-radius: 8px;
   padding: 18px 20px 20px;
 }
+#modal:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
 #modal::backdrop { background: rgb(14 40 36 / .72); }
 #modal.talk { margin-block: auto 12px; }
 #modal h1 { margin: 0; font-size: 44px; line-height: 1.1; color: var(--pine); }

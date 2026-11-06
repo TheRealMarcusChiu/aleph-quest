@@ -111,14 +111,16 @@ export function startEncounter(state, content, wordId, kind, now) {
 }
 
 // A card opened before the word has been studied is the introduction. Opened again during an
-// encounter it is answer-bearing, so the next response cannot count as independent.
+// encounter it is answer-bearing, so the outstanding or next response cannot count as independent.
 export function completeStudy(state, wordId, now) {
   const record = recordFor(state, wordId);
+  const encounter = state.encounter;
   if (record.studiedAt == null) {
     record.studiedAt = now;
     log(record, { at: now, type: 'studied' });
-  } else if (state.encounter?.wordId === wordId) {
-    state.encounter.assistedNext = true;
+  } else if (encounter?.wordId === wordId) {
+    if (encounter.current) encounter.current.assisted = true;
+    else encounter.assistedNext = true;
   }
   state.updatedAt = now;
 }
@@ -170,7 +172,9 @@ export function openQuestion(state, content, family, now) {
   const record = recordFor(state, encounter.wordId);
   if (encounter.current) {
     if (encounter.current.family === family) return content.questionById.get(encounter.current.questionId);
-    if (encounter.current.hintsUsed) retire(state, record, encounter.current.stemId);
+    if (encounter.current.hintsUsed || encounter.current.assisted) retire(state, record, encounter.current.stemId);
+    // The card was seen, so changing commands can't clear what it exposed.
+    if (encounter.current.assisted) encounter.assistedNext = true;
     encounter.current = null;
   }
   if (encounter.kind === 'capture' && record.captureSteps.some(step => step.family === family)) return null;
@@ -250,7 +254,7 @@ export function retreat(state, content, now) {
   const encounter = state.encounter;
   if (!encounter) return;
   const { current } = encounter;
-  if (current?.hintsUsed) {
+  if (current?.hintsUsed || current?.assisted) {
     const record = recordFor(state, encounter.wordId);
     retire(state, record, current.stemId);
     if (encounter.kind === 'review') finalizeReview(record, content.questionById.get(current.questionId), current, false, now);

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { newGame, markLessonDone, BADGE_ID } from '../src/engine.js';
 import { content } from '../src/content.js';
 import { startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES } from '../src/learning.js';
+import { startBadgeRun, openBadgeQuestion, useBadgeHint } from '../src/checkpoints.js';
 import { saveSlot, loadSlot, listSlots, deleteSlot, exportText, parseImport, slotKey, MAX_SAVE_BYTES, SLOTS } from '../src/storage.js';
 
 const NOW = 1_800_000_000_000;
@@ -163,6 +164,85 @@ test('captured words must carry a schedule, and an encounter must point at a rea
   rejects(envelope(state => {
     state.encounter = { id: 1, wordId: 'H0776', kind: 'capture', assistedNext: false, current: { questionId: 'H0001-gloss', stemId: 'H0001-gloss', family: 'understand-meaning', startedAt: NOW, hintsUsed: 0, assisted: false, responseMode: 'recognition' } };
   }), /encounter/i);
+});
+
+test('captured words must carry their three distinct demonstrations, and those must belong to the word', () => {
+  rejects(envelope(state => { state.words.H0001.captureSteps = []; }), /H0001.*captureSteps/);
+  rejects(envelope(state => { state.words.H0001.captureSteps.pop(); }), /H0001.*captureSteps/);
+  rejects(envelope(state => {
+    const steps = state.words.H0001.captureSteps;
+    steps[2] = { ...steps[0] };
+  }), /H0001.*captureSteps/);
+  // A genuine step for another word, moved here.
+  rejects(envelope(state => { state.words.H0001.captureSteps[0] = state.words.H0251.captureSteps[0]; }), /H0001.*captureSteps/);
+  // The right stem with another family's label.
+  rejects(envelope(state => { state.words.H0001.captureSteps[0].family = 'inscribe-spelling'; }), /H0001.*captureSteps/);
+  rejects(envelope(state => { state.words.H0001.captureSteps[0].templateId = 'tpl-gloss-type'; }), /H0001.*captureSteps/);
+  rejects(envelope(state => { state.words.H0001.studiedAt = null; }), /H0001.*study/i);
+});
+
+test('an uncaptured word cannot hold a finished capture, but partial progress is legitimate', () => {
+  const partial = played();
+  const id = content.words[3].id;
+  startEncounter(partial, content, id, 'capture', NOW);
+  completeStudy(partial, id, NOW);
+  submit(partial, content, rightAnswer(openQuestion(partial, content, 'read-letter', NOW)), NOW);
+  partial.encounter = null;
+  assert.equal(parseImport(exportText(partial, NOW), content).ok, true, 'one step of three is a normal save');
+
+  rejects(envelope(state => {
+    Object.assign(state.words.H0001, { capturedAt: null, dueAt: null });
+    state.party = state.party.filter(wordId => wordId !== 'H0001');
+  }), /H0001.*captureSteps/);
+});
+
+test('review evidence must belong to the word it is stored on', () => {
+  rejects(envelope(state => {
+    state.words.H0001.evidence = [{ at: NOW, taskFamily: 'read-letter', contextId: 'ctx-letter-shape', templateId: 'tpl-first-letter', semanticStemId: 'H0251-first-letter', responseMode: 'recognition' }];
+  }), /H0001.*evidence/);
+});
+
+test('a saved badge must cover every required task family', () => {
+  rejects(envelope(state => {
+    state.badges[BADGE_ID] = { at: NOW, questionIds: ['b-final-1', 'b-final-2', 'b-spell-1', 'b-spell-2'] };
+  }), /badges.*rtl-order/);
+});
+
+test('a pending question must match its real stem, family and format, and fit the encounter', () => {
+  const pending = over => state => {
+    state.encounter = {
+      id: 1, wordId: 'H1323', kind: 'capture', assistedNext: false,
+      current: { questionId: 'H1323-first-letter', stemId: 'H1323-first-letter', family: 'read-letter', startedAt: NOW, hintsUsed: 0, assisted: false, responseMode: 'recognition', ...over },
+    };
+    state.words.H1323 ??= structuredClone({ ...state.words.H0001, capturedAt: null, dueAt: null, captureSteps: [], evidence: [] });
+  };
+  assert.equal(parseImport(envelope(pending({})), content).ok, true, 'control: a legitimate pending question');
+  rejects(envelope(pending({ stemId: 'H0001-first-letter' })), /encounter.*stem/);
+  rejects(envelope(pending({ family: 'inscribe-spelling' })), /encounter.*family/);
+  rejects(envelope(pending({ responseMode: 'typing' })), /encounter.*typing/);
+  rejects(envelope(state => {
+    pending({})(state);
+    state.encounter.wordId = 'H0001'; // already captured, so it can't be a capture encounter
+    state.encounter.current = null;
+  }), /encounter/);
+  rejects(envelope(state => {
+    pending({})(state);
+    delete state.words.H1323;
+  }), /encounter/);
+});
+
+test('a pending badge question must keep its format rule, and legitimate pending saves still load', () => {
+  const s = played();
+  startBadgeRun(s, content, 'r1', NOW);
+  openBadgeQuestion(s, content, NOW);
+  useBadgeHint(s, content);
+  const good = parseImport(exportText(s, NOW), content);
+  assert.equal(good.ok, true, good.errors?.join());
+  assert.equal(good.state.badgeRun.current.hintsUsed, 1, 'a hint survives export and import');
+
+  rejects(envelope(state => {
+    state.badgeRun = { id: 9, regionId: 'r1', correct: [], current: { questionId: 'b-final-1', hintsUsed: 0, startedAt: NOW, responseMode: 'typing' } };
+  }), /badgeRun.*typing/);
 });
 
 test('a rejected import returns no state and cannot touch the game passed around it', () => {

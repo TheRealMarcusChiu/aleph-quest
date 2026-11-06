@@ -83,7 +83,10 @@ export function createUI(ctx) {
     modal.setAttribute('aria-label', modal.querySelector('h1, h2')?.textContent ?? 'Aleph Quest');
     if (!modal.open) modal.showModal();
     const target = (focus && modal.querySelector(focus)) || modal.querySelector('[data-autofocus]') || modal.querySelector('button:not([aria-disabled="true"]), input');
-    target?.focus();
+    // Tall screens open at their top. If the first control is below the fold the panel takes focus, and Tab reaches the controls in order.
+    const onScreen = target && target.getBoundingClientRect().bottom <= modal.getBoundingClientRect().bottom;
+    (onScreen ? target : modal).focus({ preventScroll: true });
+    modal.scrollTop = 0;
     ctx.persist();
     ctx.refreshHud();
   }
@@ -102,9 +105,9 @@ export function createUI(ctx) {
     if (escape) escape();
   });
 
-  // Arrow keys move between buttons, except while typing in a field.
+  // Arrow keys move between buttons, except while typing in a field or scrolling the focused panel.
   modal.addEventListener('keydown', event => {
-    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key) || event.target.matches('input, textarea')) return;
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key) || event.target === modal || event.target.matches('input, textarea')) return;
     const buttons = [...modal.querySelectorAll('button:not([aria-disabled="true"])')];
     const index = buttons.indexOf(document.activeElement);
     const forward = event.key === 'ArrowDown' || event.key === 'ArrowRight';
@@ -585,6 +588,7 @@ export function createUI(ctx) {
     const partyMessage = el('p', { id: 'party-message', class: 'hint', role: 'status' });
     const reviewLine = owned ? `Next review: on or after ${formatDate(record.dueAt)}. Stage ${record.stage} of 5.` : 'Not captured yet, so it has no review date.';
     show([
+      heading(`Worddex: ${word.gloss}`, 'entry-title'),
       el('div', { class: 'encounter-head' }, wordSprite(wordId), el('div', { class: 'word-plate plain' }, he(word.hebrew, 'he he-large'))),
       el('p', { id: 'entry-status', 'data-status': status, class: 'status-line', text: status }),
       el('p', { class: 'small', text: STATUS_HELP[status] }),

@@ -2,6 +2,7 @@
 // accepted state holds only known fields and ids. A failed parse never touches the live game.
 import { MAPS, DOORS } from './world.js';
 import { destination, capturedCount } from './engine.js';
+import { CAPTURE_FAMILIES } from './learning.js';
 
 export const SLOTS = [1, 2, 3];
 export const MAX_SAVE_BYTES = 512 * 1024;
@@ -122,6 +123,53 @@ function stateSchema(content) {
   });
 }
 
+// Each demonstration must describe a real question of this word, and a capture needs all three.
+function checkCaptureEvidence(id, record, content, errors) {
+  const path = `words.${id}`;
+  const stemQuestion = stem => content.questions.find(q => q.semanticStemId === stem);
+  const steps = record.captureSteps;
+  for (const step of steps) {
+    const q = stemQuestion(step.semanticStemId);
+    if (q.wordId !== id || q.taskFamily !== step.family || q.templateId !== step.templateId || q.contextId !== step.contextId) {
+      errors.push(`${path}.captureSteps: ${step.semanticStemId} doesn't match its question`);
+    }
+  }
+  for (const key of ['family', 'templateId', 'semanticStemId']) {
+    if (new Set(steps.map(step => step[key])).size !== steps.length) errors.push(`${path}.captureSteps: repeats a ${key}`);
+  }
+  const complete = CAPTURE_FAMILIES.every(family => steps.some(step => step.family === family));
+  if (complete !== (record.capturedAt != null)) errors.push(`${path}.captureSteps: must be complete exactly when the word is captured`);
+  if (steps.length && (record.seenAt == null || record.studiedAt == null)) errors.push(`${path}.studiedAt: demonstrations need a study record`);
+  for (const e of record.evidence) {
+    const q = stemQuestion(e.semanticStemId);
+    if (q.wordId !== id || q.taskFamily !== e.taskFamily || q.templateId !== e.templateId || q.contextId !== e.contextId) {
+      errors.push(`${path}.evidence: ${e.semanticStemId} doesn't match its question`);
+    }
+  }
+}
+
+// A saved attempt must match the question it names. Only type questions are answered by typing.
+function checkPendingMode(owner, question, responseMode, errors) {
+  if (responseMode === 'typing' && question.format !== 'type') errors.push(`${owner}: typing is only for type questions`);
+}
+
+function checkEncounter(state, content, errors) {
+  const encounter = state.encounter;
+  if (!encounter) return;
+  const record = state.words[encounter.wordId];
+  if (!record) { errors.push('encounter: word has no record'); return; }
+  if ((encounter.kind === 'capture') !== (record.capturedAt == null)) errors.push(`encounter: a ${encounter.kind} encounter doesn't fit this word's capture status`);
+  const { current } = encounter;
+  if (!current) return;
+  const question = content.questionById.get(current.questionId);
+  if (question.wordId !== encounter.wordId) errors.push('encounter: question belongs to another word');
+  if (question.semanticStemId !== current.stemId) errors.push('encounter: stem doesn\'t match the question');
+  if (question.taskFamily !== current.family) errors.push('encounter: family doesn\'t match the question');
+  if (!question.requires.every(skill => state.skills[skill])) errors.push('encounter: question needs an untaught skill');
+  if (encounter.kind === 'capture' && record.captureSteps.some(step => step.family === current.family)) errors.push('encounter: this family is already shown');
+  checkPendingMode('encounter', question, current.responseMode, errors);
+}
+
 // Rules a schema can't express: facts in one part of the save must agree with the others.
 function checkConsistency(state, content, errors) {
   const seen = new Set(state.party);
@@ -130,6 +178,8 @@ function checkConsistency(state, content, errors) {
 
   for (const [id, record] of Object.entries(state.words)) {
     if (record.capturedAt != null && record.dueAt == null) errors.push(`words.${id}.dueAt: captured words need a next review`);
+    if (record.capturedAt != null && !content.wordById.get(id).requires.every(skill => state.skills[skill])) errors.push(`words.${id}: captured without its skills`);
+    checkCaptureEvidence(id, record, content, errors);
   }
   for (const skill of Object.keys(state.skills)) {
     const taught = content.lessons.some(l => l.teaches.includes(skill) && state.lessons[l.id]);
@@ -143,6 +193,8 @@ function checkConsistency(state, content, errors) {
     const allowed = earned.questionIds.every(id => badge.questionIds.includes(id));
     if (!allowed) errors.push(`badges.${badge.id}: lists a question outside this badge`);
     if (new Set(earned.questionIds).size < badge.requiredCorrect) errors.push(`badges.${badge.id}: too few answers`);
+    const families = new Set(earned.questionIds.map(id => content.questionById.get(id).taskFamily));
+    for (const family of badge.requiredTaskFamilies) if (!families.has(family)) errors.push(`badges.${badge.id}: needs a ${family} answer`);
     if (!badge.requiresSkills.every(skill => state.skills[skill])) errors.push(`badges.${badge.id}: skills are missing`);
     if (capturedCount(state) < badge.requiresCaptures) errors.push(`badges.${badge.id}: too few captures`);
     if (!region.requiresBadges.every(id => state.badges[id])) errors.push(`badges.${badge.id}: earlier badge missing`);
@@ -156,15 +208,13 @@ function checkConsistency(state, content, errors) {
   const dest = MAPS[state.map] && destination(state, state.map, state.x, state.y);
   if (!dest) errors.push('position: player is not on a walkable tile');
 
-  const encounter = state.encounter;
-  if (encounter?.current) {
-    const question = content.questionById.get(encounter.current.questionId);
-    if (question.wordId !== encounter.wordId) errors.push('encounter: question belongs to another word');
-  }
+  checkEncounter(state, content, errors);
   if (state.badgeRun) {
     const { badge } = content.regionById.get(state.badgeRun.regionId);
     const ids = [...state.badgeRun.correct, ...(state.badgeRun.current ? [state.badgeRun.current.questionId] : [])];
     if (!ids.every(id => badge.questionIds.includes(id))) errors.push('badgeRun: lists a question outside this badge');
+    const { current } = state.badgeRun;
+    if (current) checkPendingMode('badgeRun', content.questionById.get(current.questionId), current.responseMode, errors);
   }
 }
 

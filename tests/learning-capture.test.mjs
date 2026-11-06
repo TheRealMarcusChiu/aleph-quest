@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { newGame, interact, markLessonDone } from '../src/engine.js';
 import { content } from '../src/content.js';
 import {
-  startEncounter, commandStates, completeStudy, openQuestion, useHint, submit, retreat, statusOf,
+  startEncounter, commandStates, completeStudy, openQuestion, useHint, submit, retreat, statusOf, setCurrentResponseMode,
   addToParty, removeFromParty, PARTY_LIMIT, CAPTURE_FAMILIES,
 } from '../src/learning.js';
 
@@ -126,6 +126,59 @@ test('reopening the card mid-encounter taints the next answer', () => {
   assert.equal(r.independent, false);
   assert.equal(s.words[WORD].captureSteps.length, 0);
   assert.equal(answerRight(s, 'read-letter').independent, true);
+});
+
+test('reopening the card over a pending question taints that question, and a fresh stem still earns the step', () => {
+  const s = ready();
+  startEncounter(s, content, WORD, 'capture', NOW);
+  completeStudy(s, WORD, NOW);
+  const pending = openQuestion(s, content, 'understand-meaning', NOW);
+  completeStudy(s, WORD, NOW); // Back to commands, then Study again
+  assert.equal(s.encounter.current.assisted, true);
+  assert.equal(s.encounter.assistedNext, false, 'only the outstanding attempt pays for the card');
+  assert.equal(openQuestion(s, content, 'understand-meaning', NOW).id, pending.id, 'the same question resumes');
+
+  const answered = submit(s, content, rightAnswer(pending), NOW);
+  assert.equal(answered.correct, true);
+  assert.equal(answered.independent, false);
+  assert.equal(s.words[WORD].captureSteps.length, 0);
+
+  const fresh = openQuestion(s, content, 'understand-meaning', NOW);
+  assert.notEqual(fresh.semanticStemId, pending.semanticStemId);
+  assert.equal(submit(s, content, rightAnswer(fresh), NOW).independent, true);
+});
+
+test('switching response mode keeps a card-exposed attempt assisted', () => {
+  const s = ready();
+  startEncounter(s, content, WORD, 'capture', NOW);
+  completeStudy(s, WORD, NOW);
+  s.words[WORD].retired['H0001-mirror'] = { at: s.interactions, encounter: s.encounter.id };
+  const q = openQuestion(s, content, 'inscribe-spelling', NOW);
+  completeStudy(s, WORD, NOW);
+  setCurrentResponseMode(s, 'recognition');
+  assert.equal(submit(s, content, q.recognitionAccepted[0], NOW).independent, false);
+});
+
+test('walking away to another command does not launder a card-exposed attempt', () => {
+  const s = ready();
+  startEncounter(s, content, WORD, 'capture', NOW);
+  completeStudy(s, WORD, NOW);
+  const exposed = openQuestion(s, content, 'understand-meaning', NOW);
+  completeStudy(s, WORD, NOW);
+  const other = openQuestion(s, content, 'read-letter', NOW);
+  assert.equal(s.words[WORD].retired[exposed.semanticStemId].encounter, s.encounter.id, 'the exposed stem retires');
+  assert.equal(submit(s, content, rightAnswer(other), NOW).independent, false, 'the taint follows the next answer');
+  assert.equal(s.words[WORD].captureSteps.length, 0);
+});
+
+test('retreating from a card-exposed attempt retires its stem', () => {
+  const s = ready();
+  startEncounter(s, content, WORD, 'capture', NOW);
+  completeStudy(s, WORD, NOW);
+  const exposed = openQuestion(s, content, 'read-letter', NOW);
+  completeStudy(s, WORD, NOW);
+  retreat(s, content, NOW);
+  assert.ok(s.words[WORD].retired[exposed.semanticStemId]);
 });
 
 test('retreat keeps progress, and the same steps still count in a later encounter', () => {

@@ -5,8 +5,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 import { content } from '../src/content.js';
-import { destination } from '../src/engine.js';
-import { slotKey } from '../src/storage.js';
+import { destination, newGame, markLessonDone } from '../src/engine.js';
+import { startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES } from '../src/learning.js';
+import { slotKey, saveSlot } from '../src/storage.js';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8').replace(/<script[^>]*><\/script>|<link[^>]*>/g, '');
 const fakeContext = new Proxy({}, { get: () => () => {}, set: () => true });
@@ -439,6 +440,118 @@ test('Back and Esc leave a question for the command menu, and returning resumes 
   g.escape();
   assert.equal(g.$('#modal').open, false, 'Esc at the commands retreats');
   assert.equal(g.state().encounter, null);
+});
+
+test('pending question, Back, Study, resume: the answer earns nothing, survives reload, and a fresh stem can capture', () => {
+  const g = boot();
+  atFirstWord(g);
+  g.click('#cmd-study');
+  g.click('#btn-card-done');
+  finishLesson(g);
+  g.click('#cmd-understand');
+  const stem = g.state().encounter.current.stemId;
+  g.click('#btn-back');
+  g.click('#cmd-study');
+  assert.match(g.$('#card-gloss').textContent, /father/);
+  g.click('#btn-card-done');
+
+  // Reloading must not forgive the exposure.
+  const again = boot({ storage: g.storage });
+  again.click('#slot-1');
+  assert.equal(again.state().encounter.current.stemId, stem);
+  assert.equal(again.state().encounter.current.assisted, true);
+  again.click('[data-choice="c0"]');
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  assert.equal(again.state().words.H0001.captureSteps.length, 0);
+  again.click('#btn-continue');
+
+  again.click('#cmd-understand');
+  assert.notEqual(again.state().encounter.current.stemId, stem);
+  again.click('[data-choice="c0"]');
+  assert.equal(again.state().words.H0001.captureSteps.length, 1);
+});
+
+function atIlana() {
+  const s = newGame(1_800_000_000_000, 5);
+  for (const id of ['l-letters', 'l-meaning', 'l-finals']) markLessonDone(s, content, id, s.createdAt);
+  for (const w of content.words.slice(0, 3)) {
+    startEncounter(s, content, w.id, 'capture', s.createdAt);
+    completeStudy(s, w.id, s.createdAt);
+    for (const family of CAPTURE_FAMILIES) submit(s, content, openQuestion(s, content, family, s.createdAt).acceptedAnswers[0], s.createdAt);
+  }
+  Object.assign(s, { map: 'hall', x: 5, y: 3, dir: 'up' });
+  const storage = memory();
+  saveSlot(storage, 1, s, content);
+  return storage;
+}
+
+test('Hint, then leave Ilana and return: the same question comes back and the hint still counts, even after reload', () => {
+  const g = boot({ storage: atIlana() });
+  g.click('#slot-1');
+  const talk = screen => { screen.press('Enter'); screen.click('#btn-continue'); };
+  talk(g);
+  const asked = g.state().badgeRun.current.questionId;
+  g.click('#btn-hint');
+  g.escape();
+  assert.equal(g.$('#modal').open, false);
+
+  talk(g);
+  assert.equal(g.state().badgeRun.current.questionId, asked);
+  assert.equal(g.state().badgeRun.current.hintsUsed, 1);
+
+  const again = boot({ storage: g.storage });
+  again.click('#slot-1');
+  talk(again);
+  assert.equal(again.state().badgeRun.current.questionId, asked);
+  answerCurrent(again, content.questionById.get(asked));
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  assert.deepEqual(again.state().badgeRun.correct, []);
+});
+
+test('a long screen opens at its top: focus does not scroll past the word, and the controls stay reachable', () => {
+  const g = boot({ storage: atIlana() });
+  g.click('#slot-1');
+  const modal = g.$('#modal');
+  // jsdom has no layout, so this stands in for an entry taller than the viewport.
+  g.window.Element.prototype.getBoundingClientRect = function rect() {
+    return { top: 0, bottom: this === modal ? 400 : 900 };
+  };
+  const focusCalls = [];
+  const realFocus = g.window.HTMLElement.prototype.focus;
+  g.window.HTMLElement.prototype.focus = function focus(options) {
+    focusCalls.push(options);
+    realFocus.call(this, options);
+  };
+  g.click('#btn-worddex');
+  modal.scrollTop = 300;
+  focusCalls.length = 0;
+  g.click('[data-word="H0001"]');
+
+  assert.equal(modal.scrollTop, 0);
+  assert.equal(g.window.document.activeElement, modal, 'focus rests on the panel while the first control is off screen');
+  assert.ok(focusCalls.length && focusCalls.every(options => options?.preventScroll), 'focus never scrolls');
+  assert.equal(modal.firstElementChild.id, 'entry-title');
+  assert.equal(modal.getAttribute('aria-label'), g.$('#entry-title').textContent);
+  assert.ok(g.$('#entry-title').compareDocumentPosition(g.$('.word-plate bdi')) & g.window.Node.DOCUMENT_POSITION_FOLLOWING);
+
+  // Arrow keys scroll the panel natively here, instead of jumping to the bottom.
+  const arrow = new g.window.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
+  assert.equal(modal.dispatchEvent(arrow), true, 'the browser keeps the arrow key');
+  assert.equal(g.window.document.activeElement, modal);
+
+  // Controls are real, enabled buttons in tab order.
+  assert.equal(modal.getAttribute('tabindex'), '-1');
+  assert.notEqual(g.$('#btn-party').getAttribute('tabindex'), '-1');
+  g.escape();
+  assert.ok(g.$('#worddex-list'));
+});
+
+test('a control already on screen takes focus as usual', () => {
+  const g = boot({ storage: atIlana() });
+  g.click('#slot-1');
+  g.click('#btn-worddex');
+  g.click('[data-word="H0001"]');
+  assert.equal(g.window.document.activeElement.id, 'btn-party', 'jsdom reports everything as visible');
 });
 
 test('backing out of the meaning lesson costs nothing, and Study offers it again', () => {
