@@ -139,9 +139,9 @@ The envelope `version` and `state.version` must agree. A version 1 file is the a
 
 The Worddex can give an answer away, so a lookup is treated as help, the same as a hint or reopening a word card:
 
-- Reading a studied word's entry sets `lookedUpAt`. The next question about that word, in a capture, review, practice or seal, starts assisted and clears it. The field is on the record, so retreat, reload and mode switches don't remove it. After 20 hours (`MIN_REVIEW_GAP`) it counts as memory and is dropped unused.
+- Reading a studied word's entry sets `lookedUpAt` on that word and on every word its Same root panel shows, since the panel prints their meanings. The next question about such a word, in a capture, review, practice or seal, starts assisted and clears it. The field is on the record, so retreat, reload and mode switches don't remove it. After 20 hours (`MIN_REVIEW_GAP`) it counts as memory and is dropped unused.
 - Opening the Worddex with a question pending in a duel, lock, reading, seal, trial or encounter marks that question as helped, and the screen says so. The player can leave and resume it, and the answer earns nothing.
-- The list and its search give a meaning only for a word that is captured and not due, so neither can answer a capture or review. The entry itself is still available as real study.
+- The list and its search give a meaning only for a word that is captured and not due, so neither can answer a capture or review. The entry itself is still available as real study. A seal's word list names words in Hebrew only.
 - Helped answers earn no capture step, review evidence, XP, gate credit or badge credit. The stem retires and a fresh question follows.
 
 Keys are `rN:rival`, `rN:gate`, `rN:exit`, `rN:ward`, `rN:secret`, `rN:<optional group>` and `read:<passageId>`. Raw flags for these are not accepted, and only verified records count.

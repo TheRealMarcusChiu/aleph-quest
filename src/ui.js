@@ -655,7 +655,7 @@ export function createUI(ctx) {
         ? el('div', { id: 'ward-list', class: 'tools stack' }, ...candidates.map(id => {
           const word = content.wordById.get(id);
           const node = button('', () => gate(key, { wordId: id, onFresh: again }), { 'data-ward-word': id, class: 'dex-row' });
-          node.append(he(word.hebrew), el('span', { text: word.gloss }));
+          node.append(he(word.hebrew));
           return node;
         }))
         : el('p', { id: 'ward-empty', text: 'No word in your party can answer this yet. To grow a word, keep it in your party and use it in new ways: open it in the Worddex and choose Practice. It then has to answer one fresh question here.' }),
@@ -941,7 +941,8 @@ export function createUI(ctx) {
     const lines = unlockedExamples(state, content, wordId);
     const relatedWords = word.root && studied ? knownWords().filter(other => other.id !== wordId && other.root === word.root && state.words[other.id].studiedAt != null) : [];
     const featureText = Object.entries(word.features).map(([name, value]) => `${name}: ${value}`).join(', ');
-    if (studied) noteLookup(record, ctx.now());
+    // Same root prints those words' meanings too, so each word shown pays the same as the one opened.
+    for (const shown of [...(studied ? [word] : []), ...relatedWords]) noteLookup(state.words[shown.id], ctx.now());
     show([
       heading(studied ? `Worddex: ${word.gloss}` : 'Worddex: a word not yet studied', 'entry-title'),
       el('div', { class: 'encounter-head' }, wordSprite(wordId), el('div', { class: 'word-plate plain' }, he(word.hebrew, 'he he-large'))),
@@ -963,7 +964,7 @@ export function createUI(ctx) {
       relatedWords.length > 0 && el('h3', { text: 'Same root' }),
       relatedWords.length > 0 && el('ul', { id: 'entry-family', class: 'token-list' }, ...relatedWords.map(other => el('li', {}, he(other.hebrew, 'he he-inline'), el('span', { text: ` ${other.gloss}` })))),
       studied && word.notes && mixed(word.notes, 'p', { class: 'small' }),
-      studied && el('p', { id: 'entry-lookup', class: 'small', text: 'Reading this entry helps you, so your next answer about this word won\'t count as recalled alone. Tomorrow it will.' }),
+      studied && el('p', { id: 'entry-lookup', class: 'small', text: `Reading this entry helps you, so your next answer about this word${relatedWords.length ? ' or any word under Same root' : ''} won't count as recalled alone. Tomorrow it will.` }),
       el('h3', { text: 'Your record' }),
       owned && el('p', { id: 'entry-rank', class: 'small', text: `Knowledge: ${RANK_NAMES[rank]}. It grows when you use this word in new kinds of task and trace its forms. Knowing it better doesn't change the word itself.${rank >= 2 ? ` ${ABILITY_NAMES[abilityOf(word)]}.` : ''}` }),
       lines.length > 0 && el('h3', { text: 'More places it appears' }),

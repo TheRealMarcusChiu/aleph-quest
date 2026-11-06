@@ -11,7 +11,7 @@ import { MAPS, OBJECTS, REGION_MAPS, ENCOUNTER_TILES } from '../src/world.js';
 import { currentStage, destination, tileAt, isDone, newGame, markLessonDone } from '../src/engine.js';
 import { DAY, startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES, statusOf, addToParty } from '../src/learning.js';
 import { startBadgeRun, openBadgeQuestion, submitBadgeAnswer } from '../src/checkpoints.js';
-import { parseImport, slotKey, saveSlot } from '../src/storage.js';
+import { parseImport, slotKey, saveSlot, exportText } from '../src/storage.js';
 import { startApp } from '../src/app.js';
 
 const content = campaignFixture();
@@ -758,6 +758,149 @@ test('reading an entry just before a due review makes it an assisted review, wit
   assert.equal(g.state().encounter.current.assisted, false, 'yesterday\'s reading is memory by now');
   answer(g, content.questionById.get(g.state().encounter.current.questionId));
   assert.equal(g.state().words[other].evidence.length, 1);
+});
+
+// LABELED FIXTURE: two synthetic words given one root, so the Same root panel has something to show.
+function sameRootSetup() {
+  const data = campaignFixture();
+  data.wordById.get('FX205').root = data.wordById.get('FX200').root;
+  data.wordById.get('FX205').rootNote = 'Fixture root.';
+  return data;
+}
+const bootWith = (s, data, clock) => {
+  const storage = checkedStorage(data);
+  assert.equal(saveSlot(storage, 1, s, data).ok, true);
+  const g = boot({ storage, data, clock });
+  g.click('#slot-1');
+  return g;
+};
+const openA = g => {
+  g.click('#btn-worddex');
+  g.click('[data-word="FX200"]');
+};
+const leaveDex = g => {
+  g.click('#btn-back');
+  g.click('#btn-back');
+};
+
+test('Same root shows an uncaptured word\'s meaning: its next answer is helped through export, reload and mode, then fresh recovery works', () => {
+  const data = sameRootSetup();
+  const clock = { t: T0 };
+  const s = r2State({ captures: 1 });
+  startEncounter(s, data, 'FX205', 'capture', T0);
+  completeStudy(s, 'FX205', T0);
+  s.encounter = null;
+  const g = bootWith(s, data, clock);
+  openA(g);
+  assert.match(g.$('#entry-family').textContent, /fxgloss 205/, 'the related-word panel still teaches');
+  assert.equal(g.state().attempt, null, 'no question is pending');
+  assert.equal(g.state().words.FX205.lookedUpAt, T0, 'the shown word pays, not only the opened one');
+  assert.equal(g.state().words.FX200.lookedUpAt, T0);
+  leaveDex(g);
+
+  const imported = parseImport(exportText(g.state(), T0), data);
+  assert.equal(imported.ok, true, imported.errors?.join());
+  assert.equal(imported.state.words.FX205.lookedUpAt, T0, 'an export keeps what is owed');
+
+  const again = boot({ storage: g.storage, clock, data });
+  again.click('#slot-1');
+  again.click('#btn-menu');
+  again.click('#toggle-mode');
+  again.click('#btn-close-menu');
+  assert.equal(again.state().words.FX205.lookedUpAt, T0, 'reload and a mode change keep it too');
+  again.app.ui.beginEncounter({ wordId: 'FX205', kind: 'capture' });
+  again.click('#cmd-retreat');
+  again.app.ui.beginEncounter({ wordId: 'FX205', kind: 'capture' });
+  again.click('#cmd-understand');
+  assert.equal(again.state().encounter.current.assisted, true);
+  const helped = again.state().encounter.current.questionId;
+  answer(again, data.questionById.get(helped));
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  assert.deepEqual(again.state().words.FX205.captureSteps, []);
+
+  again.click('#btn-continue');
+  again.click('#cmd-understand');
+  assert.notEqual(again.state().encounter.current.questionId, helped, 'a fresh question');
+  assert.equal(again.state().encounter.current.assisted, false);
+  answer(again, data.questionById.get(again.state().encounter.current.questionId));
+  assert.equal(again.state().words.FX205.captureSteps.length, 1, 'legitimate recovery still earns the step');
+});
+
+test('Same root shows a due word\'s meaning: its review earns no evidence, and a later eligible review still can', () => {
+  const data = sameRootSetup();
+  const clock = { t: T0 + DAY + 1 };
+  const s = r2State({ captures: 1 });
+  startEncounter(s, data, 'FX205', 'capture', T0);
+  completeStudy(s, 'FX205', T0);
+  for (const family of CAPTURE_FAMILIES) submit(s, data, right(openQuestion(s, data, family, T0)), T0);
+  const g = bootWith(s, data, clock);
+  openA(g);
+  assert.match(g.$('#entry-family').textContent, /fxgloss 205/);
+  assert.equal(g.state().attempt, null);
+  leaveDex(g);
+
+  const again = boot({ storage: g.storage, clock, data });
+  again.click('#slot-1');
+  again.app.ui.beginEncounter({ wordId: 'FX205', kind: 'review' });
+  assert.equal(again.state().encounter.current.assisted, true);
+  answer(again, data.questionById.get(again.state().encounter.current.questionId));
+  assert.match(again.$('#feedback-verdict').textContent, /with help/);
+  const record = again.state().words.FX205;
+  assert.deepEqual([record.evidence.length, record.reviewOutcomes.at(-1)], [0, 0]);
+  again.click('#btn-continue');
+
+  clock.t = again.state().words.FX205.dueAt;
+  again.app.ui.beginEncounter({ wordId: 'FX205', kind: 'review' });
+  assert.equal(again.state().encounter.current.assisted, false, 'the debt is paid');
+  answer(again, data.questionById.get(again.state().encounter.current.questionId));
+  assert.equal(again.state().words.FX205.evidence.length, 1);
+});
+
+test('reading about a word through Same root long ago is memory, the same as reading its own entry', () => {
+  const data = sameRootSetup();
+  const clock = { t: T0 };
+  const s = r2State({ captures: 1 });
+  startEncounter(s, data, 'FX205', 'capture', T0);
+  completeStudy(s, 'FX205', T0);
+  s.encounter = null;
+  const g = bootWith(s, data, clock);
+  openA(g);
+  leaveDex(g);
+  clock.t += DAY;
+  g.app.ui.beginEncounter({ wordId: 'FX205', kind: 'capture' });
+  g.click('#cmd-understand');
+  assert.equal(g.state().encounter.current.assisted, false);
+});
+
+test('a word not yet studied stays out of Same root, so nothing is shown and nothing is charged', () => {
+  const data = sameRootSetup();
+  const s = r2State({ captures: 1 });
+  startEncounter(s, data, 'FX205', 'capture', T0);
+  s.encounter = null;
+  const g = bootWith(s, data, { t: T0 });
+  openA(g);
+  assert.equal(g.$('#entry-family'), null);
+  assert.equal(g.state().words.FX205.lookedUpAt, undefined);
+});
+
+test('the seal\'s word list names words in Hebrew only, so choosing one can\'t show the answer it is about to ask', () => {
+  const s = r2State();
+  s.gates['r2:rival'] = { at: T0, questionIds: content.regionById.get('r2').puzzleQuestionIds.neri.slice(0, 2) };
+  s.gates['r2:gate'] = { at: T0, questionIds: [content.regionById.get('r2').puzzleQuestionIds.gate[0]] };
+  const id = r2Word(0);
+  addToParty(s, id);
+  for (const family of ['fx-analyze', 'fx-build']) {
+    startEncounter(s, content, id, 'practice', T0);
+    submit(s, content, right(openQuestion(s, content, family, T0)), T0);
+    s.encounter = null;
+  }
+  const g = bootAt(s);
+  approach(g, 'r2-ward');
+  g.click('#btn-continue');
+  const row = g.$(`[data-ward-word="${id}"]`);
+  assert.ok(row.querySelector('bdi[lang="he"]'));
+  assert.ok(!row.textContent.includes(content.wordById.get(id).gloss));
+  assert.equal(g.state().words[id].lookedUpAt, undefined);
 });
 
 test('a pending encounter can\'t be asked about from the Worddex either, if it is ever reached there', () => {
