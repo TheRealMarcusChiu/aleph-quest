@@ -6,7 +6,7 @@ Original work of the Open Scriptures Hebrew Bible available at https://github.co
 
 Open Scriptures Hebrew Bible Project: lemma, morphology, and digital Hebrew lexicon data licensed under Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Westminster Leningrad Codex biblical text is public domain.
 
-Changes for Aleph Quest: selected passages and vocabulary; converted XML to application records; removed source segmentation separators in reading text; display without cantillation, meteg or paseq; original pedagogical glosses and explanations added. No endorsement implied.
+Changes for Aleph Quest: selected passages and vocabulary; converted XML to application records; removed source segmentation separators in reading text; display without cantillation or meteg; original pedagogical glosses, explanations and translations added. Stored source strings keep their upstream mark order. No endorsement implied.
 
 Source revision: morphhb 3d15126fb1ef74867fc1434be1942e837932691f. Upstream license notice: [morphhb-LICENSE.md](./morphhb-LICENSE.md).
 

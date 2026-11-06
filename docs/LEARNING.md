@@ -42,7 +42,21 @@ Hints reveal part of an answer, so they cost independent credit. Input aids don'
 
 ## Sound convention
 
-The sound guide is a modern Israeli-oriented reading of Biblical Hebrew pointing, not ancient speech. Stress is capitalized where it isn't final (`SE-fer`). Strong's obsolete `pron` field isn't used. There is no pronunciation audio.
+The sound guide is a modern Israeli-oriented reading of Biblical Hebrew pointing, not ancient speech. In a word of more than one syllable, the stressed syllable is capitalized (`SE-fer`, `sha-MA-yim`, `i-SHAH`). Strong's obsolete `pron` field isn't used. There is no pronunciation audio.
+
+Later regions use these choices consistently:
+
+- `kh` writes het and undotted kaf. `ts` writes tsade. `q` writes qof, and it is read like k. `s` writes sin and samekh.
+- Alef and ayin have no symbol when silent. Their letters still differ in spelling tasks, because this reading merges their sound.
+- Word-initial shewa is sounded, written `e`. Silent shewa writes nothing.
+- Qamats qatan is read `o`, as in `kol` for כָּל־.
+- A furtive patah is read before its final guttural, as in `RU-akh`.
+
+Modern speech is a convention here, and it isn't a claim about any historical stage of the language.
+
+## Numbers are product choices
+
+The review ladder, the capture counts, each badge's five correct answers and its six required captures are all editable design choices. None of them comes from a study. A badge's pool has at least two spare questions, so a miss can't lock a learner out.
 
 ## Sources
 
