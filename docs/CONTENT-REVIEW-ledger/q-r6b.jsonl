@@ -38,8 +38,8 @@
 {"id":"H0408-pointed","prov":"citation","tests":["vowels"],"ans":"patah under alef","rej":{"c1":"segol: to, H413","c2":"tsere: god, H410"}}
 {"id":"H0408-in-context","prov":"attested","tests":["volitives","word-meaning"],"ans":"Gen.13.8 a negative wish","rej":{"c1":"to has segol","c2":"also is גַּם"}}
 {"id":"H0408-type-gloss","prov":"citation","tests":["volitives","word-meaning"],"ans":"do not; don't, let not, not accepted","rej":{"c1":"please is נָא","c2":"who is מִי"}}
-{"id":"H0408-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed","rej":{"c1":"not reverses the letters","c2":"please has nun"}}
-{"id":"H0408-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed","rej":{"c1":"letters reversed: not","c2":"ayin: on"}}
+{"id":"H0408-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed; the prompt names the wish or command particle starting with alef","rej":{"c1":"can also ban firmly, but it starts with lamed, and the prompt asks for alef","c2":"please has nun"}}
+{"id":"H0408-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed; the prompt names the wish or command particle starting with alef","rej":{"c1":"can also ban firmly, but it starts with lamed, and the prompt asks for alef","c2":"ayin: on"}}
 {"id":"H4994-sound","prov":"citation","tests":["vowels"],"ans":"qamats, silent alef: na","rej":{"c1":"e needs segol or tsere","c2":"this qamats is in an open stressed syllable, so it is a"}}
 {"id":"H4994-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under nun","rej":{"c1":"tsere reads e","c2":"shewa gives no full vowel"}}
 {"id":"H4994-in-context","prov":"attested","tests":["volitives","word-meaning"],"ans":"Gen.12.11 softens Abram's request","rej":{"c1":"never is לֹא-type negation, not this","c2":"who is מִי"}}

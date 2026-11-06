@@ -2,8 +2,8 @@
 {"id":"H3808-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"holam over lamed","rej":{"c1":"qamats reads a","c2":"shewa gives no full vowel"}}
 {"id":"H3808-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.2.5 rain was not sent, so no plants","rej":{"c1":"also is גַּם, and the line needs a negative","c2":"all is כֹּל"}}
 {"id":"H3808-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"not; no accepted, Strong's def","rej":{"c1":"light is אוֹר","c2":"hand is יָד"}}
-{"id":"H3808-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, silent alef","rej":{"c1":"all starts with kaf","c2":"light has three letters"}}
-{"id":"H3808-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, alef","rej":{"c1":"letters reversed: אל is another word","c2":"he instead of alef"}}
+{"id":"H3808-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, silent alef; the prompt asks for the card's spelling, as Strong lists לוֹא and לֹה","rej":{"c1":"all starts with kaf","c2":"light has three letters"}}
+{"id":"H3808-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, alef; the prompt asks for the card's spelling","rej":{"c1":"אל is a separate word, H408, and not this card's spelling","c2":"Strong lists it as another spelling, and it isn't the card's"}}
 {"id":"H6963-sound","prov":"citation","tests":["vowels"],"ans":"qof, holam-vav, lamed: qol","rej":{"c1":"u needs shureq","c2":"that is a letter name, with a pe sound at the end"}}
 {"id":"H6963-pointed","prov":"citation","tests":["vowels"],"ans":"holam-vav","rej":{"c1":"shureq reads u","c2":"hireq on qof with a bare vav isn't this word"}}
 {"id":"H6963-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.3.10 what is heard in the garden","rej":{"c1":"word is דָּבָר, not a sound","c2":"face is פָּנִים"}}
@@ -25,7 +25,7 @@
 {"id":"H5921-sound","prov":"citation","tests":["vowels"],"ans":"patah, silent ayin: al","rej":{"c1":"e needs segol or tsere","c2":"o needs holam"}}
 {"id":"H5921-pointed","prov":"citation","tests":["vowels"],"ans":"patah under ayin","rej":{"c1":"tsere reads e","c2":"holam reads o: yoke, another word"}}
 {"id":"H5921-in-context","prov":"attested","tests":["prepositions","word-meaning"],"ans":"Gen.1.2 darkness over the surface","rej":{"c1":"from is מִן","c2":"under is תַּחַת"}}
-{"id":"H5921-type-gloss","prov":"citation","tests":["prepositions","word-meaning"],"ans":"on; over, upon, above, against accepted, Strong's range","rej":{"c1":"to is אֶל","c2":"between is בֵּין"}}
+{"id":"H5921-type-gloss","prov":"citation","tests":["prepositions","word-meaning"],"ans":"on; over, upon, above, against accepted, Strong's range","rej":{"c1":"mountain is הַר","c2":"bread is לֶחֶם"}}
 {"id":"H5921-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, lamed","rej":{"c1":"to starts with alef","c2":"all starts with kaf"}}
 {"id":"H5921-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, lamed","rej":{"c1":"alef: means to","c2":"letters reversed"}}
 {"id":"H0413-sound","prov":"citation","tests":["vowels"],"ans":"segol: el","rej":{"c1":"a needs patah, as in the word for do not","c2":"i needs hireq"}}

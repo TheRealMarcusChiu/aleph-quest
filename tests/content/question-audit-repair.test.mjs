@@ -169,6 +169,102 @@ test('g-participle-2 feedback describes this final ayin, with no rule about ever
   assert.deepEqual(x.acceptedAnswers, ['c0']);
 });
 
+// Independent audit of the remaining questions. Each scope has to show in the prompt, before scoring, without
+// spelling the answer out. Each record's feedback has to keep the real alternative alive.
+const scoped = {
+  'H0120-write': [/this card's word for "human being"/, /אִישׁ/, 'אדם'],
+  'H0408-write': [/wish or command particle.*starts with alef/, /לֹא/, 'אל'],
+  'H0408-mirror': [/wish or command particle.*first letter is alef/, /לא can also ban/, null, 'אל'],
+  'H0922-write': [/this card's word for "emptiness".*starting with bet/, /תֹּהוּ/, 'בהו'],
+  'H0922-mirror': [/this card's word for "emptiness".*starting with bet/, /תהו/, null, 'בהו'],
+  'H1992-write': [/short word for "they"/, /הֵמָּה/, 'הם'],
+  'H2421-write': [/dictionary form.*word card/, /חַי/, 'חיה'],
+  'H3201-write': [/spelled as on its word card/, /יָכוֹל/, 'יכל'],
+  'H3206-write': [/this card's word for "child".*ending in dalet/, /נַעַר/, 'ילד'],
+  'H3808-write': [/spelled on its word card/, /לוֹא/, 'לא'],
+  'H3808-mirror': [/on its word card/, /לה/, null, 'לא'],
+  'H3915-write': [/longer spelling.*word card/, /לַיִל/, 'לילה'],
+  'H5750-write': [/spelled as on its word card/, /עֹד/, 'עוד'],
+  'H7760-write': [/dictionary form.*word card/, /שִׂים/, 'שום'],
+  'H8415-write': [/full spelling on its word card/, /תְּהֹם/, 'תהום'],
+};
+
+test('Spelling tasks with a real alternative say which spelling, before scoring', { skip }, async t => {
+  for (const [id, [prompt, alternative, typed, chosen]] of Object.entries(scoped)) {
+    await t.test(id, () => {
+      const x = q(id);
+      assert.match(x.prompt, prompt);
+      assert.doesNotMatch(x.prompt, /[א-ת]/, 'the prompt can\'t spell its answer');
+      assert.match(x.explanation, alternative);
+      assert.doesNotMatch(x.explanation, /wrong|invalid|never|impossible|not a word/i);
+      if (typed) assert.equal(checkAnswer(x, typed).correct, true);
+      if (chosen) assert.equal(x.choices.find(c => c.id === x.acceptedAnswers[0]).text, chosen);
+    });
+  }
+  // The dictionary and source make these alternatives real.
+  assert.match(strong.get('H3201').source, /fuller/);
+  assert.match(strong.get('H3808').source, /or .*or /);
+  assert.match(strong.get('H5750').source, /^or /);
+  assert.match(strong.get('H7760').source, /^or /);
+  assert.match(strong.get('H8415').source, /^or /);
+  assert.equal(pointedKey(strong.get('H3915').headword), pointedKey('לַיִל'));
+  assert.match(strong.get('H5288').usage, /child/);
+  assert.equal(corpus.byId.get('01uJp').morph, 'HVqp3ms');
+  assert.equal(corpus.byId.get('01hmQ').morph, 'HPp3mp');
+});
+
+test('H0854-in-context binds to the covenant token, with its form and tag kept', { skip }, () => {
+  const x = q('H0854-in-context');
+  assert.match(x.prompt, /covenant/);
+  assert.equal(x.contextKey.tokenId, '014Zw');
+  const up = corpus.byId.get('014Zw');
+  assert.equal(up.reference, 'Gen.6.18');
+  assert.equal(up.morph, 'HR/Sp2fs');
+  assert.equal(pointedKey(up.surface), pointedKey(x.contextKey.form));
+  assert.equal(content.attestations.find(a => a.tokenId === '014Zw').surface, up.surface);
+  assert.equal(x.contextKey.answer, 'with you');
+  assert.match(x.contextKey.basis, /pausal/);
+});
+
+test('H8147-write feedback no longer denies the letters of the ending', () => {
+  const x = q('H8147-write');
+  assert.doesNotMatch(x.explanation, /No letter marks/);
+  assert.match(x.explanation, /can also spell years/);
+  assert.match(x.explanation, /vowel points distinguish/);
+  assert.equal(checkAnswer(x, 'שנים').correct, true);
+});
+
+test('Disputed distractors with an overlapping sense are replaced by unrelated meanings', () => {
+  const on = q('H5921-type-gloss');
+  assert.ok(!on.recognitionChoices.some(c => ['to', 'between'].includes(c.text)));
+  assert.equal(on.recognitionChoices.find(c => c.id === 'c0').text, 'on');
+  for (const typed of ['on', 'over', 'upon', 'above', 'against']) assert.equal(checkAnswer(on, typed).correct, true, typed);
+  const evening = q('H6153-in-context');
+  assert.ok(!evening.choices.some(c => ['day', 'night'].includes(c.text)));
+  assert.equal(evening.choices.find(c => c.id === evening.acceptedAnswers[0]).text, 'evening');
+  assert.match(evening.prompt, /Genesis 1:5/);
+});
+
+test('Hollow-verb feedback means the root\'s vav, since the display starts with a conjunction', () => {
+  for (const id of ['H6965-in-context', 'H7760-in-context']) {
+    const x = q(id);
+    assert.doesNotMatch(x.explanation, /and no vav\./, id);
+    assert.match(x.explanation, /no root-medial vav/, id);
+    assert.match(x.prompt, /וַיָּ/, id);
+  }
+});
+
+test('a-ptc-1 feedback describes this final ayin, with no rule about every guttural', { skip }, () => {
+  const x = q('a-ptc-1');
+  assert.doesNotMatch(x.explanation, /A final guttural takes|after a long vowel/i);
+  assert.match(x.explanation, /final ayin/);
+  assert.match(x.explanation, /before the ayin/);
+  assert.match(x.explanation, /yo-DE-a/);
+  assert.equal(x.tokenId, '014vF');
+  assert.equal(corpus.byId.get('014vF').morph, 'HVqrmsa');
+  assert.deepEqual(x.acceptedAnswers, ['c0']);
+});
+
 // id: [key, rejected form the broad prompt wrongly excluded, what the feedback has to say about that form]
 const cardScoped = {
   'H0259-pointed': ['אֶחָד', 'אַחַד', /real contextual form/],

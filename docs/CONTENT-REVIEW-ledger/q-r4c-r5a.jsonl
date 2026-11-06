@@ -8,7 +8,7 @@
 {"id":"H1992-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under he","rej":{"c1":"patah reads a","c2":"holam reads o"}}
 {"id":"H1992-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.3.7 the two of them","rej":{"c1":"he is singular","c2":"you is addressed; this is narration"}}
 {"id":"H1992-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"they; those accepted, Strong's range","rej":{"c1":"this is זֶה","c2":"I is אֲנִי"}}
-{"id":"H1992-write","prov":"citation","tests":["final-forms"],"ans":"he, final mem","rej":{"c1":"he (pronoun) has three letters","c2":"name starts with shin"}}
+{"id":"H1992-write","prov":"citation","tests":["final-forms"],"ans":"he, final mem; the prompt asks for the short word, as הֵמָּה is the longer spelling","rej":{"c1":"he (pronoun) has three letters","c2":"name starts with shin"}}
 {"id":"H1992-mirror","prov":"citation","tests":["final-forms"],"ans":"he, final mem","rej":{"c1":"regular mem at the end","c2":"het instead of he: another word"}}
 {"id":"H2088-sound","prov":"citation","tests":["vowels"],"ans":"segol, silent he: zeh","rej":{"c1":"a needs patah or qamats","c2":"the feminine, with holam and tav"}}
 {"id":"H2088-pointed","prov":"citation","tests":["vowels"],"ans":"segol under zayin","rej":{"c1":"qamats reads a","c2":"hireq reads i"}}

@@ -11,7 +11,7 @@
 {"id":"H7760-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"left-arm dot, shureq","rej":{"c1":"right dot makes another word","c2":"holam-vav reads o"}}
 {"id":"H7760-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.2.8 the man placed in the garden","rej":{"c1":"rise is קוּם","c2":"bear is יָלַד"}}
 {"id":"H7760-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"put; set, place, placed accepted, Strong's def","rej":{"c1":"return is שׁוּב","c2":"hear is שָׁמַע"}}
-{"id":"H7760-write","prov":"citation","tests":["final-forms"],"ans":"ש, vav, final mem","rej":{"c1":"rise starts with qof","c2":"name has no vav"}}
+{"id":"H7760-write","prov":"citation","tests":["final-forms"],"ans":"ש, vav, final mem; the prompt asks for the card's form, as Strong lists שִׂים too","rej":{"c1":"rise starts with qof","c2":"name has no vav"}}
 {"id":"H7760-mirror","prov":"citation","tests":["final-forms"],"ans":"ש, vav, final mem","rej":{"c1":"samekh instead of ש","c2":"regular mem at the end"}}
 {"id":"H5046-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah: na-GAD","rej":{"c1":"the Hiphil, not this dictionary form","c2":"segols belong to the separate word in front of"}}
 {"id":"H5046-pointed","prov":"citation","tests":["hiphil","vowels"],"ans":"qamats, patah","rej":{"c1":"two segols: in front of, a separate word","c2":"holam and tsere: a participle's shape"}}
@@ -41,8 +41,8 @@
 {"id":"H0922-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"holam, shureq, hard bet","rej":{"c1":"shewa isn't the first vowel","c2":"holam-vav reads o where u belongs"}}
 {"id":"H0922-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 nothing fills the earth","rej":{"c1":"fullness is the opposite","c2":"darkness is a separate word in the verse"}}
 {"id":"H0922-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"emptiness; empty and void accepted, Strong's def","rej":{"c1":"wind is רוּחַ","c2":"expanse is רָקִיעַ"}}
-{"id":"H0922-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav","rej":{"c1":"its partner starts with tav","c2":"morning has qof and resh"}}
-{"id":"H0922-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav","rej":{"c1":"its partner, formlessness","c2":"het instead of he"}}
+{"id":"H0922-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav; the prompt names this card's word starting with bet","rej":{"c1":"overlaps in meaning, H8414, but starts with tav, so it isn't this card's","c2":"morning has qof and resh"}}
+{"id":"H0922-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav; the prompt names this card's word starting with bet","rej":{"c1":"overlaps in meaning, H8414, but starts with tav, so it isn't this card's","c2":"het instead of he"}}
 {"id":"H2822-sound","prov":"citation","tests":["shewa","vowels"],"ans":"holam on het, shin, segol, soft final kaf, first-syllable stress","rej":{"c1":"h is he; this letter is closed","c2":"final stress and a second a aren't this pointing"}}
 {"id":"H2822-pointed","prov":"citation","tests":["vowels"],"ans":"holam, segol, right-arm dot","rej":{"c1":"left dot makes sin","c2":"qamats and patah: a verb shape"}}
 {"id":"H2822-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.4 separated from the light","rej":{"c1":"morning is בֹּקֶר","c2":"expanse is רָקִיעַ"}}

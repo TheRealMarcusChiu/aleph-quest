@@ -1,6 +1,6 @@
 {"id":"H0854-sound","prov":"citation","tests":["vowels"],"ans":"tsere: et, sounding like the object marker","rej":{"c1":"i needs hireq, as in the suffixed stem only","c2":"o needs holam, the object marker's suffixed stem"}}
 {"id":"H0854-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under alef","rej":{"c1":"holam reads o","c2":"patah reads a"}}
-{"id":"H0854-in-context","prov":"span","tests":["prep-suffixes","word-meaning"],"ans":"Gen.6.18 stem אִתּ- with a you suffix; contextKey records the token, OSHB's 2fs tag and the pausal note","rej":{"c1":"to him would be אֵלָיו","c2":"from her would be a form of מִן"}}
+{"id":"H0854-in-context","prov":"span","tests":["prep-suffixes","word-meaning"],"ans":"Gen.6.18 stem אִתּ- with a you suffix; contextKey records the covenant token 014Zw, not the later 01WLF, with OSHB's 2fs tag and the pausal note. Verse read in XML","rej":{"c1":"to him would be אֵלָיו","c2":"from her would be a form of מִן"}}
 {"id":"H0854-type-gloss","prov":"citation","tests":["prep-suffixes","word-meaning"],"ans":"with; beside and together with accepted","rej":{"c1":"who is מִי or אֲשֶׁר","c2":"so is כֵּן"}}
 {"id":"H0854-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"the other with starts with ayin","c2":"there is not has a final nun"}}
 {"id":"H0854-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"tet instead of tav","c2":"letters reversed"}}

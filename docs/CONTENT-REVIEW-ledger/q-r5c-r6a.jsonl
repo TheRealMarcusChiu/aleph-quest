@@ -26,7 +26,7 @@
 {"id":"H5750-pointed","prov":"citation","tests":["vowels"],"ans":"holam-vav","rej":{"c1":"shureq: another word, to bear witness","c2":"tsere with a bare vav isn't this word"}}
 {"id":"H5750-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.4.25 another occurrence","rej":{"c1":"never contradicts the birth of Seth","c2":"first contradicts Gen.4.1"}}
 {"id":"H5750-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"again; still, more, yet accepted, Strong's range","rej":{"c1":"there is is יֵשׁ","c2":"lord is אָדוֹן"}}
-{"id":"H5750-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, vav, dalet","rej":{"c1":"bird ends in final pe","c2":"servant has bet"}}
+{"id":"H5750-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, vav, dalet; the prompt asks for the card's spelling, as Strong lists עֹד","rej":{"c1":"bird ends in final pe","c2":"servant has bet"}}
 {"id":"H5750-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, vav, dalet","rej":{"c1":"alef instead of ayin","c2":"resh: skin"}}
 {"id":"H3651-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard kaf, tsere: ken","rej":{"c1":"kh needs no dagesh","c2":"a needs patah or qamats"}}
 {"id":"H3651-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"tsere under kaf","rej":{"c1":"patah reads a","c2":"hireq reads i"}}
@@ -50,7 +50,7 @@
 {"id":"H3201-pointed","prov":"citation","tests":["statives"],"ans":"holam in the second syllable","rej":{"c1":"patah is the fientive pattern, not this stative citation","c2":"hireq with a doubled kaf aren't this form"}}
 {"id":"H3201-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.13.6 the land can't hold both","rej":{"c1":"be full is מָלֵא","c2":"grow up is גָּדַל"}}
 {"id":"H3201-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"be able; able, can, could accepted","rej":{"c1":"fear is יָרֵא","c2":"pursue is רָדַף"}}
-{"id":"H3201-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, kaf, lamed","rej":{"c1":"all has two letters","c2":"eat starts with alef"}}
+{"id":"H3201-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, kaf, lamed; the prompt asks for the card's spelling, as Strong lists fuller יָכוֹל","rej":{"c1":"all has two letters","c2":"eat starts with alef"}}
 {"id":"H3201-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, kaf, lamed","rej":{"c1":"bet instead of kaf","c2":"letters reversed"}}
 {"id":"H7291-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft final pe: ra-DAF","rej":{"c1":"p needs a dagesh","c2":"e and first-syllable stress aren't this pointing"}}
 {"id":"H7291-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"real, an imperative or infinitive","c2":"real, a participle"}}

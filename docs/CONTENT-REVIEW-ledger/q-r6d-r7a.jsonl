@@ -59,4 +59,4 @@
 {"id":"H2421-pointed","prov":"citation","tests":["doubly-weak"],"ans":"two qamats signs, no dagesh","rej":{"c1":"patah and a doubled yod: living, animal","c2":"hataf patah and tsere aren't this form"}}
 {"id":"H2421-in-context","prov":"attested","tests":["doubly-weak","word-meaning"],"ans":"Gen.5.3 counts a lifetime","rej":{"c1":"be is הָיָה, with he","c2":"die is the opposite"}}
 {"id":"H2421-type-gloss","prov":"citation","tests":["doubly-weak","word-meaning"],"ans":"live; lived, stay alive, he lived accepted","rej":{"c1":"be is הָיָה","c2":"give is נָתַן"}}
-{"id":"H2421-write","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod, he","rej":{"c1":"be starts with he","c2":"the adjective has two letters"}}
+{"id":"H2421-write","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod, he; the prompt asks for the card's dictionary form","rej":{"c1":"be starts with he","c2":"also a form of this verb at Gen.11.12 01uJp, but not the card's dictionary form"}}

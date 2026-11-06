@@ -8,7 +8,7 @@
 {"id":"H8147-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"shewa and the dual ending","rej":{"c1":"years, with the same letters","c2":"left dot makes sin"}}
 {"id":"H8147-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.1.16 a greater and a lesser light","rej":{"c1":"years has qamats, and the verse counts lights","c2":"seven is שֶׁבַע"}}
 {"id":"H8147-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"two; the digit accepted","rej":{"c1":"heavens has mem, not nun","c2":"one is אֶחָד"}}
-{"id":"H8147-write","prov":"citation","tests":["final-forms"],"ans":"shin, nun, yod, final mem","rej":{"c1":"year ends in he","c2":"heavens has mem second"}}
+{"id":"H8147-write","prov":"citation","tests":["final-forms"],"ans":"shin, nun, yod, final mem; these letters can also spell years, and the points distinguish the readings","rej":{"c1":"year ends in he","c2":"heavens has mem second"}}
 {"id":"H8147-mirror","prov":"citation","tests":["final-forms"],"ans":"shin, nun, yod, final mem","rej":{"c1":"mem second: heavens","c2":"regular mem at the end"}}
 {"id":"H7969-sound","prov":"citation","tests":["vowels"],"ans":"two shins, qamats, holam-vav: sha-LOSH","rej":{"c1":"s needs left-arm dots","c2":"shewa and shureq aren't this pointing"}}
 {"id":"H7969-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"qamats, holam-vav, right-arm dots","rej":{"c1":"shewa and shureq","c2":"left-arm dots make sin"}}
@@ -44,7 +44,7 @@
 {"id":"H3206-pointed","prov":"citation","tests":["participle","vowels"],"ans":"two segols mark the noun","rej":{"c1":"the verb's perfect, a separate entry","c2":"a participle's pattern"}}
 {"id":"H3206-in-context","prov":"attested","tests":["participle","word-meaning"],"ans":"Gen.21.8 just weaned, with the article","rej":{"c1":"servant is עֶבֶד","c2":"king is מֶלֶךְ"}}
 {"id":"H3206-type-gloss","prov":"citation","tests":["participle","word-meaning"],"ans":"child; boy, lad, young man accepted, Strong's def and usage","rej":{"c1":"dream is חֲלוֹם","c2":"year is שָׁנָה"}}
-{"id":"H3206-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"young man starts with nun","c2":"servant starts with ayin"}}
+{"id":"H3206-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet; the prompt names this card's word ending in dalet","rej":{"c1":"can also mean child, H5288, but it is a separate word that ends in resh","c2":"servant starts with ayin"}}
 {"id":"H3206-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"resh instead of dalet","c2":"letters reversed"}}
 {"id":"H8141-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"shin, two qamats signs, silent he: sha-NAH","rej":{"c1":"shewa and hireq aren't this pointing","c2":"s needs the left-arm dot"}}
 {"id":"H8141-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"two qamats signs","rej":{"c1":"tsere: sleep","c2":"shewa isn't the first vowel"}}

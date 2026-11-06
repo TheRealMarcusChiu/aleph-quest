@@ -14,7 +14,7 @@
 {"id":"H3915-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"patah, shewa under yod, qamats","rej":{"c1":"hireq reads li, not lay","c2":"tsere reads le, not lay"}}
 {"id":"H3915-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.5 names the darkness","rej":{"c1":"morning is בֹּקֶר","c2":"evening is עֶרֶב"}}
 {"id":"H3915-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"night; nighttime accepted","rej":{"c1":"day is יוֹם","c2":"road is דֶּרֶךְ","c3":"eye is עַיִן"}}
-{"id":"H3915-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, yod, lamed, he","rej":{"c1":"morning starts with bet","c2":"voice has three letters and a vav"}}
+{"id":"H3915-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, yod, lamed, he; the prompt asks for the longer card spelling, as Strong's headword is לַיִל","rej":{"c1":"morning starts with bet","c2":"voice has three letters and a vav"}}
 {"id":"H3915-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, yod, lamed, he","rej":{"c1":"he moved to the front","c2":"het instead of he"}}
 {"id":"H1242-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh gives b; holam and segol: BO-qer","rej":{"c1":"BA-qar reads קָר with qamats, the cattle word","c2":"v would need no dagesh, and e would not be holam"}}
 {"id":"H1242-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"holam then segol, with dagesh in bet","rej":{"c1":"בָּקָר is cattle, a different word","c2":"hireq and tsere with a doubled qof is a verb shape, not morning"}}

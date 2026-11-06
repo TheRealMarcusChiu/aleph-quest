@@ -1,10 +1,10 @@
 {"id":"H8415-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 parallel with waters","rej":{"c1":"formlessness is תֹּהוּ, earlier in the verse","c2":"expanse comes in verse 6"}}
 {"id":"H8415-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"deep water; the deep, deep, abyss accepted, Strong's abyss","rej":{"c1":"heavens is שָׁמַיִם","c2":"darkness is חֹשֶׁךְ"}}
-{"id":"H8415-write","prov":"citation","tests":["final-forms"],"ans":"tav, he, vav, final mem","rej":{"c1":"formlessness has no mem","c2":"water starts with mem"}}
+{"id":"H8415-write","prov":"citation","tests":["final-forms"],"ans":"tav, he, vav, final mem; the prompt asks for the card's full spelling, as Strong lists תְּהֹם","rej":{"c1":"formlessness has no mem","c2":"water starts with mem"}}
 {"id":"H8415-mirror","prov":"citation","tests":["final-forms"],"ans":"tav, he, vav, final mem","rej":{"c1":"no mem: formlessness","c2":"regular mem at the end"}}
 {"id":"H6153-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"two segols, soft bet: E-rev","rej":{"c1":"b needs a dagesh","c2":"a-vowels and final stress aren't this pointing"}}
 {"id":"H6153-pointed","prov":"citation","tests":["vowels"],"ans":"two segols","rej":{"c1":"tsere isn't the first vowel","c2":"qamats and patah: a verb shape"}}
-{"id":"H6153-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.5 paired with morning","rej":{"c1":"night is לַיְלָה, named earlier in the verse","c2":"day is what evening and morning make"}}
+{"id":"H6153-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.5 paired with morning","rej":{"c1":"water is מַיִם, unrelated to this line","c2":"stone is אֶבֶן, unrelated to this line"}}
 {"id":"H6153-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"evening; sunset accepted, by Strong's dusk","rej":{"c1":"wind is רוּחַ","c2":"fruit is פְּרִי"}}
 {"id":"H6153-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, resh, bet","rej":{"c1":"servant has bet then dalet","c2":"land starts with alef"}}
 {"id":"H6153-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, resh, bet","rej":{"c1":"resh and bet swapped: pass over","c2":"alef instead of ayin"}}
