@@ -105,15 +105,15 @@ test('malformed files are rejected with a reason', () => {
 });
 
 test('other save versions are refused', () => {
-  rejects(envelope((state, doc) => { doc.version = 2; }), /version/i);
-  rejects(envelope(state => { state.version = 2; }), /version/i);
+  rejects(envelope((state, doc) => { doc.version = 99; }), /version/i);
+  rejects(envelope(state => { state.version = 99; }), /version/i);
 });
 
 test('unknown fields are refused at any depth, including prototype keys', () => {
   rejects(envelope(state => { state.hacked = true; }), /hacked/);
   rejects(envelope(state => { state.words.H0001.evil = 1; }), /evil/);
   rejects(envelope(state => { state.settings.extra = 1; }), /extra/);
-  const proto = exportText(played(), NOW).replace('"version":1,"createdAt"', '"__proto__":{"polluted":true},"version":1,"createdAt"');
+  const proto = exportText(played(), NOW).replace('"version":2,"createdAt"', '"__proto__":{"polluted":true},"version":2,"createdAt"');
   rejects(proto, /__proto__/);
   assert.equal({}.polluted, undefined);
 });

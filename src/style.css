@@ -197,6 +197,28 @@ details summary { cursor: pointer; margin-top: 8px; font-weight: 700; }
 .token-list li { margin: 4px 0; }
 .history { padding-left: 18px; }
 
+/* Pairing: one row per left side, its options wrapping under it on narrow screens. */
+.pairs { margin-top: 10px; }
+.pair-row { display: grid; grid-template-columns: minmax(96px, 1fr) 2fr; gap: 8px; align-items: center; padding: 6px 0; border-top: 2px solid var(--reed); }
+.pair-left { text-align: center; font-weight: 700; }
+.pair-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.pair-choice { flex: 1 1 110px; min-height: 48px; padding: 4px 8px; }
+.pair-choice[aria-pressed='true'] { background: var(--gold); color: var(--ink); border-color: var(--pine); font-weight: 700; }
+
+/* Worddex controls stay a compact block so the list starts high on the screen, even at 150 words. */
+.dex-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 10px; margin: 10px 0; align-items: end; }
+.dex-filter { display: flex; flex-direction: column; font-size: 15px; font-weight: 700; color: var(--pine); }
+.dex-search-label { grid-column: 1 / -1; }
+.dex-filter input, .dex-filter select { font: 17px/1.4 var(--latin); min-height: 44px; padding: 4px 8px; border: 2px solid var(--pine); border-radius: 6px; background: #f6faed; color: var(--ink); }
+.dex-filter input:focus-visible, .dex-filter select:focus-visible { outline: 3px solid var(--gold); outline-offset: 1px; }
+#dex-favorites[aria-pressed='true'] { background: var(--gold); }
+.dex-gloss { flex: 1; text-align: left; font-size: 15px; overflow-wrap: anywhere; }
+
+.journal { list-style: none; margin: 8px 0; padding: 0; }
+.journal-region { border-left: 5px solid var(--reed); padding-left: 12px; margin-bottom: 14px; }
+.journal-stages { list-style: none; margin: 4px 0; padding: 0; font-size: 15px; }
+.stage-now { font-weight: 700; color: var(--pine); }
+
 .seal { width: 96px; height: 96px; margin: 10px auto; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 6px var(--pine), inset 0 0 0 8px var(--reed); }
 
 #tagline { font-size: 19px; }
@@ -224,4 +246,6 @@ body.calm .word-plate.aura { animation: none; box-shadow: 0 0 0 3px var(--reed);
   #btn-a { width: 76px; height: 76px; }
   .key { min-height: 48px; }
   .chart { grid-template-columns: repeat(4, 1fr); }
+  .pair-row { grid-template-columns: 1fr; }
+  .dex-controls { grid-template-columns: 1fr; }
 }

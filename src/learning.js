@@ -1,6 +1,6 @@
 // Learning records: encounters, capture evidence and the party. Pure logic over the save state.
 // Thresholds are editable design choices (see docs/LEARNING.md), not empirically derived values.
-import { checkAnswer } from './answers.js';
+import { checkAnswer, initialResponseMode } from './answers.js';
 
 export const PARTY_LIMIT = 6;
 export const DAY = 86_400_000;
@@ -9,6 +9,9 @@ const INTERVAL_DAYS = [1, 2, 4, 7, 14, 30];
 const FRESH_STEM_WINDOW = 3;
 export const CAPTURE_FAMILIES = ['read-letter', 'understand-meaning', 'inscribe-spelling'];
 const COMMAND_FAMILY = { read: 'read-letter', understand: 'understand-meaning', inscribe: 'inscribe-spelling' };
+const LATER_COMMANDS = ['analyze', 'build'];
+// The first word card teaches this skill on the spot, so a word needing it can still be offered.
+const FIRST_CARD_SKILL = 'word-meaning';
 const RELEARN_GAP = 2;
 const HISTORY_LIMIT = 60;
 
@@ -18,8 +21,85 @@ export function newRecord() {
     stage: 0, dueAt: null, lastReviewAt: null, lastReview: null, reviewDays: [], reviewOutcomes: [], reviewTotal: 0, evidence: [],
     firstAttempts: 0, firstCorrect: 0, hints: 0,
     captureSteps: [], retired: {}, recentStems: [], questionUse: {}, history: [], xp: 0, favorite: false,
+    xpStems: [], formsKnown: [], formRetired: {},
   };
 }
+
+// A random encounter may only offer a word whose three demonstrations can all be asked right now.
+export function wordCapturable(state, content, wordId) {
+  const word = content.wordById.get(wordId);
+  if (!word?.requires.every(skill => state.skills[skill] || skill === FIRST_CARD_SKILL)) return false;
+  return CAPTURE_FAMILIES.every(family => content.questions.some(q => q.wordId === wordId && q.taskFamily === family && q.requires.every(skill => state.skills[skill] || skill === FIRST_CARD_SKILL)));
+}
+
+// What a word can do out in the world follows its part of speech, never the player's say-so.
+export function abilityOf(word) {
+  if (/\bverb\b/i.test(word.pos)) return 'deed';
+  return /noun|name/i.test(word.pos) ? 'name' : 'link';
+}
+
+// How well the player knows a word. It grows from varied use and related forms. The lexeme stays what it is.
+export function knowledgeRank(record, word, content) {
+  if (record?.capturedAt == null) return 0;
+  if (record.xpStems.length < 2) return 1;
+  const families = new Set(record.xpStems.map(stem => content.questionByStem.get(stem)?.taskFamily));
+  if (families.size < 3 || (word.relatedForms.length && !record.formsKnown.length)) return 2;
+  return 3;
+}
+
+export const wardCandidates = (state, content, ability) => state.party.filter(id => {
+  const word = content.wordById.get(id);
+  return abilityOf(word) === ability && knowledgeRank(state.words[id], word, content) >= 2;
+});
+
+// Source lines this word appears in, opened up by knowing it better. Attested tokens only.
+export function unlockedExamples(state, content, wordId) {
+  const word = content.wordById.get(wordId);
+  const rank = knowledgeRank(state.words[wordId], word, content);
+  if (rank < 2) return [];
+  const number = word.strongId.slice(1);
+  const lines = content.attestations.filter(a => a.tokenId !== word.example.tokenId && a.lemma.split('/').some(part => part.split(' ')[0] === number));
+  return (rank < 3 ? lines.slice(0, 2) : lines).map(a => ({ reference: a.reference, hebrew: a.surface.replaceAll('/', '') }));
+}
+
+const formAvailable = (state, record, tokenId) => {
+  const at = record.formRetired[tokenId];
+  return at === undefined || state.interactions - at >= RELEARN_GAP;
+};
+
+export function nextRelatedForm(state, content, wordId) {
+  const record = state.words[wordId];
+  if (record?.capturedAt == null) return null;
+  return content.wordById.get(wordId).relatedForms.find(form => !record.formsKnown.includes(form.tokenId) && formAvailable(state, record, form.tokenId)) ?? null;
+}
+
+const RELATION_TEXT = {
+  inflection: 'an inflection: the same dictionary word, in another form',
+  derivation: 'a derivation: a related word built from it',
+  'separate-lexeme': 'a separate dictionary word, however alike they look',
+};
+
+export function answerRelatedForm(state, content, wordId, tokenId, response, now) {
+  const record = state.words[wordId];
+  const form = content.wordById.get(wordId).relatedForms.find(item => item.tokenId === tokenId);
+  const correct = response === form.relationship;
+  state.interactions += 1;
+  state.updatedAt = now;
+  if (correct) record.formsKnown.push(tokenId);
+  else record.formRetired[tokenId] = state.interactions;
+  log(record, { at: now, type: 'form', correct });
+  return { correct, explanation: `${form.hebrew} is ${RELATION_TEXT[form.relationship]}. Here it means "${form.gloss}".` };
+}
+
+// Used by abilities in the world. It takes a fresh eligible question of this word and is not review evidence.
+export function wardQuestion(state, content, wordId) {
+  const record = state.words[wordId];
+  return content.questions
+    .filter(q => q.wordId === wordId && hasSkills(state, q) && stemAvailable(state, record, q.semanticStemId))
+    .sort((a, b) => (record.questionUse[a.id] ?? 0) - (record.questionUse[b.id] ?? 0) || (a.id < b.id ? -1 : 1))[0] ?? null;
+}
+
+export const retireStem = (state, record, stemId) => { record.retired[stemId] = { at: state.interactions, encounter: 0 }; };
 
 const recordFor = (state, wordId) => (state.words[wordId] ??= newRecord());
 const log = (record, entry) => {
@@ -64,10 +144,11 @@ function reviewQuestion(state, content, wordId) {
   const haveFamilies = new Set(record.evidence.map(e => e.taskFamily));
   const haveContexts = new Set(record.evidence.map(e => e.contextId));
   const score = q => (haveFamilies.has(q.taskFamily) ? 0 : -2) + (haveContexts.has(q.contextId) ? 0 : -1);
-  return content.questions
-    .filter(q => q.wordId === wordId && hasSkills(state, q) && !recent.has(q.semanticStemId)
-      && q.taskFamily !== record.lastReview?.family && q.contextId !== record.lastReview?.contextId)
-    .sort((a, b) => score(a) - score(b) || (record.questionUse[a.id] ?? 0) - (record.questionUse[b.id] ?? 0) || (a.id < b.id ? -1 : 1))[0] ?? null;
+  const pool = content.questions
+    .filter(q => q.wordId === wordId && hasSkills(state, q) && !recent.has(q.semanticStemId) && q.taskFamily !== record.lastReview?.family)
+    .sort((a, b) => score(a) - score(b) || (record.questionUse[a.id] ?? 0) - (record.questionUse[b.id] ?? 0) || (a.id < b.id ? -1 : 1));
+  // Another context is better, but a new family in the same context beats no review at all.
+  return pool.find(q => q.contextId !== record.lastReview?.contextId) ?? pool[0] ?? null;
 }
 
 // Starts a due review, or returns null with the schedule untouched when none can be offered.
@@ -105,6 +186,8 @@ export function startEncounter(state, content, wordId, kind, now) {
     log(record, { at: now, type: 'seen' });
   }
   state.encounterCounter += 1;
+  // A new encounter counts as an action, so missed questions return for someone who only walks.
+  state.interactions += 1;
   state.encounter = { id: state.encounterCounter, wordId, kind, assistedNext: false, current: null };
   state.updatedAt = now;
   return state.encounter;
@@ -152,7 +235,7 @@ export function commandStates(state, content, wordId) {
     const needsSkill = content.questions.filter(q => q.wordId === wordId && q.taskFamily === family).every(q => !hasSkills(state, q));
     if (inCapture && record.captureSteps.some(step => step.family === family)) return { enabled: false, family, done: true, reason: 'Already shown for this word.' };
     if (record.studiedAt == null) return { enabled: false, family, reason: 'Study this word\'s card first.' };
-    if (needsSkill) return { enabled: false, family, reason: 'Finish the worked example on your first word card to unlock this.' };
+    if (needsSkill) return { enabled: false, family, reason: state.skills[FIRST_CARD_SKILL] ? 'A later lesson unlocks this. Ask this region\'s mentor.' : 'Finish the worked example on your first word card to unlock this.' };
     if (!candidates(state, content, wordId, family).length && state.encounter?.current?.family !== family) {
       return { enabled: false, family, reason: 'No fresh questions left for now. Study it or leave. New ones return after two other actions.' };
     }
@@ -160,6 +243,17 @@ export function commandStates(state, content, wordId) {
   };
   const out = { study: { enabled: true }, retreat: { enabled: true } };
   for (const [command, family] of Object.entries(COMMAND_FAMILY)) out[command] = describe(command, family);
+  // Later commands don't exist on the menu until a lesson has made one of their questions answerable.
+  for (const command of LATER_COMMANDS) {
+    const own = content.questions.filter(q => q.wordId === wordId && q.command === command && hasSkills(state, q));
+    if (!own.length) continue;
+    const pending = own.find(q => q.id === state.encounter?.current?.questionId);
+    const fresh = own.filter(q => stemAvailable(state, record, q.semanticStemId)).sort((a, b) => (record.questionUse[a.id] ?? 0) - (record.questionUse[b.id] ?? 0));
+    const family = (pending ?? fresh[0] ?? own[0]).taskFamily;
+    out[command] = record.studiedAt == null
+      ? { enabled: false, family, reason: 'Study this word\'s card first.' }
+      : pending || fresh.length ? { enabled: true, family } : { enabled: false, family, reason: 'No fresh questions left for now. New ones return after two other actions.' };
+  }
   return out;
 }
 
@@ -189,7 +283,7 @@ function present(state, record, question, now) {
   encounter.current = {
     questionId: question.id, stemId: question.semanticStemId, family: question.taskFamily, startedAt: now,
     hintsUsed: 0, assisted: encounter.assistedNext,
-    responseMode: question.format === 'type' ? state.settings.responseMode : 'recognition',
+    responseMode: initialResponseMode(question, state.settings.responseMode),
   };
   encounter.assistedNext = false;
   record.questionUse[question.id] = (record.questionUse[question.id] ?? 0) + 1;
@@ -226,14 +320,19 @@ export function submit(state, content, response, now) {
   log(record, { at: now, type: 'answer', questionId: question.id, correct, independent, responseMode: current.responseMode, kind: encounter.kind });
 
   const result = { correct, independent, nearMiss, explanation: question.explanation, question, captured: false };
-  if (independent && state.party.includes(encounter.wordId)) record.xp += 1;
+  // XP rewards varied use: a task the word has already earned from gives nothing more.
+  if (independent && state.party.includes(encounter.wordId) && !record.xpStems.includes(question.semanticStemId)) {
+    record.xp += 1;
+    record.xpStems.push(question.semanticStemId);
+  }
 
   if (encounter.kind === 'review') {
     finalizeReview(record, question, current, independent, now);
+    if (!independent) retire(state, record, question.semanticStemId);
     state.encounter = null;
     return result;
   }
-  if (encounter.kind === 'capture' && independent) {
+  if (encounter.kind === 'capture' && independent && CAPTURE_FAMILIES.includes(question.taskFamily)) {
     record.captureSteps.push({ family: question.taskFamily, templateId: question.templateId, semanticStemId: question.semanticStemId, contextId: question.contextId, responseMode: current.responseMode, at: now });
     if (CAPTURE_FAMILIES.every(family => record.captureSteps.some(step => step.family === family))) {
       record.capturedAt = now;
@@ -273,4 +372,9 @@ export function addToParty(state, wordId) {
 
 export function removeFromParty(state, wordId) {
   state.party = state.party.filter(id => id !== wordId);
+  // A seal's pending question needs this word in the party. Leaving ends it, and a hint already taken still costs the question.
+  if (state.attempt?.wordId === wordId) {
+    if (state.attempt.hintsUsed) retireStem(state, state.words[wordId], state.attempt.stemId);
+    state.attempt = null;
+  }
 }

@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { deflateSync, crc32 } from 'node:zlib';
 import { drawWorld, drawWordSprite } from '../src/render.js';
-import { newGame, setFlag } from '../src/engine.js';
+import { newGame, setFlag, destination } from '../src/engine.js';
+import { MAPS } from '../src/world.js';
 
 function fakeCanvas(width, height) {
   const pixels = new Uint32Array(width * height);
@@ -77,6 +78,44 @@ test('every area draws a full, varied frame with the player in it', () => {
   }
   const open = render('gate-open', { map: 'grove', x: 17, y: 11, dir: 'up' }, s => { setFlag(s, 'neriCleared'); setFlag(s, 'gateOpen'); s.flags.doorOpen = 'door-m'; });
   assert.notDeepEqual(open.pixels, scenes.gate.pixels, 'an opened door looks different');
+});
+
+test('every map in the world draws, and each region has its own look, tiles and objects', () => {
+  const signature = {};
+  for (const [id, map] of Object.entries(MAPS)) {
+    const walkable = (() => {
+      for (let y = 0; y < map.rows.length; y++) for (let x = 0; x < map.rows[0].length; x++) if (destination(newGame(0, 1), id, x, y) && !map.warps?.[`${x},${y}`]) return { x, y };
+      return null;
+    })();
+    assert.ok(walkable, id);
+    const canvas = render(`map-${id}`, { map: id, ...walkable, dir: 'down' });
+    assert.ok(colors(canvas) >= 5, `${id} has ${colors(canvas)} colors`);
+    assert.ok(canvas.pixels.includes(0x3f7f5f), `${id} shows the player's robe`);
+    if (map.outdoor) signature[map.biome] = canvas.pixels;
+  }
+  // Each biome keeps a color of its own, so a screenshot alone says which region you are in.
+  const biomes = Object.keys(signature);
+  assert.equal(biomes.length, 9);
+  for (const biome of biomes) {
+    const own = new Set(signature[biome]);
+    const others = new Set(biomes.filter(other => other !== biome).flatMap(other => [...new Set(signature[other])]));
+    assert.ok([...own].some(color => !others.has(color)), `${biome} has a color nobody else uses`);
+  }
+});
+
+test('the player steps through two walking frames, and the frame shows it', () => {
+  const standing = fakeCanvas(320, 240), walking = fakeCanvas(320, 240);
+  const state = { ...newGame(0, 1), map: 'grove', x: 11, y: 22, dir: 'up', steps: 1 };
+  drawWorld(standing, state, { frame: 0 });
+  drawWorld(walking, state, { frame: 0, walk: { fromX: 11, fromY: 23, t: 0.5 } });
+  assert.notDeepEqual(standing.pixels, walking.pixels);
+});
+
+test('objects vanish or move when the state says so, and word creatures keep drawing by id', () => {
+  const place = { map: 'springs', ...MAPS.springs.arrive, dir: 'up' };
+  const before = render('springs-before', { ...place, y: 7 });
+  const after = render('springs-after', { ...place, y: 7 }, s => { s.gates['r2:rival'] = { at: 0, questionIds: [] }; s.gates['r2:gate'] = { at: 0, questionIds: [] }; });
+  assert.notDeepEqual(before.pixels, after.pixels);
 });
 
 test('word creatures are drawn by id and differ between words', () => {
