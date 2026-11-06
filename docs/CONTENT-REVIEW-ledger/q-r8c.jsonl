@@ -1,0 +1,37 @@
+{"id":"g-context-reading","prov":"span","tests":["context-reading"],"ans":"subject follows the verb; plural in form","rej":{"c1":"the verb is not its own subject"}}
+{"id":"g-clause-chains","prov":"span","tests":["clause-chains"],"ans":"OSHB w opens the chain","rej":{"c1":"the background clauses have ended","c2":"no question marker"}}
+{"id":"g-genesis","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqj3ms, a wish","rej":{"c1":"the report is וַיְהִי, with waw","c2":"goodness is verse 4"}}
+{"id":"gen-1-1-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB R/Ncfsa; the syntax debate is flagged","rej":{"c1":"head is the separate noun רֹאשׁ","c2":"covenant is בְּרִית, another word"}}
+{"id":"gen-1-1-b","prov":"span","tests":["genesis-reading"],"ans":"Gen.1.1 source order","rej":{}}
+{"id":"gen-1-1-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB C/To","rej":{"c1":"the object marker, not H854","c2":"you isn't this word"}}
+{"id":"gen-1-1-d","prov":"span","tests":["genesis-reading","perfect"],"ans":"OSHB Vqp3ms","rej":{"c1":"OSHB tags a perfect, and God is its subject","c2":"OSHB tags a verb"}}
+{"id":"gen-1-2-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB C/Td/Ncbsa then a perfect","rej":{"c1":"וַיְהִי exists for this verb","c2":"OSHB tags a perfect"}}
+{"id":"gen-1-2-b","prov":"span","tests":["genesis-reading"],"ans":"unshaped and unfilled, Strong's senses","rej":{"c1":"darkness and waters are separate clauses","c2":"nothing in this pair says broad or high"}}
+{"id":"gen-1-2-c","prov":"span","tests":["genesis-reading"],"ans":"agrees with רוּחַ, OSHB fs","rej":{"c1":"אֱלֹהִים is the second noun of the chain, and masculine","c2":"participles vary by gender"}}
+{"id":"gen-1-2-d","prov":"span","tests":["genesis-reading"],"ans":"Gen.1.2 waw on a noun, no verb","rej":{"c1":"חֹשֶׁךְ is darkness","c2":"no verb of calling, and תְהוֹם isn't addressed"}}
+{"id":"gen-1-3-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqj3ms","rej":{"c1":"a perfect is הָיָה","c2":"OSHB tags a verb"}}
+{"id":"gen-1-3-b","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqw3ms reports the fact","rej":{"c1":"waw with patah makes it a report, not a wish","c2":"no question marker"}}
+{"id":"gen-1-3-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB C/Vqw3ms, then the subject","rej":{"c1":"waw with patah marks past narrative","c2":"an imperative would have no prefix"}}
+{"id":"gen-1-3-d","prov":"span","tests":["genesis-reading"],"ans":"subject of let there be; no marker","rej":{"c1":"no אֶת marks it","c2":"a verb isn't in a construct chain"}}
+{"id":"gen-1-4-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB lemma 7200, object marker, then כִּי","rej":{"c1":"fear is יָרֵא, and the good isn't an adjective on the light here","c2":"narrative is past, not future"}}
+{"id":"gen-1-4-b","prov":"span","tests":["genesis-reading"],"ans":"Strong: repeated before each noun","rej":{"c1":"Strong records this as the normal pattern","c2":"it marks two sides, not repetition of the act"}}
+{"id":"gen-1-4-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB C/Vhw3ms","rej":{"c1":"OSHB tags a Hiphil narrative","c2":"the prefix yod and the waw mark a narrative, not a command"}}
+{"id":"gen-1-4-d","prov":"span","tests":["genesis-reading"],"ans":"after seeing, כִּי opens what was seen","rej":{"c1":"if would be אִם","c2":"no negative word is present"}}
+{"id":"gen-1-5-a","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqp3ms; the noun is fronted","rej":{"c1":"OSHB tags a perfect","c2":"OSHB tags singular"}}
+{"id":"gen-1-5-b","prov":"span","tests":["genesis-reading"],"ans":"OSHB Acmsa; one, a cardinal","rej":{"c1":"יוֹם is day, not night","c2":"no adjective good here"}}
+{"id":"gen-1-5-c","prov":"span","tests":["genesis-reading"],"ans":"OSHB Vqw3ms with the noun evening","rej":{"c1":"the wish has no waw","c2":"the noun is evening, and the form is past"}}
+{"id":"gen-1-5-d","prov":"span","tests":["genesis-reading","waw-disjunctive"],"ans":"pause lengthens; taught in l-disjunctive","rej":{"c1":"no he or preposition for an article","c2":"OSHB tags Ncmsa, singular"}}
+{"id":"p-r8-neri-1","prov":"span","tests":["context-reading"],"ans":"OSHB Ncmpa, singular verbs in Gen.1","rej":{"c1":"its verbs are singular in this chapter","c2":"OSHB tags plural"}}
+{"id":"p-r8-neri-2","prov":"attested","tests":["clause-chains"],"ans":"fronted noun means no narrative form; tokens 01nAB and 01LeN","rej":{"c1":"word order explains it, not a change of mind","c2":"OSHB tags a verb"}}
+{"id":"p-r8-neri-3","prov":"span","tests":["context-reading","object-marker"],"ans":"OSHB To","rej":{"c1":"lemma 853, not 854; God sees the light"}}
+{"id":"p-r8-gate-1","prov":"original","tests":["context-reading"],"ans":"Gen.1.1 token 01xeN's form","rej":{"door-m":"covenant","door-e":"head"}}
+{"id":"p-r8-gate-2","prov":"original","tests":["context-reading"],"ans":"Gen.1.2 darkness; token 01C5U's noun","rej":{"door-w":"light, its opposite","door-e":"morning"}}
+{"id":"p-r8-gate-3","prov":"original","tests":["clause-chains","narrative"],"ans":"Asked for the waw-narrative form: וַיְהִי, waw with patah, OSHB Vqw3ms at Gen.1.3","rej":{"door-w":"a jussive, a wish; it has no waw","door-m":"a Qal perfect, which can report a past event and is also the citation form, but it isn't the waw-narrative form this door asks for"}}
+{"id":"b-r8-read-1","prov":"span","tests":["context-reading","volitives"],"ans":"OSHB Vqj3ms","rej":{"c1":"no waw with patah"}}
+{"id":"b-r8-read-2","prov":"span","tests":["context-reading"],"ans":"OSHB Rd/Ncbsa","rej":{"c1":"not is לֹא, with a holam","c2":"the qamats shows the article"}}
+{"id":"b-r8-read-3","prov":"span","tests":["context-reading","iii-he"],"ans":"OSHB Vqj3ms, lemma 7235","rej":{"c1":"OSHB tags a verb","c2":"OSHB tags a jussive"}}
+{"id":"b-r8-sense-1","prov":"attested","tests":["context-reading"],"ans":"Strong gives both senses; Gen.1.2 token 0137c","rej":{"c1":"overstates it","c2":"overstates it"}}
+{"id":"b-r8-sense-2","prov":"span","tests":["context-reading","construct"],"ans":"OSHB R then Ncbpc","rej":{"c1":"the construct leans on the next noun, and isn't an object","c2":"no article"}}
+{"id":"b-r8-sense-3","prov":"span","tests":["clause-chains"],"ans":"OSHB Vqw3ms","rej":{"c1":"background has a waw on a non-verb","c2":"no imperative"}}
+{"id":"b-r8-chain-1","prov":"span","tests":["clause-chains"],"ans":"OSHB C/To joins two objects","rej":{"c1":"no narrative verb"}}
+{"id":"b-r8-chain-2","prov":"span","tests":["clause-chains"],"ans":"Gen.1.20 source order: verb, subject, then the quoted verb and its subject","rej":{}}

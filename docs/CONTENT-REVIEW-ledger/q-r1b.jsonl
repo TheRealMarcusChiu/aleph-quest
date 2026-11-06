@@ -40,7 +40,7 @@
 {"id":"p-neri-2","prov":"original","inlineOriginal":["ך"],"tests":["final-forms"],"ans":"ך pairs with כ","rej":{"c1":"bet has no final form","c2":"resh has no final form","c3":"nun's final is ן"}}
 {"id":"p-neri-3","prov":"span","tests":["final-forms"],"ans":"ayin then final tsade","rej":{"c1":"regular tsade at the end","c2":"letters reversed","c3":"zayin instead of tsade"}}
 {"id":"p-gate-1","prov":"original","tests":["final-forms"],"ans":"בֵּן ends in final nun","rej":{"door-w":"bet has no final form","door-e":"tav has no final form"}}
-{"id":"p-gate-2","prov":"original","tests":["alphabet","rtl","word-meaning"],"ans":"סֵפֶר starts with samekh and means scroll","rej":{"door-w":"man starts with alef","door-m":"king starts with mem"}}
+{"id":"p-gate-2","prov":"original","tests":["alphabet","rtl"],"ans":"סֵפֶר starts with samekh; the prompt supplies the meaning, so only the letter is tested","rej":{"door-w":"man starts with alef","door-m":"king starts with mem"}}
 {"id":"p-gate-3","prov":"original","tests":["alphabet","rtl","final-forms"],"ans":"אֵם, alef and final mem, mother","rej":{"door-m":"brother ends in het","door-e":"father ends in bet"}}
 {"id":"b-final-1","prov":"span","tests":["final-forms"],"ans":"final kaf at the left edge of חֹשֶׁךְ","rej":{"c1":"regular kaf can't finish a word","c2":"shin is the middle letter","c3":"het is first"}}
 {"id":"b-final-2","prov":"span","tests":["final-forms"],"ans":"ן pairs with נ","rej":{"c1":"bet is the middle letter, with no final form","c2":"tav is first","c3":"vav has no final form"}}

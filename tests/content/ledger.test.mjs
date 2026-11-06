@@ -75,6 +75,7 @@ test('stated provenance holds against the pinned source', { skip }, () => {
     const word = q.wordId ? content.wordById.get(q.wordId) : null;
     const ids = q.tokenIds ?? (q.tokenId ? [q.tokenId] : q.contextKey ? [q.contextKey.tokenId] : []);
     const taught = new Set(word ? [word.hebrew, word.example.hebrew, ...word.relatedForms.map(f => f.hebrew)].map(compact) : []);
+    for (const w of content.words) taught.add(compact(w.hebrew)); // citation forms are checked in the word rows
     if (!['citation', 'span', 'attested', 'original'].includes(r.prov)) wrong.push(`${q.id}: unknown provenance ${r.prov}`);
     if (r.prov === 'citation' && !word) wrong.push(`${q.id}: citation with no word`);
     if (r.prov === 'span' && !ids.length) wrong.push(`${q.id}: span with no tokens`);
@@ -82,10 +83,11 @@ test('stated provenance holds against the pinned source', { skip }, () => {
     if (q.displayHebrew && ids.length && !compact(ids.map(id => corpus.byId.get(id)?.surface ?? '?').join('')).includes(compact(q.displayHebrew))) wrong.push(`${q.id}: display is not in its tokens`);
     // Inline Hebrew in the prompt: a shown token, a checked word form, or a corpus form; otherwise it must be declared original.
     const declared = new Set((r.inlineOriginal ?? []).map(compact));
-    for (const run of q.prompt.match(HEBREW_RUN) ?? []) {
+    for (const run of (q.prompt.match(HEBREW_RUN) ?? []).flatMap(item => item.split('־'))) {
       const key = compact(run);
       const inSpan = ids.some(id => compact(corpus.byId.get(id)?.surface ?? '').includes(key));
       if (!inSpan && !taught.has(key) && !surfaces.has(key) && !declared.has(key)) wrong.push(`${q.id}: inline ${run} has no source, and isn't declared original`);
+      if (r.prov === 'original' && !declared.has(key)) wrong.push(`${q.id}: an original item shows ${run}, so it must declare it or state attested`);
     }
     // A cited Genesis verse has to contain the word the question is about.
     const cite = q.prompt.match(/Genesis (\d+):(\d+)(?:-(\d+))?/);
@@ -176,6 +178,13 @@ test('related-form features agree with their token\'s morphology', { skip }, () 
     if (f.features.form === 'with article' && !/(^|\/)(Td|Rd)/.test(t.morph.replace(/^H/, ''))) wrong.push(`${w.id} ${f.tokenId}: says article, token ${t.morph}`);
   }
   assert.deepEqual(wrong, []);
+});
+
+test('the final gate rejects the perfect for what the door asks, not for being a citation form', () => {
+  const row = questionRows.find(r => r.id === 'p-r8-gate-3');
+  assert.match(row.rej['door-m'], /perfect/i);
+  assert.match(row.rej['door-m'], /can report/i);
+  assert.match(row.rej['door-m'], /waw-narrative/i);
 });
 
 // The rows were written against these exact options. A changed option or key must be audited again.

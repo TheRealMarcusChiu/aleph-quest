@@ -21,8 +21,8 @@
 {"id":"H5046-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, gimel, dalet","rej":{"c1":"resh instead of dalet","c2":"reversed, with a regular nun last"}}
 {"id":"H7307-sound","prov":"citation","tests":["participle","vowels"],"ans":"shureq, then furtive patah before het: RU-akh","rej":{"c1":"the patah is read before het, and the stress is first","c2":"o needs holam-vav"}}
 {"id":"H7307-pointed","prov":"citation","tests":["participle","vowels"],"ans":"shureq and a furtive patah","rej":{"c1":"holam-vav reads o","c2":"lacks the patah"}}
-{"id":"H7307-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 both senses are honest; the option states both","rej":{"c1":"voice is קוֹל","c2":"hand is יָד"}}
-{"id":"H7307-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"wind; spirit and breath accepted, Strong's defs","rej":{"c1":"beginning is רֵאשִׁית","c2":"evening is עֶרֶב"}}
+{"id":"H7307-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.2 both senses are honest; the option states both","rej":{"c1":"voice is קוֹל","c2":"hand is יָד"}}
+{"id":"H7307-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"wind; spirit and breath accepted, Strong's defs","rej":{"c1":"beginning is רֵאשִׁית","c2":"evening is עֶרֶב"}}
 {"id":"H7307-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, vav, het","rej":{"c1":"head has alef and shin","c2":"light starts with alef"}}
 {"id":"H7307-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, vav, het","rej":{"c1":"he instead of het","c2":"dalet instead of resh"}}
 {"id":"H7225-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"tsere, silent alef, shin, hireq-yod","rej":{"c1":"the separate noun head","c2":"a isn't this first vowel"}}

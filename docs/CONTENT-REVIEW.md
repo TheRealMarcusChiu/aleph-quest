@@ -1,6 +1,42 @@
 # Content review ledger
 
-This is a machine-assisted, source-based self-review by the content lane. It isn't a qualified Biblical Hebrew reviewer's approval, and it isn't independent. `tests/content/` proves the mechanical claims below against the pinned XML; a person still has to judge the teaching and the sense glosses.
+This is a source-based self-review by the content lane. It isn't a qualified Biblical Hebrew reviewer's approval, and it isn't independent. `tests/content/` proves the mechanical claims below against the pinned XML; a person still has to judge the teaching and the sense glosses.
+
+## Per-question and per-word ledger
+
+`docs/CONTENT-REVIEW-ledger/` holds one hand-written row for every question (`q-*.jsonl`) and every word (`w-*.jsonl`). No script generated these rows.
+
+| Question row field | Meaning |
+|---|---|
+| `id` | Stable question id |
+| `prov` | `citation` (the word card, checked in its word row), `span` (the question's source tokens), `attested` (a form or verse in the corpus, with no token on the question) or `original` (constructed for the game) |
+| `inlineOriginal` | Hebrew in the prompt that isn't from the corpus, such as a bare root or an illustrative form |
+| `tests` | The skills the item really tests |
+| `ans` | Why the answer is right |
+| `rej` | Why each distractor or spare tile is wrong, by its option id |
+
+A word row quotes Strong (`strong`), justifies the gloss (`gloss`), gives each related form's token morphology (`forms`), and records any stress disagreement (`stressNote`).
+
+**What `tests/content/ledger.test.mjs` proves:** every question has one row, with no leftovers. Every distractor has its own rejection. Tested skills are reachable from `requires`. Stated token spans, inline Hebrew and cited verses hold against the pinned XML. Each Strong quote really is in that entry. Related-form morphology and features match their tokens. `docs/CONTENT-REVIEW-ledger/pinned.json` fixes a digest per region, so changing an option, key, prompt or requirement fails until the rows are rechecked and the digest is updated.
+
+**What it can't prove:** that a rationale is true. The rationale text is my judgement from reading the options against OSHB, Strong and the verse. Paraphrases of verses in prompts are checked only to the extent that the verse holds the word's lemma; I wrote them from knowledge of the text and read specific verses where unsure, not every verse.
+
+## Sound and stress convention
+
+The guide is a modern classroom reading, not a claim about ancient speech. `scripts/content-sound.mjs` states it as code: alef and ayin silent, tet t, qof q, het and soft kaf kh, tsade ts, soft bet v, soft pe f, soft gimel, dalet and tav unchanged, and final vowel letters silent. The test derives a pattern from each word's pointing, so a guide is checked against the pointing and not against itself.
+
+Stress is checked against Strong's `pron` mark, comparing only final against earlier, since Strong's syllable counts differ. Two words differ and each row says why: H1961 (Strong marks no stress) and H2822 (Strong marks the last syllable; the accented Genesis tokens carry the mark on the first). The convention can't distinguish vocal from silent shewa or qamats from qamats qatan, so those cases rest on the rows.
+
+## For the shared-validator owner
+
+Nothing below is implemented in this branch. These are the data's semantics, for `scripts/validate-content.mjs` and its tests:
+
+- **`tpl-read-sound` and `tpl-read-pointed`:** `keyRules` in `scripts/content-rules.mjs` states both rules. The sound rule compares with the card's transliteration; `soundPattern` in `scripts/content-sound.mjs` is the independent check. Mutation cases are in `tests/content/ledger.test.mjs`.
+- **`question.key{tokenId,morph}`:** kept as is. `morph` is a substring of that token's OSHB code. It proves the parse behind the item, not the answer text. The current gameplay validator reports `key.morph` as undocumented and wants `key.answer`; the data doesn't carry `key.answer`, because the answer is already `acceptedAnswers`.
+- **`question.contextKey{tokenId,form,morph,answer,basis}`:** nine context questions have an accepted answer that is inflected or contextual, such as "with you" or "my sister". `answer` must equal the accepted option, `form` must be that token and appear in the prompt, and the token's lemma must be the word's. The rule for this is in `tests/content/repair.test.mjs`. It replaces substring matching instead of restoring it.
+- **Reading prerequisites:** `readingDemands` in `scripts/content-rules.mjs` names the rules a pointed form needs. `-sound` and `-pointed` questions now require them, so a word with a shewa or dagesh isn't capturable after the first vowel lesson. Seed words stay capturable. `wordCapturable` already handles this, since it checks each family's `requires`.
+- **Guided practice:** these items need their own lesson's skill, on purpose. The worked example comes first, so the validator should allow it for that lesson only.
+- **Reading headroom:** each Genesis passage has four questions against a `gateRequired` of two.
 
 ## What each row claims
 
@@ -46,7 +82,7 @@ No `match` format was authored, so nothing depends on it.
 - H7451 and H2416: Strong has one number for adjective and noun, while OSHB splits them. The noun forms are listed as derivations.
 - H1419, H7969 and H2472 appear in Genesis in shorter spellings than the taught full ones. Their cards and prompts say so.
 - Pual forms of לקח (`b-r7-stem-1`, `b-r7-parse-2`): some grammars call these Qal passives. The explanation names both.
-- Sound guides are a modern classroom convention, and stress marks were assigned by hand. No reviewer has checked them.
+- Sound guides are a modern classroom convention. Stress marks were assigned by hand and then cross-checked as described above. No qualified reviewer has checked them.
 
 ## Per-word ledger
 

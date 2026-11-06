@@ -12,7 +12,7 @@ Source revision: morphhb 3d15126fb1ef74867fc1434be1942e837932691f. Upstream lice
 
 ## Digital Strong's Hebrew dictionary
 
-Digital files from https://github.com/openscriptures/HebrewLexicon (revision 21c9add13bc727d3a951361778e97e3ff7afd1ce), CC BY 4.0. The underlying dictionary text is public domain. Aleph Quest uses headwords, parts of speech and derivation notes as a checking reference, and its glosses are rewritten. Its obsolete pronunciation field isn't used.
+Digital files from https://github.com/openscriptures/HebrewLexicon (revision 21c9add13bc727d3a951361778e97e3ff7afd1ce), CC BY 4.0. The underlying dictionary text is public domain. Aleph Quest uses headwords, parts of speech and derivation notes as a checking reference, and its glosses are rewritten. Its obsolete pronunciation field is used only in tests, to cross-check stress position, and isn't shown to players.
 
 ## Noto Serif Hebrew
 

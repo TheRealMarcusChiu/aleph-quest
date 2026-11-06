@@ -11,7 +11,7 @@ Allen P. Ross, *Introducing Biblical Hebrew* (Baker Academic, 2001). The only pa
 | Source | Revision | Used for |
 |---|---|---|
 | OSHB `wlc/Gen.xml` | morphhb 3d15126f | Every attested form, reference, lemma and morphology code |
-| Digital Strong's Hebrew dictionary | HebrewLexicon 21c9add1 | Headwords, parts of speech and derivation notes. Its pronunciation field isn't used |
+| Digital Strong's Hebrew dictionary | HebrewLexicon 21c9add1 | Headwords, parts of speech, derivation notes and quoted senses. Its pronunciation field is used only to cross-check stress position, and is never taught |
 
 `data/candidate-lemmas-150.tsv` in the research folder was only a starting list. Many rows were dropped, and some entries came from outside it. Each kept word was re-read against the XML. Known traps from the research note are handled: H413's headword isn't its usable form, H853 and H854 stay separate lexemes, and אֱלֹהִים isn't called singular in form.
 

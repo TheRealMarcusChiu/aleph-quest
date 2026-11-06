@@ -1,0 +1,61 @@
+{"id":"p-r4-neri-1","prov":"attested","tests":["perfect"],"ans":"stem שלח with -ah: she sent; Gen.38.25 token 01xTS has this form","rej":{"c1":"the -ah ending on this stem is the 3fs perfect"}}
+{"id":"p-r4-neri-2","prov":"attested","tests":["pronouns"],"ans":"the form already gives the person; an added pronoun emphasizes","rej":{"c1":"the perfect is complete without it"}}
+{"id":"p-r4-neri-3","prov":"original","tests":["construct"],"ans":"a chain's first noun takes no article","rej":{"c1":"a normal chain","c2":"a normal chain"}}
+{"id":"p-r4-gate-1","prov":"original","tests":["perfect"],"ans":"ending -ta: you","rej":{"door-m":"he: no ending","door-e":"they: ending -u"}}
+{"id":"p-r4-gate-2","prov":"original","tests":["construct"],"ans":"-im becomes -e: construct","rej":{"door-w":"the free form","door-e":"mouth, another word"}}
+{"id":"p-r4-gate-3","prov":"original","tests":["object-marker"],"ans":"אֶת marks an object","rej":{"door-m":"preposition, to","door-e":"preposition, on"}}
+{"id":"b-r4-pgn-1","prov":"span","tests":["perfect"],"ans":"OSHB Vqp3fs","rej":{"c1":"he: no ending","c2":"I ends in -ti"}}
+{"id":"b-r4-pgn-2","prov":"span","tests":["perfect"],"ans":"OSHB Vqp2ms","rej":{"c1":"I ends in -ti","c2":"they ends in -u"}}
+{"id":"b-r4-pgn-3","prov":"span","tests":["perfect"],"ans":"OSHB Vqp1cs","rej":{"c1":"you ends in -ta","c2":"he has no ending"}}
+{"id":"b-r4-construct-1","prov":"span","tests":["construct"],"ans":"OSHB Ncmpc","rej":{"c1":"singular is יוֹם","c2":"absolute is יָמִים"}}
+{"id":"b-r4-construct-2","prov":"span","tests":["construct"],"ans":"OSHB Ncmpc; of the mountains","rej":{"c1":"OSHB tags no suffix","c2":"no article, and it is plural"}}
+{"id":"b-r4-construct-3","prov":"span","tests":["construct"],"ans":"OSHB Ncmsc","rej":{"c1":"no article","c2":"singular"}}
+{"id":"b-r4-object-1","prov":"span","tests":["verbal-clauses"],"ans":"verb first, then the subject","rej":{"c1":"the speaker quotes God","c2":"the subject follows"}}
+{"id":"b-r4-object-2","prov":"span","tests":["perfect"],"ans":"OSHB Vqp3ms","rej":{"c1":"OSHB tags a verb","c2":"you ends in -ta"}}
+{"id":"b-r4-object-3","prov":"span","tests":["perfect"],"ans":"a verb of knowing, spoken now","rej":{"c1":"Abram is speaking of what he knows now"}}
+{"id":"g-prep-suffix","prov":"span","tests":["prep-suffixes"],"ans":"OSHB Sp1cs","rej":{"c1":"you ends in -kha","c2":"them ends in -hem"}}
+{"id":"g-existence","prov":"span","tests":["existence"],"ans":"אֵין denies; לְ marks whose","rej":{"c1":"the verse denies it","c2":"nothing says the child is present"}}
+{"id":"g-noun-suffix","prov":"span","tests":["noun-suffixes"],"ans":"OSHB Sp3ms","rej":{"c1":"my is -i","c2":"your is -kha"}}
+{"id":"g-plural-suffix","prov":"span","tests":["plural-suffixes"],"ans":"OSHB Ncbpc/Sp3ms","rej":{"c1":"that goes on singular nouns","c2":"my would be -ay on this set"}}
+{"id":"a-prep-suffix-1","prov":"span","tests":["prep-suffixes"],"ans":"OSHB Sp3fs; mappiq in he","rej":{"c1":"him would be עִמּוֹ","c2":"me would be עִמִּי"}}
+{"id":"a-prep-suffix-2","prov":"span","tests":["prep-suffixes"],"ans":"Gen.12.20 עָלָיו","rej":{"c1":"עַל takes the plural-looking set","c2":"means on me"}}
+{"id":"a-exist-1","prov":"span","tests":["existence"],"ans":"OSHB Ti/Tm; three small parts","rej":{"c1":"Hebrew has no verb have here","c2":"father is אָב"}}
+{"id":"a-iii-aleph-1","prov":"span","inlineOriginal":["שָׁמַרְתִּי"],"tests":["iii-aleph"],"ans":"silent alef, so the vowel stays long","rej":{"c1":"OSHB tags a verb","c2":"OSHB tags 1cs, common"}}
+{"id":"a-iii-aleph-2","prov":"span","tests":["iii-aleph"],"ans":"OSHB Vqp3ms","rej":{"c1":"OSHB tags a verb","c2":"I ends in -ti"}}
+{"id":"a-relative-1","prov":"span","tests":["relative"],"ans":"OSHB Tr; links to the rib","rej":{"c1":"the marker is אֵת","c2":"a question would use מִי"}}
+{"id":"a-suffix-1","prov":"span","tests":["noun-suffixes"],"ans":"OSHB Sp3ms","rej":{"c1":"my is -i","c2":"their is -am"}}
+{"id":"a-suffix-2","prov":"span","tests":["noun-suffixes"],"ans":"Gen.6.18 OSHB Sp1cs","rej":{"c1":"his, -o","c2":"a suffixed noun takes no article"}}
+{"id":"a-suffix-3","prov":"span","tests":["noun-suffixes","noun-patterns"],"ans":"the segholate's underlying stem before a suffix","rej":{"c1":"OSHB tags singular","c2":"OSHB tags a noun"}}
+{"id":"a-pl-suffix-1","prov":"span","tests":["plural-suffixes"],"ans":"OSHB Sp2mp","rej":{"c1":"my is -ay","c2":"her is -eha"}}
+{"id":"p-r5-neri-1","prov":"attested","tests":["prep-suffixes","object-marker"],"ans":"marker's stem אֹת-, preposition's אִתּ-; tokens 01pUN and 014Zw","rej":{"c1":"both take suffixes in the shipped tokens","c2":"neither is distinguished by that"}}
+{"id":"p-r5-neri-2","prov":"original","tests":["plural-suffixes"],"ans":"the yod marks the plural set","rej":{"c1":"goes on singular nouns"}}
+{"id":"p-r5-neri-3","prov":"original","tests":["existence"],"ans":"אֵין denies existence","rej":{"c1":"asserts it","c2":"לֹא negates verbs, not existence here"}}
+{"id":"p-r5-gate-1","prov":"original","tests":["noun-suffixes"],"ans":"Gen.12.13 token 01jyn's form: my sister","rej":{"door-m":"no suffix","door-e":"his brother"}}
+{"id":"p-r5-gate-2","prov":"original","tests":["iii-aleph"],"ans":"קרא ends in alef","rej":{"door-w":"ends in het","door-e":"ends in dalet"}}
+{"id":"p-r5-gate-3","prov":"original","tests":["prep-suffixes"],"ans":"mappiq in final he: with her","rej":{"door-m":"with me","door-e":"peoples, a noun"}}
+{"id":"b-r5-prep-1","prov":"span","tests":["prep-suffixes"],"ans":"OSHB Sp2ms","rej":{"c1":"me is -ay","c2":"them is -hem"}}
+{"id":"b-r5-prep-2","prov":"span","tests":["prep-suffixes"],"ans":"lemma 854, stem אִתּ-","rej":{"c1":"H853's suffixed stem is אֹת-, and OSHB tags R","c2":"אֶל's suffixed form starts אֵל-"}}
+{"id":"b-r5-prep-3","prov":"span","tests":["prep-suffixes","min"],"ans":"sense from it; OSHB's 1cp tag is recorded in the explanation","rej":{"c1":"under isn't מִן","c2":"with isn't מִן, and me isn't this suffix's sense"}}
+{"id":"b-r5-suffix-1","prov":"span","tests":["noun-suffixes"],"ans":"OSHB Sp1cs","rej":{"c1":"his would be -o","c2":"OSHB tags a suffix"}}
+{"id":"b-r5-suffix-2","prov":"span","tests":["noun-suffixes"],"ans":"OSHB Sp2ms; household by context","rej":{"c1":"my is -i","c2":"no article"}}
+{"id":"b-r5-suffix-3","prov":"span","tests":["plural-suffixes"],"ans":"OSHB Ncbdc/Sp3ms","rej":{"c1":"OSHB tags dual"}}
+{"id":"b-r5-exist-1","prov":"span","tests":["existence"],"ans":"OSHB Tn","rej":{"c1":"denies, not asserts","c2":"eye starts with ayin"}}
+{"id":"b-r5-exist-2","prov":"span","tests":["relative"],"ans":"OSHB Tr; English chooses whom","rej":{"c1":"because is כִּי","c2":"questions use מִי"}}
+{"id":"b-r5-exist-3","prov":"span","tests":["iii-aleph"],"ans":"qamats before silent alef","rej":{"c1":"OSHB tags 3ms","c2":"furtive patah isn't this qamats"}}
+{"id":"g-participle","prov":"span","tests":["participle"],"ans":"OSHB Vqrms; holam then tsere","rej":{"c1":"the perfect's pattern","c2":"an imperative or infinitive's pattern"}}
+{"id":"g-imperfect","prov":"span","tests":["imperfect"],"ans":"OSHB Vqi2ms; prefix tav","rej":{"c1":"yod isn't the prefix here","c2":"nun isn't the prefix here"}}
+{"id":"g-narrative","prov":"span","tests":["narrative"],"ans":"OSHB w; waw with patah and doubled prefix","rej":{"c1":"that would be the ordinary conjunction","c2":"it has a prefix"}}
+{"id":"g-statives","prov":"span","tests":["statives"],"ans":"tsere marks this stative","rej":{"c1":"OSHB tags a perfect","c2":"OSHB tags 3ms"}}
+{"id":"g-volitives","prov":"span","tests":["volitives"],"ans":"OSHB Vqj3ms","rej":{"c1":"the report comes next, with waw","c2":"no question marker"}}
+{"id":"g-disjunctive","prov":"span","tests":["waw-disjunctive"],"ans":"waw on a noun gives background","rej":{"c1":"that takes a narrative verb","c2":"OSHB tags no imperative here"}}
+{"id":"g-infinitive","prov":"span","tests":["inf-construct"],"ans":"OSHB R/Vqc: to work","rej":{"c1":"no subject ending, and a perfect would have none of this prefix","c2":"an infinitive construct here gives purpose, not an ongoing action"}}
+{"id":"g-verbal-suffix","prov":"span","tests":["verbal-suffixes"],"ans":"OSHB Sp3mp on a verb: an object","rej":{"c1":"the subject is God, from the form","c2":"on a verb it isn't an owner"}}
+{"id":"g-numbers","prov":"span","inlineOriginal":["ה"],"tests":["numbers"],"ans":"OSHB Acfs; reversed gender","rej":{"c1":"the -ah form exists, as וְשִׁבְעָה shows","c2":"שָׁנָה is feminine"}}
+{"id":"a-ptc-1","prov":"span","tests":["participle"],"ans":"furtive patah after tsere","rej":{"c1":"OSHB tags Vqrmsa, singular","c2":"no question marker"}}
+{"id":"a-ptc-2","prov":"attested","tests":["participle"],"ans":"holam then tsere","rej":{"c1":"a perfect, I kept","c2":"an imperative or infinitive"}}
+{"id":"a-impf-1","prov":"span","tests":["imperfect"],"ans":"OSHB Vqi2mp","rej":{"c1":"singular has no -u ending","c2":"she has no -u ending here"}}
+{"id":"a-directive-1","prov":"span","tests":["directive-he"],"ans":"OSHB D/Sd: directive he","rej":{"c1":"a place adverb has no gender ending","c2":"OSHB tags no plural"}}
+{"id":"a-narr-1","prov":"span","tests":["narrative"],"ans":"OSHB w; past in English","rej":{"c1":"future is the imperfect without this waw","c2":"an infinitive would have no prefix"}}
+{"id":"a-narr-2","prov":"span","tests":["narrative"],"ans":"Gen.1.3 verb, then subject","rej":{"t2":"not the story form here; a spare tile"}}
+{"id":"a-hayah-1","prov":"span","tests":["hayah"],"ans":"OSHB Vqp3fs; agrees with the earth","rej":{"c1":"the 3ms is הָיָה","c2":"OSHB tags singular"}}
+{"id":"a-stat-1","prov":"span","tests":["questions"],"ans":"OSHB Ti; asks about a thing","rej":{"c1":"that is מִי","c2":"that is אֵין"}}
