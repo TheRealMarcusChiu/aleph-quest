@@ -334,6 +334,85 @@ test('the award counts distinct answers, as a guard behind the import check', ()
   assert.equal(s.badges[BADGE_ID], undefined);
 });
 
+// A legal open trial with only its credited answers swapped, to isolate the rule under test.
+function trialCrediting(correct, current = null) {
+  const s = played();
+  startBadgeRun(s, content, 'r1', NOW);
+  s.badgeRun.correct = correct;
+  s.badgeRun.current = current;
+  return s;
+}
+const ALL_TRIAL_IDS = content.regionById.get('r1').badge.questionIds;
+const EXACT_COMPLETE = ['b-final-1', 'b-spell-1', 'b-order-1', 'b-order-2'];
+const COUNT_MET_NO_ORDER = ['b-final-1', 'b-final-2', 'b-spell-1', 'b-spell-2'];
+
+function assertRejectedUntouched(s) {
+  const snapshot = structuredClone(s);
+  const result = parseImport(exportText(s, NOW), content);
+  assert.equal(result.ok, false);
+  assert.match(result.errors.join(' | '), /badgeRun.*complete/);
+  assert.equal(result.state, undefined);
+  assert.deepEqual(s, snapshot);
+}
+
+test('an open trial cannot already hold every allowed answer', () => {
+  assert.equal(parseImport(exportText(trialCrediting([]), NOW), content).ok, true, 'control: the same trial with no credit loads');
+  assertRejectedUntouched(trialCrediting([...ALL_TRIAL_IDS]));
+});
+
+test('an open trial cannot already meet the count and all families, even with questions left', () => {
+  assertRejectedUntouched(trialCrediting([...EXACT_COMPLETE]));
+  const pending = { questionId: 'b-spell-2', hintsUsed: 1, startedAt: NOW, responseMode: 'recognition' };
+  assertRejectedUntouched(trialCrediting([...EXACT_COMPLETE], pending));
+});
+
+test('meeting the count without every family is still a valid open trial, and it can finish', () => {
+  const store = memory();
+  const s = trialCrediting([...COUNT_MET_NO_ORDER]);
+  const loaded = parseImport(exportText(s, NOW), content);
+  assert.equal(loaded.ok, true, loaded.errors?.join());
+  assert.deepEqual(loaded.state, s);
+
+  const next = openBadgeQuestion(s, content, NOW);
+  assert.equal(next.taskFamily, 'rtl-order');
+  useBadgeHint(s, content);
+  assert.equal(parseImport(exportText(s, NOW), content).ok, true, 'a hinted pending question loads too');
+  submitBadgeAnswer(s, content, trialAnswer(next), NOW);
+  assert.equal(s.badges[BADGE_ID], undefined, 'the hinted answer earned nothing');
+  assert.equal(saveSlot(store, 1, s, content).ok, true);
+  assert.equal(loadSlot(store, 1, content).status, 'ok');
+
+  const fresh = openBadgeQuestion(s, content, NOW);
+  assert.equal(fresh.taskFamily, 'rtl-order');
+  assert.equal(submitBadgeAnswer(s, content, trialAnswer(fresh), NOW).awarded, true);
+  assert.equal(saveSlot(store, 1, s, content).ok, true);
+  assert.equal(loadSlot(store, 1, content).status, 'ok', 'the earned badge reloads');
+});
+
+test('a below-threshold trial with every other question retired loads, and recovers after exploring', () => {
+  const store = memory();
+  const s = partialTrial();
+  for (let q; (q = openBadgeQuestion(s, content, NOW));) {
+    submitBadgeAnswer(s, content, q.format === 'tokens' ? [] : 'wrong', NOW);
+    assert.equal(saveSlot(store, 1, s, content).ok, true);
+    assert.equal(loadSlot(store, 1, content).status, 'ok');
+  }
+  assert.equal(s.badgeRun.correct.length, 3);
+  assert.equal(openBadgeQuestion(s, content, NOW), null, 'nothing fresh right now');
+  const reloaded = parseImport(exportText(s, NOW), content);
+  assert.equal(reloaded.ok, true, reloaded.errors?.join());
+
+  const back = reloaded.state;
+  back.interactions += 2;
+  assert.equal(startBadgeRun(back, content, 'r1', NOW).ok, true);
+  const retry = openBadgeQuestion(back, content, NOW);
+  assert.ok(retry, 'a retired question returns on the revisit');
+  assert.equal(parseImport(exportText(back, NOW), content).ok, true);
+  assert.equal(submitBadgeAnswer(back, content, trialAnswer(retry), NOW).awarded, true);
+  assert.equal(saveSlot(store, 1, back, content).ok, true);
+  assert.equal(loadSlot(store, 1, content).status, 'ok');
+});
+
 test('a rejected import returns no state and cannot touch the game passed around it', () => {
   const live = played();
   const snapshot = structuredClone(live);

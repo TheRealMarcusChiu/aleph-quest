@@ -38,6 +38,12 @@ export function startBadgeRun(state, content, regionId, now) {
 
 const badgeOf = (state, content) => content.regionById.get(state.badgeRun.regionId).badge;
 
+// The moment these answers qualify, the badge is awarded and the run closes.
+export function trialComplete(badge, questionIds, content) {
+  const families = new Set(questionIds.map(id => content.questionById.get(id).taskFamily));
+  return new Set(questionIds).size >= badge.requiredCorrect && badge.requiredTaskFamilies.every(f => families.has(f));
+}
+
 export function openBadgeQuestion(state, content, now) {
   const run = state.badgeRun;
   if (run.current) return content.questionById.get(run.current.questionId);
@@ -84,8 +90,7 @@ export function submitBadgeAnswer(state, content, response, now) {
   }
   run.correct.push(question.id);
   const badge = badgeOf(state, content);
-  const families = new Set(run.correct.map(id => content.questionById.get(id).taskFamily));
-  if (new Set(run.correct).size >= badge.requiredCorrect && badge.requiredTaskFamilies.every(f => families.has(f))) {
+  if (trialComplete(badge, run.correct, content)) {
     state.badges[badge.id] = { at: now, questionIds: run.correct };
     state.badgeRun = null;
     result.awarded = true;

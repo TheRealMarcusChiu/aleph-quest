@@ -3,6 +3,7 @@
 import { MAPS, DOORS } from './world.js';
 import { destination, capturedCount } from './engine.js';
 import { CAPTURE_FAMILIES } from './learning.js';
+import { trialComplete } from './checkpoints.js';
 
 export const SLOTS = [1, 2, 3];
 export const MAX_SAVE_BYTES = 512 * 1024;
@@ -215,6 +216,7 @@ function checkConsistency(state, content, errors) {
     if (!ids.every(id => badge.questionIds.includes(id))) errors.push('badgeRun: lists a question outside this badge');
     const { correct, current } = state.badgeRun;
     if (new Set(correct).size !== correct.length) errors.push('badgeRun: credits a question twice');
+    if (trialComplete(badge, correct, content)) errors.push('badgeRun: these answers complete the trial, so it can\'t still be open');
     if (current && correct.includes(current.questionId)) errors.push('badgeRun: pending question is already credited');
     if (current) checkPendingMode('badgeRun', content.questionById.get(current.questionId), current.responseMode, errors);
   }
