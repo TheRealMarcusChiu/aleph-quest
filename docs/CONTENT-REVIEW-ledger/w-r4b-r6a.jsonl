@@ -1,10 +1,10 @@
-{"id":"H0595","strong":"I","forms":[],"gloss":"I, the longer pronoun; separate Strong entry from H589."}
+{"id":"H0595","strong":"I","forms":[],"gloss":"I, the longer pronoun. Strong gives H589 as its contraction, so the inventory counts both as one lexeme."}
 {"id":"H0859","strong":"thou","forms":[],"gloss":"you, masculine singular, per OSHB Pp2ms. Strong's older English thou is rendered you."}
 {"id":"H1931","strong":"he","forms":["HPp3fs"],"gloss":"he matches; that is in Strong's range. OSHB keeps the feminine under one lemma, so an inflection."}
 {"id":"H1992","strong":"they","forms":["HPp3mp"],"gloss":"they matches; those is Strong's demonstrative use. Longer spelling shares lemma 1992."}
-{"id":"H2088","strong":"this","forms":["HPdxfs"],"gloss":"this, masculine, per OSHB Pdxms. Feminine has its own Strong entry, so separate-lexeme."}
-{"id":"H2063","strong":"this","forms":["HPdxms"],"gloss":"this, feminine, per OSHB Pdxfs. Masculine is a separate Strong entry."}
-{"id":"H0428","strong":"these","forms":["HPdxms"],"gloss":"these, per OSHB Pdxcp. זֶה is a separate Strong entry."}
+{"id":"H2088","strong":"this","forms":["HPdxfs"],"gloss":"this, masculine, per OSHB Pdxms. Strong's own number for the feminine isn't lexeme proof: one suppletive paradigm, linked by derivation because the enum has no paradigm value."}
+{"id":"H2063","strong":"this","forms":["HPdxms"],"gloss":"this, feminine, per OSHB Pdxfs. Strong calls it the irregular feminine of H2088: one paradigm, linked by derivation because the enum has no paradigm value."}
+{"id":"H0428","strong":"these","forms":["HPdxms"],"gloss":"these, per OSHB Pdxcp. Suppletive plural of the same paradigm as זֶה, despite its own Strong number."}
 {"id":"H0853","strong":"self","forms":["HTo/Sp3ms"],"gloss":"Object marker follows OSHB To. Strong's own note gives entity, and says it is used to point out the object; no English word is taught."}
 {"id":"H3588","strong":"that","forms":[],"gloss":"that, because, when are in Strong's range. Conjunction per OSHB HC."}
 {"id":"H6440","strong":"the face","forms":["HNcbpc/Sp3ms"],"gloss":"face, surface, presence are Strong's range. Plural in form per OSHB Ncbp."}
@@ -19,7 +19,7 @@
 {"id":"H7121","strong":"call","forms":["HC/Vqw3ms"],"gloss":"call, name and read are Strong's range."}
 {"id":"H1254","strong":"create","forms":["HVqp3ms/Sp3mp"],"gloss":"create matches. OSHB lemma 1254 a."}
 {"id":"H0269","strong":"sister","forms":["HNcfsc/Sp1cs"],"gloss":"sister matches."}
-{"id":"H0113","strong":"lord","forms":["HNcmpc/Sp1cs"],"gloss":"lord and master are Strong's range. Gen.18.3 is plural in form per OSHB, addressed to a person as sir."}
+{"id":"H0113","strong":"lord","forms":["HNcmsc/Sp1cs"],"gloss":"lord and master are Strong's range. Gen.23.6 013uB replaces Gen.18.3, whose addressee is ambiguous. The Hittites speak to Abraham, read in XML."}
 {"id":"H5315","strong":"a breathing creature","forms":["HNcbsc/Sp1cs"],"gloss":"living being renders the breathing creature; life and self are Strong's extensions. The card flags soul as a poor default."}
 {"id":"H6310","strong":"the mouth","forms":["HR/Ncmsc/Sp3fs"],"gloss":"mouth and opening are in Strong's range; a dove's beak in Gen.8.11 is contextual."}
 {"id":"H1571","strong":"also","forms":[],"gloss":"also and even match. OSHB Ta."}
@@ -45,5 +45,5 @@
 {"id":"H7969","strong":"three","forms":["HC/Acfsa"],"gloss":"three matches. OSHB's gender tag is the form's gender, which the card states as used with feminine nouns."}
 {"id":"H2568","strong":"five","forms":["HAcfsa"],"gloss":"five matches; same tagging note as three."}
 {"id":"H7651","strong":"seven","forms":["HC/Acmsa"],"gloss":"seven matches; the -ah form is tagged masculine, as the card states."}
-{"id":"H6235","strong":"ten","forms":["HAcfsa"],"gloss":"ten matches. The -teen word is H6240, so separate-lexeme."}
+{"id":"H6235","strong":"ten","forms":["HAcfsa"],"gloss":"ten matches. The -teen word is H6240, which Strong derives from H6235: a combining form, linked by derivation and never counted as a lexeme."}
 {"id":"H3967","strong":"a hundred","forms":["HC/Acbsc"],"gloss":"hundred matches; construct per OSHB."}

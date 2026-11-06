@@ -18,7 +18,7 @@
 {"id":"H2088-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, he","rej":{"c1":"vav instead of zayin","c2":"letters reversed"}}
 {"id":"H2063-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, silent alef, tav: zot","rej":{"c1":"a needs patah or qamats","c2":"the masculine, with segol and he"}}
 {"id":"H2063-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, alef with no vowel","rej":{"c1":"qamats reads a","c2":"shewa and patah on alef aren't this word"}}
-{"id":"H2063-in-context","prov":"attested","tests":["demonstratives","word-meaning"],"ans":"Gen.2.23 points at the woman","rej":{"c1":"she is הִוא, not a demonstrative","c2":"these is plural"}}
+{"id":"H2063-in-context","prov":"attested","tests":["demonstratives","word-meaning"],"ans":"Gen.2.23 points at the woman","rej":{"c1":"she is a fair English rendering, but it drops the demonstrative the prompt asks for","c2":"these is plural"}}
 {"id":"H2063-type-gloss","prov":"citation","tests":["demonstratives","word-meaning"],"ans":"this; this one accepted","rej":{"c1":"they is הֵם","c2":"you is אַתָּה"}}
 {"id":"H2063-write","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, alef, tav","rej":{"c1":"the masculine has two letters","c2":"the object marker has alef first"}}
 {"id":"H2063-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, alef, tav","rej":{"c1":"vav instead of alef","c2":"tet instead of tav"}}

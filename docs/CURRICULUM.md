@@ -29,12 +29,12 @@ r8 is an original capstone. It isn't a claim about Ross's final chapter, and it 
 
 ## Vocabulary choices
 
-150 distinct lexemes, each with a citation form checked against Strong and an attested Genesis form or line checked in `data/attestations.json`. Citation forms that differ from Strong's headword are listed in `docs/CONTENT-REVIEW.md`. The research TSV was a starting list only.
+153 word cards, counted as 150 lexemes in `docs/CONTENT-REVIEW-ledger/lexeme-inventory.json`, each with a citation form checked against Strong and an attested Genesis form or line checked in `data/attestations.json`. Citation forms that differ from Strong's headword are listed in `docs/CONTENT-REVIEW.md`. The research TSV was a starting list only.
 
-Roots are null unless Strong gives an explicit derivation or primitive-root note that was checked by hand, and `rootNote` says which. Nothing is derived by removing points. Lemma, attested form and root stay distinct. Related forms are labeled inflection, derivation or separate lexeme, so `זֶה` and `זֹאת` are not presented as one word, and the two `אֵת` entries are kept apart.
+Roots are null unless Strong gives an explicit derivation or primitive-root note that was checked by hand, and `rootNote` says which. Nothing is derived by removing points. Lemma, attested form and root stay distinct. Related forms are labeled inflection, derivation or separate lexeme. `זֶה`, `זֹאת` and `אֵלֶּה` keep their own cards but are taught as one demonstrative paradigm, and the two `אֵת` entries are kept apart.
 
 Sourced isn't the same as approved. A qualified Biblical Hebrew reviewer has not checked these glosses, sound guides or distractors.
 
 ## Task coverage
 
-Each of the 140 new words has six capture questions, written per word: a sound guide and a pointing contrast (read), a real Genesis line and a typed meaning (understand), and typed and letters-only spelling (inscribe). r2 to r8 add analyze and build tasks in `practice` pools, rival, gate and badge pools, plus guided practice for each lesson. r8 adds a `reading` pool for Genesis 1:1-5. The content test requires at least 150 analyze and build tasks, and at least 12 per region after r1.
+Each of the 143 new words has six capture questions, written per word: a sound guide and a pointing contrast (read), a real Genesis line and a typed meaning (understand), and typed and letters-only spelling (inscribe). r2 to r8 add analyze and build tasks in `practice` pools, rival, gate and badge pools, plus guided practice for each lesson. r8 adds a `reading` pool for Genesis 1:1-5. The content test requires at least 150 analyze and build tasks, and at least 12 per region after r1.

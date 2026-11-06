@@ -13,7 +13,7 @@
 {"id":"H0120-sound","prov":"citation","tests":["vowels"],"ans":"two qamats signs, final stress: a-DAM","rej":{"c1":"e and o aren't these signs","c2":"segol second and first-syllable stress aren't this pointing"}}
 {"id":"H0120-pointed","prov":"citation","tests":["vowels"],"ans":"two qamats signs","rej":{"c1":"hataf segol and holam: another word, Edom's shape","c2":"two segols aren't this word"}}
 {"id":"H0120-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.26 humankind: let them rule","rej":{"c1":"ground is אֲדָמָה","c2":"king isn't the sense; they are to rule, but the word names people"}}
-{"id":"H0120-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"human being; human, humankind, mankind, man, person, adam accepted, Strong's def and usage","rej":{"c1":"ground is אֲדָמָה","c2":"flock is צֹאן"}}
+{"id":"H0120-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"human being; human, humankind, mankind, man, person accepted, Strong's def and usage. adam is accepted because H121 has the same letters; the feedback says so","rej":{"c1":"ground is אֲדָמָה","c2":"flock is צֹאן"}}
 {"id":"H0120-write","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, final mem","rej":{"c1":"ground adds mem and he","c2":"man ends in shin"}}
 {"id":"H0120-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, final mem","rej":{"c1":"resh instead of dalet","c2":"regular mem at the end"}}
 {"id":"H0127-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, two qamats signs, final stress","rej":{"c1":"hataf patah is a, not e","c2":"same sounds, wrong stress: this feminine ending takes it"}}

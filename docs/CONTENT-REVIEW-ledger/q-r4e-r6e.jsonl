@@ -19,7 +19,7 @@
 {"id":"g-plural-suffix","prov":"span","tests":["plural-suffixes"],"ans":"OSHB Ncbpc/Sp3ms","rej":{"c1":"that goes on singular nouns","c2":"my would be -ay on this set"}}
 {"id":"a-prep-suffix-1","prov":"span","tests":["prep-suffixes"],"ans":"OSHB Sp3fs; mappiq in he","rej":{"c1":"him would be עִמּוֹ","c2":"me would be עִמִּי"}}
 {"id":"a-prep-suffix-2","prov":"span","tests":["prep-suffixes"],"ans":"Gen.12.20 עָלָיו","rej":{"c1":"עַל takes the plural-looking set","c2":"means on me"}}
-{"id":"a-exist-1","prov":"span","tests":["existence"],"ans":"OSHB Ti/Tm; three small parts","rej":{"c1":"Hebrew has no verb have here","c2":"father is אָב"}}
+{"id":"a-exist-1","prov":"span","tests":["existence"],"ans":"OSHB Tm and R/Sp1cs in Gen.33.9: there is, to me. Verse read in XML; replaces a question marker not yet taught at r5","rej":{"c1":"Hebrew has no verb have here","c2":"plenty is רָב"}}
 {"id":"a-iii-aleph-1","prov":"span","inlineOriginal":["שָׁמַרְתִּי"],"tests":["iii-aleph"],"ans":"silent alef, so the vowel stays long","rej":{"c1":"OSHB tags a verb","c2":"OSHB tags 1cs, common"}}
 {"id":"a-iii-aleph-2","prov":"span","tests":["iii-aleph"],"ans":"OSHB Vqp3ms","rej":{"c1":"OSHB tags a verb","c2":"I ends in -ti"}}
 {"id":"a-relative-1","prov":"span","tests":["relative"],"ans":"OSHB Tr; links to the rib","rej":{"c1":"the marker is אֵת","c2":"a question would use מִי"}}
@@ -47,7 +47,7 @@
 {"id":"g-narrative","prov":"span","tests":["narrative"],"ans":"OSHB w; waw with patah and doubled prefix","rej":{"c1":"that would be the ordinary conjunction","c2":"it has a prefix"}}
 {"id":"g-statives","prov":"span","tests":["statives"],"ans":"tsere marks this stative","rej":{"c1":"OSHB tags a perfect","c2":"OSHB tags 3ms"}}
 {"id":"g-volitives","prov":"span","tests":["volitives"],"ans":"OSHB Vqj3ms","rej":{"c1":"the report comes next, with waw","c2":"no question marker"}}
-{"id":"g-disjunctive","prov":"span","tests":["waw-disjunctive"],"ans":"waw on a noun gives background","rej":{"c1":"that takes a narrative verb","c2":"OSHB tags no imperative here"}}
+{"id":"g-disjunctive","prov":"span","tests":["waw-disjunctive"],"ans":"a new clause opening with waw on a noun gives background here","rej":{"c1":"that takes a narrative verb","c2":"OSHB tags no imperative here"}}
 {"id":"g-infinitive","prov":"span","tests":["inf-construct"],"ans":"OSHB R/Vqc: to work","rej":{"c1":"no subject ending, and a perfect would have none of this prefix","c2":"an infinitive construct here gives purpose, not an ongoing action"}}
 {"id":"g-verbal-suffix","prov":"span","tests":["verbal-suffixes"],"ans":"OSHB Sp3mp on a verb: an object","rej":{"c1":"the subject is God, from the form","c2":"on a verb it isn't an owner"}}
 {"id":"g-numbers","prov":"span","inlineOriginal":["ה"],"tests":["numbers"],"ans":"OSHB Acfs; reversed gender","rej":{"c1":"the -ah form exists, as וְשִׁבְעָה shows","c2":"שָׁנָה is feminine"}}

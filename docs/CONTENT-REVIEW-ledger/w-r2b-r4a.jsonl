@@ -23,7 +23,7 @@
 {"id":"H5288","strong":"a boy (as active)","forms":["HTd/Ncmpa"],"gloss":"young man and boy from the def and usage young (man); servant from by implication."}
 {"id":"H5971","strong":"people","forms":["HNcmpa"],"gloss":"people matches; nation from Strong's range. OSHB lemma 5971 a."}
 {"id":"H4725","strong":"properly, a standing, i.e. a spot","forms":["HNcmsc"],"gloss":"place is the first usage and the widely used sense."}
-{"id":"H0120","strong":"a human being (an individual or the species, mankind, etc.)","forms":["HTd/Ncmsa"],"gloss":"human being and humankind are the defs; the name is contextual. With the article, Gen.2.7 reads the man."}
+{"id":"H0120","strong":"a human being (an individual or the species, mankind, etc.)","forms":["HTd/Ncmsa"],"gloss":"human being and humankind are the defs. The name is H121, a separate entry with the same letters, and it isn't a card. With the article, Gen.2.7 reads the man."}
 {"id":"H0127","strong":"soil (from its general redness)","forms":["HTd/Ncfsa"],"gloss":"ground and land are usage; soil is the def."}
 {"id":"H0430","strong":"specifically used (in the plural thus, especially with the article) of the supreme God","forms":["HNcmpc"],"gloss":"God and gods are Strong's defs. Plural in form per Strong and OSHB."}
 {"id":"H8085","strong":"hear","forms":["HVqp1cs"],"gloss":"hear, listen and obey fit Strong's range for this primitive root."}
@@ -31,10 +31,10 @@
 {"id":"H7971","strong":"send","forms":["HVqp1cs"],"gloss":"send and stretch out are Strong's senses."}
 {"id":"H3947","strong":"take","forms":["HVqp2ms"],"gloss":"take and receive are in the usage list."}
 {"id":"H0398","strong":"eat","forms":["HVqp2ms"],"gloss":"eat and consume are in Strong's range."}
-{"id":"H7901","strong":"lie down","forms":["HVqp1cs"],"gloss":"lie down matches; the sexual sense is Strong's. Gen.19.34 is a euphemism."}
+{"id":"H7901","strong":"lie down","forms":["HVqp1cs"],"gloss":"lie down matches for the isolated form; the sexual sense is Strong's. Gen.19.34 and Gen.26.10 are sexual, and 26.10's almost comes from כִּמְעַט, not the verb's token."}
 {"id":"H5647","strong":"to work","forms":["HVqp3cp"],"gloss":"serve, work and till are in Strong's range. Noun H5650 is separately listed."}
 {"id":"H5674","strong":"to cross over","forms":["HVqp2mp"],"gloss":"pass over and cross are the defs; pass by in Gen.18.5 is contextual."}
 {"id":"H6912","strong":"bury","forms":["HVqp3cp"],"gloss":"bury matches."}
 {"id":"H1980","strong":"walk","forms":["HVqp3cp"],"gloss":"walk and go are Strong's senses. Strong's akin-to note is in the rootNote."}
 {"id":"H3045","strong":"to know","forms":["HVqp1cs"],"gloss":"know matches; euphemism is in Strong's range and is contextual in Gen.4.1."}
-{"id":"H0589","strong":"I","forms":[],"gloss":"I matches. Strong gives a contraction of H595, which is its own entry here."}
+{"id":"H0589","strong":"I","forms":[],"gloss":"I matches. Strong gives a contraction of H595. It keeps a card, but the inventory counts both as one lexeme."}

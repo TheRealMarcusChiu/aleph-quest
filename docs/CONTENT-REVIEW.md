@@ -31,24 +31,31 @@ In this pass I read each question's prompt, options, keys, aliases, explanation,
 
 | Inspected value | Meaning |
 |---|---|
-| `record+xml` | The cited verse was read in `Bereshit.xml` during this pass. That covers Genesis 1:1-29, 3:11, 9:25, 13:1 and 16:7 |
+| `record+xml` | The cited verse was read in `Bereshit.xml` during this pass. That covers Genesis 1:1-29, 3:11, 9:25, 13:1 and 16:7, plus the verses named in `a-delta-bad6e81.json` |
 | `record+verse-from-memory` | The record was read and its verse claim judged from my knowledge of the text. The XML for that verse wasn't opened in this pass. Any token's reference, lemma and morphology are still bound by tests |
 | `record+card` | The record makes no verse claim, or is a word card, and was read against the card and the lessons. Strong wasn't reopened for it |
 
 | Kind | Verdict | Inspected | Count |
 |---|---|---|---|
-| question | accept | record+xml | 124 |
-| question | accept | record+verse-from-memory | 220 |
-| question | accept | record+card | 805 |
-| question | corrected | record+xml | 5 |
+| question | accept | record+xml | 126 |
+| question | accept | record+verse-from-memory | 218 |
+| question | accept | record+card | 810 |
+| question | corrected | record+xml | 10 |
 | question | corrected | record+verse-from-memory | 2 |
-| question | corrected | record+card | 4 |
+| question | corrected | record+card | 13 |
 | question | open | record+verse-from-memory | 3 |
 | question | open | record+card | 1 |
-| word | accept | record+card | 146 |
-| word | corrected | record+xml | 1 |
-| word | corrected | record+verse-from-memory | 1 |
+| word | accept | record+xml | 3 |
+| word | accept | record+card | 136 |
+| word | corrected | record+xml | 8 |
+| word | corrected | record+card | 4 |
 | word | open | record+card | 2 |
+
+These counts are a record of which records are listed where, not an approval. The independent audits of `bad6e81` overturned earlier `accept` verdicts that this author pass had given. `a-delta-bad6e81.json` lists each record changed since, with its finding, source and rationale. The inherited 140 words and 1151 questions aren't approved by these repairs.
+
+## Lexeme count
+
+`docs/CONTENT-REVIEW-ledger/lexeme-inventory.json` lists all 153 cards once each and counts 150 lexemes. Strong numbers aren't proof of a separate word: the proximal demonstratives זֶה, זֹאת and אֵלֶּה count as one unit, and אֲנִי and אָנֹכִי as one. H3820, H6240 and H121 aren't counted. The pairs kept separate are listed with reasons. This is the author's conservative count. A stricter reader could merge more pairs, and the file makes that disagreement checkable.
 
 **Still unfinished, for the independent reviewer:**
 
@@ -87,8 +94,9 @@ Nothing below is implemented in this branch, and this lane doesn't own that code
 
 | Needed | Where | Why it blocks |
 |---|---|---|
-| Key rules for `tpl-read-sound` and `tpl-read-pointed` | `scripts/validate-content.mjs` | 280 `no answer-key rule` errors, the only full-validator errors. `scripts/content-rules.mjs` exports `keyRules` to import. |
-| Drop the opening word cap | `scripts/validate-content.mjs` and `tests/validator.test.mjs` | `validate:opening` fails on 150 words, by design of the old phase. |
+| Key rules for `tpl-read-sound` and `tpl-read-pointed` | `scripts/validate-content.mjs` | 286 `no answer-key rule` errors, the only full-validator errors. `scripts/content-rules.mjs` exports `keyRules` to import. |
+| Drop the opening word cap | `scripts/validate-content.mjs` and `tests/validator.test.mjs` | `validate:opening` fails on 153 words, by design of the old phase. |
+| A paradigm relationship value, if wanted | shared schema, validator and UI label | The enum has only inflection, derivation and separate-lexeme, and `inflection` requires the same Strong number. Demonstrative and -teen links use `derivation` with `features.paradigm` or `features.form`, so the UI says "Related by derivation". Consumers ignore `features.paradigm`. |
 | Update tests that pin opening counts | existing tests, see the commit report | They assume r1-only data. |
 | `reading` quest stage kind | `src/engine.js` `stageDone` | It returns false for unknown kinds, so `r8-reading` would never complete. The plan lists this kind. Target ids are passage ids. |
 | `rN:rival`, `rN:gate`, `rN:exit` flags, plus puzzle pools `practice` and `reading` | gameplay | The pools hold real questions, but nothing presents them yet. |
@@ -115,7 +123,7 @@ No `match` format was authored, so nothing depends on it.
 
 ## Known soft spots
 
-- OSHB tags מִמֶּנּוּ (Gen 2:17) as first person plural, though "from it" is the sense. The token is kept as tagged, and H4480's note and `b-r5-prep-3`'s explanation say so.
+- OSHB tags מִמֶּנּוּ (Gen 2:17) as first person plural, though "from it" is the sense. The token is kept as tagged, and H4480's note, `l-prep-suffix`, `g-prep-suffix-2` and `b-r5-prep-3`'s explanation say so.
 - OSHB tags אִתָּךְ (Gen 6:18) as 2fs. It is a pausal form addressed to Noah. The test keeps the tag, and the question only asks which preposition it is.
 - H7812 שָׁחָה: Strong's root and the Hishtaphel analysis under חוה disagree. The rootNote flags this.
 - H7451 and H2416: Strong has one number for adjective and noun, while OSHB splits them. The noun forms are listed as derivations.
@@ -279,3 +287,6 @@ No `match` format was authored, so nothing depends on it.
 | H7363 | H7363 | r8 | Gen.1.2 | 01yNB | 7363 b | HVprfsa | listed | |
 | H3974 | H3974 | r8 | Gen.1.16 | 01ddd | d/3974 | HTd/Ncmsa | null | |
 | H6529 | H6529 | r8 | Gen.1.12 | 01AJj | 6529 | HNcmsa | null | |
+| H7965 | H7965 | r3 | Gen.26.31 | 01WBR | b/7965 | HR/Ncmsa | null | |
+| H0068 | H68 | r3 | Gen.11.3 | 01qTN | l/68 | HR/Ncfsa | null | |
+| H3824 | H3824 | r5 | Gen.20.5 | 01XQZ | 3824 | HNcmsc/Sp1cs | null | |
