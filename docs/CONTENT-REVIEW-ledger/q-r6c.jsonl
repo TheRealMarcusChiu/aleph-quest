@@ -1,5 +1,5 @@
 {"id":"H0259-sound","prov":"citation","tests":["vowels"],"ans":"segol, het kh, qamats, final stress","rej":{"c1":"a and h aren't this pointing or letter","c2":"second segol and first-syllable stress aren't this pointing"}}
-{"id":"H0259-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"segol, then qamats","rej":{"c1":"qamats then patah is a verb's shape","c2":"two patahs: a construct-like shape, not this citation"}}
+{"id":"H0259-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"segol, then qamats: the card's primary citation, which the prompt names","rej":{"c1":"qamats then patah is a verb's shape","c2":"a real contextual form at Gen.21.15 01CZt and Gen.3.22 01Xxj, but not the card's primary citation the prompt asks for"}}
 {"id":"H0259-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.1.9 a single place","rej":{"c1":"two is שְׁנַיִם","c2":"there is שָׁם"}}
 {"id":"H0259-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"one; first and a certain accepted, Strong's range","rej":{"c1":"three is שָׁלוֹשׁ","c2":"brother is אָח, a look-alike"}}
 {"id":"H0259-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, het, dalet","rej":{"c1":"brother has two letters","c2":"hundred ends in he"}}

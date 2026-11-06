@@ -11,7 +11,7 @@
 {"id":"H7901-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, kaf, bet","rej":{"c1":"bury starts with qof","c2":"eat starts with alef"}}
 {"id":"H7901-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, kaf, bet","rej":{"c1":"bet before kaf","c2":"samekh instead of shin"}}
 {"id":"H5647-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft bet: a-VAD","rej":{"c1":"the noun servant, with two segols","c2":"b needs a dagesh"}}
-{"id":"H5647-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah: the perfect","rej":{"c1":"the noun servant, a separate entry","c2":"holam and tsere: a participle shape"}}
+{"id":"H5647-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah: the card's primary citation, which the prompt names","rej":{"c1":"the noun servant, a separate entry","c2":"a real participle of this verb at Gen.4.2 01ot3, but not the card's primary citation the prompt asks for"}}
 {"id":"H5647-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.14.4 subject before they rebelled","rej":{"c1":"bury is קָבַר","c2":"send is שָׁלַח"}}
 {"id":"H5647-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"serve; served, he served, work, till accepted, Strong's range","rej":{"c1":"pass over is עָבַר","c2":"know is יָדַע"}}
 {"id":"H5647-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, dalet","rej":{"c1":"resh instead of dalet: pass over","c2":"bury starts with qof"}}
@@ -23,7 +23,7 @@
 {"id":"H5674-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, resh","rej":{"c1":"dalet: serve","c2":"bury starts with qof"}}
 {"id":"H5674-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, resh","rej":{"c1":"dalet: serve","c2":"letters reversed"}}
 {"id":"H6912-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft bet: qa-VAR","rej":{"c1":"b needs a dagesh","c2":"the noun, a grave, with two segols"}}
-{"id":"H6912-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"two segols: the noun, a grave","c2":"hireq, tsere and a doubled bet: a Piel shape"}}
+{"id":"H6912-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah: the card's primary citation, which the prompt names","rej":{"c1":"two segols: the noun, a grave","c2":"hireq, tsere and a doubled bet: not the card's citation. Whether this Piel shape is used for this verb is disputed and isn't decided here"}}
 {"id":"H6912-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.23.19 Sarah laid in the cave","rej":{"c1":"serve is עָבַד","c2":"send is שָׁלַח"}}
 {"id":"H6912-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"bury; buried and he buried accepted","rej":{"c1":"know is יָדַע","c2":"lie down is שָׁכַב"}}
 {"id":"H6912-write","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, bet, resh","rej":{"c1":"pass over starts with ayin","c2":"word starts with dalet"}}

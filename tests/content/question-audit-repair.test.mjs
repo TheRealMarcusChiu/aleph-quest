@@ -150,3 +150,32 @@ test('Root notes attribute their source, not an unprovable authoring process', (
   assert.deepEqual(words.filter(w => /by hand/i.test(`${w.rootNote ?? ''} ${w.notes ?? ''}`)).map(w => w.id), []);
   assert.deepEqual(lessons.filter(l => /by hand/i.test(l.explanation)).map(l => l.id), []);
 });
+
+// id: [key, rejected form the broad prompt wrongly excluded, what the feedback has to say about that form]
+const cardScoped = {
+  'H0259-pointed': ['אֶחָד', 'אַחַד', /real contextual form/],
+  'H5647-pointed': ['עָבַד', 'עֹבֵד', /real form of this verb/],
+  'H3205-pointed': ['יָלַד', 'יֹלֵד', /participle/],
+  'H6912-pointed': ['קָבַר', 'קִבֵּר', /isn't what this task asks/],
+};
+
+test('Pointing tasks with a real alternative ask for the card\'s primary citation', { skip }, () => {
+  for (const [id, [key, other, note]] of Object.entries(cardScoped)) {
+    const x = q(id);
+    assert.match(x.prompt, /primary citation form on this game's word card/, id);
+    assert.equal(x.choices.find(c => c.id === x.acceptedAnswers[0]).text, key, id);
+    assert.deepEqual(x.acceptedAnswers, ['c0'], id);
+    assert.equal(x.choices.find(c => c.id === 'c2').text, other, id);
+    assert.equal(word(x.wordId).hebrew, key, id);
+    assert.ok(x.explanation.includes(other), `${id}: names the alternative`);
+    assert.match(x.explanation, note, id);
+    assert.doesNotMatch(x.explanation, /impossible|not a word|invalid|never/i, id);
+  }
+  // The forms that make the broad prompts wrong are real tokens.
+  assert.equal(corpus.byId.get('01CZt').morph, 'HAcmsa');
+  assert.equal(corpus.byId.get('01Xxj').morph, 'HR/Acmsc');
+  assert.equal(corpus.byId.get('01ot3').morph, 'HVqrmsc');
+  assert.equal(pointedKey(corpus.byId.get('01ot3').surface), pointedKey('עֹבֵד'));
+  // r4 feedback can't lean on a term the participle lesson teaches later.
+  for (const id of ['H5647-pointed', 'H6912-pointed']) assert.doesNotMatch(q(id).explanation, /participle|Piel|Qal/, id);
+});

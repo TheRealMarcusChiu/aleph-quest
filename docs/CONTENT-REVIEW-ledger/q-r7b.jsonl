@@ -36,7 +36,7 @@
 {"id":"H3427-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin, bet","rej":{"c1":"there is has two letters","c2":"lie down starts with shin"}}
 {"id":"H3427-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin, bet","rej":{"c1":"samekh instead of shin","c2":"kaf instead of bet"}}
 {"id":"H3205-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah: ya-LAD","rej":{"c1":"the noun child","c2":"holam and tsere: a participle"}}
-{"id":"H3205-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah","rej":{"c1":"the noun child, a separate entry","c2":"a participle"}}
+{"id":"H3205-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah: the card's primary citation, which the prompt names","rej":{"c1":"the noun child, a separate entry","c2":"the regular participle shape of this verb, not the card's primary citation. This is a paradigm statement, with no Genesis token claimed for this exact form"}}
 {"id":"H3205-in-context","prov":"span","tests":["i-waw","word-meaning"],"ans":"Gen.4.18 of a father in a genealogy; contextKey records the token and basis","rej":{"c1":"bury is קָבַר","c2":"call is קָרָא"}}
 {"id":"H3205-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"bear; give birth, bore accepted, and father, fathered, beget too, as OSHB tags the father's יָלַד Qal (01fQG Vqp3ms)","rej":{"c1":"child is the noun","c2":"go out is יָצָא"}}
 {"id":"H3205-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"go down has resh","c2":"hand has two letters"}}

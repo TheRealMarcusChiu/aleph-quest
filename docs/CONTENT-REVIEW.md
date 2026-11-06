@@ -31,7 +31,7 @@ In this pass I read each question's prompt, options, keys, aliases, explanation,
 
 | Inspected value | Meaning |
 |---|---|
-| `record+xml` | The cited verse was read in `Bereshit.xml` during this pass. That covers Genesis 1:1-29, 3:11, 9:25, 13:1 and 16:7, plus the verses named in `a-delta-bad6e81.json` and `a-delta-9adbfcc.json` |
+| `record+xml` | The cited verse was read in `Bereshit.xml` during this pass. That covers Genesis 1:1-29, 3:11, 9:25, 13:1 and 16:7, plus the verses named in `a-delta-bad6e81.json`, `a-delta-9adbfcc.json` and `a-delta-085b91a.json` |
 | `record+verse-from-memory` | The record was read and its verse claim judged from my knowledge of the text. The XML for that verse wasn't opened in this pass. Any token's reference, lemma and morphology are still bound by tests |
 | `record+card` | The record makes no verse claim, or is a word card, and was read against the card and the lessons. Strong wasn't reopened for it |
 
@@ -39,10 +39,10 @@ In this pass I read each question's prompt, options, keys, aliases, explanation,
 |---|---|---|---|
 | question | accept | record+xml | 126 |
 | question | accept | record+verse-from-memory | 217 |
-| question | accept | record+card | 815 |
-| question | corrected | record+xml | 13 |
+| question | accept | record+card | 811 |
+| question | corrected | record+xml | 15 |
 | question | corrected | record+verse-from-memory | 2 |
-| question | corrected | record+card | 13 |
+| question | corrected | record+card | 15 |
 | question | open | record+verse-from-memory | 3 |
 | question | open | record+card | 1 |
 | word | accept | record+xml | 4 |
@@ -51,7 +51,7 @@ In this pass I read each question's prompt, options, keys, aliases, explanation,
 | word | corrected | record+card | 6 |
 | word | open | record+card | 2 |
 
-These counts are a record of which records are listed where, not an approval. The independent audits of `bad6e81` overturned earlier `accept` verdicts that this author pass had given. `a-delta-bad6e81.json` lists each record changed since, with its finding, source and rationale. The inherited 140 words and 1151 questions aren't approved by these repairs. `a-delta-9adbfcc.json` does the same for the audits of `9adbfcc`, whose question audit read 301 of the then 1183 questions with limited judgments. The other 882 aren't certified by it or by these repairs.
+These counts are a record of which records are listed where, not an approval. The independent audits of `bad6e81` overturned earlier `accept` verdicts that this author pass had given. `a-delta-bad6e81.json` lists each record changed since, with its finding, source and rationale. The inherited 140 words and 1151 questions aren't approved by these repairs. `a-delta-9adbfcc.json` does the same for the audits of `9adbfcc`, whose question audit read 301 of the then 1183 questions with limited judgments. The other 882 aren't certified by it or by these repairs. `a-delta-085b91a.json` records four pointing prompts narrowed after the independent phonology audit.
 
 ## Lexeme count
 
