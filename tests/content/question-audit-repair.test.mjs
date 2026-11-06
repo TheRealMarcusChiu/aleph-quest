@@ -151,6 +151,24 @@ test('Root notes attribute their source, not an unprovable authoring process', (
   assert.deepEqual(lessons.filter(l => /by hand/i.test(l.explanation)).map(l => l.id), []);
 });
 
+test('H6212-type-gloss accepts the card\'s green-plant sense, through the real grader', () => {
+  const x = q('H6212-type-gloss');
+  assert.match(word('H6212').meanings.join(' '), /green plant/);
+  for (const typed of ['green plant', 'a green plant', 'green plants', 'tender shoot', 'herb', 'grass', 'plants']) assert.equal(checkAnswer(x, typed).correct, true, typed);
+  assert.equal(checkAnswer(x, 'stone').correct, false);
+});
+
+test('g-participle-2 feedback describes this final ayin, with no rule about every guttural', () => {
+  const x = q('g-participle-2');
+  assert.doesNotMatch(x.explanation, /a final guttural takes|after a long vowel/i);
+  assert.match(x.explanation, /final ayin/);
+  assert.match(x.explanation, /before the ayin/);
+  assert.match(x.explanation, /furtive/);
+  assert.match(x.explanation, /zo-RE-a/);
+  assert.equal(x.tokenId, '01ki2');
+  assert.deepEqual(x.acceptedAnswers, ['c0']);
+});
+
 // id: [key, rejected form the broad prompt wrongly excluded, what the feedback has to say about that form]
 const cardScoped = {
   'H0259-pointed': ['אֶחָד', 'אַחַד', /real contextual form/],
