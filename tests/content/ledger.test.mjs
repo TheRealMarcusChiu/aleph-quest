@@ -73,7 +73,7 @@ test('stated provenance holds against the pinned source', { skip }, () => {
     const r = by.get(q.id);
     if (!r) continue;
     const word = q.wordId ? content.wordById.get(q.wordId) : null;
-    const ids = q.tokenIds ?? (q.tokenId ? [q.tokenId] : []);
+    const ids = q.tokenIds ?? (q.tokenId ? [q.tokenId] : q.contextKey ? [q.contextKey.tokenId] : []);
     const taught = new Set(word ? [word.hebrew, word.example.hebrew, ...word.relatedForms.map(f => f.hebrew)].map(compact) : []);
     if (!['citation', 'span', 'attested', 'original'].includes(r.prov)) wrong.push(`${q.id}: unknown provenance ${r.prov}`);
     if (r.prov === 'citation' && !word) wrong.push(`${q.id}: citation with no word`);

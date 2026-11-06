@@ -1,0 +1,60 @@
+{"id":"H0398-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"no dot in kaf, so kh: a-KHAL","rej":{"c1":"k needs a dagesh in kaf","c2":"o and e belong to other shapes"}}
+{"id":"H0398-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"holam, segol: the noun food","c2":"hataf segol, holam: an imperfect-like shape"}}
+{"id":"H0398-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.3.11 the forbidden fruit","rej":{"c1":"bury is קָבַר","c2":"cross is עָבַר"}}
+{"id":"H0398-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"eat; ate, he ate, consume accepted","rej":{"c1":"take is לָקַח","c2":"hear is שָׁמַע"}}
+{"id":"H0398-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, kaf, lamed","rej":{"c1":"say has mem and resh","c2":"lie down starts with shin"}}
+{"id":"H0398-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, kaf, lamed","rej":{"c1":"bet instead of kaf","c2":"letters reversed"}}
+{"id":"H7901-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"undotted kaf and bet: sha-KHAV","rej":{"c1":"k and b need dagesh","c2":"s needs the left-arm dot"}}
+{"id":"H7901-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"shin, qamats, patah","rej":{"c1":"shewa gives the imperative","c2":"left dot makes sin, and holam isn't this form"}}
+{"id":"H7901-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.26.10 lie down, a euphemism here","rej":{"c1":"walk is הָלַךְ","c2":"cross is עָבַר"}}
+{"id":"H7901-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"lie down; lie, lay down, he lay down, sleep accepted","rej":{"c1":"eat is אָכַל","c2":"know is יָדַע"}}
+{"id":"H7901-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, kaf, bet","rej":{"c1":"bury starts with qof","c2":"eat starts with alef"}}
+{"id":"H7901-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, kaf, bet","rej":{"c1":"bet before kaf","c2":"samekh instead of shin"}}
+{"id":"H5647-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft bet: a-VAD","rej":{"c1":"the noun servant, with two segols","c2":"b needs a dagesh"}}
+{"id":"H5647-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah: the perfect","rej":{"c1":"the noun servant, a separate entry","c2":"holam and tsere: a participle shape"}}
+{"id":"H5647-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.14.4 subject before they rebelled","rej":{"c1":"bury is קָבַר","c2":"send is שָׁלַח"}}
+{"id":"H5647-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"serve; served, he served, work, till accepted, Strong's range","rej":{"c1":"pass over is עָבַר","c2":"know is יָדַע"}}
+{"id":"H5647-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, dalet","rej":{"c1":"resh instead of dalet: pass over","c2":"bury starts with qof"}}
+{"id":"H5647-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, dalet","rej":{"c1":"resh: pass over","c2":"alef: another verb"}}
+{"id":"H5674-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"soft bet, resh: a-VAR","rej":{"c1":"dalet isn't the last letter","c2":"b needs a dagesh, and o needs holam"}}
+{"id":"H5674-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"tsere and segol: the noun, far side","c2":"holam and tsere: a participle shape"}}
+{"id":"H5674-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.15.17 the torch moves through","rej":{"c1":"lie down is שָׁכַב","c2":"bury is קָבַר"}}
+{"id":"H5674-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"pass over; pass, passed, cross, pass by accepted, Strong's range","rej":{"c1":"serve is עָבַד","c2":"say is אָמַר"}}
+{"id":"H5674-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, resh","rej":{"c1":"dalet: serve","c2":"bury starts with qof"}}
+{"id":"H5674-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, resh","rej":{"c1":"dalet: serve","c2":"letters reversed"}}
+{"id":"H6912-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft bet: qa-VAR","rej":{"c1":"b needs a dagesh","c2":"the noun, a grave, with two segols"}}
+{"id":"H6912-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"two segols: the noun, a grave","c2":"hireq, tsere and a doubled bet: a Piel shape"}}
+{"id":"H6912-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.23.19 Sarah laid in the cave","rej":{"c1":"serve is עָבַד","c2":"send is שָׁלַח"}}
+{"id":"H6912-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"bury; buried and he buried accepted","rej":{"c1":"know is יָדַע","c2":"lie down is שָׁכַב"}}
+{"id":"H6912-write","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, bet, resh","rej":{"c1":"pass over starts with ayin","c2":"word starts with dalet"}}
+{"id":"H6912-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, bet, resh","rej":{"c1":"kaf instead of qof","c2":"letters reversed"}}
+{"id":"H1980-sound","prov":"citation","tests":["vowels","final-forms"],"ans":"qamats, patah, soft final kaf: ha-LAKH","rej":{"c1":"two segols: a noun shape, not this verb","c2":"hard k needs a dagesh"}}
+{"id":"H1980-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"two segols aren't the perfect","c2":"hireq, tsere and a doubled lamed: a Piel shape"}}
+{"id":"H1980-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.26.26 traveling from Gerar","rej":{"c1":"take is לָקַח","c2":"eat is אָכַל"}}
+{"id":"H1980-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"walk; go, went, walked, he went accepted, Strong's range","rej":{"c1":"hear is שָׁמַע","c2":"bury is קָבַר"}}
+{"id":"H1980-write","prov":"citation","tests":["final-forms"],"ans":"he, lamed, final kaf","rej":{"c1":"king starts with mem","c2":"road starts with dalet"}}
+{"id":"H1980-mirror","prov":"citation","tests":["final-forms"],"ans":"he, lamed, final kaf","rej":{"c1":"regular kaf at the end","c2":"het instead of he"}}
+{"id":"H3045-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah, silent ayin: ya-DA","rej":{"c1":"o and e belong to a participle's pattern","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H3045-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"tsere isn't the perfect's first vowel","c2":"real, but a participle, knowing"}}
+{"id":"H3045-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.4.9 Cain's denial","rej":{"c1":"walk is הָלַךְ","c2":"take is לָקַח"}}
+{"id":"H3045-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"know; knew and he knew accepted","rej":{"c1":"say is אָמַר","c2":"serve is עָבַד"}}
+{"id":"H3045-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet, ayin","rej":{"c1":"hand has two letters","c2":"hear starts with shin"}}
+{"id":"H3045-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet, ayin","rej":{"c1":"resh instead of dalet","c2":"alef instead of ayin"}}
+{"id":"H0589-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, hireq-yod, final stress","rej":{"c1":"hataf patah is a, not o","c2":"same sounds, wrong stress: the last syllable carries it"}}
+{"id":"H0589-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah","rej":{"c1":"hataf qamats gives fleet, another word","c2":"patah and a doubled nun: not this word"}}
+{"id":"H0589-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.6.17 God speaking of himself","rej":{"c1":"you is אַתָּה","c2":"they is הֵם"}}
+{"id":"H0589-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"I; me accepted as an English response","rej":{"c1":"he is הוּא","c2":"these is אֵלֶּה"}}
+{"id":"H0589-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, nun, yod","rej":{"c1":"he starts with he","c2":"you has tav and he"}}
+{"id":"H0589-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, nun, yod, the short word","rej":{"c1":"also I, but the prompt asks for the short spelling","c2":"letters reversed"}}
+{"id":"H0595-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, holam, soft kaf, hireq-yod","rej":{"c1":"the shorter word אֲנִי","c2":"hard k needs a dagesh, and qamats is a here"}}
+{"id":"H0595-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, holam, hireq-yod","rej":{"c1":"hataf patah and qamats aren't this word","c2":"segol, silent shewa and hard k aren't this word"}}
+{"id":"H0595-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.3.10 the man about himself","rej":{"c1":"he is הוּא","c2":"they is הֵם"}}
+{"id":"H0595-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"I; me accepted as an English response","rej":{"c1":"this is זֶה","c2":"not is לֹא"}}
+{"id":"H0595-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, nun, kaf, yod","rej":{"c1":"the shorter word has three letters","c2":"that, with kaf and yod only"}}
+{"id":"H0595-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, nun, kaf, yod","rej":{"c1":"bet instead of kaf","c2":"the shorter word"}}
+{"id":"H0859-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"patah, doubled tav, qamats, silent he, final stress","rej":{"c1":"patah is a, not e","c2":"same sounds, wrong stress: the last syllable carries it"}}
+{"id":"H0859-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"patah and a dagesh in tav","rej":{"c1":"hireq: the shape of the preposition with a suffix, not you","c2":"tsere and no dagesh aren't this word"}}
+{"id":"H0859-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.3.11 God addressing the man","rej":{"c1":"I is the speaker's word","c2":"he is הוּא"}}
+{"id":"H0859-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"you; thou accepted, Strong's English","rej":{"c1":"they is הֵם","c2":"to is אֶל"}}
+{"id":"H0859-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav, he","rej":{"c1":"I has nun and yod","c2":"this, feminine, starts with zayin"}}
+{"id":"H0859-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav, he","rej":{"c1":"tet instead of tav","c2":"ayin: now"}}

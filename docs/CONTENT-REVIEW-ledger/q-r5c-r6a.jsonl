@@ -1,0 +1,60 @@
+{"id":"H5315-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"two segols, soft pe, shin: NE-fesh","rej":{"c1":"p needs a dagesh in pe","c2":"a-vowels and final stress aren't this pointing"}}
+{"id":"H5315-pointed","prov":"citation","tests":["vowels"],"ans":"two segols","rej":{"c1":"patah and shewa: the suffixed stem's shape, not the citation","c2":"tsere and a left-arm dot aren't this word"}}
+{"id":"H5315-in-context","prov":"attested","tests":["noun-suffixes","word-meaning"],"ans":"Gen.1.20 sea creatures, so living beings","rej":{"c1":"voice is קוֹל","c2":"flock is צֹאן"}}
+{"id":"H5315-type-gloss","prov":"citation","tests":["noun-suffixes","word-meaning"],"ans":"living being; life, creature, person, self, soul accepted, Strong's range","rej":{"c1":"seed is זֶרַע","c2":"lord is אָדוֹן"}}
+{"id":"H5315-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, pe, shin","rej":{"c1":"young man has ayin","c2":"silver starts with kaf"}}
+{"id":"H5315-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, pe, shin","rej":{"c1":"kaf instead of pe","c2":"samekh instead of shin"}}
+{"id":"H6310-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard pe, segol, silent he: peh","rej":{"c1":"f needs no dagesh","c2":"a needs patah or qamats"}}
+{"id":"H6310-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"segol under hard pe","rej":{"c1":"qamats reads a; that is another word, here","c2":"shewa gives no full vowel"}}
+{"id":"H6310-in-context","prov":"attested","tests":["noun-suffixes","word-meaning"],"ans":"Gen.4.11 the ground opens to swallow","rej":{"c1":"hand is יָד","c2":"eye is עַיִן"}}
+{"id":"H6310-type-gloss","prov":"citation","tests":["noun-suffixes","word-meaning"],"ans":"mouth; opening accepted, in Strong's range","rej":{"c1":"voice is קוֹל","c2":"so is כֵּן"}}
+{"id":"H6310-write","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, he","rej":{"c1":"this starts with zayin","c2":"face has four letters"}}
+{"id":"H6310-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, he","rej":{"c1":"letters reversed, and regular pe can't end a word","c2":"het instead of he"}}
+{"id":"H1571-sound","prov":"citation","tests":["vowels"],"ans":"patah: gam","rej":{"c1":"i needs hireq","c2":"e needs tsere or segol"}}
+{"id":"H1571-pointed","prov":"citation","tests":["vowels"],"ans":"patah and a dagesh in gimel","rej":{"c1":"holam reads o","c2":"hireq reads i"}}
+{"id":"H1571-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.3.6 adds her husband to the action","rej":{"c1":"she did give it, so not doesn't fit","c2":"again and again would be עוֹד-type repetition, not this addition"}}
+{"id":"H1571-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"also; too and even accepted, Strong's range","rej":{"c1":"who is מִי","c2":"look is הִנֵּה"}}
+{"id":"H1571-write","prov":"citation","tests":["final-forms"],"ans":"gimel, final mem","rej":{"c1":"with starts with ayin","c2":"so ends in final nun"}}
+{"id":"H1571-mirror","prov":"citation","tests":["final-forms"],"ans":"gimel, final mem","rej":{"c1":"regular mem at the end","c2":"nun instead of gimel"}}
+{"id":"H2009-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hireq, doubled nun, tsere, silent he, final stress","rej":{"c1":"same letters, wrong stress: the doubled syllable closes and the last one carries it","c2":"e then a aren't these signs"}}
+{"id":"H2009-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"hireq, dagesh in nun, tsere","rej":{"c1":"tsere and qamats: other words, they or to here","c2":"no dagesh and qamats aren't this word"}}
+{"id":"H2009-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.1.29 turns attention to the gift","rej":{"c1":"also is גַּם","c2":"so is כֵּן"}}
+{"id":"H2009-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"look; behold, here is, see accepted, Strong's lo","rej":{"c1":"there is not is אַיִן","c2":"who is מִי"}}
+{"id":"H2009-write","prov":"citation","tests":["alphabet","rtl"],"ans":"he, nun, he","rej":{"c1":"these starts with alef","c2":"you starts with alef"}}
+{"id":"H2009-mirror","prov":"citation","tests":["dagesh","alphabet"],"ans":"he, nun, he: doubling is a dot","rej":{"c1":"writes the doubled letter twice","c2":"het instead of he"}}
+{"id":"H5750-sound","prov":"citation","tests":["vowels"],"ans":"silent ayin, holam-vav: od","rej":{"c1":"u needs shureq","c2":"a needs patah or qamats"}}
+{"id":"H5750-pointed","prov":"citation","tests":["vowels"],"ans":"holam-vav","rej":{"c1":"shureq: another word, to bear witness","c2":"tsere with a bare vav isn't this word"}}
+{"id":"H5750-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.4.25 another occurrence","rej":{"c1":"never contradicts the birth of Seth","c2":"first contradicts Gen.4.1"}}
+{"id":"H5750-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"again; still, more, yet accepted, Strong's range","rej":{"c1":"there is is יֵשׁ","c2":"lord is אָדוֹן"}}
+{"id":"H5750-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, vav, dalet","rej":{"c1":"bird ends in final pe","c2":"servant has bet"}}
+{"id":"H5750-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, vav, dalet","rej":{"c1":"alef instead of ayin","c2":"resh: skin"}}
+{"id":"H3651-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard kaf, tsere: ken","rej":{"c1":"kh needs no dagesh","c2":"a needs patah or qamats"}}
+{"id":"H3651-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"tsere under kaf","rej":{"c1":"patah reads a","c2":"hireq reads i"}}
+{"id":"H3651-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.1.7 reports the command done","rej":{"c1":"the command does come to pass","c2":"who is מִי"}}
+{"id":"H3651-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"so; thus and right accepted, Strong's range","rej":{"c1":"son starts with bet","c2":"between is בֵּין"}}
+{"id":"H3651-write","prov":"citation","tests":["final-forms"],"ans":"kaf, final nun","rej":{"c1":"son starts with bet","c2":"that ends in yod"}}
+{"id":"H3651-mirror","prov":"citation","tests":["final-forms"],"ans":"kaf, final nun","rej":{"c1":"bet: son","c2":"regular nun at the end"}}
+{"id":"H8104-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah: sha-MAR","rej":{"c1":"s needs the left-arm dot","c2":"shewa and holam are the imperative's or infinitive's shape"}}
+{"id":"H8104-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, patah: the perfect citation","rej":{"c1":"real, but a participle","c2":"real, but an infinitive or imperative"}}
+{"id":"H8104-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.17.9 keeping the covenant","rej":{"c1":"find is מָצָא","c2":"send is שָׁלַח"}}
+{"id":"H8104-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"keep; guard, watch, watch over, kept, he kept accepted, Strong's def and usage","rej":{"c1":"hear is שָׁמַע","c2":"lie down is שָׁכַב"}}
+{"id":"H8104-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, mem, resh","rej":{"c1":"hear ends in ayin","c2":"say starts with alef"}}
+{"id":"H8104-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, mem, resh","rej":{"c1":"ayin: hear","c2":"dalet: another verb"}}
+{"id":"H1961-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"two qamats signs, silent final he, final stress","rej":{"c1":"same letters, wrong stress: the last syllable carries it","c2":"kh is het, and i needs hireq"}}
+{"id":"H1961-pointed","prov":"citation","tests":["hayah","vowels"],"ans":"two qamats signs","rej":{"c1":"hataf patah and tsere: another form","c2":"shewa under yod before a silent he isn't a real form"}}
+{"id":"H1961-in-context","prov":"span","tests":["hayah","word-meaning"],"ans":"Gen.1.2 feminine perfect with the earth; contextKey records the token and basis","rej":{"c1":"create is בָּרָא","c2":"call is קָרָא"}}
+{"id":"H1961-type-gloss","prov":"citation","tests":["hayah","word-meaning"],"ans":"be; was, become, happen, he was, it was accepted, since the form is a 3ms perfect","rej":{"c1":"know is יָדַע","c2":"keep is שָׁמַר"}}
+{"id":"H1961-write","prov":"citation","tests":["alphabet","rtl"],"ans":"he, yod, he","rej":{"c1":"live starts with het","c2":"look has nun"}}
+{"id":"H1961-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"he, yod, he","rej":{"c1":"het: live, a separate verb","c2":"het at the end"}}
+{"id":"H3201-sound","prov":"citation","tests":["statives","dagesh"],"ans":"soft kaf, holam: ya-KHOL","rej":{"c1":"k needs a dagesh","c2":"hireq and patah aren't this pointing"}}
+{"id":"H3201-pointed","prov":"citation","tests":["statives"],"ans":"holam in the second syllable","rej":{"c1":"patah is the fientive pattern, not this stative citation","c2":"hireq with a doubled kaf aren't this form"}}
+{"id":"H3201-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.13.6 the land can't hold both","rej":{"c1":"be full is מָלֵא","c2":"grow up is גָּדַל"}}
+{"id":"H3201-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"be able; able, can, could accepted","rej":{"c1":"fear is יָרֵא","c2":"pursue is רָדַף"}}
+{"id":"H3201-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, kaf, lamed","rej":{"c1":"all has two letters","c2":"eat starts with alef"}}
+{"id":"H3201-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, kaf, lamed","rej":{"c1":"bet instead of kaf","c2":"letters reversed"}}
+{"id":"H7291-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, patah, soft final pe: ra-DAF","rej":{"c1":"p needs a dagesh","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H7291-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"real, an imperative or infinitive","c2":"real, a participle"}}
+{"id":"H7291-in-context","prov":"attested","inlineOriginal":[],"tests":["narrative","word-meaning"],"ans":"Gen.14.14 chasing the raiders","rej":{"c1":"bury is קָבַר","c2":"serve is עָבַד"}}
+{"id":"H7291-type-gloss","prov":"citation","tests":["narrative","word-meaning"],"ans":"pursue; chase, pursued, he pursued accepted","rej":{"c1":"be able is יָכֹל","c2":"keep is שָׁמַר"}}
+{"id":"H7291-write","prov":"citation","tests":["final-forms"],"ans":"resh, dalet, final pe","rej":{"c1":"bird starts with ayin","c2":"road ends in final kaf"}}
+{"id":"H7291-mirror","prov":"citation","tests":["final-forms"],"ans":"resh, dalet, final pe","rej":{"c1":"first two letters swapped","c2":"regular pe at the end"}}
