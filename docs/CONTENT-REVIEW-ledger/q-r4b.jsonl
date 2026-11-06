@@ -41,7 +41,7 @@
 {"id":"H3045-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet, ayin","rej":{"c1":"hand has two letters","c2":"hear starts with shin"}}
 {"id":"H3045-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, dalet, ayin","rej":{"c1":"resh instead of dalet","c2":"alef instead of ayin"}}
 {"id":"H0589-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, hireq-yod, final stress","rej":{"c1":"hataf patah is a, not o","c2":"same sounds, wrong stress: the last syllable carries it"}}
-{"id":"H0589-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah","rej":{"c1":"hataf qamats gives fleet, another word","c2":"patah and a doubled nun: not this word"}}
+{"id":"H0589-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah","rej":{"c1":"segol is not the vowel under this alef","c2":"patah and a doubled nun: not this word"}}
 {"id":"H0589-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.6.17 God speaking of himself","rej":{"c1":"you is אַתָּה","c2":"they is הֵם"}}
 {"id":"H0589-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"I only; a subject pronoun, so me is rejected","rej":{"c1":"he is הוּא","c2":"these is אֵלֶּה"}}
 {"id":"H0589-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, nun, yod","rej":{"c1":"he starts with he","c2":"you has tav and he"}}

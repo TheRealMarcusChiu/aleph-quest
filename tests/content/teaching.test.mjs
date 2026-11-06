@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
 import { content } from '../../src/content.js';
 import { checkAnswer } from '../../src/answers.js';
-import { loadCorpus, researchAvailable } from '../../scripts/content-source.mjs';
+import { readingClosure } from '../../scripts/content-rules.mjs';
+import { loadCorpus, pointedKey, researchAvailable } from '../../scripts/content-source.mjs';
 
 const { lessons, questions } = content;
 const q = id => content.questionById.get(id);
@@ -26,6 +27,7 @@ const signsIn = text => {
 // A sign counts as taught only when a worked example both shows it and names it in its note.
 const taughtSigns = l => new Set(l.workedExamples.flatMap(x => [...signsIn(x.hebrew)].filter(s => x.note.toLowerCase().includes(s))));
 
+const hebrewOf = q => [q.displayHebrew ?? '', ...(q.choices ?? []).filter(c => c.lang === 'he').map(c => c.text), ...(q.tokenOptions ?? []).map(c => c.text)].join(' ');
 const afterVowels = new Set(['alphabet', 'rtl', 'final-forms', 'word-meaning', 'vowels', 'syllables']);
 const laterGuided = new Set(lessons.filter(l => l.id !== 'l-vowels').flatMap(l => l.guidedQuestionIds));
 const openAfterVowels = questions.filter(x => x.regionId === 'r2' && x.requires.every(s => afterVowels.has(s)) && x.command === 'read' && !laterGuided.has(x.id));
@@ -37,6 +39,18 @@ test('R1: every sign an open reading question shows was worked through first', (
   for (const x of openAfterVowels) {
     const shown = [x.displayHebrew ?? '', ...(x.choices ?? []).filter(c => c.lang === 'he').map(c => c.text)].join(' ');
     for (const s of signsIn(shown)) if (!taught.has(s)) wrong.push(`${x.id}: shows ${s}, which l-vowels hasn't worked`);
+  }
+  assert.deepEqual(wrong, []);
+});
+
+test('R1: across the campaign, a read task shows only signs worked in its own prefix', () => {
+  const guided = new Set(lessons.flatMap(l => l.guidedQuestionIds));
+  const wrong = [];
+  // r1 read tasks ask about the large letters only, and its lesson says to ignore the points for now.
+  for (const x of questions.filter(q => q.command === 'read' && q.regionId !== 'r1' && !guided.has(q.id))) {
+    const have = readingClosure(x.requires, lessons);
+    const taught = new Set(lessons.filter(l => l.teaches.some(s => have.has(s))).flatMap(l => [...taughtSigns(l)]));
+    for (const s of signsIn(hebrewOf(x))) if (!taught.has(s)) wrong.push(`${x.id}: shows ${s}`);
   }
   assert.deepEqual(wrong, []);
 });
@@ -63,12 +77,60 @@ test('R1: stress and the guide\'s spelling are taught before they are tested', (
 
 test('R1: later reading and form rules used in tasks are stated in their lessons', () => {
   const stated = [
-    ['l-gutturals', /hataf segol/i], ['l-gutturals', /silent/i], ['l-dagesh', /final he is silent/i],
+    ['l-gutturals', /silent/i],['l-dagesh', /final he is silent/i],
     ['l-narrative', /וָאֹכֵל|prefix alef/], ['l-hiphil', /מַ/], ['l-piel', /מְ/], ['l-existence', /אֵין/],
     ['l-noun-suffix', /נַפְשִׁי/], ['l-noun-suffix', /אָחִיו|extra yod/], ['l-nouns', /collective/i],
     ['l-piel', /Qal passive/],
   ];
   assert.deepEqual(stated.filter(([id, re]) => !re.test(lesson(id).explanation)).map(([id, re]) => `${id}: ${re}`), []);
+});
+
+// Composite shewas: what a learner must have seen before a question can lean on one. "Prefix" means every
+// lesson the question's skills guarantee is finished, including their prerequisites, whatever route was taken.
+const COMPOSITE = [['ֱ', 'hataf segol', 'e'], ['ֲ', 'hataf patah', 'a'], ['ֳ', 'hataf qamats', 'o']];
+const showsSign = (text, sign) => text.normalize('NFD').includes(sign);
+const prefixOf = (q, all = lessons) => {
+  const have = readingClosure(q.requires, all);
+  return all.filter(l => l.teaches.some(s => have.has(s)));
+};
+// A read task shown the sign, or any task whose wording leans on the sign's name.
+const compositeDemands = (name, sign) => questions.filter(q => (q.command === 'read' && showsSign(hebrewOf(q), sign)) || [q.prompt, q.explanation, q.hint ?? '', ...(q.choices ?? []).map(c => c.text)].join(' ').toLowerCase().includes(name));
+const worksSign = (x, sign, name, sound) => showsSign(x.hebrew, sign) && new RegExp(`${name}[^.]*\\b(?:read|reads|gives)\\s+${sound}\\b`, 'i').test(x.note);
+const guidesSign = (g, sign, name, sound) => g.command === 'read' && showsSign(g.displayHebrew ?? '', sign) && g.explanation.toLowerCase().includes(name) && g.choices.find(c => g.acceptedAnswers.includes(c.id)).text === sound;
+function compositeGaps(all = lessons) {
+  const gaps = [];
+  for (const [sign, name, sound] of COMPOSITE) for (const q of compositeDemands(name, sign)) {
+    if (all.flatMap(l => l.guidedQuestionIds).includes(q.id)) continue;
+    const prefix = prefixOf(q, all);
+    if (!prefix.some(l => l.workedExamples.some(x => worksSign(x, sign, name, sound)))) gaps.push(`${q.id}: no worked ${name} = ${sound} in its prefix`);
+    if (!prefix.flatMap(l => l.guidedQuestionIds).map(id => content.questionById.get(id)).some(g => guidesSign(g, sign, name, sound))) gaps.push(`${q.id}: no guided ${name} in its prefix`);
+  }
+  return gaps;
+}
+
+test('R1: a composite shewa is worked and practised, with its sound, before anything depends on it', () => {
+  assert.ok(compositeDemands('hataf segol', COMPOSITE[0][0]).some(q => q.id === 'H0430-sound'));
+  assert.deepEqual(compositeGaps(), []);
+});
+
+test('R1: the composite check notices a missing example, a missing mapping and missing practice', () => {
+  const edit = change => lessons.map(l => (l.id === 'l-gutturals' ? change(l) : l));
+  const noExample = edit(l => ({ ...l, workedExamples: l.workedExamples.filter(x => !showsSign(x.hebrew, COMPOSITE[0][0])) }));
+  assert.ok(compositeGaps(noExample).some(g => g.startsWith('H0430-sound: no worked hataf segol')));
+  const noMapping = edit(l => ({ ...l, workedExamples: l.workedExamples.map(x => ({ ...x, note: x.note.replace(/\b(?:read|reads|gives)\s+e\b/gi, 'is a sign') })) }));
+  assert.ok(compositeGaps(noMapping).some(g => g.startsWith('H0430-sound: no worked hataf segol')));
+  const noGuided = edit(l => ({ ...l, guidedQuestionIds: l.guidedQuestionIds.filter(id => !showsSign(content.questionById.get(id).displayHebrew ?? '', COMPOSITE[0][0])) }));
+  assert.ok(compositeGaps(noGuided).some(g => g.startsWith('H0430-sound: no guided hataf segol')));
+});
+
+test('R1: the composite lesson stays reachable, and its examples are the source\'s', { skip }, () => {
+  const l = lesson('l-gutturals');
+  for (const [sign] of COMPOSITE.slice(0, 2)) {
+    const x = l.workedExamples.find(e => showsSign(e.hebrew, sign));
+    assert.ok(pointedKey(corpus.byId.get(x.tokenId).surface.replaceAll('/', '')).includes(pointedKey(x.hebrew)), x.tokenId);
+  }
+  for (const id of l.guidedQuestionIds) assert.ok(q(id).requires.every(s => ['article', 'gutturals', 'alphabet', 'rtl', 'vowels'].includes(s)), id);
+  assert.ok(prefixOf(q('H0430-sound')).includes(l), 'H0430-sound must come after l-gutturals');
 });
 
 // Letter names as feedback uses them. A claim of a dagesh in a letter has to be true of a form the same text shows.

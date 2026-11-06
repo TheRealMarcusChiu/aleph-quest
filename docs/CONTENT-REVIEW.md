@@ -19,7 +19,46 @@ A word row quotes Strong (`strong`), justifies the gloss (`gloss`), gives each r
 
 **What `tests/content/ledger.test.mjs` proves:** every question has one row, with no leftovers. Every distractor has its own rejection. Tested skills are reachable from `requires`. Stated token spans, inline Hebrew and cited verses hold against the pinned XML. Each Strong quote really is in that entry. Related-form morphology and features match their tokens. `docs/CONTENT-REVIEW-ledger/pinned.json` fixes a digest per region, so changing an option, key, prompt or requirement fails until the rows are rechecked and the digest is updated.
 
-**What it can't prove:** that a rationale is true. The rationale text is my judgement from reading the options against OSHB, Strong and the verse. Paraphrases of verses in prompts are checked only to the extent that the verse holds the word's lemma; I wrote them from knowledge of the text and read specific verses where unsure, not every verse.
+**What it can't prove:** that a rationale is true. The rationale text is my judgement from reading the options against OSHB, Strong and the verse. Paraphrases of verses in prompts are checked by test only to the extent that the verse holds the word's lemma.
+
+## All-record semantic pass
+
+`docs/CONTENT-REVIEW-ledger/a-*.json` gives every question and every word one verdict, and says what was inspected for it. `a-pinned.txt` fixes digests of all questions, words and lessons, feedback text included, so an edit after the pass fails until it is adjudicated again. `tests/content/adjudication.test.mjs` checks that nothing is unlisted or stale. It doesn't check that any verdict is right.
+
+This is the author's own pass, not an independent or qualified review, and it isn't a claim that the corpus is approved.
+
+In this pass I read each question's prompt, options, keys, aliases, explanation, hint and `requires`, each word card, and all 43 lessons. Each question was judged for its answer, its distractors, its form and context, and what it demands of the learner.
+
+| Inspected value | Meaning |
+|---|---|
+| `record+xml` | The cited verse was read in `Bereshit.xml` during this pass. That covers Genesis 1:1-29, 3:11, 9:25, 13:1 and 16:7 |
+| `record+verse-from-memory` | The record was read and its verse claim judged from my knowledge of the text. The XML for that verse wasn't opened in this pass. Any token's reference, lemma and morphology are still bound by tests |
+| `record+card` | The record makes no verse claim, or is a word card, and was read against the card and the lessons. Strong wasn't reopened for it |
+
+| Kind | Verdict | Inspected | Count |
+|---|---|---|---|
+| question | accept | record+xml | 124 |
+| question | accept | record+verse-from-memory | 220 |
+| question | accept | record+card | 805 |
+| question | corrected | record+xml | 5 |
+| question | corrected | record+verse-from-memory | 2 |
+| question | corrected | record+card | 4 |
+| question | open | record+verse-from-memory | 3 |
+| question | open | record+card | 1 |
+| word | accept | record+card | 146 |
+| word | corrected | record+xml | 1 |
+| word | corrected | record+verse-from-memory | 1 |
+| word | open | record+card | 2 |
+
+**Still unfinished, for the independent reviewer:**
+
+- The verse claims marked `record+verse-from-memory` have not been read against the XML. A source-based reading of those verses is still needed before whole-corpus acceptance.
+- Word features such as gender weren't reopened in Strong entry by entry. Strong quotes and related-form morphology are test-bound, and those claims rest on the earlier word rows.
+- Sound guides and stress rest on the documented convention and hand assignment. No qualified reader has checked them.
+- `open` verdicts are real judgement calls that this pass doesn't settle. Their reasons are in the `a-*.json` files.
+- Accepted aliases and distractors that are judgement calls are defensible readings, not proven uniquely correct.
+- Prompts sometimes say God where the verse has יְהוָה, as in `H8085-in-context` and `H3381-in-context`. I accepted this as a simplification for the task, and a reviewer may disagree.
+- The pass covers questions, words and lessons. Quests, passages' translations and region text weren't part of it.
 
 ## Sound and stress convention
 

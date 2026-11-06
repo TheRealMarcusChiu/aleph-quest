@@ -112,6 +112,7 @@
 {"tokenId":"01kZi","reference":"Gen.12.6","surface":"מְק֣וֹם","lemma":"4725","morph":"HNcmsc"},
 {"tokenId":"01gPX","reference":"Gen.1.26","surface":"אָדָ֛ם","lemma":"120","morph":"HNcmsa"},
 {"tokenId":"01gMU","reference":"Gen.2.7","surface":"הָֽ/אָדָ֖ם","lemma":"d/120","morph":"HTd/Ncmsa"},
+{"tokenId":"01Lgy","reference":"Gen.4.26","surface":"אֱנ֑וֹשׁ","lemma":"583","morph":"HNp"},
 {"tokenId":"015Ja","reference":"Gen.2.7","surface":"הָ֣/אֲדָמָ֔ה","lemma":"d/127","morph":"HTd/Ncfsa"},
 {"tokenId":"01zEm","reference":"Gen.1.25","surface":"הָֽ/אֲדָמָ֖ה","lemma":"d/127","morph":"HTd/Ncfsa"},
 {"tokenId":"01TyA","reference":"Gen.1.1","surface":"אֱלֹהִ֑ים","lemma":"430","morph":"HNcmpa"},

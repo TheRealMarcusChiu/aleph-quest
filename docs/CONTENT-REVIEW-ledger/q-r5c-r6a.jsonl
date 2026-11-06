@@ -35,7 +35,7 @@
 {"id":"H3651-write","prov":"citation","tests":["final-forms"],"ans":"kaf, final nun","rej":{"c1":"son starts with bet","c2":"that ends in yod"}}
 {"id":"H3651-mirror","prov":"citation","tests":["final-forms"],"ans":"kaf, final nun","rej":{"c1":"bet: son","c2":"regular nun at the end"}}
 {"id":"H8104-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah: sha-MAR","rej":{"c1":"s needs the left-arm dot","c2":"shewa and holam are the imperative's or infinitive's shape"}}
-{"id":"H8104-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, patah: the perfect citation","rej":{"c1":"real, but a participle","c2":"real, but an infinitive or imperative"}}
+{"id":"H8104-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, patah: the perfect citation","rej":{"c1":"real, but a participle","c2":"patah then tsere: no form of this verb"}}
 {"id":"H8104-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.17.9 keeping the covenant","rej":{"c1":"find is מָצָא","c2":"send is שָׁלַח"}}
 {"id":"H8104-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"keep; guard, watch, watch over, kept, he kept accepted, Strong's def and usage","rej":{"c1":"hear is שָׁמַע","c2":"lie down is שָׁכַב"}}
 {"id":"H8104-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, mem, resh","rej":{"c1":"hear ends in ayin","c2":"say starts with alef"}}

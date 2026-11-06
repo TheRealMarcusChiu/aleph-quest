@@ -33,6 +33,8 @@
 {"id":"H6529-write","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"mouth has he","c2":"seed starts with zayin"}}
 {"id":"H6529-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"dalet instead of resh","c2":"reversed, with a regular pe last"}}
 {"id":"g-vowels","prov":"span","tests":["vowels"],"ans":"dot above the first letter is holam, o","rej":{"c1":"a needs patah or qamats","c2":"i needs hireq"}}
+{"id":"g-gutturals-2","prov":"span","tests":["gutturals"],"ans":"015Pr; alef has hataf patah, a; the prompt describes the sign and the lesson maps it","rej":{"c1":"e is hataf segol","c2":"o is hataf qamats"}}
+{"id":"g-gutturals-3","prov":"span","tests":["gutturals"],"ans":"01TyA; alef has hataf segol, e; the prompt describes the sign and the lesson maps it","rej":{"c1":"a is hataf patah","c2":"o is hataf qamats"}}
 {"id":"g-vowels-2","prov":"span","tests":["vowels","syllables"],"ans":"01b2r; the prompt gives the guide sha-NIM, and capitals on NIM are the stated stress mark","rej":{"c1":"sha is lower case in the guide shown","c2":"a word has one main stress"}}
 {"id":"g-vowels-3","prov":"span","tests":["vowels"],"ans":"01D9B; one dot under ayin with yod after it is hireq, i","rej":{"c1":"a needs patah or qamats","c2":"e needs segol or tsere"}}
 {"id":"g-shewa","prov":"span","tests":["shewa","prepositions"],"ans":"OSHB splits b/ as a preposition","rej":{"c1":"the root is ראש; the prefix isn't part of it","c2":"a plural ending isn't a prefix"}}

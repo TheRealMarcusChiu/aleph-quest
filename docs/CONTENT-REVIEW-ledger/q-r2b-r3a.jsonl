@@ -17,8 +17,8 @@
 {"id":"H2233-write","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, resh, ayin","rej":{"c1":"road starts with dalet","c2":"land starts with alef"}}
 {"id":"H2233-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, resh, ayin","rej":{"c1":"letters reversed","c2":"alef instead of ayin"}}
 {"id":"H5650-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"two segols, soft bet: E-ved","rej":{"c1":"a needs patah or qamats","c2":"b needs a dagesh, and there is none"}}
-{"id":"H5650-pointed","prov":"citation","tests":["vowels"],"ans":"two segols mark the noun","rej":{"c1":"qamats and patah give the verb he served","c2":"hataf and holam give a verb form"}}
-{"id":"H5650-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.9.25 subject to others","rej":{"c1":"a king rules, the opposite","c2":"brother is אָח; the line is about rank"}}
+{"id":"H5650-pointed","prov":"citation","tests":["vowels"],"ans":"two segols mark the noun","rej":{"c1":"qamats and patah give the verb he served","c2":"holam first is the shape of the participle, one serving"}}
+{"id":"H5650-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.9.25 servant of servants to his brothers; the prompt gave a wrong paraphrase until this pass","rej":{"c1":"a king rules, the opposite","c2":"brother is אָח; the line is about rank"}}
 {"id":"H5650-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"servant; slave accepted, Strong's bondman","rej":{"c1":"people is עַם","c2":"silver is כֶּסֶף"}}
 {"id":"H5650-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, dalet","rej":{"c1":"city ends in resh","c2":"son starts with bet"}}
 {"id":"H5650-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, bet, dalet","rej":{"c1":"letters reversed","c2":"resh instead of dalet: another word"}}
