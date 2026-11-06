@@ -1,0 +1,51 @@
+{"id":"H0802-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.2.23 woman, taken from man","rej":{"c1":"daughter is בַּת","c2":"son is בֵּן","c3":"man is what she was taken from"}}
+{"id":"H0802-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"woman; wife accepted, in Strong's usage","rej":{"c1":"father is אָב","c2":"scroll is סֵפֶר","c3":"brother is אָח"}}
+{"id":"H0802-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters alef, shin, he","rej":{"c1":"man: has a yod and ends in shin","c2":"brother: two letters","c3":"daughter: starts with bet"}}
+{"id":"H0802-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, shin, he","rej":{"c1":"letters reversed","c2":"het instead of he","c3":"that spells man"}}
+{"id":"H1121-first-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"bet is rightmost","rej":{"c1":"final nun is last","c2":"kaf is a look-alike","c3":"regular nun isn't in this word"}}
+{"id":"H1121-last-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"final nun at the left edge","rej":{"c1":"vav stays on the line","c2":"regular nun can't finish a word","c3":"zayin isn't in the word"}}
+{"id":"H1121-final-partner","prov":"citation","tests":["final-forms"],"ans":"ן pairs with נ","rej":{"c1":"kaf's final is ך","c2":"gimel has no final form","c3":"vav has no final form"}}
+{"id":"H1121-gloss","prov":"citation","tests":["word-meaning"],"ans":"son, Strong's def","rej":{"c1":"daughter ends in tav","c2":"brother is אָח","c3":"scroll is סֵפֶר"}}
+{"id":"H1121-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.4.25 Eve bore a son, Seth","rej":{"c1":"Seth is born, not named a brother here","c2":"father is אָב","c3":"king is מֶלֶךְ"}}
+{"id":"H1121-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"son; descendant accepted, Strong's widest sense","rej":{"c1":"mother is אֵם","c2":"land is אֶרֶץ","c3":"king is מֶלֶךְ"}}
+{"id":"H1121-write","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"letters bet, final nun","rej":{"c1":"daughter: ends in tav","c2":"father: starts with alef","c3":"brother: starts with alef"}}
+{"id":"H1121-mirror","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"bet then final nun","rej":{"c1":"reversed, regular nun first","c2":"regular nun at the end","c3":"kaf instead of bet"}}
+{"id":"H1323-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"bet is rightmost","rej":{"c1":"tav is last","c2":"kaf is a look-alike","c3":"pe isn't in the word"}}
+{"id":"H1323-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"tav at the left edge, with its foot","rej":{"c1":"bet is first","c2":"het has no foot","c3":"he has a gap"}}
+{"id":"H1323-gloss","prov":"citation","tests":["word-meaning"],"ans":"daughter, Strong's def","rej":{"c1":"son ends in final nun","c2":"mother is אֵם","c3":"land is אֶרֶץ"}}
+{"id":"H1323-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.24.24 Rebekah is Bethuel's daughter","rej":{"c1":"she speaks as a child of Bethuel","c2":"Rebekah isn't a son","c3":"scroll is סֵפֶר"}}
+{"id":"H1323-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"daughter, the only typed sense","rej":{"c1":"father is אָב","c2":"man is אִישׁ","c3":"scroll is סֵפֶר"}}
+{"id":"H1323-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters bet, tav","rej":{"c1":"son: ends in final nun","c2":"mother: starts with alef","c3":"woman: starts with alef"}}
+{"id":"H1323-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet then tav","rej":{"c1":"letters reversed","c2":"het instead of tav","c3":"kaf instead of bet"}}
+{"id":"H4428-first-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"mem is rightmost","rej":{"c1":"final kaf is last","c2":"samekh isn't in the word","c3":"tet isn't in the word"}}
+{"id":"H4428-last-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"final kaf at the left edge","rej":{"c1":"regular kaf can't finish a word","c2":"dalet stays on the line","c3":"resh stays on the line"}}
+{"id":"H4428-final-partner","prov":"citation","tests":["final-forms"],"ans":"ך pairs with כ","rej":{"c1":"bet has no final form","c2":"qof has no final form","c3":"gimel has no final form"}}
+{"id":"H4428-gloss","prov":"citation","tests":["word-meaning"],"ans":"king, Strong's def","rej":{"c1":"son is בֵּן","c2":"land is אֶרֶץ","c3":"man is אִישׁ"}}
+{"id":"H4428-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.14.18 king of Salem","rej":{"c1":"son is בֵּן","c2":"scroll is סֵפֶר","c3":"Salem is the place; the word is his title"}}
+{"id":"H4428-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"king, the only typed sense","rej":{"c1":"scroll is סֵפֶר","c2":"daughter is בַּת","c3":"mother is אֵם"}}
+{"id":"H4428-write","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"letters mem, lamed, final kaf","rej":{"c1":"scroll: starts with samekh","c2":"land: starts with alef","c3":"son: starts with bet"}}
+{"id":"H4428-mirror","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"mem, lamed, final kaf","rej":{"c1":"letters reversed","c2":"regular kaf at the end","c3":"samekh instead of mem"}}
+{"id":"H5612-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"samekh is rightmost","rej":{"c1":"resh is last","c2":"final mem is a look-alike and can't start a word","c3":"pe is the middle letter"}}
+{"id":"H5612-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"resh at the left edge, rounded corner","rej":{"c1":"samekh is first","c2":"dalet has a sharp corner","c3":"bet isn't in the word"}}
+{"id":"H5612-gloss","prov":"citation","tests":["word-meaning"],"ans":"scroll, in Strong's usage","rej":{"c1":"king is מֶלֶךְ","c2":"father is אָב","c3":"woman is אִשָּׁה"}}
+{"id":"H5612-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.5.1 a written record of generations","rej":{"c1":"king is מֶלֶךְ","c2":"land is אֶרֶץ","c3":"mother is אֵם"}}
+{"id":"H5612-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"scroll; book, record, document and writing accepted, Strong's defs and usage","rej":{"c1":"son is בֵּן","c2":"land is אֶרֶץ","c3":"mother is אֵם"}}
+{"id":"H5612-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters samekh, pe, resh","rej":{"c1":"king: starts with mem","c2":"land: starts with alef","c3":"father: two letters"}}
+{"id":"H5612-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"samekh, pe, resh","rej":{"c1":"letters reversed","c2":"dalet instead of resh","c3":"kaf instead of pe"}}
+{"id":"g-letters-1","prov":"span","tests":["alphabet","rtl"],"ans":"tet is rightmost in טוב","rej":{"c1":"bet is last","c2":"vav is in the middle","c3":"kaf isn't in the word"}}
+{"id":"g-letters-2","prov":"span","tests":["alphabet","rtl"],"ans":"alef, vav, resh, in reading order","rej":{"t3":"bet isn't in the word; a spare tile"}}
+{"id":"g-meaning-1","prov":"span","tests":["word-meaning"],"ans":"Gen.1.5 names the darkness night","rej":{"c1":"morning is בֹּקֶר","c2":"light is what is called day","c3":"land is אֶרֶץ"}}
+{"id":"g-finals-1","prov":"span","tests":["final-forms"],"ans":"final pe at the end of עוף","rej":{"c1":"regular pe at the end","c2":"letters reversed","c3":"bet instead of pe"}}
+{"id":"p-neri-1","prov":"original","tests":["final-forms"],"ans":"ן is final nun, only word-final","rej":{"c1":"regular nun can't finish a word","c2":"bet appears anywhere","c3":"dalet appears anywhere"}}
+{"id":"p-neri-2","prov":"original","inlineOriginal":["ך"],"tests":["final-forms"],"ans":"ך pairs with כ","rej":{"c1":"bet has no final form","c2":"resh has no final form","c3":"nun's final is ן"}}
+{"id":"p-neri-3","prov":"span","tests":["final-forms"],"ans":"ayin then final tsade","rej":{"c1":"regular tsade at the end","c2":"letters reversed","c3":"zayin instead of tsade"}}
+{"id":"p-gate-1","prov":"original","tests":["final-forms"],"ans":"בֵּן ends in final nun","rej":{"door-w":"bet has no final form","door-e":"tav has no final form"}}
+{"id":"p-gate-2","prov":"original","tests":["alphabet","rtl"],"ans":"סֵפֶר starts with samekh; the prompt supplies the meaning, so only the letter is tested","rej":{"door-w":"man starts with alef","door-m":"king starts with mem"}}
+{"id":"p-gate-3","prov":"original","tests":["alphabet","rtl","final-forms"],"ans":"אֵם, alef and final mem, mother","rej":{"door-m":"brother ends in het","door-e":"father ends in bet"}}
+{"id":"b-final-1","prov":"span","tests":["final-forms"],"ans":"final kaf at the left edge of חֹשֶׁךְ","rej":{"c1":"regular kaf can't finish a word","c2":"shin is the middle letter","c3":"het is first"}}
+{"id":"b-final-2","prov":"span","tests":["final-forms"],"ans":"ן pairs with נ","rej":{"c1":"bet is the middle letter, with no final form","c2":"tav is first","c3":"vav has no final form"}}
+{"id":"b-spell-1","prov":"span","tests":["final-forms"],"ans":"shin, resh, final tsade","rej":{"c1":"regular tsade at the end","c2":"letters reversed","c3":"samekh instead of shin"}}
+{"id":"b-spell-2","prov":"span","tests":["final-forms"],"ans":"kaf, samekh, final pe","rej":{"c1":"regular pe at the end","c2":"letters reversed","c3":"bet instead of pe"}}
+{"id":"b-spell-3","prov":"span","tests":["final-forms"],"ans":"lamed, het, final mem","rej":{"c1":"regular mem at the end","c2":"letters reversed","c3":"samekh instead of final mem"}}
+{"id":"b-order-1","prov":"span","tests":["final-forms","rtl"],"ans":"alef, dalet, final mem. 01WVH is d/120 HTd/Ncmsa, the common noun with its article, shown without it, not the name H121","rej":{"t3":"regular mem can't finish a word; a spare tile"}}
+{"id":"b-order-2","prov":"span","tests":["final-forms","rtl"],"ans":"shin, final mem","rej":{"t2":"regular mem can't finish a word; a spare tile","t3":"samekh isn't in the word; a spare tile"}}

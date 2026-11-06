@@ -1,0 +1,60 @@
+{"id":"H1931-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"shureq, silent alef: hu","rej":{"c1":"o needs holam-vav","c2":"i belongs to the feminine pointing"}}
+{"id":"H1931-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"shureq","rej":{"c1":"hireq gives she, a real form of this entry","c2":"holam-vav reads o"}}
+{"id":"H1931-in-context","prov":"span","tests":["pronouns","word-meaning"],"ans":"Gen.2.11 refers back to the river; contextKey records the token and basis","rej":{"c1":"you addresses a listener, and nobody is addressed","c2":"these is plural"}}
+{"id":"H1931-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"he; it and that accepted, Strong's range","rej":{"c1":"I is אֲנִי","c2":"to is אֶל"}}
+{"id":"H1931-write","prov":"citation","tests":["alphabet","rtl"],"ans":"he, vav, silent alef","rej":{"c1":"they ends in final mem","c2":"this has two letters"}}
+{"id":"H1931-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"he, vav, alef","rej":{"c1":"drops the silent alef","c2":"het instead of he"}}
+{"id":"H1992-sound","prov":"citation","tests":["vowels"],"ans":"tsere: hem","rej":{"c1":"a needs patah or qamats","c2":"kh is het"}}
+{"id":"H1992-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under he","rej":{"c1":"patah reads a","c2":"holam reads o"}}
+{"id":"H1992-in-context","prov":"attested","tests":["pronouns","word-meaning"],"ans":"Gen.3.7 the two of them","rej":{"c1":"he is singular","c2":"you is addressed; this is narration"}}
+{"id":"H1992-type-gloss","prov":"citation","tests":["pronouns","word-meaning"],"ans":"they; those accepted, Strong's range","rej":{"c1":"this is זֶה","c2":"I is אֲנִי"}}
+{"id":"H1992-write","prov":"citation","tests":["final-forms"],"ans":"he, final mem; the prompt asks for the short word, as הֵמָּה is the longer spelling","rej":{"c1":"he (pronoun) has three letters","c2":"name starts with shin"}}
+{"id":"H1992-mirror","prov":"citation","tests":["final-forms"],"ans":"he, final mem","rej":{"c1":"regular mem at the end","c2":"het instead of he: another word"}}
+{"id":"H2088-sound","prov":"citation","tests":["vowels"],"ans":"segol, silent he: zeh","rej":{"c1":"a needs patah or qamats","c2":"the feminine, with holam and tav"}}
+{"id":"H2088-pointed","prov":"citation","tests":["vowels"],"ans":"segol under zayin","rej":{"c1":"qamats reads a","c2":"hireq reads i"}}
+{"id":"H2088-in-context","prov":"attested","tests":["demonstratives","word-meaning"],"ans":"Gen.5.1 points to the record","rej":{"c1":"a pronoun would be הוּא","c2":"not is לֹא"}}
+{"id":"H2088-type-gloss","prov":"citation","tests":["demonstratives","word-meaning"],"ans":"this; this one accepted","rej":{"c1":"these is אֵלֶּה","c2":"they is הֵם"}}
+{"id":"H2088-write","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, he","rej":{"c1":"the feminine has three letters","c2":"they ends in final mem"}}
+{"id":"H2088-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, he","rej":{"c1":"vav instead of zayin","c2":"letters reversed"}}
+{"id":"H2063-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, silent alef, tav: zot","rej":{"c1":"a needs patah or qamats","c2":"the masculine, with segol and he"}}
+{"id":"H2063-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"holam, alef with no vowel","rej":{"c1":"qamats reads a","c2":"shewa and patah on alef aren't this word"}}
+{"id":"H2063-in-context","prov":"attested","tests":["demonstratives","word-meaning"],"ans":"Gen.2.23 points at the woman","rej":{"c1":"she is a fair English rendering, but it drops the demonstrative the prompt asks for","c2":"these is plural"}}
+{"id":"H2063-type-gloss","prov":"citation","tests":["demonstratives","word-meaning"],"ans":"this; this one accepted","rej":{"c1":"they is הֵם","c2":"you is אַתָּה"}}
+{"id":"H2063-write","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, alef, tav","rej":{"c1":"the masculine has two letters","c2":"the object marker has alef first"}}
+{"id":"H2063-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, alef, tav","rej":{"c1":"vav instead of alef","c2":"tet instead of tav"}}
+{"id":"H0428-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"tsere, doubled lamed, segol, first-syllable stress","rej":{"c1":"same sounds, wrong stress: the first syllable carries it","c2":"a-vowels aren't these signs"}}
+{"id":"H0428-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"tsere, dagesh in lamed, segol","rej":{"c1":"no dagesh, qamats: another word, an oak-like tree","c2":"patah and qamats aren't this word"}}
+{"id":"H0428-in-context","prov":"attested","tests":["demonstratives","word-meaning"],"ans":"Gen.2.4 with plural generations","rej":{"c1":"this is singular","c2":"to is אֶל, a look-alike"}}
+{"id":"H0428-type-gloss","prov":"citation","tests":["demonstratives","word-meaning"],"ans":"these","rej":{"c1":"he is הוּא","c2":"on is עַל"}}
+{"id":"H0428-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed, he","rej":{"c1":"to has two letters","c2":"this, masculine, starts with zayin"}}
+{"id":"H0428-mirror","prov":"citation","tests":["dagesh","alphabet"],"ans":"one lamed; doubling is written with a dot","rej":{"c1":"writes the doubled letter twice","c2":"ayin: go up"}}
+{"id":"H0853-sound","prov":"citation","tests":["vowels"],"ans":"tsere: et","rej":{"c1":"a needs patah or qamats","c2":"o needs holam, as with the suffixed אֹת- stem"}}
+{"id":"H0853-pointed","prov":"citation","tests":["vowels","object-marker"],"ans":"tsere under alef","rej":{"c1":"you, feminine: a different word","c2":"hireq reads i"}}
+{"id":"H0853-in-context","prov":"span","tests":["object-marker","word-meaning"],"ans":"Gen.1.1 OSHB tags To, before a definite object; contextKey records it","rej":{"c1":"with is H854, a separate lexeme, and doesn't fit the object","c2":"you is אַתְּ or אַתָּה, and God isn't addressing anyone"}}
+{"id":"H0853-type-gloss","prov":"citation","tests":["object-marker"],"ans":"object marker; the listed accepted answers name the same function","rej":{"c1":"not is לֹא","c2":"they is הֵם"}}
+{"id":"H0853-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"daughter starts with bet","c2":"to ends in lamed"}}
+{"id":"H0853-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"letters reversed","c2":"ayin: a time"}}
+{"id":"H3588-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh k, hireq-yod: ki","rej":{"c1":"kh needs no dagesh","c2":"e needs tsere or segol"}}
+{"id":"H3588-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"hireq under kaf","rej":{"c1":"patah reads a","c2":"tsere reads e"}}
+{"id":"H3588-in-context","prov":"attested","tests":["verbal-clauses","word-meaning"],"ans":"Gen.1.4 after a verb of seeing","rej":{"c1":"not is לֹא, and the verse approves","c2":"from is מִן"}}
+{"id":"H3588-type-gloss","prov":"citation","tests":["verbal-clauses","word-meaning"],"ans":"that; because, for, when accepted, Strong's range","rej":{"c1":"also is גַּם","c2":"and is a prefix, וְ"}}
+{"id":"H3588-write","prov":"citation","tests":["alphabet","rtl"],"ans":"kaf, yod","rej":{"c1":"all ends in lamed","c2":"living starts with het"}}
+{"id":"H3588-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"kaf, yod","rej":{"c1":"letters reversed","c2":"bet instead of kaf"}}
+{"id":"H6440-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"dagesh p, qamats, hireq-yod: pa-NIM","rej":{"c1":"f needs no dagesh","c2":"the construct form, not this citation"}}
+{"id":"H6440-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, then hireq-yod","rej":{"c1":"shewa isn't the citation's first vowel","c2":"tsere reads e"}}
+{"id":"H6440-in-context","prov":"attested","tests":["construct","word-meaning"],"ans":"Gen.1.2 the surface of the deep","rej":{"c1":"name is שֵׁם","c2":"voice is קוֹל"}}
+{"id":"H6440-type-gloss","prov":"citation","tests":["construct","word-meaning"],"ans":"face; faces, surface, presence accepted","rej":{"c1":"name is שֵׁם","c2":"they is הֵם"}}
+{"id":"H6440-write","prov":"citation","tests":["final-forms"],"ans":"pe, nun, yod, final mem","rej":{"c1":"heavens starts with shin","c2":"mouth has two letters"}}
+{"id":"H6440-mirror","prov":"citation","tests":["final-forms"],"ans":"pe, nun, yod, final mem","rej":{"c1":"regular mem at the end","c2":"kaf instead of pe"}}
+{"id":"H8034-sound","prov":"citation","tests":["vowels"],"ans":"shin, tsere: shem","rej":{"c1":"the word for there, with qamats","c2":"s needs the left-arm dot"}}
+{"id":"H8034-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under shin","rej":{"c1":"qamats: there, a separate lexeme","c2":"left dot and no vowel: not this word"}}
+{"id":"H8034-in-context","prov":"attested","tests":["construct","word-meaning"],"ans":"Gen.2.11 what the river is called","rej":{"c1":"there is pointed with qamats","c2":"head is רֹאשׁ, though the river's branches are called heads in verse 10"}}
+{"id":"H8034-type-gloss","prov":"citation","tests":["construct","word-meaning"],"ans":"name; reputation accepted, in Strong's def","rej":{"c1":"face is פָּנִים","c2":"place is מָקוֹם"}}
+{"id":"H8034-write","prov":"citation","tests":["final-forms"],"ans":"shin, final mem","rej":{"c1":"people starts with ayin","c2":"they starts with he"}}
+{"id":"H8034-mirror","prov":"citation","tests":["final-forms"],"ans":"shin, final mem","rej":{"c1":"regular mem at the end","c2":"samekh instead of shin"}}
+{"id":"H1285-sound","prov":"citation","tests":["shewa","dagesh"],"ans":"sounded shewa, hard bet: be-RIT","rej":{"c1":"v needs no dagesh","c2":"patah and a yod consonant aren't this pointing"}}
+{"id":"H1285-pointed","prov":"citation","tests":["shewa","dagesh"],"ans":"shewa, then hireq-yod","rej":{"c1":"qamats where shewa belongs","c2":"tsere where hireq belongs"}}
+{"id":"H1285-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.9.13 the sign of a binding agreement","rej":{"c1":"name is שֵׁם","c2":"voice is קוֹל"}}
+{"id":"H1285-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"covenant; treaty, agreement, pact accepted, Strong's compact","rej":{"c1":"sister is אָחוֹת","c2":"mouth is פֶּה"}}
+{"id":"H1285-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, resh, yod, tav","rej":{"c1":"house has three letters","c2":"sister starts with alef"}}
+{"id":"H1285-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, resh, yod, tav","rej":{"c1":"dalet instead of resh","c2":"tet instead of tav"}}

@@ -1,0 +1,62 @@
+{"id":"H2472-type-gloss","prov":"citation","tests":["narrative","word-meaning"],"ans":"dream","rej":{"c1":"child is יֶלֶד","c2":"hundred is מֵאָה"}}
+{"id":"H2472-write","prov":"citation","tests":["final-forms"],"ans":"het, lamed, vav, final mem","rej":{"c1":"bread has lamed first","c2":"place starts with mem"}}
+{"id":"H2472-mirror","prov":"citation","tests":["final-forms"],"ans":"het, lamed, vav, final mem","rej":{"c1":"he instead of het","c2":"regular mem at the end"}}
+{"id":"H6213-sound","prov":"citation","tests":["vowels"],"ans":"sin, two qamats signs, silent he: a-SAH","rej":{"c1":"sh needs the right-arm dot","c2":"holam and segol: the participle"}}
+{"id":"H6213-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"left-arm dot, two qamats signs","rej":{"c1":"right dot makes shin, not this letter","c2":"real, but the participle"}}
+{"id":"H6213-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.1.31 everything God made","rej":{"c1":"see is what God does to it","c2":"die is מוּת"}}
+{"id":"H6213-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"make; do, made, did, he made accepted, Strong's def","rej":{"c1":"go up is עָלָה","c2":"bless is בָּרַךְ"}}
+{"id":"H6213-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, ש, he","rej":{"c1":"go up has lamed","c2":"see starts with resh"}}
+{"id":"H6213-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, ש, he","rej":{"c1":"alef: woman","c2":"samekh instead of ש"}}
+{"id":"H1696-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"no dot in bet: da-VAR","rej":{"c1":"b needs a dagesh","c2":"the Piel, דִּבֶּר, not this dictionary form"}}
+{"id":"H1696-pointed","prov":"citation","tests":["piel","vowels"],"ans":"qamats, patah: Strong's headword","rej":{"c1":"two segols: plague","c2":"shewa and patah: word of, a construct"}}
+{"id":"H1696-in-context","prov":"span","tests":["piel","word-meaning"],"ans":"Gen.12.4 Piel perfect in an as-clause; contextKey records the token and basis","rej":{"c1":"bury is קָבַר","c2":"swear is שָׁבַע"}}
+{"id":"H1696-type-gloss","prov":"citation","tests":["piel","word-meaning"],"ans":"speak; spoke, say, talk accepted, in Strong's usage","rej":{"c1":"word is the noun, a separate entry","c2":"bless is בָּרַךְ"}}
+{"id":"H1696-write","prov":"citation","tests":["alphabet","rtl"],"ans":"dalet, bet, resh","rej":{"c1":"bless ends in final kaf","c2":"bury starts with qof"}}
+{"id":"H1696-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"dalet, bet, resh","rej":{"c1":"letters reversed","c2":"dalet at both ends"}}
+{"id":"H1288-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard bet, qamats, patah, soft final kaf","rej":{"c1":"v needs no dagesh","c2":"segols belong to the noun knee"}}
+{"id":"H1288-pointed","prov":"citation","tests":["piel","vowels"],"ans":"qamats, patah: the dictionary form","rej":{"c1":"real, but the Piel, he blessed","c2":"two segols: knee"}}
+{"id":"H1288-in-context","prov":"attested","tests":["piel","word-meaning"],"ans":"Gen.1.22 be fruitful follows","rej":{"c1":"command is צָוָה, though imperatives follow here","c2":"bury is קָבַר"}}
+{"id":"H1288-type-gloss","prov":"citation","tests":["piel","word-meaning"],"ans":"bless; blessed accepted, and kneel too: the prompt asks this verb's meaning and shows the Qal-shaped dictionary form, whose sense in Strong is to kneel. Bless is the Piel in use","rej":{"c1":"speak is דָבַר","c2":"separate is בָּדַל"}}
+{"id":"H1288-write","prov":"citation","tests":["final-forms"],"ans":"bet, resh, final kaf","rej":{"c1":"road starts with dalet","c2":"create ends in alef"}}
+{"id":"H1288-mirror","prov":"citation","tests":["final-forms"],"ans":"bet, resh, final kaf","rej":{"c1":"regular kaf at the end","c2":"dalet instead of resh"}}
+{"id":"H6680-sound","prov":"citation","tests":["vowels"],"ans":"tsade, qamats, consonantal vav, qamats: tsa-VAH","rej":{"c1":"the Piel, with hireq and a doubled vav","c2":"s is samekh, sin or shin's cousin, not tsade"}}
+{"id":"H6680-pointed","prov":"citation","tests":["piel","vowels"],"ans":"two qamats signs","rej":{"c1":"real, but the Piel","c2":"holam-vav isn't this word"}}
+{"id":"H6680-in-context","prov":"attested","tests":["piel","word-meaning"],"ans":"Gen.6.22 Noah does as told","rej":{"c1":"bless is בָּרַךְ","c2":"hear is שָׁמַע"}}
+{"id":"H6680-type-gloss","prov":"citation","tests":["piel","word-meaning"],"ans":"command; commanded and order accepted","rej":{"c1":"go out is יָצָא","c2":"speak is דָבַר"}}
+{"id":"H6680-write","prov":"citation","tests":["alphabet","rtl"],"ans":"tsade, vav, he","rej":{"c1":"flock has alef and a final nun","c2":"go up starts with ayin"}}
+{"id":"H6680-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"tsade, vav, he","rej":{"c1":"het instead of he","c2":"ayin instead of tsade"}}
+{"id":"H7812-sound","prov":"citation","tests":["vowels"],"ans":"shin, het kh, two qamats signs","rej":{"c1":"s needs the left-arm dot","c2":"h is he, and this letter is closed"}}
+{"id":"H7812-pointed","prov":"citation","tests":["hithpael","vowels"],"ans":"right-arm dot, two qamats signs","rej":{"c1":"left dot: swim, another verb","c2":"two segols aren't this form"}}
+{"id":"H7812-in-context","prov":"attested","tests":["hithpael","word-meaning"],"ans":"Gen.18.2 toward the ground","rej":{"c1":"go up is the opposite","c2":"lie down is שָׁכַב, not a greeting"}}
+{"id":"H7812-type-gloss","prov":"citation","tests":["hithpael","word-meaning"],"ans":"bow down; bow and worship accepted, Strong's usage","rej":{"c1":"rise is קוּם","c2":"swear is שָׁבַע"}}
+{"id":"H7812-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, het, he","rej":{"c1":"send has lamed","c2":"live starts with het"}}
+{"id":"H7812-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, het, he","rej":{"c1":"he and het swapped","c2":"samekh instead of shin"}}
+{"id":"H7650-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"qamats, soft bet, patah: sha-VA","rej":{"c1":"segol: the number seven","c2":"s needs the left-arm dot"}}
+{"id":"H7650-pointed","prov":"citation","tests":["niphal","vowels"],"ans":"qamats, right-arm dot","rej":{"c1":"segol: seven","c2":"left dot: be satisfied"}}
+{"id":"H7650-in-context","prov":"attested","tests":["niphal","word-meaning"],"ans":"Gen.21.31 the oath at Beersheba","rej":{"c1":"the number is a separate entry, and can't be a finite verb here","c2":"hear is שָׁמַע"}}
+{"id":"H7650-type-gloss","prov":"citation","tests":["niphal","word-meaning"],"ans":"swear; swear an oath, swore, take an oath accepted","rej":{"c1":"seven is the number","c2":"go down is יָרַד"}}
+{"id":"H7650-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, bet, ayin","rej":{"c1":"hear has mem","c2":"seed starts with zayin"}}
+{"id":"H7650-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, bet, ayin","rej":{"c1":"mem: hear","c2":"he instead of ayin"}}
+{"id":"H0914-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard bet, qamats, patah: ba-DAL","rej":{"c1":"v needs no dagesh","c2":"the Hiphil, not this dictionary form"}}
+{"id":"H0914-pointed","prov":"citation","tests":["hiphil","vowels"],"ans":"qamats, patah","rej":{"c1":"shewa and holam aren't the citation","c2":"patah with a doubled dalet: a Piel-like shape"}}
+{"id":"H0914-in-context","prov":"attested","tests":["hiphil","word-meaning"],"ans":"Gen.1.4 two sides marked with between","rej":{"c1":"see is the verse's first verb","c2":"call is verse 5"}}
+{"id":"H0914-type-gloss","prov":"citation","tests":["hiphil","word-meaning"],"ans":"separate; divide and separated accepted, Strong's def","rej":{"c1":"go up is עָלָה","c2":"live is חָיָה"}}
+{"id":"H0914-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, dalet, lamed","rej":{"c1":"grow up starts with gimel","c2":"bless has resh"}}
+{"id":"H0914-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, dalet, lamed","rej":{"c1":"gimel: grow up","c2":"resh instead of dalet"}}
+{"id":"H7200-sound","prov":"citation","tests":["iii-he","vowels"],"ans":"resh, alef with qamats, silent he: ra-AH","rej":{"c1":"the verb fear","c2":"holam and segol: the participle"}}
+{"id":"H7200-pointed","prov":"citation","tests":["iii-he"],"ans":"two qamats signs","rej":{"c1":"the participle","c2":"a command form"}}
+{"id":"H7200-in-context","prov":"attested","tests":["iii-he","word-meaning"],"ans":"Gen.1.4 looks at the light; short narrative form","rej":{"c1":"fear is a look-alike root","c2":"make is עָשָׂה"}}
+{"id":"H7200-type-gloss","prov":"citation","tests":["iii-he","word-meaning"],"ans":"see; saw, he saw, look accepted","rej":{"c1":"tell is נָגַד","c2":"rise is קוּם"}}
+{"id":"H7200-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, alef, he","rej":{"c1":"fear starts with yod","c2":"head ends in shin"}}
+{"id":"H7200-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, alef, he","rej":{"c1":"ayin: feed a flock","c2":"dalet instead of resh"}}
+{"id":"H5927-sound","prov":"citation","tests":["iii-he","vowels"],"ans":"two qamats signs, silent he, final stress","rej":{"c1":"e-vowels aren't these signs","c2":"same sounds, wrong stress: the last syllable carries it"}}
+{"id":"H5927-pointed","prov":"citation","tests":["iii-he"],"ans":"two qamats signs","rej":{"c1":"the participle","c2":"a command form"}}
+{"id":"H5927-in-context","prov":"attested","tests":["iii-he","word-meaning"],"ans":"Gen.13.1 up from Egypt","rej":{"c1":"down is the opposite direction","c2":"go in is בּוֹא"}}
+{"id":"H5927-type-gloss","prov":"citation","tests":["iii-he","word-meaning"],"ans":"go up; went up, rise, ascend, climb accepted, Strong's ascend","rej":{"c1":"make is עָשָׂה","c2":"die is מוּת"}}
+{"id":"H5927-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, lamed, he","rej":{"c1":"make has ש","c2":"on has two letters"}}
+{"id":"H5927-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, lamed, he","rej":{"c1":"alef: these","c2":"het instead of he"}}
+{"id":"H2421-sound","prov":"citation","tests":["doubly-weak","vowels"],"ans":"het kh, two qamats signs: kha-YAH","rej":{"c1":"the verb be, with he","c2":"qamats second, not segol"}}
+{"id":"H2421-pointed","prov":"citation","tests":["doubly-weak"],"ans":"two qamats signs, no dagesh","rej":{"c1":"patah and a doubled yod: living, animal","c2":"hataf patah and tsere aren't this form"}}
+{"id":"H2421-in-context","prov":"attested","tests":["doubly-weak","word-meaning"],"ans":"Gen.5.3 counts a lifetime","rej":{"c1":"be is הָיָה, with he","c2":"die is the opposite"}}
+{"id":"H2421-type-gloss","prov":"citation","tests":["doubly-weak","word-meaning"],"ans":"live; lived, stay alive, he lived accepted","rej":{"c1":"be is הָיָה","c2":"give is נָתַן"}}
+{"id":"H2421-write","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod, he; the prompt asks for the card's dictionary form","rej":{"c1":"be starts with he","c2":"also a form of this verb at Gen.11.12 01uJp, but not the card's dictionary form"}}

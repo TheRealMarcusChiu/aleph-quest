@@ -1,0 +1,58 @@
+{"id":"H2421-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"het, yod, he","rej":{"c1":"he: be","c2":"he and het swapped"}}
+{"id":"H7235-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"soft bet, two qamats signs: ra-VAH","rej":{"c1":"b needs a dagesh","c2":"e and o aren't these signs"}}
+{"id":"H7235-pointed","prov":"citation","tests":["iii-he"],"ans":"two qamats signs, no dagesh","rej":{"c1":"patah and a doubled bet: great, an adjective","c2":"shewa and tsere: a command form"}}
+{"id":"H7235-in-context","prov":"attested","tests":["iii-he","word-meaning"],"ans":"Gen.1.22 paired with be fruitful","rej":{"c1":"go up is עָלָה","c2":"die is מוּת"}}
+{"id":"H7235-type-gloss","prov":"citation","tests":["iii-he","word-meaning"],"ans":"multiply; become many, increase, be many accepted, Strong's increase","rej":{"c1":"see is רָאָה","c2":"give is נָתַן"}}
+{"id":"H7235-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, bet, he","rej":{"c1":"see has alef","c2":"bad has two letters"}}
+{"id":"H7235-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, bet, he","rej":{"c1":"kaf instead of bet","c2":"dalet instead of resh"}}
+{"id":"H5414-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah, final nun: na-TAN","rej":{"c1":"e isn't the second vowel","c2":"yod isn't the first letter"}}
+{"id":"H5414-pointed","prov":"citation","tests":["i-nun","vowels"],"ans":"qamats, patah","rej":{"c1":"tsere isn't this perfect's second vowel","c2":"the participle"}}
+{"id":"H5414-in-context","prov":"attested","tests":["i-nun","word-meaning"],"ans":"Gen.1.29 plants handed over as food","rej":{"c1":"take is the opposite","c2":"lift is נָשָׂא"}}
+{"id":"H5414-type-gloss","prov":"citation","tests":["i-nun","word-meaning"],"ans":"give; gave, he gave, put, set accepted, Strong's range","rej":{"c1":"go out is יָצָא","c2":"swear is שָׁבַע"}}
+{"id":"H5414-write","prov":"citation","tests":["final-forms"],"ans":"nun, tav, final nun","rej":{"c1":"lift ends in alef","c2":"small starts with qof"}}
+{"id":"H5414-mirror","prov":"citation","tests":["final-forms"],"ans":"nun, tav, final nun","rej":{"c1":"regular nun at the end","c2":"tet instead of tav"}}
+{"id":"H5375-sound","prov":"citation","tests":["vowels"],"ans":"sin, two qamats signs, silent alef: na-SA","rej":{"c1":"sh needs the right-arm dot","c2":"o and e belong to the participle"}}
+{"id":"H5375-pointed","prov":"citation","tests":["i-nun","vowels"],"ans":"left-arm dot, two qamats signs","rej":{"c1":"right dot: another verb","c2":"the participle"}}
+{"id":"H5375-in-context","prov":"attested","tests":["i-nun","word-meaning"],"ans":"Gen.7.17 waters raise the ark; 01gSo has its dagesh only in prefix yod, and sin has shewa","rej":{"c1":"give is נָתַן","c2":"go down is the opposite"}}
+{"id":"H5375-type-gloss","prov":"citation","tests":["i-nun","word-meaning"],"ans":"lift; carry, bear, lifted, raise accepted, Strong's range","rej":{"c1":"tell is נָגַד","c2":"sit is יָשַׁב"}}
+{"id":"H5375-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ש, alef","rej":{"c1":"give ends in final nun","c2":"find starts with mem"}}
+{"id":"H5375-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ש, alef","rej":{"c1":"samekh instead of ש","c2":"he instead of alef"}}
+{"id":"H3318-sound","prov":"citation","tests":["vowels"],"ans":"tsade ts, two qamats signs, silent alef","rej":{"c1":"z is zayin","c2":"o and e belong to the participle"}}
+{"id":"H3318-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"two qamats signs","rej":{"c1":"the participle","c2":"an imperfect"}}
+{"id":"H3318-in-context","prov":"attested","tests":["i-waw","word-meaning"],"ans":"Gen.10.11 leaving one land for another","rej":{"c1":"go up is עָלָה, and the line doesn't describe climbing","c2":"sit is יָשַׁב"}}
+{"id":"H3318-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"go out; went out, come out, leave accepted, Strong's range","rej":{"c1":"come is בּוֹא","c2":"bear is יָלַד"}}
+{"id":"H3318-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, tsade, alef","rej":{"c1":"find starts with mem","c2":"fear has resh"}}
+{"id":"H3318-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, tsade, alef","rej":{"c1":"mem: find","c2":"ayin instead of tsade"}}
+{"id":"H3381-sound","prov":"citation","tests":["vowels"],"ans":"resh then dalet: ya-RAD","rej":{"c1":"dalet and resh swapped","c2":"segols and first-syllable stress aren't this pointing"}}
+{"id":"H3381-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah","rej":{"c1":"the participle","c2":"an imperfect"}}
+{"id":"H3381-in-context","prov":"attested","tests":["i-waw","word-meaning"],"ans":"Gen.11.5 God comes down to see","rej":{"c1":"up is the opposite direction","c2":"see is the purpose, not this verb"}}
+{"id":"H3381-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"go down; went down, descend, come down accepted","rej":{"c1":"go out is יָצָא","c2":"return is שׁוּב"}}
+{"id":"H3381-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, resh, dalet","rej":{"c1":"bear has lamed","c2":"serve starts with ayin"}}
+{"id":"H3381-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, resh, dalet","rej":{"c1":"resh and dalet swapped","c2":"lamed: bear"}}
+{"id":"H3427-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"shin, patah, soft bet: ya-SHAV","rej":{"c1":"s needs the left-arm dot","c2":"e-vowels aren't these signs"}}
+{"id":"H3427-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah, shin","rej":{"c1":"the participle","c2":"left dot and no patah aren't this word"}}
+{"id":"H3427-in-context","prov":"span","tests":["i-waw","word-meaning"],"ans":"Gen.4.16 a residence named; contextKey records the token and basis","rej":{"c1":"go down is יָרַד","c2":"swear is שָׁבַע"}}
+{"id":"H3427-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"sit; dwell, live, sat, settle accepted, Strong's range","rej":{"c1":"rise is קוּם","c2":"give is נָתַן"}}
+{"id":"H3427-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin, bet","rej":{"c1":"there is has two letters","c2":"lie down starts with shin"}}
+{"id":"H3427-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin, bet","rej":{"c1":"samekh instead of shin","c2":"kaf instead of bet"}}
+{"id":"H3205-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah: ya-LAD","rej":{"c1":"the noun child","c2":"holam and tsere: a participle"}}
+{"id":"H3205-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah: the card's primary citation, which the prompt names","rej":{"c1":"the noun child, a separate entry","c2":"the regular participle shape of this verb, not the card's primary citation. This is a paradigm statement, with no Genesis token claimed for this exact form"}}
+{"id":"H3205-in-context","prov":"span","tests":["i-waw","word-meaning"],"ans":"Gen.4.18 of a father in a genealogy; contextKey records the token and basis","rej":{"c1":"bury is קָבַר","c2":"call is קָרָא"}}
+{"id":"H3205-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"bear; give birth, bore accepted, and father, fathered, beget too, as OSHB tags the father's יָלַד Qal (01fQG Vqp3ms)","rej":{"c1":"child is the noun","c2":"go out is יָצָא"}}
+{"id":"H3205-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"go down has resh","c2":"hand has two letters"}}
+{"id":"H3205-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"resh: go down","c2":"resh at the end"}}
+{"id":"H4191-sound","prov":"citation","tests":["vowels"],"ans":"shureq: mut","rej":{"c1":"o needs holam-vav","c2":"e needs tsere or segol"}}
+{"id":"H4191-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"shureq, the hollow dictionary form","rej":{"c1":"an infinitive absolute","c2":"the noun death"}}
+{"id":"H4191-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.2.17 the warning","rej":{"c1":"live is the opposite","c2":"rise is קוּם"}}
+{"id":"H4191-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"die; died accepted. Kill is rejected: it is the Hiphil sense and the display is an unqualified Qal","rej":{"c1":"put is שׂוּם","c2":"come is בּוֹא"}}
+{"id":"H4191-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, vav, tav","rej":{"c1":"return starts with shin","c2":"place has qof"}}
+{"id":"H4191-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, vav, tav","rej":{"c1":"tet instead of tav","c2":"reversed, with a regular mem last"}}
+{"id":"H7725-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"shin, shureq, soft bet: shuv","rej":{"c1":"s and a aren't these signs","c2":"o needs holam-vav"}}
+{"id":"H7725-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"shureq, right-arm dot","rej":{"c1":"holam-vav reads o","c2":"left dot makes sin"}}
+{"id":"H7725-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.18.33 back to his place","rej":{"c1":"die is מוּת","c2":"put is שׂוּם"}}
+{"id":"H7725-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"return; turn back, go back, turn, returned accepted, Strong's def","rej":{"c1":"multiply is רָבָה","c2":"tell is נָגַד"}}
+{"id":"H7725-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, vav, bet","rej":{"c1":"good starts with tet","c2":"name has no vav"}}
+{"id":"H7725-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, vav, bet","rej":{"c1":"kaf instead of bet","c2":"samekh: another verb"}}
+{"id":"H6965-sound","prov":"citation","tests":["vowels"],"ans":"qof, shureq: qum","rej":{"c1":"o needs holam-vav","c2":"k is hard kaf, and a isn't this vowel"}}
+{"id":"H6965-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"shureq","rej":{"c1":"holam-vav reads o","c2":"patah and a consonantal vav aren't this word"}}
+{"id":"H6965-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.4.8 stands up to attack","rej":{"c1":"sit is the opposite","c2":"return is שׁוּב"}}

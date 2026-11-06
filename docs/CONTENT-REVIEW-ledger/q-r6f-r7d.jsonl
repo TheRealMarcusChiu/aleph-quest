@@ -1,0 +1,54 @@
+{"id":"a-vol-1","prov":"span","tests":["volitives"],"ans":"OSHB Vqv2mp","rej":{"c1":"OSHB tags an imperative","c2":"OSHB tags a verb"}}
+{"id":"a-infabs-1","prov":"span","tests":["inf-absolute"],"ans":"OSHB Vqa before its finite verb","rej":{"c1":"same root, same subject","c2":"no negative here"}}
+{"id":"a-num-1","prov":"span","tests":["numbers"],"ans":"Gen.1.9 noun then number","rej":{"c1":"the source order is noun first"}}
+{"id":"a-suffix-verb-1","prov":"span","tests":["verbal-suffixes"],"ans":"OSHB Sp3mp on a verb","rej":{"c1":"the prefix marks the subject, not the object","c2":"the suffix gives it an object"}}
+{"id":"p-r6-neri-1","prov":"attested","tests":["narrative"],"ans":"waw with patah: past narrative; Gen.1.5 token 01nAB","rej":{"c1":"the waw's form changes the reading"}}
+{"id":"p-r6-neri-2","prov":"attested","tests":["volitives"],"ans":"אַל goes with wishes; Gen.13.8 token 012zb","rej":{"c1":"לֹא states a fact or firm rule"}}
+{"id":"p-r6-neri-3","prov":"attested","tests":["numbers"],"ans":"Gen.5.3 has the singular after a hundred; tokens 01ZiN, 01NAb","rej":{"c1":"it recurs; a pattern, not an error"}}
+{"id":"p-r6-gate-1","prov":"original","tests":["participle"],"ans":"holam then tsere","rej":{"door-m":"imperfect, prefix yod","door-e":"perfect"}}
+{"id":"p-r6-gate-2","prov":"original","tests":["narrative"],"ans":"waw with patah on a verb","rej":{"door-w":"waw on a noun: background","door-e":"waw on an adjective"}}
+{"id":"p-r6-gate-3","prov":"original","tests":["inf-construct"],"ans":"לְ plus infinitive: to keep","rej":{"door-m":"I kept","door-e":"you will keep"}}
+{"id":"b-r6-ptc-1","prov":"span","tests":["participle"],"ans":"OSHB Vqrmsa","rej":{"c1":"the perfect is עָשָׂה","c2":"the imperfect has a prefix"}}
+{"id":"b-r6-ptc-2","prov":"span","tests":["participle","article"],"ans":"OSHB Td/Vqrmsa: the one going, of a river","rej":{"c1":"OSHB tags a participle","c2":"an infinitive wouldn't take this article"}}
+{"id":"b-r6-narr-1","prov":"span","tests":["narrative"],"ans":"OSHB C/Vqw1cs","rej":{"c1":"prefix alef marks I","c2":"waw with qamats is narrative, not future"}}
+{"id":"b-r6-narr-2","prov":"span","tests":["hayah","narrative"],"ans":"OSHB w","rej":{"c1":"that is the form without waw","c2":"the form is past narrative"}}
+{"id":"b-r6-impf-1","prov":"span","tests":["imperfect"],"ans":"OSHB Vqi3mp","rej":{"c1":"he would have no -u","c2":"we would have prefix nun"}}
+{"id":"b-r6-vol-1","prov":"span","tests":["volitives"],"ans":"OSHB Vqv2ms","rej":{"c1":"a report would be a perfect or narrative form","c2":"OSHB tags a verb"}}
+{"id":"b-r6-vol-2","prov":"span","tests":["volitives"],"ans":"OSHB Vqj3ms","rej":{"c1":"needs waw with patah","c2":"it is third person, not addressed"}}
+{"id":"b-r6-inf-1","prov":"span","tests":["inf-absolute"],"ans":"OSHB Vqa","rej":{"c1":"the subject is in the finite verb","c2":"no negative here"}}
+{"id":"g-niphal","prov":"span","tests":["niphal"],"ans":"OSHB VNi2ms; assimilated nun","rej":{"c1":"tav marks person, not stem","c2":"a root letter"}}
+{"id":"g-piel","prov":"span","tests":["piel"],"ans":"OSHB Vpp3ms; doubled middle letter","rej":{"c1":"no holam here","c2":"no prefix he here"}}
+{"id":"g-hithpael","prov":"span","tests":["hithpael"],"ans":"OSHB Vtp3ms","rej":{"c1":"that is the Niphal","c2":"no holam on he"}}
+{"id":"g-hiphil","prov":"span","tests":["hiphil"],"ans":"OSHB Vhw3fs: causative","rej":{"c1":"that would be the Qal","c2":"that would be a passive stem"}}
+{"id":"g-parsing","prov":"span","tests":["parsing","hiphil"],"ans":"OSHB Vhw3ms","rej":{"c1":"no narrative waw on a perfect","c2":"no mem prefix"}}
+{"id":"g-weak-gutturals","prov":"span","tests":["i-guttural"],"ans":"composite shewa on ayin","rej":{"c1":"OSHB tags Qal","c2":"gutturals resist doubling"}}
+{"id":"g-i-nun","prov":"span","inlineOriginal":["נתן"],"tests":["i-nun"],"ans":"assimilated first nun","rej":{"c1":"no article on a verb","c2":"this dagesh doubles; it isn't only hardness"}}
+{"id":"g-i-waw","prov":"span","tests":["i-waw"],"ans":"tsere under the prefix, no first letter","rej":{"c1":"shin has no dagesh here","c2":"the prefix vowel is tsere"}}
+{"id":"g-iii-he","prov":"span","tests":["iii-he"],"ans":"short narrative drops the final he","rej":{"c1":"OSHB tags a verb","c2":"a root letter, not a suffix"}}
+{"id":"g-hollow","prov":"span","tests":["hollow-geminate"],"ans":"hollow perfect shows two letters","rej":{"c1":"regular behavior, not an accident","c2":"OSHB lemma 7725 is שׁוּב"}}
+{"id":"a-niphal-1","prov":"span","tests":["niphal"],"ans":"OSHB VNp3cp; ordinary active sense","rej":{"c1":"the sense in Gen.21.31 is swearing an oath","c2":"no Piel prefix or doubling pattern"}}
+{"id":"a-piel-1","prov":"span","tests":["piel"],"ans":"OSHB Vpw3ms; shewa under the prefix","rej":{"c1":"OSHB tags Piel","c2":"a root letter's form, not a stem marker"}}
+{"id":"a-pual-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms; the prompt says the answer is on OSHB's tagging, and the explanation names the Qal-passive view","rej":{"c1":"Hiphil has a he prefix","c2":"OSHB tags a perfect"}}
+{"id":"a-hiphil-1","prov":"span","tests":["hiphil"],"ans":"OSHB Vhrmsa","rej":{"c1":"that is the Niphal","c2":"OSHB tags singular"}}
+{"id":"a-hophal-1","prov":"span","tests":["hophal"],"ans":"OSHB VHi3ms","rej":{"c1":"Hiphil has a-class prefix","c2":"Niphal has no u-vowel on the prefix"}}
+{"id":"a-gutt-1","prov":"span","inlineOriginal":["יִשְׁמֹר"],"tests":["iii-guttural"],"ans":"final guttural pulls to a-class","rej":{"c1":"OSHB tags a verb","c2":"strong verbs have holam there"}}
+{"id":"a-i-nun-1","prov":"attested","tests":["i-nun"],"ans":"לקח's lamed behaves like a nun; OSHB lemma 3947 at Gen.2.15","rej":{"c1":"no such root here","c2":"OSHB's lemma is 3947, with a lamed"}}
+{"id":"a-i-waw-1","prov":"span","tests":["i-waw"],"ans":"OSHB Vhw3ms; original waw returns","rej":{"c1":"the conjunction is already at the front","c2":"regular Hiphil behavior"}}
+{"id":"a-iii-he-1","prov":"span","tests":["iii-he"],"ans":"OSHB lemma 7200; he dropped","rej":{"c1":"fear's narrative form is וַיִּירָא","c2":"curse isn't this root"}}
+{"id":"a-doubly-1","prov":"span","tests":["doubly-weak"],"ans":"both short forms drop the final he","rej":{"c1":"they do line up","c2":"חָיָה has one too, this token"}}
+{"id":"a-hollow-1","prov":"span","tests":["hollow-geminate"],"ans":"OSHB Vqw3ms","rej":{"c1":"OSHB tags Qal narrative","c2":"OSHB tags a verb"}}
+{"id":"a-parse-1","prov":"span","tests":["parsing","i-nun"],"ans":"Strip, read person, then root and form; both orders of the last two accepted, as the explanation says","rej":{}}
+{"id":"p-r7-neri-1","prov":"attested","tests":["hiphil","piel","niphal"],"ans":"stems are tendencies; the explanation's tokens 01WEz and 01TR3 show it","rej":{"c1":"דִּבֶּר and נִשְׁבְּעוּ are counterexamples"}}
+{"id":"p-r7-neri-2","prov":"attested","tests":["i-nun","i-waw"],"ans":"dagesh marks assimilated nun; token 01B6c","rej":{"c1":"tsere marks a lost yod"}}
+{"id":"p-r7-neri-3","prov":"attested","tests":["iii-he","statives"],"ans":"patah under the prefix, context, lemma 7200 at Gen.1.4","rej":{"c1":"fear's narrative form differs"}}
+{"id":"p-r7-gate-1","prov":"original","tests":["piel"],"ans":"doubled middle letter; token 01WEz","rej":{"door-m":"the noun word","door-e":"Hiphil, token 01Uv6"}}
+{"id":"p-r7-gate-2","prov":"original","tests":["hollow-geminate"],"ans":"two letters; token 01Wuj","rej":{"door-w":"three letters: not hollow","door-e":"three letters: not hollow"}}
+{"id":"p-r7-gate-3","prov":"original","tests":["iii-he"],"ans":"עָלָה is a verb","rej":{"door-w":"a noun, woman","door-m":"a noun, night"}}
+{"id":"b-r7-stem-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms; the alternative Qal passive analysis is named","rej":{"c1":"Piel is active, with hireq first","c2":"the prompt asks for OSHB's label, and it tags Pual; a Qal passive analysis is defensible and named in the explanation, but isn't the label asked for"}}
+{"id":"b-r7-stem-2","prov":"span","tests":["niphal"],"ans":"OSHB VNw3ms","rej":{"c1":"no causative pattern","c2":"no u-vowel"}}
+{"id":"b-r7-stem-3","prov":"span","tests":["hiphil"],"ans":"OSHB Vhw3ms; patah under the prefix","rej":{"c1":"no shewa under the prefix","c2":"no hireq under the prefix"}}
+{"id":"b-r7-stem-4","prov":"span","tests":["hophal"],"ans":"OSHB VHp3ms","rej":{"c1":"Hiphil has hireq on he","c2":"Hithpael has a tav"}}
+{"id":"b-r7-weak-1","prov":"span","tests":["i-waw"],"ans":"OSHB lemma 3205, Vhw3ms","rej":{"c1":"OSHB tags Hiphil and masculine","c2":"OSHB lemma is 3205"}}
+{"id":"b-r7-weak-2","prov":"span","tests":["niphal","i-nun"],"ans":"OSHB VNw3ms, lemma 5162","rej":{"c1":"OSHB tags Niphal, and the dagesh is on the first root letter","c2":"no article on a verb"}}
+{"id":"b-r7-parse-1","prov":"span","tests":["parsing","piel","verbal-suffixes"],"ans":"OSHB Vpp1cs/Sp2ms","rej":{"c1":"the ending is I, and the suffix is you","c2":"OSHB tags a Piel perfect"}}
+{"id":"b-r7-parse-2","prov":"span","tests":["parsing","pual"],"ans":"OSHB VPp3fs","rej":{"c1":"the u-vowel is passive","c2":"OSHB tags a perfect"}}

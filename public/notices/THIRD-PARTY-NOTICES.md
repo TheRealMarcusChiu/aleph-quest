@@ -6,13 +6,13 @@ Original work of the Open Scriptures Hebrew Bible available at https://github.co
 
 Open Scriptures Hebrew Bible Project: lemma, morphology, and digital Hebrew lexicon data licensed under Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Westminster Leningrad Codex biblical text is public domain.
 
-Changes for Aleph Quest: selected passages and vocabulary; converted XML to application records; removed source segmentation separators in reading text; display without cantillation, meteg or paseq; original pedagogical glosses and explanations added. No endorsement implied.
+Changes for Aleph Quest: selected passages and vocabulary; converted XML to application records; removed source segmentation separators in reading text; display without cantillation or meteg; original pedagogical glosses, explanations and translations added. Stored source strings keep their upstream mark order. No endorsement implied.
 
 Source revision: morphhb 3d15126fb1ef74867fc1434be1942e837932691f. Upstream license notice: [morphhb-LICENSE.md](./morphhb-LICENSE.md).
 
 ## Digital Strong's Hebrew dictionary
 
-Digital files from https://github.com/openscriptures/HebrewLexicon (revision 21c9add13bc727d3a951361778e97e3ff7afd1ce), CC BY 4.0. The underlying dictionary text is public domain. Aleph Quest uses headwords, parts of speech and derivation notes as a checking reference, and its glosses are rewritten. Its obsolete pronunciation field isn't used.
+Digital files from https://github.com/openscriptures/HebrewLexicon (revision 21c9add13bc727d3a951361778e97e3ff7afd1ce), CC BY 4.0. The underlying dictionary text is public domain. Aleph Quest uses headwords, parts of speech and derivation notes as a checking reference, and its glosses are rewritten. Its obsolete pronunciation field is used only in tests, to cross-check stress position, and isn't shown to players.
 
 ## Noto Serif Hebrew
 

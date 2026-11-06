@@ -1,0 +1,54 @@
+{"id":"H5971-sound","prov":"citation","tests":["vowels"],"ans":"patah: am","rej":{"c1":"hireq gives עִם, with, another word","c2":"o needs holam"}}
+{"id":"H5971-pointed","prov":"citation","tests":["vowels"],"ans":"patah under ayin","rej":{"c1":"hireq gives with, a separate lexeme","c2":"tsere reads e"}}
+{"id":"H5971-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.11.6 one group, one language","rej":{"c1":"with needs hireq, and can't fill this slot","c2":"city is עִיר"}}
+{"id":"H5971-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"people; nation and a people accepted","rej":{"c1":"place is מָקוֹם","c2":"bird is עוֹף"}}
+{"id":"H5971-write","prov":"citation","tests":["final-forms"],"ans":"ayin, final mem","rej":{"c1":"mother starts with alef","c2":"on ends in lamed"}}
+{"id":"H5971-mirror","prov":"citation","tests":["final-forms"],"ans":"ayin, final mem","rej":{"c1":"regular mem at the end","c2":"alef: mother or if"}}
+{"id":"H4725-sound","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav, final stress: ma-QOM","rej":{"c1":"e and u aren't these signs","c2":"a second a and first-syllable stress aren't this pointing"}}
+{"id":"H4725-pointed","prov":"citation","tests":["vowels"],"ans":"qamats and holam-vav","rej":{"c1":"real, but it is the construct, place of","c2":"shureq reads u"}}
+{"id":"H4725-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.9 where the waters gather","rej":{"c1":"people is עַם","c2":"voice is קוֹל"}}
+{"id":"H4725-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"place; location and spot accepted, Strong's def","rej":{"c1":"morning is בֹּקֶר","c2":"young man is נַעַר"}}
+{"id":"H4725-write","prov":"citation","tests":["final-forms"],"ans":"mem, qof, vav, final mem","rej":{"c1":"water has no qof","c2":"voice starts with qof"}}
+{"id":"H4725-mirror","prov":"citation","tests":["final-forms"],"ans":"mem, qof, vav, final mem","rej":{"c1":"kaf instead of qof","c2":"regular mem at the end"}}
+{"id":"H0120-sound","prov":"citation","tests":["vowels"],"ans":"two qamats signs, final stress: a-DAM","rej":{"c1":"e and o aren't these signs","c2":"segol second and first-syllable stress aren't this pointing"}}
+{"id":"H0120-pointed","prov":"citation","tests":["vowels"],"ans":"two qamats signs","rej":{"c1":"hataf segol and holam: another word, Edom's shape","c2":"two segols aren't this word"}}
+{"id":"H0120-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.26 humankind: let them rule","rej":{"c1":"ground is אֲדָמָה","c2":"king isn't the sense; they are to rule, but the word names people"}}
+{"id":"H0120-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"human being; human, humankind, mankind, man, person accepted, Strong's def and usage. adam is accepted because H121 has the same letters; the feedback says so","rej":{"c1":"ground is אֲדָמָה","c2":"flock is צֹאן"}}
+{"id":"H0120-write","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, final mem; the prompt names this card's word, as אִישׁ also names a person","rej":{"c1":"ground adds mem and he","c2":"a separate word for a person, H376, not this card's"}}
+{"id":"H0120-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, final mem","rej":{"c1":"resh instead of dalet","c2":"regular mem at the end"}}
+{"id":"H0127-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, two qamats signs, final stress","rej":{"c1":"hataf patah is a, not e","c2":"same sounds, wrong stress: this feminine ending takes it"}}
+{"id":"H0127-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, then two qamats signs","rej":{"c1":"hataf segol is another sign","c2":"holam where qamats belongs"}}
+{"id":"H0127-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.2.7 dust comes from it","rej":{"c1":"sky is שָׁמַיִם","c2":"water is מַיִם"}}
+{"id":"H0127-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"ground; soil and land accepted, Strong's def and usage","rej":{"c1":"human being is a separate entry, אָדָם","c2":"bread is לֶחֶם"}}
+{"id":"H0127-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, dalet, mem, he","rej":{"c1":"human being has no he","c2":"livestock starts with bet"}}
+{"id":"H0127-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, dalet, mem, he","rej":{"c1":"no he: human being","c2":"ayin instead of alef"}}
+{"id":"H0430-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf segol, holam, hireq-yod, final stress","rej":{"c1":"a-vowels aren't these signs","c2":"same sounds, wrong stress: the last syllable carries it"}}
+{"id":"H0430-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf segol, holam, hireq-yod","rej":{"c1":"hataf patah and qamats aren't this word","c2":"segol and silent shewa and tsere aren't this word"}}
+{"id":"H0430-in-context","prov":"attested","tests":["nouns","word-meaning"],"ans":"Gen.1.1 subject of a singular verb","rej":{"c1":"a king isn't the Creator in this line","c2":"human being is made later"}}
+{"id":"H0430-type-gloss","prov":"citation","tests":["nouns","word-meaning"],"ans":"God; gods accepted, Strong's defs","rej":{"c1":"people is עַם","c2":"servant is עֶבֶד"}}
+{"id":"H0430-write","prov":"citation","tests":["final-forms"],"ans":"alef, lamed, he, yod, final mem","rej":{"c1":"ground has dalet","c2":"heavens starts with shin"}}
+{"id":"H0430-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, lamed, he, yod, final mem","rej":{"c1":"het instead of he","c2":"regular mem at the end"}}
+{"id":"H8085-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah, silent ayin, final stress","rej":{"c1":"s needs the left-arm dot","c2":"e and first-syllable stress aren't this perfect's pointing"}}
+{"id":"H8085-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah: the perfect citation","rej":{"c1":"real, but it is the imperative, hear!","c2":"tsere and patah aren't this form"}}
+{"id":"H8085-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.16.11 God heard, and the name plays on it","rej":{"c1":"see is רָאָה","c2":"send is שָׁלַח"}}
+{"id":"H8085-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"hear; heard, listen, obey, he heard accepted, since the form is a 3ms perfect","rej":{"c1":"say is אָמַר","c2":"eat is אָכַל"}}
+{"id":"H8085-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, mem, ayin","rej":{"c1":"send has lamed and het","c2":"name has two letters"}}
+{"id":"H8085-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, mem, ayin","rej":{"c1":"alef instead of ayin","c2":"letters reversed"}}
+{"id":"H0559-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah, final stress: a-MAR","rej":{"c1":"this qamats is in an open syllable, so it is a, not qamats qatan","c2":"segol and first-syllable stress aren't this pointing"}}
+{"id":"H0559-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"a noun, a saying","c2":"hataf patah and holam: an infinitive shape"}}
+{"id":"H0559-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.3.1 what God said","rej":{"c1":"hear is שָׁמַע","c2":"take is לָקַח"}}
+{"id":"H0559-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"say; said, he said, tell, speak accepted","rej":{"c1":"walk is הָלַךְ","c2":"know is יָדַע"}}
+{"id":"H0559-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, mem, resh","rej":{"c1":"eat has kaf and lamed","c2":"pass over starts with ayin"}}
+{"id":"H0559-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, mem, resh","rej":{"c1":"ayin instead of alef","c2":"dalet instead of resh"}}
+{"id":"H7971-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah, het kh, final stress","rej":{"c1":"s needs the left-arm dot","c2":"shewa and an h aren't this pointing"}}
+{"id":"H7971-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"segol isn't the perfect's first vowel","c2":"shewa gives the imperative send!"}}
+{"id":"H7971-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.42.4 Benjamin wasn't sent","rej":{"c1":"bury is קָבַר","c2":"eat is אָכַל"}}
+{"id":"H7971-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"send; sent, he sent, stretch out accepted, Strong's senses","rej":{"c1":"hear is שָׁמַע","c2":"lie down is שָׁכַב"}}
+{"id":"H7971-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, lamed, het","rej":{"c1":"take starts with lamed","c2":"hear ends in ayin"}}
+{"id":"H7971-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, lamed, het","rej":{"c1":"he instead of het","c2":"letters reversed"}}
+{"id":"H3947-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah, qof q, het kh","rej":{"c1":"o and an h aren't this pointing","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H3947-pointed","prov":"citation","tests":["perfect","vowels"],"ans":"qamats, patah","rej":{"c1":"segol: a noun, teaching, not this verb","c2":"hireq with a doubled qof: a Piel shape"}}
+{"id":"H3947-in-context","prov":"attested","tests":["perfect","word-meaning"],"ans":"Gen.2.22 the rib removed","rej":{"c1":"send is שָׁלַח","c2":"say is אָמַר"}}
+{"id":"H3947-type-gloss","prov":"citation","tests":["perfect","word-meaning"],"ans":"take; took, he took, receive, get accepted, Strong's usage","rej":{"c1":"walk is הָלַךְ","c2":"serve is עָבַד"}}
+{"id":"H3947-write","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, qof, het","rej":{"c1":"send starts with shin","c2":"bread ends in final mem"}}
+{"id":"H3947-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"lamed, qof, het","rej":{"c1":"kaf instead of qof","c2":"he instead of het"}}

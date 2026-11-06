@@ -1,0 +1,59 @@
+{"id":"p-r2-neri-1","prov":"original","tests":["vowels"],"ans":"patah reads a: am","rej":{"c1":"hireq reads i: with"}}
+{"id":"p-r2-neri-2","prov":"original","tests":["alphabet"],"ans":"left-arm dot makes sin, s","rej":{"c1":"right-arm dot makes shin, sh","c2":"the dot never sits on the middle arm"}}
+{"id":"p-r2-neri-3","prov":"span","tests":["article"],"ans":"OSHB Td; he with patah and a dagesh","rej":{"c1":"a would have no article"}}
+{"id":"p-r2-neri-4","prov":"span","tests":["accents"],"ans":"qamats qatan, closed and unstressed before a maqqef","rej":{"c1":"ordinary a needs an open or stressed syllable"}}
+{"id":"p-r2-gate-1","prov":"original","tests":["vowels"],"ans":"holam-vav reads o","rej":{"door-m":"hireq-yod reads i","door-e":"qamats reads a"}}
+{"id":"p-r2-gate-2","prov":"original","tests":["shewa"],"ans":"shewa under bet opens the word","rej":{"door-w":"yod starts with a consonant and holam-vav","door-e":"patah is a full vowel"}}
+{"id":"p-r2-gate-3","prov":"original","tests":["article"],"ans":"he, patah, dagesh in mem","rej":{"door-w":"no article; shin begins the noun","door-m":"no article"}}
+{"id":"b-r2-article-1","prov":"span","tests":["article"],"ans":"OSHB Td; patah and dagesh","rej":{"c1":"the noun's root has no he here; the citation is שָׁמַיִם"}}
+{"id":"b-r2-article-2","prov":"span","tests":["gutturals"],"ans":"alef can't double","rej":{"c1":"gender doesn't control doubling","c2":"OSHB tags an article"}}
+{"id":"b-r2-article-3","prov":"span","tests":["article","gutturals"],"ans":"OSHB Td: the city","rej":{"c1":"a would have no article","c2":"in would need a preposition"}}
+{"id":"b-r2-sound-1","prov":"span","tests":["vowels"],"ans":"patah, hireq, first-syllable stress","rej":{"c1":"holam isn't in the word, and the stress is wrong","c2":"swaps the vowels"}}
+{"id":"b-r2-sound-2","prov":"span","tests":["dagesh","vowels"],"ans":"no dagesh in this token: VO-qer","rej":{"c1":"that is the citation form, with a dagesh","c2":"the cattle word's vowels, and a dagesh this token lacks"}}
+{"id":"b-r2-sound-3","prov":"span","tests":["shewa","vowels"],"ans":"silent shewa closes the first syllable","rej":{"c1":"treats the silent shewa as a syllable","c2":"e ignores the qamats"}}
+{"id":"b-r2-shewa-1","prov":"span","tests":["shewa"],"ans":"shewa on the first letter is sounded","rej":{"c1":"it opens the word","c2":"a hataf has a vowel beside the shewa"}}
+{"id":"b-r2-dagesh-1","prov":"span","tests":["dagesh","gutturals"],"ans":"he can't double; no letter has a dagesh","rej":{"c1":"no dot appears inside a letter here","c2":"no dot appears inside a letter here"}}
+{"id":"b-r2-dagesh-2","prov":"span","tests":["dagesh","article"],"ans":"follows the article; shin isn't in בגדכפת","rej":{"c1":"hardness applies only to the six","c2":"the plural-looking ending, not the dot, shows number"}}
+{"id":"g-nouns","prov":"span","tests":["nouns"],"ans":"ending -im, OSHB Ncmpa","rej":{"c1":"the start doesn't mark number","c2":"a root letter"}}
+{"id":"g-nominal","prov":"span","tests":["conjunction"],"ans":"OSHB C on the prefix: and","rej":{"c1":"the article is הַ","c2":"to is לְ"}}
+{"id":"g-min","prov":"span","tests":["min"],"ans":"nun assimilates; dagesh in bet","rej":{"c1":"the yod is part of בַּיִת","c2":"the preposition is מִן, which has a nun"}}
+{"id":"g-adjectives","prov":"span","tests":["adjectives"],"ans":"attributive adjective copies the article","rej":{"c1":"no verb in the phrase","c2":"both words are singular"}}
+{"id":"a-gender-1","prov":"span","tests":["nouns"],"ans":"OSHB Ncmpa, ending -im","rej":{"c1":"the singular is עַם","c2":"a dual would have -ayim"}}
+{"id":"a-gender-2","prov":"span","inlineOriginal":["ים"],"tests":["nouns"],"ans":"OSHB Ncfpa; gender is lexical","rej":{"c1":"an ending suggests gender but doesn't decide it"}}
+{"id":"a-nominal-1","prov":"span","tests":["nominal-clauses"],"ans":"no verb is needed; English supplies are","rej":{"c1":"nothing has dropped out; this is normal","c2":"עַם means people"}}
+{"id":"a-waw-1","prov":"span","tests":["conjunction"],"ans":"before bet the waw reads u","rej":{"c1":"gender doesn't control this, and the noun is feminine","c2":"question marking is הֲ"}}
+{"id":"a-waw-2","prov":"span","tests":["conjunction"],"ans":"Gen.1.12 has וְעֵץ; usual form","rej":{"c1":"ayin isn't ב מ פ, and has no shewa","c2":"the conjunction is a prefix"}}
+{"id":"a-segholate-1","prov":"span","tests":["noun-patterns"],"ans":"segholate, first-syllable stress","rej":{"c1":"not plural, and the stress is first"}}
+{"id":"a-min-1","prov":"span","tests":["min"],"ans":"Gen.2.7 plain from","rej":{"c1":"nothing is compared","c2":"the object marker is אֵת"}}
+{"id":"a-adj-1","prov":"span","tests":["adjectives"],"ans":"Gen.1.16 noun then adjective, both with the article","rej":{"t2":"no article; it can't be attributive here. A spare tile."}}
+{"id":"a-compare-1","prov":"original","tests":["comparison"],"ans":"with an adjective, מִן compares","rej":{"c1":"the sense is comparison, not cause","c2":"equality isn't what מִן marks"}}
+{"id":"p-r3-neri-1","prov":"attested","inlineOriginal":["ים"],"tests":["nouns"],"ans":"plural in form, English singular","rej":{"c1":"מַיִם, שָׁמַיִם and פָּנִים are counterexamples"}}
+{"id":"p-r3-neri-2","prov":"original","tests":["adjectives"],"ans":"both words have the article","rej":{"c1":"a statement: the man is good","c2":"mismatch: the noun lacks the article"}}
+{"id":"p-r3-neri-3","prov":"original","tests":["adjectives","nominal-clauses"],"ans":"adjective first, no article: a statement","rej":{"c1":"the attributive would follow with an article"}}
+{"id":"p-r3-gate-1","prov":"original","tests":["nouns"],"ans":"ending -im: plural","rej":{"door-w":"singular, ending in -ah","door-e":"singular, despite its ending"}}
+{"id":"p-r3-gate-2","prov":"attested","tests":["min"],"ans":"from plus house, nun absorbed","rej":{"door-w":"the noun alone, with no preposition","door-m":"the word just starts with mem"}}
+{"id":"p-r3-gate-3","prov":"original","tests":["adjectives"],"ans":"OSHB tags this form Aafs in Gen.1.20","rej":{"door-w":"masculine form","door-e":"masculine form"}}
+{"id":"b-r3-number-1","prov":"span","tests":["nouns","article"],"ans":"OSHB Td/Ncmsa","rej":{"c1":"no preposition; singular","c2":"no waw; masculine"}}
+{"id":"b-r3-number-2","prov":"span","tests":["nouns"],"ans":"OSHB Ncfsa; -ah suggests feminine","rej":{"c1":"OSHB tags feminine"}}
+{"id":"b-r3-number-3","prov":"span","tests":["nouns"],"ans":"collective singular, English plural","rej":{"c1":"Strong: often collectively","c2":"a possessive isn't what the form is"}}
+{"id":"b-r3-adj-1","prov":"span","tests":["adjectives"],"ans":"OSHB Aampa with the article","rej":{"c1":"its ending is masculine plural","c2":"it has the article"}}
+{"id":"b-r3-adj-2","prov":"span","tests":["adjectives"],"ans":"OSHB Aafs; feminine","rej":{"c1":"the ending is feminine"}}
+{"id":"b-r3-adj-3","prov":"span","tests":["adjectives","nominal-clauses"],"ans":"no article against a definite noun: a statement","rej":{"c1":"an attributive would copy the article"}}
+{"id":"b-r3-small-1","prov":"span","tests":["conjunction"],"ans":"OSHB C, with qamats in a pair","rej":{"c1":"the article is on he","c2":"to is לְ"}}
+{"id":"b-r3-small-2","prov":"span","tests":["min"],"ans":"OSHB R, plain from","rej":{"c1":"nothing is compared","c2":"with is עִם or אֵת"}}
+{"id":"b-r3-small-3","prov":"span","tests":["conjunction","prepositions","article"],"ans":"OSHB C/Rd: and, in, the","rej":{"c1":"the order is and, in, the","c2":"no to here, and it drops the article"}}
+{"id":"g-perfect","prov":"span","tests":["perfect"],"ans":"OSHB 1cs; ending -ti","rej":{"c1":"the first letter is a root letter","c2":"there is an ending"}}
+{"id":"g-verbal","prov":"span","tests":["object-marker"],"ans":"OSHB To before a definite noun","rej":{"c1":"אֱלֹהִים is the subject","c2":"with is the other lexeme, H854"}}
+{"id":"g-pronouns","prov":"span","tests":["pronouns"],"ans":"OSHB Pp3fs","rej":{"c1":"he has shureq","c2":"you is אַתָּה"}}
+{"id":"g-construct","prov":"span","tests":["construct"],"ans":"OSHB Ncmsc; shortened","rej":{"c1":"no article","c2":"singular"}}
+{"id":"a-pgn-1","prov":"span","tests":["perfect"],"ans":"OSHB 3ms; no ending","rej":{"c1":"I ends in -ti","c2":"they ends in -u"}}
+{"id":"a-pgn-2","prov":"span","tests":["perfect"],"ans":"OSHB 3cp; ending -u","rej":{"c1":"she ends in -ah","c2":"you ends in -ta"}}
+{"id":"a-pgn-3","prov":"span","inlineOriginal":["שמע"],"tests":["perfect"],"ans":"Gen.3.10 OSHB 1cs","rej":{"c1":"he: no ending","c2":"they: ending -u"}}
+{"id":"a-tense-1","prov":"span","tests":["perfect"],"ans":"knowing is a state; the perfect can read present","rej":{"c1":"not an error; this is normal usage","c2":"the ending marks person, not future"}}
+{"id":"a-object-1","prov":"span","tests":["object-marker"],"ans":"OSHB To before a noun with the article","rej":{"c1":"H854 is the other lexeme, and God sees the light","c2":"אֱלֹהִים is the subject"}}
+{"id":"a-object-2","prov":"attested","tests":["object-marker"],"ans":"the marker needs a definite object","rej":{"c1":"tense isn't the reason","c2":"gender isn't the reason"}}
+{"id":"a-demo-1","prov":"span","tests":["demonstratives"],"ans":"feminine singular is זֹאת","rej":{"c1":"plural","c2":"a personal pronoun"}}
+{"id":"a-pron-1","prov":"original","tests":["pronouns"],"ans":"2ms addressed to the man; Gen.3.11 has a pausal form, token 01SMW","rej":{"c1":"they, third person plural","c2":"I, first person"}}
+{"id":"a-construct-1","prov":"span","tests":["construct"],"ans":"article on the last noun makes the chain definite","rej":{"c1":"the construct noun has none","c2":"the second word has one"}}
+{"id":"a-construct-2","prov":"original","tests":["construct"],"ans":"construct first, article on the last noun; דְּבַר is token 01yUJ's form, the phrase is built","rej":{"c1":"article on the first noun, and an absolute form","c2":"no article, so it can't say the king"}}
+{"id":"a-construct-3","prov":"span","tests":["construct"],"ans":"Gen.1.2 construct then its noun","rej":{"t2":"the free form can't begin the chain. A spare tile."}}

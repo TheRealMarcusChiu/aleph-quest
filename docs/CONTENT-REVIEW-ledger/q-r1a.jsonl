@@ -1,0 +1,40 @@
+{"id":"H0001-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"alef is the rightmost letter of אב","rej":{"c1":"bet is the last letter, on the left","c2":"ayin isn't in the word","c3":"he isn't in the word"}}
+{"id":"H0001-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"bet is at the left edge","rej":{"c1":"alef is first, not last","c2":"kaf is a look-alike without bet's foot","c3":"nun isn't in the word"}}
+{"id":"H0001-gloss","prov":"citation","tests":["word-meaning"],"ans":"father, Strong's def","rej":{"c1":"mother is אֵם","c2":"brother is אָח","c3":"king is מֶלֶךְ"}}
+{"id":"H0001-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.44.19 pairs father with brother","rej":{"c1":"mother is אֵם, not in the line","c2":"daughter is בַּת","c3":"king is מֶלֶךְ"}}
+{"id":"H0001-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"father; forefather and ancestor accepted as Strong's figurative range","rej":{"c1":"son is בֵּן","c2":"land is אֶרֶץ","c3":"woman is אִשָּׁה"}}
+{"id":"H0001-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters alef, bet","rej":{"c1":"brother: ends in het","c2":"man: three letters ending in shin","c3":"daughter: starts with bet"}}
+{"id":"H0001-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef then bet, read from the right","rej":{"c1":"letters reversed","c2":"kaf instead of bet","c3":"ayin instead of alef"}}
+{"id":"H0251-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"alef is rightmost","rej":{"c1":"het is last","c2":"ayin isn't in the word","c3":"he isn't in the word"}}
+{"id":"H0251-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"het is at the left edge","rej":{"c1":"he has a gap; this letter is closed","c2":"tav has a foot and isn't in the word","c3":"alef is first"}}
+{"id":"H0251-gloss","prov":"citation","tests":["word-meaning"],"ans":"brother, Strong's def","rej":{"c1":"father ends in bet","c2":"daughter is בַּת","c3":"scroll is סֵפֶר"}}
+{"id":"H0251-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.44.19 pairs brother with father","rej":{"c1":"mother is אֵם","c2":"woman is אִשָּׁה","c3":"king is מֶלֶךְ"}}
+{"id":"H0251-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"brother; kinsman and relative accepted, Strong's widest sense","rej":{"c1":"mother is אֵם","c2":"king is מֶלֶךְ","c3":"land is אֶרֶץ"}}
+{"id":"H0251-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters alef, het","rej":{"c1":"father: ends in bet","c2":"woman: longer, ends in he","c3":"scroll: starts with samekh"}}
+{"id":"H0251-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef then het","rej":{"c1":"letters reversed","c2":"ends in he, not het","c3":"ayin instead of alef"}}
+{"id":"H0376-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"alef is rightmost","rej":{"c1":"shin is last","c2":"ayin isn't in the word","c3":"yod is the middle letter"}}
+{"id":"H0376-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"shin is at the left edge","rej":{"c1":"alef is first","c2":"samekh isn't in the word","c3":"yod is in the middle"}}
+{"id":"H0376-gloss","prov":"citation","tests":["word-meaning"],"ans":"man, Strong's def","rej":{"c1":"woman is אִשָּׁה, a separate entry","c2":"king is מֶלֶךְ","c3":"daughter is בַּת"}}
+{"id":"H0376-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.2.24 the one leaving his father and mother","rej":{"c1":"the line says his father","c2":"daughter is בַּת","c3":"mother is what he leaves"}}
+{"id":"H0376-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"man; husband and person accepted, both in Strong's usage","rej":{"c1":"land is אֶרֶץ","c2":"mother is אֵם","c3":"scroll is סֵפֶר"}}
+{"id":"H0376-write","prov":"citation","tests":["alphabet","rtl"],"ans":"letters alef, yod, shin","rej":{"c1":"woman: no yod, ends in he","c2":"father: two letters","c3":"scroll: starts with samekh"}}
+{"id":"H0376-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, yod, shin","rej":{"c1":"letters reversed","c2":"missing the yod","c3":"ayin instead of alef"}}
+{"id":"H0517-first-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"alef is rightmost","rej":{"c1":"final mem is last","c2":"ayin isn't in the word","c3":"samekh isn't in the word"}}
+{"id":"H0517-last-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"final mem is at the left edge","rej":{"c1":"regular mem can't finish a word","c2":"samekh has a rounded base","c3":"alef is first"}}
+{"id":"H0517-final-partner","prov":"citation","tests":["final-forms"],"ans":"ם pairs with מ","rej":{"c1":"bet has no final form","c2":"nun's final is ן","c3":"kaf's final is ך"}}
+{"id":"H0517-gloss","prov":"citation","tests":["word-meaning"],"ans":"mother, Strong's def","rej":{"c1":"father is אָב","c2":"daughter is בַּת","c3":"land is אֶרֶץ"}}
+{"id":"H0517-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.3.20 mother of all the living","rej":{"c1":"Eve is named as mother, not daughter","c2":"man is אִישׁ","c3":"land is אֶרֶץ"}}
+{"id":"H0517-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"mother; the only sense on the card","rej":{"c1":"son is בֵּן","c2":"king is מֶלֶךְ","c3":"brother is אָח"}}
+{"id":"H0517-write","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"letters alef, final mem","rej":{"c1":"father: ends in bet","c2":"land: three letters","c3":"daughter: starts with bet"}}
+{"id":"H0517-mirror","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"alef then final mem","rej":{"c1":"letters reversed, regular mem first","c2":"regular mem can't end a word","c3":"ayin instead of alef; that is עַם or עִם"}}
+{"id":"H0776-first-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"alef is rightmost","rej":{"c1":"final tsade is last","c2":"ayin isn't in the word","c3":"he isn't in this citation form"}}
+{"id":"H0776-last-letter","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"final tsade is at the left edge","rej":{"c1":"regular tsade can't finish a word","c2":"ayin isn't in the word","c3":"resh is the middle letter"}}
+{"id":"H0776-final-partner","prov":"citation","tests":["final-forms"],"ans":"ץ pairs with צ","rej":{"c1":"ayin has no final form","c2":"zayin has no final form","c3":"tet has no final form"}}
+{"id":"H0776-gloss","prov":"citation","tests":["word-meaning"],"ans":"land, Strong's def","rej":{"c1":"king is מֶלֶךְ","c2":"scroll is סֵפֶר","c3":"mother is אֵם"}}
+{"id":"H0776-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.10 names the dry ground, both land and earth fit","rej":{"c1":"king is מֶלֶךְ","c2":"scroll is סֵפֶר","c3":"son is בֵּן"}}
+{"id":"H0776-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"land; earth, country and ground accepted, all in Strong's def or usage","rej":{"c1":"son is בֵּן","c2":"father is אָב","c3":"woman is אִשָּׁה"}}
+{"id":"H0776-write","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"letters alef, resh, final tsade","rej":{"c1":"mother: two letters","c2":"man: ends in shin","c3":"king: starts with mem"}}
+{"id":"H0776-mirror","prov":"citation","tests":["alphabet","rtl","final-forms"],"ans":"alef, resh, final tsade","rej":{"c1":"letters reversed","c2":"regular tsade at the end","c3":"dalet instead of resh"}}
+{"id":"H0802-first-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"alef is rightmost","rej":{"c1":"he is last","c2":"ayin isn't in the word","c3":"shin is the middle letter"}}
+{"id":"H0802-last-letter","prov":"citation","tests":["alphabet","rtl"],"ans":"he is at the left edge","rej":{"c1":"het is closed; this letter has a gap","c2":"tav isn't in the word","c3":"alef is first"}}
+{"id":"H0802-gloss","prov":"citation","tests":["word-meaning"],"ans":"woman, Strong's def","rej":{"c1":"son is בֵּן","c2":"land is אֶרֶץ","c3":"king is מֶלֶךְ"}}

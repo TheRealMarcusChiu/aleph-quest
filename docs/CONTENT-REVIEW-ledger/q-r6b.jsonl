@@ -1,0 +1,60 @@
+{"id":"H1431-sound","prov":"citation","tests":["statives","vowels"],"ans":"qamats, patah: ga-DAL","rej":{"c1":"holam belongs to the adjective great","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H1431-pointed","prov":"citation","tests":["statives"],"ans":"qamats, patah","rej":{"c1":"holam: the adjective great","c2":"holam, segol: the noun greatness"}}
+{"id":"H1431-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.21.8 the child weaned","rej":{"c1":"be full is מָלֵא","c2":"fear is יָרֵא"}}
+{"id":"H1431-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"grow up; grow, become great, be great, grew accepted, in Strong's usage","rej":{"c1":"walk is הָלַךְ","c2":"be able is יָכֹל"}}
+{"id":"H1431-write","prov":"citation","tests":["alphabet","rtl"],"ans":"gimel, dalet, lamed","rej":{"c1":"the adjective's full spelling adds vav","c2":"small starts with qof"}}
+{"id":"H1431-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"gimel, dalet, lamed","rej":{"c1":"resh instead of dalet","c2":"the vav marks the adjective"}}
+{"id":"H4390-sound","prov":"citation","tests":["statives","vowels"],"ans":"qamats, tsere, silent alef: ma-LE","rej":{"c1":"the second vowel is tsere, not an a","c2":"hireq belongs to the Piel"}}
+{"id":"H4390-pointed","prov":"citation","tests":["statives"],"ans":"qamats, tsere: the card's primary citation, which the prompt names","rej":{"c1":"a rarer dictionary spelling, not the card's primary citation the prompt asks for","c2":"hireq and a doubled lamed: Piel, he filled"}}
+{"id":"H4390-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.6.13 the earth is full of violence","rej":{"c1":"be able is יָכֹל","c2":"grow up is גָּדַל"}}
+{"id":"H4390-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"be full; full, was full accepted, and fill too, a Qal sense in the source: Gen.1.22 01RCg is HC/Vqv2mp","rej":{"c1":"do not is אַל","c2":"keep is שָׁמַר"}}
+{"id":"H4390-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, lamed, alef","rej":{"c1":"king ends in final kaf","c2":"find has tsade"}}
+{"id":"H4390-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, lamed, alef","rej":{"c1":"he instead of alef","c2":"reversed, and regular mem can't end a word"}}
+{"id":"H3372-sound","prov":"citation","tests":["statives","vowels"],"ans":"qamats, tsere, silent alef: ya-RE","rej":{"c1":"the second vowel is tsere","c2":"hireq first isn't this pointing"}}
+{"id":"H3372-pointed","prov":"citation","tests":["statives"],"ans":"qamats, tsere","rej":{"c1":"qamats second isn't this stative's citation","c2":"hireq and shewa: a short form's shape"}}
+{"id":"H3372-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.19.30 afraid to stay","rej":{"c1":"be full is מָלֵא","c2":"see is רָאָה, a look-alike root"}}
+{"id":"H3372-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"fear; be afraid, afraid, revere accepted","rej":{"c1":"grow up is גָּדַל","c2":"find is מָצָא"}}
+{"id":"H3372-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, resh, alef","rej":{"c1":"be able has kaf and lamed","c2":"create starts with bet"}}
+{"id":"H3372-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, resh, alef","rej":{"c1":"he instead of alef","c2":"dalet instead of resh"}}
+{"id":"H0518-sound","prov":"citation","tests":["vowels"],"ans":"hireq: im","rej":{"c1":"tsere gives mother","c2":"a needs patah or qamats"}}
+{"id":"H0518-pointed","prov":"citation","tests":["vowels"],"ans":"hireq under alef","rej":{"c1":"tsere: mother, a separate lexeme","c2":"patah isn't this word"}}
+{"id":"H0518-in-context","prov":"attested","tests":["questions","word-meaning"],"ans":"Gen.4.7 sets a condition","rej":{"c1":"mother needs tsere, and can't introduce a clause","c2":"who is מִי"}}
+{"id":"H0518-type-gloss","prov":"citation","tests":["questions","word-meaning"],"ans":"if; whether accepted","rej":{"c1":"what is מָה","c2":"very is מְאֹד"}}
+{"id":"H0518-write","prov":"citation","tests":["final-forms"],"ans":"alef, final mem","rej":{"c1":"with starts with ayin","c2":"what ends in he"}}
+{"id":"H0518-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, final mem","rej":{"c1":"ayin: with or people","c2":"regular mem at the end"}}
+{"id":"H4100-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"qamats, silent he: mah","rej":{"c1":"who, with hireq","c2":"e needs segol or tsere"}}
+{"id":"H4100-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under mem","rej":{"c1":"tsere reads e","c2":"holam reads o"}}
+{"id":"H4100-in-context","prov":"attested","tests":["questions","word-meaning"],"ans":"Gen.2.19 what name he would give","rej":{"c1":"who asks about a person","c2":"water starts the same way but is מַיִם"}}
+{"id":"H4100-type-gloss","prov":"citation","tests":["questions","word-meaning"],"ans":"what; how and why accepted, Strong's range","rej":{"c1":"if is אִם","c2":"there is שָׁם"}}
+{"id":"H4100-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, he","rej":{"c1":"who ends in yod","c2":"mouth starts with pe"}}
+{"id":"H4100-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, he","rej":{"c1":"het instead of he","c2":"yod: who"}}
+{"id":"H4310-sound","prov":"citation","tests":["vowels"],"ans":"hireq-yod: mi","rej":{"c1":"what, with qamats","c2":"patah-yod isn't this pointing"}}
+{"id":"H4310-pointed","prov":"citation","tests":["vowels"],"ans":"hireq under mem","rej":{"c1":"patah isn't this word","c2":"tsere: water of, the construct of מַיִם"}}
+{"id":"H4310-in-context","prov":"attested","tests":["questions","word-meaning"],"ans":"Gen.3.11 asks about a person","rej":{"c1":"what asks about things","c2":"where would be אַיֵּה"}}
+{"id":"H4310-type-gloss","prov":"citation","tests":["questions","word-meaning"],"ans":"who; whom accepted","rej":{"c1":"so is כֵּן","c2":"one is אֶחָד"}}
+{"id":"H4310-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, yod","rej":{"c1":"that starts with kaf","c2":"what ends in he"}}
+{"id":"H4310-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, yod","rej":{"c1":"reversed, with a regular mem last","c2":"he: what"}}
+{"id":"H0408-sound","prov":"citation","tests":["vowels"],"ans":"patah: al","rej":{"c1":"segol: to","c2":"i needs hireq"}}
+{"id":"H0408-pointed","prov":"citation","tests":["vowels"],"ans":"patah under alef","rej":{"c1":"segol: to, H413","c2":"tsere: god, H410"}}
+{"id":"H0408-in-context","prov":"attested","tests":["volitives","word-meaning"],"ans":"Gen.13.8 a negative wish","rej":{"c1":"to has segol","c2":"also is גַּם"}}
+{"id":"H0408-type-gloss","prov":"citation","tests":["volitives","word-meaning"],"ans":"do not; don't, let not, not accepted","rej":{"c1":"please is נָא","c2":"who is מִי"}}
+{"id":"H0408-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed; the prompt names the wish or command particle starting with alef","rej":{"c1":"can also ban firmly, but it starts with lamed, and the prompt asks for alef","c2":"please has nun"}}
+{"id":"H0408-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, lamed; the prompt names the wish or command particle starting with alef","rej":{"c1":"can also ban firmly, but it starts with lamed, and the prompt asks for alef","c2":"ayin: on"}}
+{"id":"H4994-sound","prov":"citation","tests":["vowels"],"ans":"qamats, silent alef: na","rej":{"c1":"e needs segol or tsere","c2":"this qamats is in an open stressed syllable, so it is a"}}
+{"id":"H4994-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under nun","rej":{"c1":"tsere reads e","c2":"shewa gives no full vowel"}}
+{"id":"H4994-in-context","prov":"attested","tests":["volitives","word-meaning"],"ans":"Gen.12.11 softens Abram's request","rej":{"c1":"never is לֹא-type negation, not this","c2":"who is מִי"}}
+{"id":"H4994-type-gloss","prov":"citation","tests":["volitives","word-meaning"],"ans":"please; now and I pray accepted, Strong's now as entreaty, and the explanation says it isn't about time","rej":{"c1":"there is שָׁם","c2":"very is מְאֹד"}}
+{"id":"H4994-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, alef","rej":{"c1":"not has lamed","c2":"do not has lamed"}}
+{"id":"H4994-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, alef","rej":{"c1":"reversed, with a regular nun last","c2":"he instead of alef"}}
+{"id":"H8033-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats: sham","rej":{"c1":"tsere: name","c2":"s needs the left-arm dot"}}
+{"id":"H8033-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under shin","rej":{"c1":"tsere: name","c2":"left dot and no vowel aren't this word"}}
+{"id":"H8033-in-context","prov":"attested","tests":["imperfect","word-meaning"],"ans":"Gen.2.8 points back to the garden","rej":{"c1":"name needs tsere","c2":"very is מְאֹד"}}
+{"id":"H8033-type-gloss","prov":"citation","tests":["imperfect","word-meaning"],"ans":"there","rej":{"c1":"what is מָה","c2":"child is יֶלֶד"}}
+{"id":"H8033-write","prov":"citation","tests":["final-forms"],"ans":"shin, final mem","rej":{"c1":"they starts with he","c2":"with starts with ayin"}}
+{"id":"H8033-mirror","prov":"citation","tests":["final-forms"],"ans":"shin, final mem","rej":{"c1":"letters reversed, with a regular mem first","c2":"regular mem at the end"}}
+{"id":"H3966-sound","prov":"citation","tests":["shewa","vowels"],"ans":"sounded shewa, holam on alef: me-OD","rej":{"c1":"a is not the shewa's sound here","c2":"swaps the order and the stress"}}
+{"id":"H3966-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"shewa, holam","rej":{"c1":"qamats where shewa belongs","c2":"patah where holam belongs"}}
+{"id":"H3966-in-context","prov":"attested","tests":["imperfect","word-meaning"],"ans":"Gen.1.31 strengthens good","rej":{"c1":"not is לֹא","c2":"again is עוֹד"}}
+{"id":"H3966-type-gloss","prov":"citation","tests":["imperfect","word-meaning"],"ans":"very; greatly and exceedingly accepted, in Strong's usage","rej":{"c1":"there is שָׁם","c2":"hundred is מֵאָה"}}
+{"id":"H3966-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, dalet","rej":{"c1":"hundred ends in he","c2":"again starts with ayin"}}
+{"id":"H3966-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, dalet","rej":{"c1":"resh instead of dalet","c2":"ayin instead of alef"}}

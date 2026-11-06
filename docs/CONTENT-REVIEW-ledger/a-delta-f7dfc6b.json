@@ -1,0 +1,16 @@
+{"scope":"Delta after the independent grammar audit (content-grammar302-final-audit/FINAL.md). That audit found one feedback error and 11 operations with no guided application, across 10 lessons. Only those records changed here. Verdicts are the author's own and need independent review. This doesn't approve the bank.","lessons":[
+{"id":"l-nominal","finding":"F3.1","source":"Gen.3.6 015L1, 01nY7","why":"Adds g-nominal-2 on a verbless statement. g-nominal stays."},
+{"id":"l-min","finding":"F3.2","source":"Gen.3.19 012Ss","why":"Adds g-min-2 on the segholate pattern. g-min stays."},
+{"id":"l-adjectives","finding":"F3.3","source":"Gen.3.1 01UEd; Gen.39.9 01uZ7","why":"Comparison was only in prose. Adds a worked example and g-adjectives-2. g-adjectives stays."},
+{"id":"l-pronouns","finding":"F3.4","source":"Gen.19.20 01u4V","why":"Adds g-pronouns-2 on demonstrative gender. g-pronouns stays."},
+{"id":"l-existence","finding":"F3.5, F3.6","source":"Gen.1.1 01Nvk; Gen.2.8 01sC3","why":"Adds g-existence-2 on the III-alef vowel and g-existence-3 on the relative link. g-existence stays."},
+{"id":"l-imperfect","finding":"F3.7","source":"Gen.15.5 01S4Y","why":"Adds g-imperfect-2 on directive he. g-imperfect stays."},
+{"id":"l-statives","finding":"F3.8","source":"Gen.4.10 01iQS; Gen.3.13 01gjk","why":"What was only in prose. Adds a worked example and g-statives-2. g-statives stays."},
+{"id":"l-infinitive","finding":"F3.9","source":"Gen.15.13 01nSW","why":"Adds g-infinitive-2 on infinitive absolute emphasis, contrasted with a purpose. g-infinitive stays."},
+{"id":"l-piel","finding":"F3.10","source":"Gen.10.21 01zZV","why":"Adds g-piel-2. It asks for OSHB's label and says some grammars read an old Qal passive. g-piel stays."},
+{"id":"l-hiphil","finding":"F3.11","source":"Gen.39.1 01p3s and 01fYp","why":"Adds g-hiphil-2 on the Hophal prefix vowel, not active cause. g-hiphil stays."}
+],"groups":[
+{"kind":"question","verdict":"corrected","inspected":"record+card","finding":"F2","source":"Gen.14.7 015MF as the audit read it; the token is test-bound","why":"b-r4-construct-3 said both vowels shortened. The first reduces to shewa, and the ending segol changes to tsere. Token, options, key and hint are unchanged.","ids":["b-r4-construct-3"]},
+{"kind":"question","verdict":"accept","inspected":"record+xml","finding":"F3","source":"The verses named in the lessons list, read in Bereshit.xml","why":"New guided items. Each applies its operation to a real token that isn't its independent question's.","ids":["g-nominal-2","g-adjectives-2","g-pronouns-2","g-existence-2","g-existence-3","g-imperfect-2","g-statives-2","g-infinitive-2","g-piel-2","g-hiphil-2"]},
+{"kind":"question","verdict":"accept","inspected":"record+card","finding":"F3","source":"Gen.3.19 012Ss token and the H3899 card. It makes no verse claim","why":"New guided item on the segholate pattern.","ids":["g-min-2"]}
+],"notChanged":["The 20 independent questions the audit listed keep their keys and source bytes.","Words, roots, regions, quests, pools and skills. No skill id, chart or engine feature was added.","a-ptc-1 was already fixed in f7dfc6b."],"remainingUnreviewed":"Independent results belong to their reviewers. The audit made no runtime claim, and this delta doesn't show the guides in a browser. Whether each guide is reached in play belongs to the consumer journey."}

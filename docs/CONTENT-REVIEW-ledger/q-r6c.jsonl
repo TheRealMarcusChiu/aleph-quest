@@ -1,0 +1,57 @@
+{"id":"H0259-sound","prov":"citation","tests":["vowels"],"ans":"segol, het kh, qamats, final stress","rej":{"c1":"a and h aren't this pointing or letter","c2":"second segol and first-syllable stress aren't this pointing"}}
+{"id":"H0259-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"segol, then qamats: the card's primary citation, which the prompt names","rej":{"c1":"qamats then patah is a verb's shape","c2":"a real contextual form at Gen.21.15 01CZt and Gen.3.22 01Xxj, but not the card's primary citation the prompt asks for"}}
+{"id":"H0259-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.1.9 a single place","rej":{"c1":"two is שְׁנַיִם","c2":"there is שָׁם"}}
+{"id":"H0259-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"one; first and a certain accepted, Strong's range","rej":{"c1":"three is שָׁלוֹשׁ","c2":"brother is אָח, a look-alike"}}
+{"id":"H0259-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, het, dalet","rej":{"c1":"brother has two letters","c2":"hundred ends in he"}}
+{"id":"H0259-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, het, dalet","rej":{"c1":"resh: another or after","c2":"he instead of het"}}
+{"id":"H8147-sound","prov":"citation","tests":["shewa","vowels"],"ans":"sounded shewa, patah, hireq: she-NA-yim","rej":{"c1":"years, with qamats and hireq-yod","c2":"s needs the left-arm dot"}}
+{"id":"H8147-pointed","prov":"citation","tests":["shewa","vowels"],"ans":"shewa and the dual ending","rej":{"c1":"years, with the same letters","c2":"left dot makes sin"}}
+{"id":"H8147-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.1.16 a greater and a lesser light","rej":{"c1":"years has qamats, and the verse counts lights","c2":"seven is שֶׁבַע"}}
+{"id":"H8147-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"two; the digit accepted","rej":{"c1":"heavens has mem, not nun","c2":"one is אֶחָד"}}
+{"id":"H8147-write","prov":"citation","tests":["final-forms"],"ans":"shin, nun, yod, final mem; these letters can also spell years, and the points distinguish the readings","rej":{"c1":"year ends in he","c2":"heavens has mem second"}}
+{"id":"H8147-mirror","prov":"citation","tests":["final-forms"],"ans":"shin, nun, yod, final mem","rej":{"c1":"mem second: heavens","c2":"regular mem at the end"}}
+{"id":"H7969-sound","prov":"citation","tests":["vowels"],"ans":"two shins, qamats, holam-vav: sha-LOSH","rej":{"c1":"s needs left-arm dots","c2":"shewa and shureq aren't this pointing"}}
+{"id":"H7969-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"qamats, holam-vav, right-arm dots","rej":{"c1":"shewa and shureq","c2":"left-arm dots make sin"}}
+{"id":"H7969-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.22 three hundred","rej":{"c1":"seven is שֶׁבַע","c2":"one is אֶחָד"}}
+{"id":"H7969-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"three; the digit accepted","rej":{"c1":"five is חָמֵשׁ","c2":"ten is עֶשֶׂר"}}
+{"id":"H7969-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, lamed, vav, shin","rej":{"c1":"seven has bet and ayin","c2":"send ends in het"}}
+{"id":"H7969-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, lamed, vav, shin","rej":{"c1":"samekh at the end","c2":"samekh at the start"}}
+{"id":"H2568-sound","prov":"citation","tests":["vowels"],"ans":"het kh, qamats, tsere: kha-MESH","rej":{"c1":"h is he","c2":"o and a aren't these signs"}}
+{"id":"H2568-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"qamats, tsere","rej":{"c1":"holam and segol: a fifth, another form","c2":"patah and a left dot aren't this word"}}
+{"id":"H2568-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.6 counts Seth's years","rej":{"c1":"seven is שֶׁבַע","c2":"two is שְׁנַיִם"}}
+{"id":"H2568-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"five; the digit accepted","rej":{"c1":"three is שָׁלוֹשׁ","c2":"hundred is מֵאָה"}}
+{"id":"H2568-write","prov":"citation","tests":["alphabet","rtl"],"ans":"het, mem, shin","rej":{"c1":"living being starts with nun","c2":"seven starts with shin"}}
+{"id":"H2568-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"het, mem, shin","rej":{"c1":"he instead of het","c2":"letters reversed: be glad"}}
+{"id":"H7651-sound","prov":"citation","tests":["vowels"],"ans":"segol, patah, silent ayin, first-syllable stress","rej":{"c1":"same sounds, wrong stress: this shape stresses the first syllable","c2":"s and swapped vowels aren't this pointing"}}
+{"id":"H7651-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"segol, patah","rej":{"c1":"qamats: the verb swear","c2":"qamats and a left dot: the verb be full"}}
+{"id":"H7651-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.7 counts years","rej":{"c1":"swear needs qamats, and years don't swear","c2":"three is שָׁלוֹשׁ"}}
+{"id":"H7651-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"seven; the digit accepted","rej":{"c1":"ten is עֶשֶׂר","c2":"two is שְׁנַיִם"}}
+{"id":"H7651-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, bet, ayin","rej":{"c1":"seed starts with zayin","c2":"five starts with het"}}
+{"id":"H7651-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, bet, ayin","rej":{"c1":"kaf instead of bet","c2":"alef instead of ayin"}}
+{"id":"H6235-sound","prov":"citation","tests":["vowels"],"ans":"two segols, sin: E-ser","rej":{"c1":"sh needs the right-arm dot","c2":"a-vowels and final stress aren't this pointing"}}
+{"id":"H6235-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"two segols, left-arm dot","rej":{"c1":"holam and a right dot: wealth","c2":"two qamats signs: the teen form"}}
+{"id":"H6235-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.14 totals a lifespan","rej":{"c1":"five is חָמֵשׁ","c2":"wealth has holam and shin"}}
+{"id":"H6235-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"ten; the digit accepted","rej":{"c1":"seven is שֶׁבַע","c2":"one is אֶחָד"}}
+{"id":"H6235-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, ש, resh","rej":{"c1":"who starts with alef","c2":"servant has bet and dalet"}}
+{"id":"H6235-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, ש, resh","rej":{"c1":"alef: who","c2":"samekh instead of ש"}}
+{"id":"H3967-sound","prov":"citation","tests":["vowels"],"ans":"tsere, alef with qamats, silent he: me-AH","rej":{"c1":"a needs patah or qamats under mem","c2":"o and first-syllable stress aren't this pointing"}}
+{"id":"H3967-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"tsere, qamats","rej":{"c1":"shewa: a form like the construct","c2":"qamats where tsere belongs"}}
+{"id":"H3967-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.3 a hundred and thirty","rej":{"c1":"very is מְאֹד","c2":"ten is עֶשֶׂר"}}
+{"id":"H3967-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"hundred; a hundred and the digits accepted","rej":{"c1":"very shares two letters only","c2":"what is מָה"}}
+{"id":"H3967-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, he","rej":{"c1":"very ends in dalet","c2":"what has two letters"}}
+{"id":"H3967-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, he","rej":{"c1":"dalet: very","c2":"ayin instead of alef"}}
+{"id":"H3206-sound","prov":"citation","tests":["vowels"],"ans":"two segols, first-syllable stress: YE-led","rej":{"c1":"the verb, with qamats and patah","c2":"hireq and final stress aren't this pointing"}}
+{"id":"H3206-pointed","prov":"citation","tests":["participle","vowels"],"ans":"two segols mark the noun","rej":{"c1":"the verb's perfect, a separate entry","c2":"a participle's pattern"}}
+{"id":"H3206-in-context","prov":"attested","tests":["participle","word-meaning"],"ans":"Gen.21.8 just weaned, with the article","rej":{"c1":"servant is עֶבֶד","c2":"king is מֶלֶךְ"}}
+{"id":"H3206-type-gloss","prov":"citation","tests":["participle","word-meaning"],"ans":"child; boy, lad, young man accepted, Strong's def and usage","rej":{"c1":"dream is חֲלוֹם","c2":"year is שָׁנָה"}}
+{"id":"H3206-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet; the prompt names this card's word ending in dalet","rej":{"c1":"can also mean child, H5288, but it is a separate word that ends in resh","c2":"servant starts with ayin"}}
+{"id":"H3206-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"resh instead of dalet","c2":"letters reversed"}}
+{"id":"H8141-sound","prov":"citation","tests":["vowels","dagesh"],"ans":"shin, two qamats signs, silent he: sha-NAH","rej":{"c1":"shewa and hireq aren't this pointing","c2":"s needs the left-arm dot"}}
+{"id":"H8141-pointed","prov":"citation","tests":["numbers","vowels"],"ans":"two qamats signs","rej":{"c1":"tsere: sleep","c2":"shewa isn't the first vowel"}}
+{"id":"H8141-in-context","prov":"attested","tests":["numbers","word-meaning"],"ans":"Gen.5.3 lifespans count years","rej":{"c1":"sleep has tsere","c2":"child is יֶלֶד"}}
+{"id":"H8141-type-gloss","prov":"citation","tests":["numbers","word-meaning"],"ans":"year; a year accepted","rej":{"c1":"name is שֵׁם","c2":"hear is שָׁמַע"}}
+{"id":"H8141-write","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, nun, he","rej":{"c1":"two ends in final mem","c2":"hear ends in ayin"}}
+{"id":"H8141-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"shin, nun, he","rej":{"c1":"het instead of he","c2":"mem instead of nun"}}
+{"id":"H2472-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"het kh, hataf patah, holam-vav: kha-LOM","rej":{"c1":"h is he","c2":"u needs shureq"}}
+{"id":"H2472-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, holam-vav","rej":{"c1":"qamats where hataf patah belongs","c2":"shureq reads u"}}
+{"id":"H2472-in-context","prov":"attested","tests":["narrative","word-meaning"],"ans":"Gen.20.3 by night, while he sleeps","rej":{"c1":"tent is אֹהֶל, not a time of night","c2":"voice is קוֹל"}}

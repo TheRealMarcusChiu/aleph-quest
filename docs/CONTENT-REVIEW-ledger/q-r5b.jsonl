@@ -1,0 +1,60 @@
+{"id":"H0854-sound","prov":"citation","tests":["vowels"],"ans":"tsere: et, sounding like the object marker","rej":{"c1":"i needs hireq, as in the suffixed stem only","c2":"o needs holam, the object marker's suffixed stem"}}
+{"id":"H0854-pointed","prov":"citation","tests":["vowels"],"ans":"tsere under alef","rej":{"c1":"holam reads o","c2":"patah reads a"}}
+{"id":"H0854-in-context","prov":"span","tests":["prep-suffixes","word-meaning"],"ans":"Gen.6.18 stem אִתּ- with a you suffix; contextKey records the covenant token 014Zw, not the later 01WLF, with OSHB's 2fs tag and the pausal note. Verse read in XML","rej":{"c1":"to him would be אֵלָיו","c2":"from her would be a form of מִן"}}
+{"id":"H0854-type-gloss","prov":"citation","tests":["prep-suffixes","word-meaning"],"ans":"with; beside and together with accepted","rej":{"c1":"who is מִי or אֲשֶׁר","c2":"so is כֵּן"}}
+{"id":"H0854-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"the other with starts with ayin","c2":"there is not has a final nun"}}
+{"id":"H0854-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, tav","rej":{"c1":"tet instead of tav","c2":"letters reversed"}}
+{"id":"H5973-sound","prov":"citation","tests":["vowels"],"ans":"hireq: im","rej":{"c1":"patah gives am, people","c2":"e needs tsere or segol"}}
+{"id":"H5973-pointed","prov":"citation","tests":["vowels"],"ans":"hireq under ayin","rej":{"c1":"patah: people, a separate lexeme","c2":"tsere reads e"}}
+{"id":"H5973-in-context","prov":"attested","tests":["prep-suffixes","word-meaning"],"ans":"Gen.21.10 inheriting together with Isaac","rej":{"c1":"people is עַם, with patah","c2":"so is כֵּן"}}
+{"id":"H5973-type-gloss","prov":"citation","tests":["prep-suffixes","word-meaning"],"ans":"with; together with and along with accepted","rej":{"c1":"people is עַם","c2":"there is is יֵשׁ"}}
+{"id":"H5973-write","prov":"citation","tests":["final-forms"],"ans":"ayin, final mem","rej":{"c1":"the other with starts with alef","c2":"also starts with gimel"}}
+{"id":"H5973-mirror","prov":"citation","tests":["final-forms"],"ans":"ayin, final mem","rej":{"c1":"regular mem at the end","c2":"alef instead of ayin"}}
+{"id":"H3426-sound","prov":"citation","tests":["vowels"],"ans":"tsere, shin: yesh","rej":{"c1":"s needs the left-arm dot","c2":"a needs patah or qamats"}}
+{"id":"H3426-pointed","prov":"citation","tests":["vowels"],"ans":"tsere and a right-arm dot","rej":{"c1":"left dot makes sin","c2":"qamats reads a"}}
+{"id":"H3426-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.18.24 supposing fifty exist","rej":{"c1":"Abraham supposes they exist, not that they don't","c2":"also is גַּם"}}
+{"id":"H3426-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"there is; there are and exists accepted","rej":{"c1":"who is מִי","c2":"mouth is פֶּה"}}
+{"id":"H3426-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin","rej":{"c1":"man has alef and yod first","c2":"there is not has a final nun"}}
+{"id":"H3426-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, shin","rej":{"c1":"letters reversed","c2":"samekh instead of shin"}}
+{"id":"H0369-sound","prov":"citation","tests":["vowels"],"ans":"patah, hireq: A-yin","rej":{"c1":"the short construct אֵין","c2":"swaps the vowels"}}
+{"id":"H0369-pointed","prov":"citation","tests":["vowels"],"ans":"patah, hireq","rej":{"c1":"real, but the short construct before a noun","c2":"hireq and qamats reverse them"}}
+{"id":"H0369-in-context","prov":"attested","tests":["existence","word-meaning"],"ans":"Gen.2.5 the missing worker","rej":{"c1":"eye starts with ayin","c2":"the point is that he was absent"}}
+{"id":"H0369-type-gloss","prov":"citation","tests":["existence","word-meaning"],"ans":"there is not; there is no, there are not, nothing, none, not accepted, Strong's usage","rej":{"c1":"also is גַּם","c2":"look is הִנֵּה"}}
+{"id":"H0369-write","prov":"citation","tests":["final-forms"],"ans":"alef, yod, final nun","rej":{"c1":"eye starts with ayin","c2":"between starts with bet"}}
+{"id":"H0369-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, yod, final nun","rej":{"c1":"ayin: eye","c2":"regular nun at the end"}}
+{"id":"H0834-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, shin with segol, final stress","rej":{"c1":"e for the first sign and s for shin are both wrong","c2":"first-syllable stress and a second a aren't this pointing"}}
+{"id":"H0834-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"hataf patah, shin, segol","rej":{"c1":"qamats and patah: a verb shape","c2":"segol first and a left-arm dot"}}
+{"id":"H0834-in-context","prov":"span","tests":["relative","word-meaning"],"ans":"Gen.1.7 OSHB tags a relative; contextKey records the token and basis","rej":{"c1":"because would be כִּי","c2":"if would be אִם"}}
+{"id":"H0834-type-gloss","prov":"citation","tests":["relative","word-meaning"],"ans":"who; which, that, whom accepted, Strong's defs","rej":{"c1":"so is כֵּן","c2":"lord is אָדוֹן"}}
+{"id":"H0834-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, shin, resh","rej":{"c1":"say has mem","c2":"head starts with resh"}}
+{"id":"H0834-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, shin, resh","rej":{"c1":"samekh instead of shin","c2":"dalet instead of resh"}}
+{"id":"H4672-sound","prov":"citation","tests":["iii-aleph","vowels"],"ans":"two qamats signs, silent alef: ma-TSA","rej":{"c1":"e isn't these signs","c2":"this first qamats is in an open syllable, so it is a, and the stress is final"}}
+{"id":"H4672-pointed","prov":"citation","tests":["iii-aleph"],"ans":"two qamats signs before silent alef","rej":{"c1":"patah is what a strong verb has; alef lengthens it here","c2":"shewa gives another form"}}
+{"id":"H4672-in-context","prov":"attested","tests":["iii-aleph","word-meaning"],"ans":"Gen.2.20 he looked and came up empty","rej":{"c1":"call is what he did to the animals","c2":"create is בָּרָא"}}
+{"id":"H4672-type-gloss","prov":"citation","tests":["iii-aleph","word-meaning"],"ans":"find; found, he found, obtain accepted, Strong's range","rej":{"c1":"say is אָמַר","c2":"bury is קָבַר"}}
+{"id":"H4672-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, tsade, alef","rej":{"c1":"call starts with qof","c2":"flock starts with tsade"}}
+{"id":"H4672-mirror","prov":"citation","tests":["iii-aleph","alphabet"],"ans":"mem, tsade, alef","rej":{"c1":"he instead of alef","c2":"letters reversed, with a regular mem at the end"}}
+{"id":"H7121-sound","prov":"citation","tests":["iii-aleph","vowels"],"ans":"two qamats signs, silent alef: qa-RA","rej":{"c1":"o and e belong to a participle's pattern","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H7121-pointed","prov":"citation","tests":["iii-aleph"],"ans":"two qamats signs","rej":{"c1":"patah where alef lengthens to qamats","c2":"shewa gives the imperative"}}
+{"id":"H7121-in-context","prov":"attested","tests":["iii-aleph","word-meaning"],"ans":"Gen.1.5 naming the darkness","rej":{"c1":"find is מָצָא","c2":"send is שָׁלַח"}}
+{"id":"H7121-type-gloss","prov":"citation","tests":["iii-aleph","word-meaning"],"ans":"call; called, he called, name, proclaim accepted, Strong's range","rej":{"c1":"hear is שָׁמַע","c2":"eat is אָכַל"}}
+{"id":"H7121-write","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, resh, alef","rej":{"c1":"create starts with bet","c2":"voice has a vav"}}
+{"id":"H7121-mirror","prov":"citation","tests":["iii-aleph","alphabet"],"ans":"qof, resh, alef","rej":{"c1":"kaf instead of qof","c2":"he: another verb"}}
+{"id":"H1254-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard bet, two qamats signs: ba-RA","rej":{"c1":"v needs no dagesh","c2":"e and first-syllable stress aren't this pointing"}}
+{"id":"H1254-pointed","prov":"citation","tests":["iii-aleph"],"ans":"two qamats signs","rej":{"c1":"patah where alef lengthens to qamats","c2":"holam and tsere: a participle"}}
+{"id":"H1254-in-context","prov":"attested","tests":["iii-aleph","word-meaning"],"ans":"Gen.1.1 brings heavens and earth into being","rej":{"c1":"call comes in verse 5","c2":"find is מָצָא"}}
+{"id":"H1254-type-gloss","prov":"citation","tests":["iii-aleph","word-meaning"],"ans":"create; created and he created accepted","rej":{"c1":"serve is עָבַד","c2":"lie down is שָׁכַב"}}
+{"id":"H1254-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, resh, alef","rej":{"c1":"call starts with qof","c2":"covenant has four letters"}}
+{"id":"H1254-mirror","prov":"citation","tests":["iii-aleph","alphabet"],"ans":"bet, resh, alef","rej":{"c1":"he instead of alef","c2":"kaf instead of bet"}}
+{"id":"H0269-sound","prov":"citation","tests":["vowels"],"ans":"qamats, het kh, holam-vav: a-KHOT","rej":{"c1":"h is he, which has a gap","c2":"a second a and first-syllable stress aren't this pointing"}}
+{"id":"H0269-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav","rej":{"c1":"shureq reads u","c2":"segol isn't the first vowel"}}
+{"id":"H0269-in-context","prov":"span","tests":["noun-suffixes","word-meaning"],"ans":"Gen.12.13 sister with a my suffix; contextKey records the token and morphology","rej":{"c1":"mother is a different noun","c2":"lord is a different noun"}}
+{"id":"H0269-type-gloss","prov":"citation","tests":["noun-suffixes","word-meaning"],"ans":"sister","rej":{"c1":"brother is a separate entry","c2":"covenant is בְּרִית"}}
+{"id":"H0269-write","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, het, vav, tav","rej":{"c1":"brother has two letters","c2":"covenant starts with bet"}}
+{"id":"H0269-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"alef, het, vav, tav","rej":{"c1":"he instead of het","c2":"tet instead of tav"}}
+{"id":"H0113-sound","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav, final nun: a-DON","rej":{"c1":"u needs shureq","c2":"o first and segol aren't this pointing"}}
+{"id":"H0113-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav","rej":{"c1":"hataf patah and shureq aren't this word","c2":"patah, silent shewa and qamats aren't this word"}}
+{"id":"H0113-in-context","prov":"attested","tests":["noun-suffixes","word-meaning"],"ans":"Gen.18.12 Sarah's polite title for Abraham","rej":{"c1":"Abraham isn't her son","c2":"servant is the opposite of this title"}}
+{"id":"H0113-type-gloss","prov":"citation","tests":["noun-suffixes","word-meaning"],"ans":"lord; master and sir accepted, Strong's range","rej":{"c1":"sister is אָחוֹת","c2":"mouth is פֶּה"}}
+{"id":"H0113-write","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, vav, final nun","rej":{"c1":"human being ends in final mem","c2":"small starts with qof"}}
+{"id":"H0113-mirror","prov":"citation","tests":["final-forms"],"ans":"alef, dalet, vav, final nun","rej":{"c1":"resh: a chest or ark","c2":"regular nun at the end"}}
