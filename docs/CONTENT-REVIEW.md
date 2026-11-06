@@ -81,7 +81,9 @@ No `match` format was authored, so nothing depends on it.
 - H7812 שָׁחָה: Strong's root and the Hishtaphel analysis under חוה disagree. The rootNote flags this.
 - H7451 and H2416: Strong has one number for adjective and noun, while OSHB splits them. The noun forms are listed as derivations.
 - H1419, H7969 and H2472 appear in Genesis in shorter spellings than the taught full ones. Their cards and prompts say so.
-- Pual forms of לקח (`b-r7-stem-1`, `b-r7-parse-2`): some grammars call these Qal passives. The explanation names both.
+- Pual forms of לקח and ילד (`b-r7-stem-1`, `b-r7-parse-2`, `a-pual-1`): some grammars call these Qal passives. `l-piel` names both views. `b-r7-stem-1` and `a-pual-1` ask for OSHB's tagging by name, and `b-r7-parse-2` doesn't ask for the stem label.
+- Typed-meaning aliases were read once against the shown form, the stem and the source. Removed: "kill" for מוּת (Hiphil) and "me" for the subject pronouns אֲנִי and אָנֹכִי. Kept after a source check: "fill" for מָלֵא (Qal at Gen.1.22, 01RCg) and "father" for יָלַד (Qal at Gen.4.18, 01fQG). Kept on judgement: "kneel" for בָּרַךְ, as the prompt asks for the verb and the shown shape is the Qal one; "light" for מָאוֹר, as Gen.1.16 calls it one; "now" for נָא, as an entreaty. The other judgement calls in the list haven't been independently reviewed.
+- `tests/content/teaching.test.mjs` binds vowel signs, dagesh claims and named rules to the lesson and the displayed form. It can't tell whether a lesson teaches well, or certify any other rationale.
 - Sound guides are a modern classroom convention. Stress marks were assigned by hand and then cross-checked as described above. No qualified reviewer has checked them.
 
 ## Per-word ledger

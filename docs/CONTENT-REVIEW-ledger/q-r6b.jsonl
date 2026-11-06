@@ -7,7 +7,7 @@
 {"id":"H4390-sound","prov":"citation","tests":["statives","vowels"],"ans":"qamats, tsere, silent alef: ma-LE","rej":{"c1":"the second vowel is tsere, not an a","c2":"hireq belongs to the Piel"}}
 {"id":"H4390-pointed","prov":"citation","tests":["statives"],"ans":"qamats, tsere","rej":{"c1":"qamats second isn't this stative's citation","c2":"hireq and a doubled lamed: Piel, he filled"}}
 {"id":"H4390-in-context","prov":"attested","tests":["statives","word-meaning"],"ans":"Gen.6.13 the earth is full of violence","rej":{"c1":"be able is יָכֹל","c2":"grow up is גָּדַל"}}
-{"id":"H4390-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"be full; full, was full, fill accepted, Strong's range","rej":{"c1":"do not is אַל","c2":"keep is שָׁמַר"}}
+{"id":"H4390-type-gloss","prov":"citation","tests":["statives","word-meaning"],"ans":"be full; full, was full accepted, and fill too, a Qal sense in the source: Gen.1.22 01RCg is HC/Vqv2mp","rej":{"c1":"do not is אַל","c2":"keep is שָׁמַר"}}
 {"id":"H4390-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, lamed, alef","rej":{"c1":"king ends in final kaf","c2":"find has tsade"}}
 {"id":"H4390-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, lamed, alef","rej":{"c1":"he instead of alef","c2":"reversed, and regular mem can't end a word"}}
 {"id":"H3372-sound","prov":"citation","tests":["statives","vowels"],"ans":"qamats, tsere, silent alef: ya-RE","rej":{"c1":"the second vowel is tsere","c2":"hireq first isn't this pointing"}}
@@ -43,7 +43,7 @@
 {"id":"H4994-sound","prov":"citation","tests":["vowels"],"ans":"qamats, silent alef: na","rej":{"c1":"e needs segol or tsere","c2":"this qamats is in an open stressed syllable, so it is a"}}
 {"id":"H4994-pointed","prov":"citation","tests":["vowels"],"ans":"qamats under nun","rej":{"c1":"tsere reads e","c2":"shewa gives no full vowel"}}
 {"id":"H4994-in-context","prov":"attested","tests":["volitives","word-meaning"],"ans":"Gen.12.11 softens Abram's request","rej":{"c1":"never is לֹא-type negation, not this","c2":"who is מִי"}}
-{"id":"H4994-type-gloss","prov":"citation","tests":["volitives","word-meaning"],"ans":"please; now and I pray accepted, Strong's now, as entreaty","rej":{"c1":"there is שָׁם","c2":"very is מְאֹד"}}
+{"id":"H4994-type-gloss","prov":"citation","tests":["volitives","word-meaning"],"ans":"please; now and I pray accepted, Strong's now as entreaty, and the explanation says it isn't about time","rej":{"c1":"there is שָׁם","c2":"very is מְאֹד"}}
 {"id":"H4994-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, alef","rej":{"c1":"not has lamed","c2":"do not has lamed"}}
 {"id":"H4994-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, alef","rej":{"c1":"reversed, with a regular nun last","c2":"he instead of alef"}}
 {"id":"H8033-sound","prov":"citation","tests":["vowels"],"ans":"shin, qamats: sham","rej":{"c1":"tsere: name","c2":"s needs the left-arm dot"}}

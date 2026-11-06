@@ -16,7 +16,7 @@
 {"id":"H1288-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard bet, qamats, patah, soft final kaf","rej":{"c1":"v needs no dagesh","c2":"segols belong to the noun knee"}}
 {"id":"H1288-pointed","prov":"citation","tests":["piel","vowels"],"ans":"qamats, patah: the dictionary form","rej":{"c1":"real, but the Piel, he blessed","c2":"two segols: knee"}}
 {"id":"H1288-in-context","prov":"attested","tests":["piel","word-meaning"],"ans":"Gen.1.22 be fruitful follows","rej":{"c1":"command is צָוָה, though imperatives follow here","c2":"bury is קָבַר"}}
-{"id":"H1288-type-gloss","prov":"citation","tests":["piel","word-meaning"],"ans":"bless; blessed and kneel accepted, Strong's def","rej":{"c1":"speak is דָבַר","c2":"separate is בָּדַל"}}
+{"id":"H1288-type-gloss","prov":"citation","tests":["piel","word-meaning"],"ans":"bless; blessed accepted, and kneel too: the prompt asks this verb's meaning and shows the Qal-shaped dictionary form, whose sense in Strong is to kneel. Bless is the Piel in use","rej":{"c1":"speak is דָבַר","c2":"separate is בָּדַל"}}
 {"id":"H1288-write","prov":"citation","tests":["final-forms"],"ans":"bet, resh, final kaf","rej":{"c1":"road starts with dalet","c2":"create ends in alef"}}
 {"id":"H1288-mirror","prov":"citation","tests":["final-forms"],"ans":"bet, resh, final kaf","rej":{"c1":"regular kaf at the end","c2":"dalet instead of resh"}}
 {"id":"H6680-sound","prov":"citation","tests":["vowels"],"ans":"tsade, qamats, consonantal vav, qamats: tsa-VAH","rej":{"c1":"the Piel, with hireq and a doubled vav","c2":"s is samekh, sin or shin's cousin, not tsade"}}

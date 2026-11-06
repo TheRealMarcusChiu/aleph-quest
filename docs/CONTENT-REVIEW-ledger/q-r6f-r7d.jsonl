@@ -28,7 +28,7 @@
 {"id":"g-hollow","prov":"span","tests":["hollow-geminate"],"ans":"hollow perfect shows two letters","rej":{"c1":"regular behavior, not an accident","c2":"OSHB lemma 7725 is שׁוּב"}}
 {"id":"a-niphal-1","prov":"span","tests":["niphal"],"ans":"OSHB VNp3cp; ordinary active sense","rej":{"c1":"the sense in Gen.21.31 is swearing an oath","c2":"no Piel prefix or doubling pattern"}}
 {"id":"a-piel-1","prov":"span","tests":["piel"],"ans":"OSHB Vpw3ms; shewa under the prefix","rej":{"c1":"OSHB tags Piel","c2":"a root letter's form, not a stem marker"}}
-{"id":"a-pual-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms","rej":{"c1":"Hiphil has a he prefix","c2":"OSHB tags a perfect"}}
+{"id":"a-pual-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms; the prompt says the answer is on OSHB's tagging, and the explanation names the Qal-passive view","rej":{"c1":"Hiphil has a he prefix","c2":"OSHB tags a perfect"}}
 {"id":"a-hiphil-1","prov":"span","tests":["hiphil"],"ans":"OSHB Vhrmsa","rej":{"c1":"that is the Niphal","c2":"OSHB tags singular"}}
 {"id":"a-hophal-1","prov":"span","tests":["hophal"],"ans":"OSHB VHi3ms","rej":{"c1":"Hiphil has a-class prefix","c2":"Niphal has no u-vowel on the prefix"}}
 {"id":"a-gutt-1","prov":"span","inlineOriginal":["יִשְׁמֹר"],"tests":["iii-guttural"],"ans":"final guttural pulls to a-class","rej":{"c1":"OSHB tags a verb","c2":"strong verbs have holam there"}}
@@ -44,7 +44,7 @@
 {"id":"p-r7-gate-1","prov":"original","tests":["piel"],"ans":"doubled middle letter; token 01WEz","rej":{"door-m":"the noun word","door-e":"Hiphil, token 01Uv6"}}
 {"id":"p-r7-gate-2","prov":"original","tests":["hollow-geminate"],"ans":"two letters; token 01Wuj","rej":{"door-w":"three letters: not hollow","door-e":"three letters: not hollow"}}
 {"id":"p-r7-gate-3","prov":"original","tests":["iii-he"],"ans":"עָלָה is a verb","rej":{"door-w":"a noun, woman","door-m":"a noun, night"}}
-{"id":"b-r7-stem-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms; the alternative Qal passive analysis is named","rej":{"c1":"Piel is active, with hireq first","c2":"the prompt asks OSHB's stem, and it tags Pual; the explanation names the Qal-passive view"}}
+{"id":"b-r7-stem-1","prov":"span","tests":["pual"],"ans":"OSHB VPp3ms; the alternative Qal passive analysis is named","rej":{"c1":"Piel is active, with hireq first","c2":"the prompt asks for OSHB's label, and it tags Pual; a Qal passive analysis is defensible and named in the explanation, but isn't the label asked for"}}
 {"id":"b-r7-stem-2","prov":"span","tests":["niphal"],"ans":"OSHB VNw3ms","rej":{"c1":"no causative pattern","c2":"no u-vowel"}}
 {"id":"b-r7-stem-3","prov":"span","tests":["hiphil"],"ans":"OSHB Vhw3ms; patah under the prefix","rej":{"c1":"no shewa under the prefix","c2":"no hireq under the prefix"}}
 {"id":"b-r7-stem-4","prov":"span","tests":["hophal"],"ans":"OSHB VHp3ms","rej":{"c1":"Hiphil has hireq on he","c2":"Hithpael has a tav"}}

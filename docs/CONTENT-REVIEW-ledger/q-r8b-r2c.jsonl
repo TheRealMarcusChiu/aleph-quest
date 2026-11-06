@@ -23,7 +23,7 @@
 {"id":"H3974-sound","prov":"citation","tests":["vowels"],"ans":"qamats, alef, holam-vav: ma-OR","rej":{"c1":"very, with shewa and dalet","c2":"o first and segol aren't this pointing"}}
 {"id":"H3974-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav","rej":{"c1":"shewa marks another state","c2":"shureq reads u"}}
 {"id":"H3974-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.16 rules the day","rej":{"c1":"very is מְאֹד","c2":"hundred is מֵאָה"}}
-{"id":"H3974-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"light source; light, lamp, luminary accepted, Strong's def","rej":{"c1":"expanse is רָקִיעַ","c2":"fruit is פְּרִי"}}
+{"id":"H3974-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"light source; lamp, luminary accepted, and light too, as Gen.1.16 calls this noun a great light and Strong allows it","rej":{"c1":"expanse is רָקִיעַ","c2":"fruit is פְּרִי"}}
 {"id":"H3974-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, vav, resh","rej":{"c1":"light has no mem","c2":"very ends in dalet"}}
 {"id":"H3974-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, vav, resh","rej":{"c1":"ayin instead of alef","c2":"no mem: light"}}
 {"id":"H6529-sound","prov":"citation","tests":["dagesh","shewa"],"ans":"hard pe, sounded shewa, hireq-yod","rej":{"c1":"f needs no dagesh","c2":"a and first-syllable stress aren't this pointing"}}
@@ -33,6 +33,8 @@
 {"id":"H6529-write","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"mouth has he","c2":"seed starts with zayin"}}
 {"id":"H6529-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"dalet instead of resh","c2":"reversed, with a regular pe last"}}
 {"id":"g-vowels","prov":"span","tests":["vowels"],"ans":"dot above the first letter is holam, o","rej":{"c1":"a needs patah or qamats","c2":"i needs hireq"}}
+{"id":"g-vowels-2","prov":"span","tests":["vowels","syllables"],"ans":"01b2r; the prompt gives the guide sha-NIM, and capitals on NIM are the stated stress mark","rej":{"c1":"sha is lower case in the guide shown","c2":"a word has one main stress"}}
+{"id":"g-vowels-3","prov":"span","tests":["vowels"],"ans":"01D9B; one dot under ayin with yod after it is hireq, i","rej":{"c1":"a needs patah or qamats","c2":"e needs segol or tsere"}}
 {"id":"g-shewa","prov":"span","tests":["shewa","prepositions"],"ans":"OSHB splits b/ as a preposition","rej":{"c1":"the root is ראש; the prefix isn't part of it","c2":"a plural ending isn't a prefix"}}
 {"id":"g-accents","prov":"span","tests":["accents"],"ans":"unstressed, closed, before a maqqef: qamats qatan","rej":{"c1":"ordinary qamats needs an open or stressed syllable","c2":"the sign is qamats, not tsere"}}
 {"id":"g-dagesh","prov":"span","tests":["dagesh"],"ans":"word-initial dagesh in a בגדכפת letter: hard","rej":{"c1":"a dagesh sits on a consonant, not a vowel","c2":"question marking is הֲ"}}

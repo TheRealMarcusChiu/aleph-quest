@@ -11,7 +11,7 @@
 {"id":"H6963-write","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, vav, lamed","rej":{"c1":"all starts with kaf","c2":"morning starts with bet"}}
 {"id":"H6963-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"qof, vav, lamed","rej":{"c1":"kaf instead of qof","c2":"letters reversed"}}
 {"id":"H2233-sound","prov":"citation","tests":["vowels"],"ans":"segol then patah, silent ayin: ZE-ra","rej":{"c1":"swaps the vowels","c2":"a first needs qamats or patah, and stress is wrong for this shape"}}
-{"id":"H2233-pointed","prov":"citation","tests":["vowels"],"ans":"segol then patah","rej":{"c1":"qamats gives the verb he sowed","c2":"shewa and holam make another word, arm"}}
+{"id":"H2233-pointed","prov":"citation","tests":["vowels"],"ans":"segol then patah","rej":{"c1":"qamats gives the verb he sowed","c2":"holam first would read zo-ra, but the first vowel is e"}}
 {"id":"H2233-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.11 fruit holds it","rej":{"c1":"tree is what bears it","c2":"water is מַיִם"}}
 {"id":"H2233-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"seed; offspring and descendants accepted, Strong's posterity","rej":{"c1":"field is שָׂדֶה","c2":"word is דָּבָר"}}
 {"id":"H2233-write","prov":"citation","tests":["alphabet","rtl"],"ans":"zayin, resh, ayin","rej":{"c1":"road starts with dalet","c2":"land starts with alef"}}

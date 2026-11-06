@@ -13,7 +13,7 @@
 {"id":"H5414-mirror","prov":"citation","tests":["final-forms"],"ans":"nun, tav, final nun","rej":{"c1":"regular nun at the end","c2":"tet instead of tav"}}
 {"id":"H5375-sound","prov":"citation","tests":["vowels"],"ans":"sin, two qamats signs, silent alef: na-SA","rej":{"c1":"sh needs the right-arm dot","c2":"o and e belong to the participle"}}
 {"id":"H5375-pointed","prov":"citation","tests":["i-nun","vowels"],"ans":"left-arm dot, two qamats signs","rej":{"c1":"right dot: another verb","c2":"the participle"}}
-{"id":"H5375-in-context","prov":"attested","tests":["i-nun","word-meaning"],"ans":"Gen.7.17 waters raise the ark","rej":{"c1":"give is נָתַן","c2":"go down is the opposite"}}
+{"id":"H5375-in-context","prov":"attested","tests":["i-nun","word-meaning"],"ans":"Gen.7.17 waters raise the ark; 01gSo has its dagesh only in prefix yod, and sin has shewa","rej":{"c1":"give is נָתַן","c2":"go down is the opposite"}}
 {"id":"H5375-type-gloss","prov":"citation","tests":["i-nun","word-meaning"],"ans":"lift; carry, bear, lifted, raise accepted, Strong's range","rej":{"c1":"tell is נָגַד","c2":"sit is יָשַׁב"}}
 {"id":"H5375-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ש, alef","rej":{"c1":"give ends in final nun","c2":"find starts with mem"}}
 {"id":"H5375-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, ש, alef","rej":{"c1":"samekh instead of ש","c2":"he instead of alef"}}
@@ -38,13 +38,13 @@
 {"id":"H3205-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah: ya-LAD","rej":{"c1":"the noun child","c2":"holam and tsere: a participle"}}
 {"id":"H3205-pointed","prov":"citation","tests":["i-waw","vowels"],"ans":"qamats, patah","rej":{"c1":"the noun child, a separate entry","c2":"a participle"}}
 {"id":"H3205-in-context","prov":"span","tests":["i-waw","word-meaning"],"ans":"Gen.4.18 of a father in a genealogy; contextKey records the token and basis","rej":{"c1":"bury is קָבַר","c2":"call is קָרָא"}}
-{"id":"H3205-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"bear; give birth, bore, father, fathered, beget accepted, Strong's def","rej":{"c1":"child is the noun","c2":"go out is יָצָא"}}
+{"id":"H3205-type-gloss","prov":"citation","tests":["i-waw","word-meaning"],"ans":"bear; give birth, bore accepted, and father, fathered, beget too, as OSHB tags the father's יָלַד Qal (01fQG Vqp3ms)","rej":{"c1":"child is the noun","c2":"go out is יָצָא"}}
 {"id":"H3205-write","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"go down has resh","c2":"hand has two letters"}}
 {"id":"H3205-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"yod, lamed, dalet","rej":{"c1":"resh: go down","c2":"resh at the end"}}
 {"id":"H4191-sound","prov":"citation","tests":["vowels"],"ans":"shureq: mut","rej":{"c1":"o needs holam-vav","c2":"e needs tsere or segol"}}
 {"id":"H4191-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"shureq, the hollow dictionary form","rej":{"c1":"an infinitive absolute","c2":"the noun death"}}
 {"id":"H4191-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.2.17 the warning","rej":{"c1":"live is the opposite","c2":"rise is קוּם"}}
-{"id":"H4191-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"die; died and kill accepted, the latter for the Hiphil","rej":{"c1":"put is שׂוּם","c2":"come is בּוֹא"}}
+{"id":"H4191-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"die; died accepted. Kill is rejected: it is the Hiphil sense and the display is an unqualified Qal","rej":{"c1":"put is שׂוּם","c2":"come is בּוֹא"}}
 {"id":"H4191-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, vav, tav","rej":{"c1":"return starts with shin","c2":"place has qof"}}
 {"id":"H4191-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, vav, tav","rej":{"c1":"tet instead of tav","c2":"reversed, with a regular mem last"}}
 {"id":"H7725-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"shin, shureq, soft bet: shuv","rej":{"c1":"s and a aren't these signs","c2":"o needs holam-vav"}}

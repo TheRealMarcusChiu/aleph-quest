@@ -29,7 +29,7 @@
 {"id":"H4325-write","prov":"citation","tests":["final-forms"],"ans":"mem, yod, final mem","rej":{"c1":"heavens adds shin","c2":"day starts with yod"}}
 {"id":"H4325-mirror","prov":"citation","tests":["final-forms"],"ans":"regular mem first, final mem last","rej":{"c1":"final mem can't start a word","c2":"regular mem can't end a word"}}
 {"id":"H8064-sound","prov":"citation","tests":["vowels"],"ans":"shin dot on the right: sha-MA-yim","rej":{"c1":"s needs the dot on the left arm","c2":"shewa and swapped vowels aren't this pointing"}}
-{"id":"H8064-pointed","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah, hireq","rej":{"c1":"shewa and swapped vowels","c2":"dot on the left arm makes sin"}}
+{"id":"H8064-pointed","prov":"citation","tests":["vowels"],"ans":"shin, qamats, patah, hireq","rej":{"c1":"hireq first and swapped vowels","c2":"dot on the left arm makes sin"}}
 {"id":"H8064-in-context","prov":"attested","tests":["word-meaning"],"ans":"Gen.1.8 the expanse above the waters","rej":{"c1":"seas are named in verse 10","c2":"mountains are הָרִים"}}
 {"id":"H8064-type-gloss","prov":"citation","tests":["word-meaning"],"ans":"heavens; heaven and sky accepted","rej":{"c1":"water is מַיִם","c2":"city is עִיר","c3":"field is שָׂדֶה"}}
 {"id":"H8064-write","prov":"citation","tests":["final-forms"],"ans":"shin, mem, yod, final mem","rej":{"c1":"water has no shin","c2":"field ends in he"}}
