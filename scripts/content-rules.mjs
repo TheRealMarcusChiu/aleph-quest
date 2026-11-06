@@ -16,6 +16,33 @@ export const keyRules = {
   },
 };
 
+// Reading rules a pointed form needs, each taught by a named r2 lesson. Morphology can't show these:
+// shewa (l-shewa); a dagesh or a silent final he (l-dagesh); a composite shewa or silent alef (l-gutturals).
+export function readingDemands(hebrew) {
+  const needed = new Set();
+  const text = hebrew.normalize('NFD');
+  if (/ְ/.test(text)) needed.add('shewa');
+  if (/[ֱֲֳ]/.test(text)) needed.add('gutturals');
+  // A dot in vav with no vowel of its own is shureq, a vowel sign taught with the vowels.
+  for (const [, letter, marks] of text.matchAll(/([א-ת])([֑-ׇ]*)/g)) if (marks.includes('ּ') && letter !== 'ו') needed.add('dagesh');
+  if (/ה(?![֑-ׇ])(?:\s|$)/.test(text)) needed.add('dagesh');
+  if (/(?<!^)א(?![֑-ׇ])/.test(text)) needed.add('gutturals');
+  return [...needed];
+}
+
+// Skills a question really has by holding its listed ones: each lesson's own prerequisites come with it.
+export function readingClosure(skills, lessons) {
+  const have = new Set(skills);
+  for (let grew = true; grew;) {
+    grew = false;
+    for (const l of lessons) {
+      if (!l.teaches.some(s => have.has(s))) continue;
+      for (const s of [...l.requires, ...l.teaches]) if (!have.has(s)) { have.add(s); grew = true; }
+    }
+  }
+  return have;
+}
+
 // OSHB also tags חוה forms v (hishtaphel-type); they are taught with the Hithpael lesson.
 const STEM_SKILL = { N: 'niphal', p: 'piel', P: 'pual', t: 'hithpael', v: 'hithpael', h: 'hiphil', H: 'hophal' };
 const ASPECT_SKILL = {
