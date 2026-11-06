@@ -101,7 +101,7 @@ Stage order is enforced everywhere, including at import. A mentor won't teach a 
 
 **passage**: `id`, `reference`, `sourceId`, `sourceText` (immutable, with accents and segmentation), `display`, `translation`, `tokens[{id,hebrew,lemma,morph,gloss}]`, `notes`, `questionIds[]`, `requires[]`. A passage named by a `reading` stage plays at the region's reading stand. The translation stays hidden until its questions are answered. It needs correct answers to `min(2, questionIds.length)` questions, and at least one spare, unless `questionIds` is empty.
 
-**relatedForm paradigm**: `features.paradigm` names forms in one paradigm that have separate dictionary numbers, such as the proximal demonstratives. The record keeps `relationship: derivation`, because the enum has no paradigm value. The game shows the paradigm instead, and in the trace task "a partner in the same paradigm" is the right answer. No lexeme count changes.
+**relatedForm paradigm**: `features.paradigm` names forms in one paradigm that have separate dictionary numbers, such as the proximal demonstratives. The record keeps `relationship: derivation`, because the enum has no paradigm value. The game shows the paradigm instead. The trace task offers a named paradigm choice only on these flagged forms, where it is the right answer, and every other form gets the plain three choices. No lexeme count changes.
 
 **attestation**: `tokenId`, `reference`, `surface` (OSHB string, unchanged), `lemma`, `morph`.
 

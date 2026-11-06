@@ -36,7 +36,7 @@ const STATUS_HELP = {
 const STATUS_ORDER = ['Seen', 'Studied', 'Captured', 'Practiced', 'Mastered'];
 const RANK_NAMES = { 0: 'Not captured', 1: 'Known', 2: 'Familiar', 3: 'Deep' };
 const ABILITY_NAMES = { name: 'Naming: this word can answer seals that want a name', deed: 'Deed: this word can answer seals that want an action', link: 'Linking: this word can answer seals that want a joining word' };
-const RELATIONSHIPS = [['inflection', 'The same word, inflected'], ['derivation', 'A related word, derived'], ['paradigm', 'A partner in the same paradigm'], ['separate-lexeme', 'A separate dictionary word']];
+const RELATIONSHIPS = [['inflection', 'The same word, inflected'], ['derivation', 'A related word, derived'], ['separate-lexeme', 'A separate dictionary word']];
 const HEBREW_RUN = /[֐-׿]+(?:[ ־][֐-׿]+)*/g;
 const HAS_HEBREW = /[֐-׿]/;
 const SACRED_NOTE = 'Display preference: the divine name is shown here as ה׳. The source text is unchanged, and this quotation is altered only on your screen. Change this in the Menu.';
@@ -895,13 +895,16 @@ export function createUI(ctx) {
     const word = content.wordById.get(wordId);
     const form = nextRelatedForm(state, content, wordId);
     if (!form) return onDone();
+    // Ordinary inflections belong to paradigms too, so this choice appears only for flagged forms and names what sets them apart.
+    const { paradigm } = form.features ?? {};
+    const choices = paradigm ? [...RELATIONSHIPS, ['paradigm', `Another form in the ${paradigm} paradigm, with its own dictionary number`]] : RELATIONSHIPS;
     return show([
       heading('Trace a related form'),
       el('p', { text: 'You know this word:' }),
       el('div', { class: 'word-plate plain' }, he(word.hebrew, 'he he-large')),
       el('p', { text: 'How is this attested form related to it?' }),
       el('div', { id: 'form-question', class: 'word-plate plain' }, he(form.hebrew, 'he he-large')),
-      el('div', { class: 'tools stack', role: 'group', 'aria-label': 'Relationship' }, ...RELATIONSHIPS.map(([value, label]) => button(label, () => {
+      el('div', { class: 'tools stack', role: 'group', 'aria-label': 'Relationship' }, ...choices.map(([value, label]) => button(label, () => {
         const result = answerRelatedForm(state, content, wordId, form.tokenId, value, ctx.now());
         feedback({ ...result, independent: result.correct }, onDone, [el('p', { class: 'small', text: 'Knowing a related form deepens what you know of this word. It does not change the word.' })]);
       }, { 'data-relationship': value, class: 'quiet' }))),

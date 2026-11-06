@@ -282,6 +282,90 @@ test('the Worddex and the trace screen show the paradigm, and no lexeme count ch
   assert.equal(content.words.filter(w => w.relatedForms.some(f => f.features?.paradigm)).length, 3);
 });
 
+// Opens the real Worddex and Trace screens for a captured word, after only the lessons through this region.
+function openTrace(regionId, wordId) {
+  const { app, window } = bootReal();
+  const $ = selector => window.document.querySelector(selector);
+  const s = app.getState();
+  for (const region of content.regions) {
+    for (const id of region.lessonIds) markLessonDone(s, content, id, NOW);
+    if (region.id === regionId) break;
+  }
+  captureFully(s, wordId);
+  app.ui.worddex();
+  $(`[data-word="${wordId}"]`).click();
+  $('#btn-trace-form').click();
+  const options = () => [...window.document.querySelectorAll('[data-relationship]')];
+  return { $, s, options, values: () => options().map(node => node.dataset.relationship) };
+}
+const PLAIN_CHOICES = ['inflection', 'derivation', 'separate-lexeme'];
+
+test('an early trace offers only the plain choices, with no untaught paradigm alternative', () => {
+  const { $, s, options, values } = openTrace('r1', 'H1121');
+  assert.deepEqual(Object.keys(s.skills).sort(), ['alphabet', 'final-forms', 'rtl', 'word-meaning']);
+  assert.equal($('#form-question bdi').textContent, 'בָנִים');
+  assert.deepEqual(values(), PLAIN_CHOICES);
+  assert.doesNotMatch($('#modal').textContent, /paradigm/i);
+  assert.deepEqual(options().map(node => node.textContent), ['The same word, inflected', 'A related word, derived', 'A separate dictionary word']);
+
+  $('[data-relationship="derivation"]').click();
+  assert.match($('#feedback-verdict').textContent, /Not this time/);
+  assert.match($('#feedback-text').textContent, /inflection: the same dictionary word/);
+  assert.doesNotMatch($('#modal').textContent, /paradigm/i);
+  assert.deepEqual(s.words.H1121.formsKnown, []);
+});
+
+test('an early trace still credits the right plain choice, for an inflection and a derivation', () => {
+  const son = openTrace('r1', 'H1121');
+  son.$('[data-relationship="inflection"]').click();
+  assert.match(son.$('#feedback-verdict').textContent, /Correct/);
+  assert.equal(son.s.words.H1121.formsKnown.length, 1);
+
+  const scroll = openTrace('r1', 'H5612');
+  assert.deepEqual(scroll.values(), PLAIN_CHOICES);
+  scroll.$('[data-relationship="derivation"]').click();
+  assert.match(scroll.$('#feedback-verdict').textContent, /Correct/);
+  assert.match(scroll.$('#feedback-text').textContent, /derivation/);
+  assert.equal(scroll.s.words.H5612.formsKnown.length, 1);
+});
+
+test('a separate-lexeme trace keeps its plain choices', () => {
+  const man = openTrace('r1', 'H0376');
+  assert.equal(content.wordById.get('H0376').relatedForms[0].relationship, 'separate-lexeme');
+  assert.deepEqual(man.values(), PLAIN_CHOICES);
+  man.$('[data-relationship="separate-lexeme"]').click();
+  assert.match(man.$('#feedback-verdict').textContent, /Correct/);
+});
+
+test('every flagged paradigm form offers its own named paradigm option, and derivation stays wrong', () => {
+  for (const wordId of ['H2088', 'H2063', 'H0428']) {
+    const { $, s, values } = openTrace('r4', wordId);
+    const [form] = content.wordById.get(wordId).relatedForms;
+    assert.equal(form.features.paradigm, 'proximal demonstrative');
+    assert.deepEqual(values(), [...PLAIN_CHOICES, 'paradigm']);
+    // The label says what is special about this one, so it makes no claim about inflected forms in general.
+    assert.match($('[data-relationship="paradigm"]').textContent, /proximal demonstrative paradigm, with its own dictionary number/);
+
+    $('[data-relationship="derivation"]').click();
+    assert.match($('#feedback-verdict').textContent, /Not this time/);
+    assert.match($('#feedback-text').textContent, /proximal demonstrative paradigm, with its own dictionary number/);
+    assert.deepEqual(s.words[wordId].formsKnown, []);
+
+    // The word's trace returns after two other actions, like any other miss.
+    s.interactions += 2;
+    $('#btn-continue').click();
+    $('#btn-trace-form').click();
+    $('[data-relationship="paradigm"]').click();
+    assert.match($('#feedback-verdict').textContent, /Correct/);
+    assert.deepEqual(s.words[wordId].formsKnown, [form.tokenId]);
+  }
+});
+
+test('only the demonstratives carry the flag, so every other word in the corpus gets the plain choices', () => {
+  const flagged = content.words.filter(w => w.relatedForms.some(f => f.features?.paradigm)).map(w => w.id);
+  assert.deepEqual(flagged.sort(), ['H0428', 'H2063', 'H2088']);
+});
+
 test('real mixed Hebrew and English guide labels render through the shared isolating renderer', () => {
   const { app, window } = bootReal();
   const lesson = content.lessons.find(l => l.guidedQuestionIds.includes('g-context-reading'));
