@@ -213,7 +213,9 @@ function checkConsistency(state, content, errors) {
     const { badge } = content.regionById.get(state.badgeRun.regionId);
     const ids = [...state.badgeRun.correct, ...(state.badgeRun.current ? [state.badgeRun.current.questionId] : [])];
     if (!ids.every(id => badge.questionIds.includes(id))) errors.push('badgeRun: lists a question outside this badge');
-    const { current } = state.badgeRun;
+    const { correct, current } = state.badgeRun;
+    if (new Set(correct).size !== correct.length) errors.push('badgeRun: credits a question twice');
+    if (current && correct.includes(current.questionId)) errors.push('badgeRun: pending question is already credited');
     if (current) checkPendingMode('badgeRun', content.questionById.get(current.questionId), current.responseMode, errors);
   }
 }

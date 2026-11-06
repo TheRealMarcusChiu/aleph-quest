@@ -85,7 +85,7 @@ export function submitBadgeAnswer(state, content, response, now) {
   run.correct.push(question.id);
   const badge = badgeOf(state, content);
   const families = new Set(run.correct.map(id => content.questionById.get(id).taskFamily));
-  if (run.correct.length >= badge.requiredCorrect && badge.requiredTaskFamilies.every(f => families.has(f))) {
+  if (new Set(run.correct).size >= badge.requiredCorrect && badge.requiredTaskFamilies.every(f => families.has(f))) {
     state.badges[badge.id] = { at: now, questionIds: run.correct };
     state.badgeRun = null;
     result.awarded = true;

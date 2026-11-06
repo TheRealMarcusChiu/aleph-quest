@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { newGame, markLessonDone, BADGE_ID } from '../src/engine.js';
 import { content } from '../src/content.js';
 import { startEncounter, completeStudy, openQuestion, submit, CAPTURE_FAMILIES } from '../src/learning.js';
-import { startBadgeRun, openBadgeQuestion, useBadgeHint } from '../src/checkpoints.js';
+import { startBadgeRun, openBadgeQuestion, useBadgeHint, submitBadgeAnswer } from '../src/checkpoints.js';
 import { saveSlot, loadSlot, listSlots, deleteSlot, exportText, parseImport, slotKey, MAX_SAVE_BYTES, SLOTS } from '../src/storage.js';
 
 const NOW = 1_800_000_000_000;
@@ -243,6 +243,95 @@ test('a pending badge question must keep its format rule, and legitimate pending
   rejects(envelope(state => {
     state.badgeRun = { id: 9, regionId: 'r1', correct: [], current: { questionId: 'b-final-1', hintsUsed: 0, startedAt: NOW, responseMode: 'typing' } };
   }), /badgeRun.*typing/);
+});
+
+const trialAnswer = q => (q.format === 'tokens' ? q.acceptedSequences[0] : q.acceptedAnswers[0]);
+
+// Three answers legally earned through production question selection, none pending.
+function partialTrial() {
+  const s = played();
+  startBadgeRun(s, content, 'r1', NOW);
+  for (let i = 0; i < 3; i++) submitBadgeAnswer(s, content, trialAnswer(openBadgeQuestion(s, content, NOW)), NOW);
+  assert.equal(s.badgeRun.correct.length, 3);
+  return s;
+}
+
+test('a trial cannot credit the same question twice', () => {
+  const s = partialTrial();
+  assert.equal(parseImport(exportText(s, NOW), content).ok, true, 'control: the untouched partial trial loads');
+  const [first, , third] = s.badgeRun.correct;
+  const text = exportText({ ...s, badgeRun: { ...s.badgeRun, correct: [first, first, third] } }, NOW);
+  const before = text;
+  rejects(text, /badgeRun.*twice/);
+  assert.equal(parseImport(text, content).state, undefined);
+  assert.equal(text, before);
+  assert.equal(parseImport(exportText(s, NOW), content).ok, true, 'the rejected file left the source alone');
+});
+
+test('a trial\'s pending question cannot already be credited', () => {
+  const s = partialTrial();
+  const current = { questionId: s.badgeRun.correct[0], hintsUsed: 0, startedAt: NOW, responseMode: 'recognition' };
+  const text = exportText({ ...s, badgeRun: { ...s.badgeRun, current } }, NOW);
+  rejects(text, /badgeRun.*already credited/);
+  assert.equal(parseImport(text, content).state, undefined);
+});
+
+test('a legitimate partial trial with earlier credit and a hinted pending question still loads', () => {
+  const s = partialTrial();
+  const pending = openBadgeQuestion(s, content, NOW);
+  useBadgeHint(s, content);
+  const result = parseImport(exportText(s, NOW), content);
+  assert.equal(result.ok, true, result.errors?.join());
+  assert.deepEqual(result.state, s);
+  assert.equal(result.state.badgeRun.current.questionId, pending.id);
+  assert.equal(result.state.badgeRun.current.hintsUsed, 1);
+});
+
+test('every transition of a whole trial saves and reloads, through a miss, a hint and the award', () => {
+  const store = memory();
+  const s = played();
+  const roundTrip = label => {
+    assert.equal(saveSlot(store, 1, s, content).ok, true, `${label}: saved`);
+    const back = loadSlot(store, 1, content);
+    assert.equal(back.status, 'ok', `${label}: ${back.errors?.join()}`);
+    assert.deepEqual(back.state, s, label);
+  };
+  startBadgeRun(s, content, 'r1', NOW);
+  roundTrip('started');
+
+  const missed = openBadgeQuestion(s, content, NOW);
+  roundTrip('pending');
+  submitBadgeAnswer(s, content, missed.format === 'tokens' ? [] : 'wrong', NOW);
+  roundTrip('missed');
+
+  openBadgeQuestion(s, content, NOW);
+  useBadgeHint(s, content);
+  roundTrip('hinted');
+  assert.equal(startBadgeRun(s, content, 'r1', NOW).ok, true);
+  roundTrip('revisited');
+  const hinted = openBadgeQuestion(s, content, NOW);
+  submitBadgeAnswer(s, content, trialAnswer(hinted), NOW);
+  roundTrip('hinted answer');
+
+  for (let guard = 0; guard < 10 && !s.badges[BADGE_ID]; guard++) {
+    const q = openBadgeQuestion(s, content, NOW);
+    assert.ok(q, 'a fresh question remains');
+    roundTrip(`opened ${q.id}`);
+    submitBadgeAnswer(s, content, trialAnswer(q), NOW);
+    roundTrip(`answered ${q.id}`);
+  }
+  assert.ok(s.badges[BADGE_ID]);
+  assert.equal(s.badgeRun, null);
+  assert.equal(saveSlot(store, 1, s, content).ok, true, 'autosave keeps working after the award');
+});
+
+test('the award counts distinct answers, as a guard behind the import check', () => {
+  const s = partialTrial();
+  const [first, , third] = s.badgeRun.correct;
+  s.badgeRun.correct = [first, first, third];
+  const q = openBadgeQuestion(s, content, NOW);
+  assert.equal(submitBadgeAnswer(s, content, trialAnswer(q), NOW).awarded, false, 'three distinct answers earn nothing yet');
+  assert.equal(s.badges[BADGE_ID], undefined);
 });
 
 test('a rejected import returns no state and cannot touch the game passed around it', () => {
