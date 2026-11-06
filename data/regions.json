@@ -1,0 +1,28 @@
+[
+  {
+    "id": "r1",
+    "order": 1,
+    "title": "Letter Grove",
+    "theme": "Pine and reed country around a broken archive, where the scattered words first surface.",
+    "rossChapters": [1],
+    "alignment": "verified-topic/original-grouping",
+    "requiresBadges": [],
+    "lessonIds": ["l-letters", "l-meaning", "l-finals"],
+    "wordIds": ["H0001", "H0251", "H0376", "H0517", "H0776", "H0802", "H1121", "H1323", "H4428", "H5612"],
+    "seedWordId": "H0001",
+    "questId": "q-grove",
+    "badge": {
+      "id": "b-reed-seal",
+      "title": "Reed Seal",
+      "questionIds": ["b-final-1", "b-final-2", "b-spell-1", "b-spell-2", "b-spell-3", "b-order-1", "b-order-2"],
+      "requiredCorrect": 4,
+      "requiredTaskFamilies": ["final-recognize", "final-spell", "rtl-order"],
+      "requiresSkills": ["alphabet", "rtl", "final-forms"],
+      "requiresCaptures": 3
+    },
+    "puzzleQuestionIds": {
+      "neri": ["p-neri-1", "p-neri-2", "p-neri-3"],
+      "gate": ["p-gate-1", "p-gate-2", "p-gate-3"]
+    }
+  }
+]

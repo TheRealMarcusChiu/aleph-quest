@@ -1,0 +1,60 @@
+[
+  {
+    "id": "l-letters",
+    "regionId": "r1",
+    "title": "Reading from the right",
+    "mentor": "Tamar",
+    "requires": [],
+    "teaches": ["alphabet", "rtl"],
+    "chart": "alphabet",
+    "explanation": "Hebrew has 22 letters and is read from right to left. The first letter of a word is the one furthest right. The small dots and dashes around the letters show vowels. You will study those at the Vowel Springs. For now, look at the large letters.",
+    "workedExamples": [
+      {
+        "hebrew": "עֶרֶב",
+        "translation": "evening",
+        "tokenId": "01NQN",
+        "reference": "Gen.1.5",
+        "note": "Start at the right edge. ע (ayin) comes first, ר (resh) is next, and ב (bet) finishes on the left. Read in that order: e-rev."
+      }
+    ],
+    "guidedQuestionIds": ["g-letters-1", "g-letters-2"]
+  },
+  {
+    "id": "l-meaning",
+    "regionId": "r1",
+    "title": "What a word means here",
+    "mentor": "Tamar's note",
+    "requires": ["alphabet", "rtl"],
+    "teaches": ["word-meaning"],
+    "chart": null,
+    "explanation": "A word card gives the usual meaning. The line around a word shows which meaning fits that place. Use Understand to say what a word means. The card will be hidden when you answer.",
+    "workedExamples": [
+      {
+        "hebrew": "אוֹר",
+        "translation": "light",
+        "tokenId": "01W26",
+        "reference": "Gen.1.3",
+        "note": "In Genesis 1:3 this word names a thing that comes to be: light. It is a noun here, so 'to shine' would be the wrong answer."
+      }
+    ],
+    "guidedQuestionIds": ["g-meaning-1"]
+  },
+  {
+    "id": "l-finals",
+    "regionId": "r1",
+    "title": "Five letters that change at the end",
+    "mentor": "Tamar",
+    "requires": ["alphabet", "rtl"],
+    "teaches": ["final-forms"],
+    "chart": "finals",
+    "explanation": "Five letters take a different shape when they end a word: כ becomes ך, מ becomes ם, נ becomes ן, פ becomes ף, and צ becomes ץ. It is the same letter in a different shape. Check the left end of the word, since that is where the word finishes.",
+    "workedExamples": [
+      { "hebrew": "דֶּרֶךְ", "translation": "road", "tokenId": "01zva", "reference": "Gen.18.19", "note": "Kaf ends this word, so it is written ך." },
+      { "hebrew": "עֶצֶם", "translation": "bone", "tokenId": "01CmP", "reference": "Gen.2.23", "note": "Mem ends this word, so it is written ם." },
+      { "hebrew": "אֶבֶן", "translation": "stone", "tokenId": "01w7p", "reference": "Gen.2.12", "note": "Nun ends this word, so it is written ן." },
+      { "hebrew": "עוֹף", "translation": "bird", "tokenId": "012tG", "reference": "Gen.1.20", "note": "Pe ends this word, so it is written ף." },
+      { "hebrew": "עֵץ", "translation": "tree", "tokenId": "01fV3", "reference": "Gen.1.11", "note": "Tsade ends this word, so it is written ץ." }
+    ],
+    "guidedQuestionIds": ["g-finals-1"]
+  }
+]

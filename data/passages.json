@@ -1,0 +1,20 @@
+[
+  {
+    "id": "p-gen-44-19",
+    "reference": "Gen.44.19",
+    "sourceId": "wlc-oshb",
+    "sourceText": "הֲ/יֵשׁ־לָ/כֶ֥ם אָ֖ב אוֹ־אָֽח",
+    "display": "הֲיֵשׁ־לָכֶם אָב אוֹ־אָח",
+    "translation": "Do you have a father or a brother?",
+    "tokens": [
+      { "id": "01pr1", "hebrew": "הֲ/יֵשׁ", "lemma": "i/3426", "morph": "HTi/Tm", "gloss": "is there?" },
+      { "id": "01Fd5", "hebrew": "לָ/כֶ֥ם", "lemma": "l", "morph": "HR/Sp2mp", "gloss": "to you" },
+      { "id": "01tVx", "hebrew": "אָ֖ב", "lemma": "1", "morph": "HNcmsa", "gloss": "a father" },
+      { "id": "01Kgz", "hebrew": "אוֹ", "lemma": "176 a", "morph": "HC", "gloss": "or" },
+      { "id": "01Z7W", "hebrew": "אָֽח", "lemma": "251", "morph": "HNcmsa", "gloss": "a brother" }
+    ],
+    "notes": "Hebrew has no word for 'have' here; it says 'is there to you'. You can already pick out two words on this line.",
+    "questionIds": [],
+    "requires": ["alphabet", "rtl"]
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "H0001", "strongId": "H1", "hebrew": "אָב", "consonants": "אב", "transliteration": "av", "gloss": "father",
+    "meanings": ["father", "forefather, by extension"], "pos": "noun", "root": null,
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "אָבִיו", "relationship": "inflection", "features": { "state": "with suffix", "suffix": "his" }, "gloss": "his father", "reference": "Gen.2.24", "tokenId": "01vUM", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "הֲיֵשׁ־לָכֶם אָב אוֹ־אָח", "translation": "Do you have a father or a brother?", "reference": "Gen.44.19", "tokenId": "01tVx", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H0251", "strongId": "H251", "hebrew": "אָח", "consonants": "אח", "transliteration": "akh", "gloss": "brother",
+    "meanings": ["brother", "relative or kinsman, in wider use"], "pos": "noun", "root": null,
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "אָחִיו", "relationship": "inflection", "features": { "state": "with suffix", "suffix": "his" }, "gloss": "his brother", "reference": "Gen.4.2", "tokenId": "01zJw", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "הֲיֵשׁ־לָכֶם אָב אוֹ־אָח", "translation": "Do you have a father or a brother?", "reference": "Gen.44.19", "tokenId": "01Z7W", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H0376", "strongId": "H376", "hebrew": "אִישׁ", "consonants": "איש", "transliteration": "ish", "gloss": "man",
+    "meanings": ["man", "husband, in some contexts", "each person, in some idioms"], "pos": "noun", "root": null,
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "אִשָּׁה", "relationship": "separate-lexeme", "features": { "gender": "feminine" }, "gloss": "woman", "reference": "Gen.2.23", "tokenId": "01FCo", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "יַעֲזָב־אִישׁ אֶת־אָבִיו וְאֶת־אִמּוֹ", "translation": "A man leaves his father and his mother.", "reference": "Gen.2.24", "tokenId": "01T85", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"],
+    "notes": "אִשָּׁה looks related, but the two have separate dictionary entries. Don't assume one is the other plus an ending."
+  },
+  {
+    "id": "H0517", "strongId": "H517", "hebrew": "אֵם", "consonants": "אם", "transliteration": "em", "gloss": "mother",
+    "meanings": ["mother"], "pos": "noun", "root": null,
+    "features": { "gender": "feminine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "אִמּוֹ", "relationship": "inflection", "features": { "state": "with suffix", "suffix": "his" }, "gloss": "his mother", "reference": "Gen.2.24", "tokenId": "01fiZ", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "אֵם כָּל־חָי", "translation": "mother of all the living", "reference": "Gen.3.20", "tokenId": "01KvW", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl", "final-forms"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H0776", "strongId": "H776", "hebrew": "אֶרֶץ", "consonants": "ארץ", "transliteration": "E-rets", "gloss": "land",
+    "meanings": ["land", "earth", "ground, by context"], "pos": "noun", "root": null,
+    "features": { "gender": "feminine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "בְּאַרְצֹתָם", "relationship": "inflection", "features": { "number": "plural", "state": "with preposition and suffix" }, "gloss": "in their lands", "reference": "Gen.10.20", "tokenId": "01etD", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "וַיִּקְרָא אֱלֹהִים לַיַּבָּשָׁה אֶרֶץ", "translation": "And God called the dry ground land.", "reference": "Gen.1.10", "tokenId": "01Wxx", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl", "final-forms"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"],
+    "notes": "Genesis 1:1 writes הָאָרֶץ, with the article and a changed vowel. Strong lists the noun as feminine; the morphology source tags it as either gender."
+  },
+  {
+    "id": "H0802", "strongId": "H802", "hebrew": "אִשָּׁה", "consonants": "אשה", "transliteration": "i-SHAH", "gloss": "woman",
+    "meanings": ["woman", "wife, in some contexts"], "pos": "noun", "root": null,
+    "features": { "gender": "feminine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "נָשִׁים", "relationship": "inflection", "features": { "number": "plural" }, "gloss": "women, wives", "reference": "Gen.4.19", "tokenId": "01CE4", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "לְזֹאת יִקָּרֵא אִשָּׁה", "translation": "This one shall be called woman.", "reference": "Gen.2.23", "tokenId": "01FCo", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"],
+    "notes": "Its plural נָשִׁים looks quite different. It is still the same dictionary word."
+  },
+  {
+    "id": "H1121", "strongId": "H1121", "hebrew": "בֵּן", "consonants": "בן", "transliteration": "ben", "gloss": "son",
+    "meanings": ["son", "descendant or member of a group, in some idioms"], "pos": "noun", "root": null,
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "בָנִים", "relationship": "inflection", "features": { "number": "plural" }, "gloss": "sons, children", "reference": "Gen.3.16", "tokenId": "01Hfj", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "וַתֵּלֶד בֵּן", "translation": "And she bore a son.", "reference": "Gen.4.25", "tokenId": "01zjv", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl", "final-forms"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H1323", "strongId": "H1323", "hebrew": "בַּת", "consonants": "בת", "transliteration": "bat", "gloss": "daughter",
+    "meanings": ["daughter"], "pos": "noun", "root": null,
+    "features": { "gender": "feminine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "וּבָנוֹת", "relationship": "inflection", "features": { "number": "plural", "state": "with conjunction" }, "gloss": "and daughters", "reference": "Gen.5.4", "tokenId": "01A4n", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "בַּת־בְּתוּאֵל אָנֹכִי", "translation": "I am the daughter of Bethuel.", "reference": "Gen.24.24", "tokenId": "01DQR", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H4428", "strongId": "H4428", "hebrew": "מֶלֶךְ", "consonants": "מלך", "transliteration": "ME-lekh", "gloss": "king",
+    "meanings": ["king"], "pos": "noun", "root": "מלך",
+    "rootNote": "Strong derives this noun from the verb entry H4427. The root is listed by hand, not worked out by removing vowels.",
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "וּמְלָכִים", "relationship": "inflection", "features": { "number": "plural", "state": "with conjunction" }, "gloss": "and kings", "reference": "Gen.35.11", "tokenId": "01fC6", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "מֶלֶךְ שָׁלֵם", "translation": "king of Salem", "reference": "Gen.14.18", "tokenId": "01rbd", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl", "final-forms"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  },
+  {
+    "id": "H5612", "strongId": "H5612", "hebrew": "סֵפֶר", "consonants": "ספר", "transliteration": "SE-fer", "gloss": "scroll",
+    "meanings": ["scroll", "book", "written record"], "pos": "noun", "root": "ספר",
+    "rootNote": "Strong derives this noun from the verb entry H5608. The root is listed by hand, not worked out by removing vowels.",
+    "features": { "gender": "masculine", "number": "singular", "state": "citation" },
+    "relatedForms": [{ "hebrew": "לִסְפֹּר", "relationship": "derivation", "features": { "pos": "verb", "form": "infinitive with preposition" }, "gloss": "to count", "reference": "Gen.15.5", "tokenId": "01m4P", "sourceId": "wlc-oshb" }],
+    "example": { "hebrew": "זֶה סֵפֶר תּוֹלְדֹת אָדָם", "translation": "This is the written record of the generations of Adam.", "reference": "Gen.5.1", "tokenId": "018jj", "sourceId": "wlc-oshb", "original": false },
+    "regionIds": ["r1"], "requires": ["alphabet", "rtl"], "sourceIds": ["strong-digital", "wlc-oshb", "oshb-annotations"]
+  }
+]

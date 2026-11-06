@@ -1,0 +1,19 @@
+[
+  {
+    "id": "q-grove",
+    "regionId": "r1",
+    "title": "The scattered archive",
+    "stages": [
+      { "id": "find-tamar", "text": "Find Tamar. Her scriptorium has the gold door, just north of here.", "kind": "lesson", "targetIds": ["l-letters"] },
+      { "id": "first-word", "text": "Walk into the tall reeds east along the path and capture the word hiding there.", "kind": "capture", "targetIds": [], "requiredCount": 1 },
+      { "id": "finals", "text": "Go back to Tamar's scriptorium. She has one more lesson for you.", "kind": "lesson", "targetIds": ["l-finals"] },
+      { "id": "three-words", "text": "Capture three words in the reeds. Tamar says the stream crossing will test you after that.", "kind": "capture", "targetIds": [], "requiredCount": 3 },
+      { "id": "neri", "text": "Answer Neri's challenge on the bridge north of the path.", "kind": "puzzle", "targetIds": ["neriCleared"] },
+      { "id": "gate", "text": "Read the riddle stone, then choose the right door in the Field Gate.", "kind": "puzzle", "targetIds": ["gateOpen"] },
+      { "id": "badge", "text": "Enter the Hall of Letters and take Ilana's trial for the Reed Seal.", "kind": "duel", "targetIds": ["b-reed-seal"] },
+      { "id": "exit", "text": "Carry the Reed Seal to the arch at the north end of the grove.", "kind": "exit", "targetIds": ["exitOpened"] }
+    ],
+    "reward": "The road to the Vowel Springs unseals.",
+    "sourceIds": ["aleph-quest-original"]
+  }
+]

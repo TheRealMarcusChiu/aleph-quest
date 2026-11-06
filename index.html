@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Aleph Quest: explore a tile world and recover a broken archive by learning to read Biblical Hebrew.">
+  <title>Aleph Quest</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <main id="handheld" aria-label="Aleph Quest">
+    <header id="topbar">
+      <p id="place">Aleph Quest</p>
+      <div id="top-buttons" hidden>
+        <button type="button" id="btn-worddex">Worddex</button>
+        <button type="button" id="btn-menu">Menu</button>
+      </div>
+    </header>
+    <div id="screen">
+      <canvas id="game-canvas" width="320" height="240" tabindex="0" aria-label="Game world. Use arrow keys or WASD to walk, Enter or Space to interact."></canvas>
+    </div>
+    <p id="objective" aria-live="polite"></p>
+    <p id="prompt" aria-live="polite"></p>
+    <p id="save-warning" role="alert" hidden></p>
+    <div id="pad" hidden>
+      <div id="dpad" aria-label="Movement pad">
+        <button type="button" id="dpad-up" data-dir="up" aria-label="Walk up">▲</button>
+        <button type="button" id="dpad-left" data-dir="left" aria-label="Walk left">◀</button>
+        <button type="button" id="dpad-right" data-dir="right" aria-label="Walk right">▶</button>
+        <button type="button" id="dpad-down" data-dir="down" aria-label="Walk down">▼</button>
+      </div>
+      <button type="button" id="btn-a" aria-label="A: interact">A</button>
+    </div>
+  </main>
+  <dialog id="modal"></dialog>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

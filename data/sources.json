@@ -1,0 +1,44 @@
+[
+  {
+    "id": "wlc-oshb",
+    "title": "Westminster Leningrad Codex text, via Open Scriptures Hebrew Bible wlc/Gen.xml",
+    "url": "https://github.com/openscriptures/morphhb",
+    "license": "Public domain (biblical text, as stated by the upstream XML)",
+    "scope": "Biblical text of attested forms and example clauses",
+    "revision": "3d15126fb1ef74867fc1434be1942e837932691f",
+    "changes": "Selected clauses only; removed cantillation, meteg, paseq and segmentation slashes for reading display."
+  },
+  {
+    "id": "oshb-annotations",
+    "title": "Open Scriptures Hebrew Bible lemma and morphology annotations",
+    "url": "https://github.com/openscriptures/morphhb",
+    "license": "CC BY 4.0",
+    "scope": "Lemma, morphology code and token id on each attestation record",
+    "revision": "3d15126fb1ef74867fc1434be1942e837932691f",
+    "changes": "Converted XML to application records; features restated in plain English."
+  },
+  {
+    "id": "strong-digital",
+    "title": "Open Scriptures digital Strong's Hebrew dictionary (HebrewStrong.xml)",
+    "url": "https://github.com/openscriptures/HebrewLexicon",
+    "license": "CC BY 4.0 digital edition; underlying dictionary public domain",
+    "scope": "Citation headword, part of speech and derivation note. Its obsolete pron field is not used.",
+    "revision": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "changes": "Selected headwords; glosses and explanations rewritten as original teaching text."
+  },
+  {
+    "id": "ross-toc",
+    "title": "Allen P. Ross, Introducing Biblical Hebrew (2001): table of contents through chapter 37 in the authorized preview",
+    "url": "https://biblia.com/api/plugins/embeddedpreview?resourceName=LLS%3AINTROBIBHBRW",
+    "license": "Copyrighted; only topic order referenced",
+    "scope": "Curricular topic order. No lesson body, vocabulary list or exercise was read or copied.",
+    "accessLimitations": "Preview stops after chapter 37 and shows contents only."
+  },
+  {
+    "id": "aleph-quest-original",
+    "title": "Aleph Quest original teaching text",
+    "url": "./README.md",
+    "license": "MIT, with the project",
+    "scope": "Prompts, glosses, explanations, hints, translations and the region grouping."
+  }
+]
