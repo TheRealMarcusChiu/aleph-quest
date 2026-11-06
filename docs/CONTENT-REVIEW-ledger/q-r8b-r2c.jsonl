@@ -1,0 +1,52 @@
+{"id":"H8415-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 parallel with waters","rej":{"c1":"formlessness is תֹּהוּ, earlier in the verse","c2":"expanse comes in verse 6"}}
+{"id":"H8415-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"deep water; the deep, deep, abyss accepted, Strong's abyss","rej":{"c1":"heavens is שָׁמַיִם","c2":"darkness is חֹשֶׁךְ"}}
+{"id":"H8415-write","prov":"citation","tests":["final-forms"],"ans":"tav, he, vav, final mem","rej":{"c1":"formlessness has no mem","c2":"water starts with mem"}}
+{"id":"H8415-mirror","prov":"citation","tests":["final-forms"],"ans":"tav, he, vav, final mem","rej":{"c1":"no mem: formlessness","c2":"regular mem at the end"}}
+{"id":"H6153-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"two segols, soft bet: E-rev","rej":{"c1":"b needs a dagesh","c2":"a-vowels and final stress aren't this pointing"}}
+{"id":"H6153-pointed","prov":"citation","tests":["vowels"],"ans":"two segols","rej":{"c1":"tsere isn't the first vowel","c2":"qamats and patah: a verb shape"}}
+{"id":"H6153-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.5 paired with morning","rej":{"c1":"night is לַיְלָה, named earlier in the verse","c2":"day is what evening and morning make"}}
+{"id":"H6153-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"evening; sunset accepted, by Strong's dusk","rej":{"c1":"wind is רוּחַ","c2":"fruit is פְּרִי"}}
+{"id":"H6153-write","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, resh, bet","rej":{"c1":"servant has bet then dalet","c2":"land starts with alef"}}
+{"id":"H6153-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"ayin, resh, bet","rej":{"c1":"resh and bet swapped: pass over","c2":"alef instead of ayin"}}
+{"id":"H7549-sound","prov":"citation","tests":["participle","vowels"],"ans":"qamats, hireq-yod, furtive patah: ra-QI-a","rej":{"c1":"swaps the vowels","c2":"e and a lost syllable aren't this pointing"}}
+{"id":"H7549-pointed","prov":"citation","tests":["participle","vowels"],"ans":"qamats, hireq-yod, furtive patah","rej":{"c1":"lacks the furtive patah","c2":"shewa and a yod consonant aren't this word"}}
+{"id":"H7549-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.6 spread out to divide the waters","rej":{"c1":"tree is עֵץ","c2":"fruit is פְּרִי"}}
+{"id":"H7549-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"expanse; firmament and dome accepted, Strong's def and usage","rej":{"c1":"light source is מָאוֹר","c2":"emptiness is בֹּהוּ"}}
+{"id":"H7549-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, qof, yod, ayin","rej":{"c1":"seed starts with zayin","c2":"wind has a vav"}}
+{"id":"H7549-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, qof, yod, ayin","rej":{"c1":"kaf instead of qof","c2":"alef instead of ayin"}}
+{"id":"H7363-sound","prov":"citation","tests":["vowels","final-forms"],"ans":"qamats, het kh, patah, soft final pe","rej":{"c1":"h is he","c2":"p needs a dagesh"}}
+{"id":"H7363-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, patah","rej":{"c1":"holam and tsere: a participle shape","c2":"hireq and tsere: a Piel perfect shape"}}
+{"id":"H7363-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 a Piel participle over the waters","rej":{"c1":"fall isn't Strong's sense; it stays above","c2":"drink is שָׁתָה"}}
+{"id":"H7363-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"hover; hovering, move, flutter accepted, Strong's flutter","rej":{"c1":"separate is בָּדַל","c2":"create is בָּרָא"}}
+{"id":"H7363-write","prov":"citation","tests":["final-forms"],"ans":"resh, het, final pe","rej":{"c1":"pursue has dalet","c2":"wind has a vav"}}
+{"id":"H7363-mirror","prov":"citation","tests":["final-forms"],"ans":"resh, het, final pe","rej":{"c1":"regular pe at the end","c2":"he instead of het"}}
+{"id":"H3974-sound","prov":"citation","tests":["vowels"],"ans":"qamats, alef, holam-vav: ma-OR","rej":{"c1":"very, with shewa and dalet","c2":"o first and segol aren't this pointing"}}
+{"id":"H3974-pointed","prov":"citation","tests":["vowels"],"ans":"qamats, holam-vav","rej":{"c1":"shewa marks another state","c2":"shureq reads u"}}
+{"id":"H3974-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.16 rules the day","rej":{"c1":"very is מְאֹד","c2":"hundred is מֵאָה"}}
+{"id":"H3974-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"light source; light, lamp, luminary accepted, Strong's def","rej":{"c1":"expanse is רָקִיעַ","c2":"fruit is פְּרִי"}}
+{"id":"H3974-write","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, vav, resh","rej":{"c1":"light has no mem","c2":"very ends in dalet"}}
+{"id":"H3974-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"mem, alef, vav, resh","rej":{"c1":"ayin instead of alef","c2":"no mem: light"}}
+{"id":"H6529-sound","prov":"citation","tests":["dagesh","shewa"],"ans":"hard pe, sounded shewa, hireq-yod","rej":{"c1":"f needs no dagesh","c2":"a and first-syllable stress aren't this pointing"}}
+{"id":"H6529-pointed","prov":"citation","tests":["dagesh","shewa"],"ans":"shewa, hireq-yod","rej":{"c1":"qamats where shewa belongs","c2":"tsere where hireq belongs"}}
+{"id":"H6529-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.12 trees produce it, seed inside","rej":{"c1":"wind is רוּחַ","c2":"bread is לֶחֶם"}}
+{"id":"H6529-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"fruit; produce and offspring accepted","rej":{"c1":"seed is inside it, a separate word","c2":"evening is עֶרֶב"}}
+{"id":"H6529-write","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"mouth has he","c2":"seed starts with zayin"}}
+{"id":"H6529-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"pe, resh, yod","rej":{"c1":"dalet instead of resh","c2":"reversed, with a regular pe last"}}
+{"id":"g-vowels","prov":"span","tests":["vowels"],"ans":"dot above the first letter is holam, o","rej":{"c1":"a needs patah or qamats","c2":"i needs hireq"}}
+{"id":"g-shewa","prov":"span","tests":["shewa","prepositions"],"ans":"OSHB splits b/ as a preposition","rej":{"c1":"the root is ראש; the prefix isn't part of it","c2":"a plural ending isn't a prefix"}}
+{"id":"g-accents","prov":"span","tests":["accents"],"ans":"unstressed, closed, before a maqqef: qamats qatan","rej":{"c1":"ordinary qamats needs an open or stressed syllable","c2":"the sign is qamats, not tsere"}}
+{"id":"g-dagesh","prov":"span","tests":["dagesh"],"ans":"word-initial dagesh in a בגדכפת letter: hard","rej":{"c1":"a dagesh sits on a consonant, not a vowel","c2":"question marking is הֲ"}}
+{"id":"g-article","prov":"span","tests":["article"],"ans":"OSHB Td on הַ, dagesh in mem","rej":{"c1":"that is part of the noun itself","c2":"OSHB tags an article here"}}
+{"id":"g-gutturals","prov":"span","tests":["gutturals"],"ans":"ayin can't double, so qamats","rej":{"c1":"OSHB tags an article here","c2":"ayin has no final form, and it opens the noun"}}
+{"id":"a-vowel-class-1","prov":"span","tests":["vowels"],"ans":"holam, o","rej":{"c1":"a needs patah or qamats","c2":"e needs tsere or segol"}}
+{"id":"a-syllables-1","prov":"span","tests":["syllables"],"ans":"two vowels, two syllables: ya-MIM","rej":{"c1":"there are two vowel sounds","c2":"there is no third vowel"}}
+{"id":"a-shewa-1","prov":"span","tests":["shewa"],"ans":"word-initial shewa is sounded","rej":{"c1":"it opens the word and can't close a syllable","c2":"two stacked dots are a shewa"}}
+{"id":"a-shewa-2","prov":"span","tests":["shewa"],"ans":"closes the syllable lay; silent","rej":{"c1":"yod isn't the word's first letter","c2":"a composite shewa would have a vowel beside it"}}
+{"id":"a-prep-1","prov":"span","tests":["prepositions"],"ans":"OSHB R on l/","rej":{"c1":"in is בְּ","c2":"like is כְּ"}}
+{"id":"a-maqqef-1","prov":"span","tests":["accents"],"ans":"the maqqef joins the words","rej":{"c1":"sof pasuq ends a verse","c2":"it says nothing about number"}}
+{"id":"a-dagesh-1","prov":"span","tests":["dagesh"],"ans":"lamed isn't in בגדכפת, so doubling","rej":{"c1":"hard sounds apply only to the six","c2":"a mappiq sits in a final he"}}
+{"id":"a-dagesh-2","prov":"span","tests":["dagesh"],"ans":"word-initial bet, so the hard sound","rej":{"c1":"nothing precedes it to double","c2":"it says nothing about number"}}
+{"id":"a-article-1","prov":"span","tests":["article"],"ans":"OSHB Td: the night","rej":{"c1":"a would need no article","c2":"to would need a preposition"}}
+{"id":"a-article-2","prov":"span","tests":["article","gutturals"],"ans":"Gen.1.29 has הָעֵץ; ayin can't double","rej":{"c1":"a dagesh in ayin isn't possible","c2":"the article goes before the noun"}}
+{"id":"a-gutturals-1","prov":"span","tests":["gutturals"],"ans":"hataf patah, a composite shewa","rej":{"c1":"segol is three dots, and gender isn't why","c2":"the shewa is joined; it isn't plain patah"}}
+{"id":"a-gutturals-2","prov":"span","tests":["gutturals","article"],"ans":"he can't double; vowel shifts to segol","rej":{"c1":"OSHB tags an article and an absolute noun, not a construct","c2":"a question marker is hataf patah, not this segol"}}

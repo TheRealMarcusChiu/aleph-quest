@@ -27,6 +27,8 @@ export function readingDemands(hebrew) {
   for (const [, letter, marks] of text.matchAll(/([א-ת])([֑-ׇ]*)/g)) if (marks.includes('ּ') && letter !== 'ו') needed.add('dagesh');
   if (/ה(?![֑-ׇ])(?:\s|$)/.test(text)) needed.add('dagesh');
   if (/(?<!^)א(?![֑-ׇ])/.test(text)) needed.add('gutturals');
+  // Furtive patah, read before its final guttural, is first shown with the participle.
+  if (/(?:[וי][ֹּ]?|[ֵֹ])[֑-ׇ]*[חע][֑-ׇ]*ַ[֑-ׇ]*$/.test(text)) needed.add('participle');
   return [...needed];
 }
 

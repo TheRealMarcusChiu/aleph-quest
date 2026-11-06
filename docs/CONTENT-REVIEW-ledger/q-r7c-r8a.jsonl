@@ -1,0 +1,53 @@
+{"id":"H6965-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"rise; get up, stand, stand up, arise, rose accepted, Strong's def","rej":{"c1":"lift is נָשָׂא","c2":"die is מוּת"}}
+{"id":"H6965-write","prov":"citation","tests":["final-forms"],"ans":"qof, vav, final mem","rej":{"c1":"voice ends in lamed","c2":"put starts with ש"}}
+{"id":"H6965-mirror","prov":"citation","tests":["final-forms"],"ans":"qof, vav, final mem","rej":{"c1":"kaf instead of qof","c2":"regular mem at the end"}}
+{"id":"H0935-sound","prov":"citation","tests":["dagesh","gutturals"],"ans":"hard bet, holam-vav, silent alef: bo","rej":{"c1":"u needs shureq","c2":"v needs no dagesh"}}
+{"id":"H0935-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"holam-vav, unlike most hollow verbs","rej":{"c1":"shureq reads u","c2":"qamats on a bare vav isn't this word"}}
+{"id":"H0935-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.6.13 the end has arrived","rej":{"c1":"go out is יָצָא","c2":"be full is the verse's other verb, not this one"}}
+{"id":"H0935-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"come; go in, enter, came accepted, Strong's def","rej":{"c1":"go up is עָלָה","c2":"see is רָאָה"}}
+{"id":"H0935-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, vav, alef","rej":{"c1":"not has lamed","c2":"return starts with shin"}}
+{"id":"H0935-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, vav, alef","rej":{"c1":"kaf instead of bet","c2":"letters reversed"}}
+{"id":"H7760-sound","prov":"citation","tests":["vowels"],"ans":"sin, shureq: sum","rej":{"c1":"sh needs the right-arm dot","c2":"o needs holam-vav"}}
+{"id":"H7760-pointed","prov":"citation","tests":["hollow-geminate"],"ans":"left-arm dot, shureq","rej":{"c1":"right dot makes another word","c2":"holam-vav reads o"}}
+{"id":"H7760-in-context","prov":"attested","tests":["hollow-geminate","word-meaning"],"ans":"Gen.2.8 the man placed in the garden","rej":{"c1":"rise is קוּם","c2":"bear is יָלַד"}}
+{"id":"H7760-type-gloss","prov":"citation","tests":["hollow-geminate","word-meaning"],"ans":"put; set, place, placed accepted, Strong's def","rej":{"c1":"return is שׁוּב","c2":"hear is שָׁמַע"}}
+{"id":"H7760-write","prov":"citation","tests":["final-forms"],"ans":"ש, vav, final mem","rej":{"c1":"rise starts with qof","c2":"name has no vav"}}
+{"id":"H7760-mirror","prov":"citation","tests":["final-forms"],"ans":"ש, vav, final mem","rej":{"c1":"samekh instead of ש","c2":"regular mem at the end"}}
+{"id":"H5046-sound","prov":"citation","tests":["vowels"],"ans":"qamats, patah: na-GAD","rej":{"c1":"the Hiphil, not this dictionary form","c2":"segols belong to the separate word in front of"}}
+{"id":"H5046-pointed","prov":"citation","tests":["hiphil","vowels"],"ans":"qamats, patah","rej":{"c1":"two segols: in front of, a separate word","c2":"holam and tsere: a participle's shape"}}
+{"id":"H5046-in-context","prov":"attested","tests":["hiphil","word-meaning"],"ans":"Gen.3.11 someone passed it on","rej":{"c1":"see is רָאָה","c2":"lift is נָשָׂא"}}
+{"id":"H5046-type-gloss","prov":"citation","tests":["hiphil","word-meaning"],"ans":"tell; told, declare, announce accepted, Strong's announce","rej":{"c1":"give is נָתַן","c2":"go down is יָרַד"}}
+{"id":"H5046-write","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, gimel, dalet","rej":{"c1":"give ends in final nun","c2":"grow up starts with gimel"}}
+{"id":"H5046-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"nun, gimel, dalet","rej":{"c1":"resh instead of dalet","c2":"reversed, with a regular nun last"}}
+{"id":"H7307-sound","prov":"citation","tests":["participle","vowels"],"ans":"shureq, then furtive patah before het: RU-akh","rej":{"c1":"the patah is read before het, and the stress is first","c2":"o needs holam-vav"}}
+{"id":"H7307-pointed","prov":"citation","tests":["participle","vowels"],"ans":"shureq and a furtive patah","rej":{"c1":"holam-vav reads o","c2":"lacks the patah"}}
+{"id":"H7307-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 both senses are honest; the option states both","rej":{"c1":"voice is קוֹל","c2":"hand is יָד"}}
+{"id":"H7307-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"wind; spirit and breath accepted, Strong's defs","rej":{"c1":"beginning is רֵאשִׁית","c2":"evening is עֶרֶב"}}
+{"id":"H7307-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, vav, het","rej":{"c1":"head has alef and shin","c2":"light starts with alef"}}
+{"id":"H7307-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, vav, het","rej":{"c1":"he instead of het","c2":"dalet instead of resh"}}
+{"id":"H7225-sound","prov":"citation","tests":["gutturals","vowels"],"ans":"tsere, silent alef, shin, hireq-yod","rej":{"c1":"the separate noun head","c2":"a isn't this first vowel"}}
+{"id":"H7225-pointed","prov":"citation","tests":["gutturals","vowels"],"ans":"tsere and a right-arm dot","rej":{"c1":"qamats where tsere belongs","c2":"left dot makes sin"}}
+{"id":"H7225-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.1 where the story starts; the prompt's בְּרֵאשִׁית is token 01xeN","rej":{"c1":"head is a separate entry","c2":"evening is עֶרֶב"}}
+{"id":"H7225-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"beginning; start, first part, first accepted, Strong's def and usage","rej":{"c1":"darkness is חֹשֶׁךְ","c2":"expanse is רָקִיעַ"}}
+{"id":"H7225-write","prov":"citation","tests":["alphabet","rtl"],"ans":"resh, alef, shin, yod, tav","rej":{"c1":"head has three letters","c2":"covenant starts with bet"}}
+{"id":"H7225-mirror","prov":"citation","tests":["gutturals","alphabet"],"ans":"resh, alef, shin, yod, tav","rej":{"c1":"drops the silent alef","c2":"tet instead of tav"}}
+{"id":"H8414-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"holam, shureq, first-syllable stress","rej":{"c1":"second vowel is shureq, and stress is first","c2":"another word, the deep"}}
+{"id":"H8414-pointed","prov":"citation","tests":["vowels"],"ans":"holam, then shureq","rej":{"c1":"shewa isn't the first vowel","c2":"holam-vav reads o where u belongs"}}
+{"id":"H8414-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 nothing shaped yet","rej":{"c1":"light comes in verse 3","c2":"evening comes in verse 5"}}
+{"id":"H8414-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"formlessness; formless, emptiness, waste, chaos accepted","rej":{"c1":"beginning is רֵאשִׁית","c2":"fruit is פְּרִי"}}
+{"id":"H8414-write","prov":"citation","tests":["alphabet","rtl"],"ans":"tav, he, vav","rej":{"c1":"its partner starts with bet","c2":"the deep has a final mem"}}
+{"id":"H8414-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"tav, he, vav","rej":{"c1":"its partner, emptiness","c2":"tet instead of tav"}}
+{"id":"H0922-sound","prov":"citation","tests":["dagesh","vowels"],"ans":"hard bet, holam, shureq: BO-hu","rej":{"c1":"v needs no dagesh","c2":"second vowel is shureq, and stress is first"}}
+{"id":"H0922-pointed","prov":"citation","tests":["dagesh","vowels"],"ans":"holam, shureq, hard bet","rej":{"c1":"shewa isn't the first vowel","c2":"holam-vav reads o where u belongs"}}
+{"id":"H0922-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.2 nothing fills the earth","rej":{"c1":"fullness is the opposite","c2":"darkness is a separate word in the verse"}}
+{"id":"H0922-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"emptiness; empty and void accepted, Strong's def","rej":{"c1":"wind is רוּחַ","c2":"expanse is רָקִיעַ"}}
+{"id":"H0922-write","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav","rej":{"c1":"its partner starts with tav","c2":"morning has qof and resh"}}
+{"id":"H0922-mirror","prov":"citation","tests":["alphabet","rtl"],"ans":"bet, he, vav","rej":{"c1":"its partner, formlessness","c2":"het instead of he"}}
+{"id":"H2822-sound","prov":"citation","tests":["shewa","vowels"],"ans":"holam on het, shin, segol, soft final kaf, first-syllable stress","rej":{"c1":"h is he; this letter is closed","c2":"final stress and a second a aren't this pointing"}}
+{"id":"H2822-pointed","prov":"citation","tests":["vowels"],"ans":"holam, segol, right-arm dot","rej":{"c1":"left dot makes sin","c2":"qamats and patah: a verb shape"}}
+{"id":"H2822-in-context","prov":"attested","tests":["context-reading","word-meaning"],"ans":"Gen.1.4 separated from the light","rej":{"c1":"morning is בֹּקֶר","c2":"expanse is רָקִיעַ"}}
+{"id":"H2822-type-gloss","prov":"citation","tests":["context-reading","word-meaning"],"ans":"darkness; dark accepted, Strong's def","rej":{"c1":"evening is עֶרֶב","c2":"beginning is רֵאשִׁית"}}
+{"id":"H2822-write","prov":"citation","tests":["final-forms"],"ans":"het, shin, final kaf","rej":{"c1":"road starts with dalet","c2":"living being ends in shin"}}
+{"id":"H2822-mirror","prov":"citation","tests":["final-forms"],"ans":"het, shin, final kaf","rej":{"c1":"regular kaf at the end","c2":"he instead of het"}}
+{"id":"H8415-sound","prov":"citation","tests":["shewa","dagesh"],"ans":"sounded shewa, holam-vav, final mem: te-HOM","rej":{"c1":"another word, formlessness","c2":"a and u aren't these signs"}}
+{"id":"H8415-pointed","prov":"citation","tests":["shewa","dagesh"],"ans":"shewa, holam-vav","rej":{"c1":"qamats and shureq aren't this word","c2":"shureq reads u"}}
